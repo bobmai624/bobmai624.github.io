@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta
+      name="description"
+      content="Bowen Mai is a multidisciplinary designer connecting interaction, form and strategy."
+    />
+    <title>Bowen Mai — Design Portfolio</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="projects.js" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#work">Skip to work</a>
+
+    <div class="page-intro" aria-hidden="true">
+      <span>BM</span>
+    </div>
+
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Bowen Mai, back to top">
+        <span class="brand-name">Bowen Mai</span>
+        <span class="brand-discipline">Design portfolio</span>
+      </a>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="#work">Work</a>
+        <a href="#practice">Index</a>
+        <a href="#capabilities">Skills</a>
+        <a href="#resume" data-resume-open>Resume</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-topline">
+          <p>Selected work</p>
+          <p>2024—2026</p>
+        </div>
+        <h1 id="hero-title">
+          Designing meaning between
+          <span>people, systems and form.</span>
+        </h1>
+        <div class="hero-bottom">
+          <p class="hero-position">
+            Multidisciplinary designer connecting interaction, form and strategy.
+          </p>
+          <a class="quiet-link" href="#practice">View practice index <span aria-hidden="true">↓</span></a>
+        </div>
+      </section>
+
+      <section class="practice section-shell" id="practice" aria-labelledby="practice-heading">
+        <header class="section-intro reveal">
+          <p class="section-number">01 / Practice index</p>
+          <h2 id="practice-heading">Five ways of working.</h2>
+          <p>
+            The portfolio is organised by the kind of design question being answered, so the
+            relationship between projects is visible before the details begin.
+          </p>
+        </header>
+        <nav class="practice-index" id="practice-index" aria-label="Portfolio practice areas"></nav>
+      </section>
+
+      <section class="work section-shell" id="work" aria-labelledby="work-heading">
+        <header class="section-intro reveal">
+          <p class="section-number">02 / Selected work</p>
+          <h2 id="work-heading">Work, organised by intention.</h2>
+          <p>
+            Thirteen project stories distilled from twenty-one assignments, each organised around
+            its central idea, process and outcome.
+          </p>
+        </header>
+        <div class="project-groups" id="project-groups"></div>
+      </section>
+
+      <section class="capabilities" id="capabilities" aria-labelledby="capabilities-title">
+        <div class="capabilities-inner">
+          <header class="section-intro capabilities-intro reveal">
+            <p class="section-number">03 / Capabilities</p>
+            <h2 id="capabilities-title">What I can do—and how I know.</h2>
+            <p>
+              A capability is more useful when it can be traced to a method, a tool and a visible
+              outcome. This profile summarises the craft, reasoning and professional judgement
+              demonstrated across the portfolio.
+            </p>
+          </header>
+
+          <div
+            class="capability-metrics"
+            id="capability-metrics"
+            aria-label="Portfolio capability evidence"
+          ></div>
+
+          <section class="capability-block" aria-labelledby="capability-groups-heading">
+            <header class="capability-block-heading reveal">
+              <p>Professional disciplines</p>
+              <h3 id="capability-groups-heading">Skills connected to evidence.</h3>
+            </header>
+            <div class="capability-groups" id="capability-groups"></div>
+          </section>
+
+          <section class="capability-block" aria-labelledby="capability-tools-heading">
+            <header class="capability-block-heading reveal">
+              <p>Software &amp; workflow</p>
+              <h3 id="capability-tools-heading">How the tools are used.</h3>
+            </header>
+            <div class="capability-tools" id="capability-tools"></div>
+          </section>
+
+          <section class="capability-block" aria-labelledby="capability-qualities-heading">
+            <header class="capability-block-heading reveal">
+              <p>Professional qualities</p>
+              <h3 id="capability-qualities-heading">Patterns behind the work.</h3>
+            </header>
+            <div class="capability-qualities" id="capability-qualities"></div>
+          </section>
+        </div>
+      </section>
+
+      <section class="profile section-shell" id="profile" aria-labelledby="profile-heading">
+        <div class="profile-heading reveal">
+          <p class="section-number">04 / About</p>
+          <h2 id="profile-heading">Curious in method.<br />Clear in outcome.</h2>
+        </div>
+        <div class="profile-copy reveal">
+          <p>
+            I am a Bachelor of Design student at the University of Melbourne, specialising in User
+            Experience Design. I move between research, visual judgement and structured analysis,
+            choosing the form that makes each problem easier to understand.
+          </p>
+          <p>
+            My work ranges from interface prototypes and usability studies to publications,
+            spatial narratives and financial models. Across them, the common task is the same:
+            make complex evidence legible enough to support a decision.
+          </p>
+          <a class="text-arrow" href="#resume" data-resume-open>Read the web resume <span>→</span></a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div>
+        <p>Bowen Mai</p>
+        <p>Melbourne, Australia</p>
+      </div>
+      <a href="mailto:bobmy5464@gmail.com">bobmy5464@gmail.com</a>
+      <a href="#top">Back to top ↑</a>
+    </footer>
+
+    <section
+      class="case-study overlay-page"
+      id="case-study"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="case-title"
+      hidden
+    >
+      <button class="overlay-close" id="case-close" type="button" aria-label="Close project">
+        <span>Close project</span>
+        <span aria-hidden="true">×</span>
+      </button>
+      <div class="case-content" id="case-content"></div>
+    </section>
+
+    <section
+      class="game-view"
+      id="game-view"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="game-title"
+      hidden
+    >
+      <div class="game-shell">
+        <header class="game-toolbar">
+          <div>
+            <p>Interactive prototype</p>
+            <h2 id="game-title">Signal Aftershock</h2>
+          </div>
+          <div class="game-toolbar-actions">
+            <a id="game-external" target="_blank" rel="noreferrer">
+              Open separately <span aria-hidden="true">↗</span>
+            </a>
+            <button id="game-close" type="button" aria-label="Close Signal Aftershock game">
+              <span>Close game</span><span aria-hidden="true">×</span>
+            </button>
+          </div>
+        </header>
+        <div class="game-frame">
+          <iframe
+            id="game-frame"
+            title="Play Signal Aftershock"
+            allow="fullscreen"
+          ></iframe>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="resume-view overlay-page"
+      id="resume-view"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="resume-title"
+      hidden
+    >
+      <button class="overlay-close overlay-close--dark" id="resume-close" type="button" aria-label="Close resume">
+        <span>Close resume</span>
+        <span aria-hidden="true">×</span>
+      </button>
+
+      <article class="resume-document">
+        <header class="resume-hero">
+          <div class="resume-topline">
+            <p>Resume / 2026</p>
+            <p>Melbourne, Australia</p>
+          </div>
+          <h1 id="resume-title">Bowen Mai</h1>
+          <div class="resume-profile-grid">
+            <p class="resume-summary">
+              Bachelor of Design student at the University of Melbourne with experience in UX
+              design, user research, web and interaction design, graphic design, market analysis
+              and customer-facing retail. Skilled in Figma prototyping, usability evaluation,
+              cross-functional communication and AI-assisted product testing.
+            </p>
+            <address class="resume-contact">
+              <a href="mailto:bobmy5464@gmail.com">bobmy5464@gmail.com</a>
+            </address>
+          </div>
+        </header>
+
+        <section class="resume-section" aria-labelledby="experience-heading">
+          <header class="resume-section-heading">
+            <p>01</p>
+            <h2 id="experience-heading">Experience</h2>
+          </header>
+          <div class="resume-list">
+            <article class="resume-experience-row">
+              <p class="resume-date">Feb 2025 — Jul 2025</p>
+              <div>
+                <h3>UX Design Intern</h3>
+                <p class="resume-place">Tidy Teddy</p>
+                <p>
+                  Analysed target users, competitors, page structures, navigation and user journeys;
+                  co-created wireframes, high-fidelity UI screens and interactive Figma prototypes;
+                  and coordinated product, design and development feedback into implementation notes.
+                </p>
+              </div>
+            </article>
+            <article class="resume-experience-row">
+              <p class="resume-date">Dec 2022 — Feb 2023</p>
+              <div>
+                <h3>Graphic Designer Intern</h3>
+                <p class="resume-place">Pharmaceutical company</p>
+                <p>
+                  Delivered e-commerce, packaging, poster, brochure and campaign assets; translated
+                  product positioning into consistent visual hierarchies; and worked with business
+                  and promotion teams to coordinate multi-channel delivery.
+                </p>
+              </div>
+            </article>
+            <article class="resume-experience-row">
+              <p class="resume-date">Jun 2021 — Dec 2022</p>
+              <div>
+                <h3>Sales Associate</h3>
+                <p class="resume-place">PUMA</p>
+                <p>
+                  Identified customer needs, provided tailored product recommendations and supported
+                  team sales targets during busy periods. Earned Top Sales Associate of the Month.
+                </p>
+              </div>
+            </article>
+            <article class="resume-experience-row">
+              <p class="resume-date">Sep 2021 — Sep 2022</p>
+              <div>
+                <h3>Graphic Design Assistant</h3>
+                <p class="resume-place">Design studio</p>
+                <p>
+                  Produced logos, posters, advertising materials, brand visuals and layouts, turning
+                  client requirements and feedback into rapidly iterated design concepts.
+                </p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="resume-section" aria-labelledby="education-heading">
+          <header class="resume-section-heading">
+            <p>02</p>
+            <h2 id="education-heading">Education</h2>
+          </header>
+          <div class="resume-list">
+            <article class="resume-education-row">
+              <p class="resume-date">Jan 2024 — Present</p>
+              <div>
+                <h3>Bachelor of Design — User Experience Design</h3>
+                <p class="resume-place">The University of Melbourne</p>
+                <p>User Research, UX Evaluation, Web &amp; Interaction Design, Graphic Design, Finance &amp; Business.</p>
+              </div>
+            </article>
+            <article class="resume-education-row">
+              <p class="resume-date">Jan 2025 — Dec 2025</p>
+              <div>
+                <h3>One-Month Exchange Study</h3>
+                <p class="resume-place">Korea University</p>
+              </div>
+            </article>
+            <article class="resume-education-row">
+              <p class="resume-date">Early 2026</p>
+              <div>
+                <h3>Short-Term Exchange Study</h3>
+                <p class="resume-place">Ritsumeikan University, Japan</p>
+                <p>Japanese language and culture studies.</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="resume-section" aria-labelledby="capabilities-heading">
+          <header class="resume-section-heading">
+            <p>03</p>
+            <h2 id="capabilities-heading">Selected capabilities</h2>
+          </header>
+          <div class="resume-capabilities">
+            <article>
+              <h3>User research &amp; analysis</h3>
+              <p>Interviews, observation, personas, journey maps, task flows and pain-point synthesis.</p>
+            </article>
+            <article>
+              <h3>Usability &amp; UX evaluation</h3>
+              <p>Five-second, first-click, moderated usability, tree-testing, card-sorting and heuristic review.</p>
+            </article>
+            <article>
+              <h3>Web &amp; interaction design</h3>
+              <p>Information architecture, responsive structures, high-fidelity Figma prototypes and HTML/CSS/JavaScript foundations.</p>
+            </article>
+            <article>
+              <h3>Business &amp; market analysis</h3>
+              <p>Comparative data review, cost-benefit reasoning, investment value, risk and feasibility analysis.</p>
+            </article>
+            <article>
+              <h3>AI-assisted design &amp; testing</h3>
+              <p>ChatGPT, DeepSeek, Adobe Firefly and Stable Diffusion used with attention to quality, limitations and consistency.</p>
+            </article>
+          </div>
+        </section>
+
+        <footer class="resume-footer">
+          <p>The web version is the primary public resume. Contact me by email for a PDF copy.</p>
+        </footer>
+      </article>
+    </section>
+
+    <noscript>
+      <div class="noscript-message">
+        JavaScript is required for project, capability and resume content.
+      </div>
+    </noscript>
+  </body>
+</html>
