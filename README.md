@@ -1,18 +1,18 @@
 # Bowen Mai Portfolio
 
-This is a self-contained, local portfolio website. It uses plain HTML, CSS and JavaScript, so there is no build step and no dependency to install.
+Public portfolio for Bowen Mai, built with plain HTML, CSS and JavaScript.
+
+**Live site:** https://bobmai624.github.io/bowen-mai-portfolio/
 
 ## Open the website
 
-Double-click `index.html`, or open it in any modern browser.
-
-For the most reliable video and file preview behaviour, open Terminal in this folder and run:
+Double-click `index.html`, or run a small local server:
 
 ```bash
-python3 -m http.server 4176
+python3 -m http.server 4178
 ```
 
-Then visit `http://127.0.0.1:4176/`.
+Then visit `http://127.0.0.1:4178/`.
 
 ## Edit the content
 
@@ -21,17 +21,19 @@ Then visit `http://127.0.0.1:4176/`.
 - `style.css` controls the monochrome-led, low-saturation typography, spacing, responsive layout, print resume and motion.
 - `app.js` renders the five grouped practice areas and Capabilities section, and controls project/resume opening, URL routing, focus and scroll reveals.
 - `assets/projects/` contains the website-ready project imagery.
-- `files/` contains the original assignment files, spreadsheets, videos, 3D model and resume.
+
+The public repository intentionally excludes phone details, original assignment files, models,
+videos and the resume PDF. Those remain in the private local portfolio archive.
 
 ## Add another project
 
-Duplicate one object inside `projects.js`, then change its unique `id`, title, category, summary, `meaning`, cover, case-study sections, media and source links. The `category` must match one of the five IDs in `PORTFOLIO_CATEGORIES`; the project will appear automatically in that section.
+Duplicate one object inside `projects.js`, then change its unique `id`, title, category, summary, `meaning`, cover, case-study sections and media. The `category` must match one of the five IDs in `PORTFOLIO_CATEGORIES`; the project will appear automatically in that section.
 
-Keep new image assets inside `assets/projects/` and original downloadable files inside `files/` so the portfolio remains portable.
+Keep new public image assets inside `assets/projects/`.
 
 ## Edit the resume
 
-The web resume is written directly inside the `#resume-view` section of `index.html`. Edit the experience, education and capability text there. Replace `files/resume-bowen-mai.pdf` only when the downloadable PDF version also changes.
+The web resume is written directly inside the `#resume-view` section of `index.html`. Edit the experience, education and capability text there.
 
 ## Edit the capabilities section
 
