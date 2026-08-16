@@ -1213,18 +1213,16 @@ window.PORTFOLIO_CAPABILITIES = {
   ],
 };
 
+const publicVideoPath = (sourcePath) =>
+  sourcePath.endsWith(".mp4") ? `media/${sourcePath.split("/").pop()}` : sourcePath;
+
 window.PORTFOLIO_PROJECTS = window.PORTFOLIO_PROJECTS.map((project) => ({
   ...project,
   media: project.media.map((item) =>
-    item.type === "video"
-      ? {
-          type: "image",
-          src: item.poster,
-          alt: item.alt,
-          caption: "Prototype presentation available on request.",
-          layout: item.layout,
-        }
-      : item,
+    item.type === "video" ? { ...item, src: publicVideoPath(item.src) } : item,
   ),
-  sources: project.sources.filter((source) => source.external),
+  sources: project.sources.map((source) => ({
+    ...source,
+    href: source.external ? source.href : publicVideoPath(source.href),
+  })),
 }));

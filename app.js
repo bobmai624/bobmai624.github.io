@@ -679,7 +679,7 @@
           ${project.sources
             .map(
               (source) => `
-                <a class="source-link" href="${source.href}" ${source.external ? 'target="_blank" rel="noreferrer"' : ""}>
+                <a class="source-link" href="${source.href}" target="_blank" rel="noreferrer">
                   <span>${source.label}</span><span aria-hidden="true">↗</span>
                 </a>`,
             )
