@@ -36,6 +36,55 @@
   const projectById = (id) => orderedProjects.find((project) => project.id === id);
   const twoDigits = (value) => String(value).padStart(2, "0");
 
+  function investmentPointMarkup(asset, showLabel = false) {
+    const maximumRisk = 34.63;
+    const minimumGrowth = -2.7;
+    const maximumGrowth = 23.07;
+    const x = Math.max(3, Math.min(97, (asset.risk / maximumRisk) * 92 + 3));
+    const y = Math.max(
+      4,
+      Math.min(96, ((asset.growth - minimumGrowth) / (maximumGrowth - minimumGrowth)) * 88 + 4),
+    );
+
+    return `
+      <span
+        class="investment-point investment-point--${asset.stance}"
+        style="--point-x: ${x.toFixed(2)}%; --point-y: ${y.toFixed(2)}%"
+        title="${asset.name}: ${asset.volatility} volatility, ${asset.cagr} CAGR"
+        aria-hidden="true"
+      >${showLabel ? `<b>${asset.code}</b>` : ""}</span>`;
+  }
+
+  function investmentCoverMarkup(project) {
+    const study = project.investmentStudy;
+    return `
+      <div class="investment-cover" role="img" aria-label="${project.cover.alt}">
+        <div class="investment-cover-topline">
+          <span>PROP20001</span>
+          <span>Research note / 2025</span>
+        </div>
+        <p class="investment-cover-title">Australian<br />Asset Allocation</p>
+        <div class="investment-cover-plot" aria-hidden="true">
+          <span class="investment-cover-y">Long-run growth</span>
+          <span class="investment-cover-x">Observed volatility →</span>
+          ${study.assets.map((asset) => investmentPointMarkup(asset)).join("")}
+        </div>
+        <div class="investment-cover-stats">
+          <span class="investment-cover-stat"><b>10</b><small>assets</small></span>
+          <span class="investment-cover-stat"><b>12Y</b><small>window</small></span>
+          <span class="investment-cover-stat"><b>04</b><small>metrics</small></span>
+          <span class="investment-cover-stat"><b>+200bp</b><small>stress</small></span>
+        </div>
+      </div>`;
+  }
+
+  function projectCoverMarkup(project) {
+    if (project.cover.variant === "investment" && project.investmentStudy) {
+      return investmentCoverMarkup(project);
+    }
+    return `<img src="${project.cover.src}" alt="${project.cover.alt}" loading="lazy" decoding="async" />`;
+  }
+
   function practiceMarkup(category, index) {
     const count = projects.filter((project) => project.category === category.id).length;
     return `
@@ -53,7 +102,7 @@
     return `
       <a class="project-card reveal" data-project="${project.id}" href="#project/${project.id}">
         <figure class="project-figure">
-          <img src="${project.cover.src}" alt="${project.cover.alt}" loading="lazy" decoding="async" />
+          ${projectCoverMarkup(project)}
           <figcaption>${twoDigits(index + 1)}</figcaption>
         </figure>
         <div class="project-card-copy">
@@ -264,6 +313,178 @@
       </div>`;
   }
 
+  function investmentMetricMarkup(metric) {
+    return `
+      <article class="investment-metric">
+        <p>${metric.value}</p>
+        <h3>${metric.label}</h3>
+        <p>${metric.note}</p>
+      </article>`;
+  }
+
+  function investmentLeaderMarkup(asset) {
+    return `
+      <div class="investment-leader-row" role="row">
+        <span class="investment-leader-rank" role="cell">${asset.rank}</span>
+        <strong role="cell">${asset.name}</strong>
+        <span role="cell" data-label="Average return">${asset.average}</span>
+        <span role="cell" data-label="CAGR">${asset.cagr}</span>
+        <span role="cell" data-label="Volatility">${asset.volatility}</span>
+        <span role="cell" data-label="Sharpe">${asset.sharpe}</span>
+        <span class="investment-role investment-role--${asset.stance}" role="cell">${asset.role}</span>
+      </div>`;
+  }
+
+  function investmentThesisMarkup(thesis) {
+    return `
+      <article class="investment-thesis-card">
+        <div class="investment-thesis-topline">
+          <span>${thesis.number}</span>
+          <span>${thesis.signal}</span>
+        </div>
+        <p class="investment-thesis-label">${thesis.label}</p>
+        <h3>${thesis.title}</h3>
+        <p class="investment-thesis-assets">${thesis.assets}</p>
+        <p class="investment-thesis-body">${thesis.body}</p>
+      </article>`;
+  }
+
+  function investmentStressMarkup(row, index) {
+    return `
+      <article class="investment-stress-row">
+        <p>${twoDigits(index + 1)}</p>
+        <h3>${row.market}</h3>
+        <p><span>Pressure</span>${row.pressure}</p>
+        <p><span>Portfolio response</span>${row.response}</p>
+      </article>`;
+  }
+
+  function investmentStudyMarkup(project) {
+    const study = project.investmentStudy;
+
+    return `
+      <div class="investment-study">
+        <section class="investment-opening" aria-labelledby="investment-opening-heading">
+          <div class="investment-risk-map" role="img" aria-label="Ten asset classes plotted by volatility and compound annual growth rate">
+            <div class="investment-map-topline">
+              <span>Risk / return map</span>
+              <span>2013–2024</span>
+            </div>
+            <div class="investment-map-field">
+              <span class="investment-map-y">Higher CAGR</span>
+              <span class="investment-map-x">Higher volatility →</span>
+              ${study.assets.map((asset) => investmentPointMarkup(asset, true)).join("")}
+            </div>
+            <div class="investment-map-legend">
+              <span><i class="investment-legend-core"></i>Core</span>
+              <span><i class="investment-legend-growth"></i>Growth</span>
+              <span><i class="investment-legend-diversifier"></i>Diversifier</span>
+              <span><i class="investment-legend-reduce"></i>Reduce</span>
+            </div>
+          </div>
+          <div class="investment-opening-copy">
+            <p class="investment-eyebrow">Investment thesis</p>
+            <h2 id="investment-opening-heading">Build from risk-adjusted return, not headline growth.</h2>
+            <p>The strongest growth assets also carry the greatest volatility. The recommendation therefore separates a low-volatility core from selective growth and explicit diversifiers.</p>
+            <dl class="investment-assumptions">
+              ${study.assumptions
+                .map(
+                  (item) => `
+                    <div>
+                      <dt>${item.label}</dt>
+                      <dd><strong>${item.value}</strong><span>${item.note}</span></dd>
+                    </div>`,
+                )
+                .join("")}
+            </dl>
+          </div>
+        </section>
+
+        <section class="investment-method" aria-labelledby="investment-method-heading">
+          <header class="investment-section-heading">
+            <p>01 / Research system</p>
+            <div>
+              <h2 id="investment-method-heading">One comparison frame across unlike assets.</h2>
+              <p>Property, bonds, equities and commodities are normalised into a common decision view. The page exposes the scope and assumptions before presenting the recommendation.</p>
+            </div>
+          </header>
+          <div class="investment-metric-grid">
+            ${study.metrics.map(investmentMetricMarkup).join("")}
+          </div>
+        </section>
+
+        <section class="investment-ranking" aria-labelledby="investment-ranking-heading">
+          <header class="investment-section-heading">
+            <p>02 / Comparative evidence</p>
+            <div>
+              <h2 id="investment-ranking-heading">The ranking makes every trade-off visible.</h2>
+              <p>Assets are ordered by submitted Sharpe ratio. Average return and CAGR show reward; volatility shows the cost of pursuing it; the final column translates the evidence into a portfolio role.</p>
+            </div>
+          </header>
+          <div class="investment-leaderboard" role="table" aria-label="Australian asset class performance comparison">
+            <div class="investment-leader-header" role="row">
+              <span role="columnheader">Rank</span>
+              <span role="columnheader">Asset class</span>
+              <span role="columnheader">Avg return</span>
+              <span role="columnheader">CAGR</span>
+              <span role="columnheader">Volatility</span>
+              <span role="columnheader">Sharpe</span>
+              <span role="columnheader">Role</span>
+            </div>
+            ${study.assets.map(investmentLeaderMarkup).join("")}
+          </div>
+          <p class="investment-data-note">Values reproduce the submitted workbook summary; Sharpe ratios use the stated 2.5% risk-free-rate assumption.</p>
+        </section>
+
+        <section class="investment-allocation" aria-labelledby="investment-allocation-heading">
+          <header class="investment-section-heading">
+            <p>03 / Portfolio logic</p>
+            <div>
+              <h2 id="investment-allocation-heading">A role-based allocation, without false precision.</h2>
+              <p>The source recommendation identifies the direction of allocation rather than fixed percentage weights. The portfolio is therefore expressed as a clear hierarchy of core, growth and capital-discipline decisions.</p>
+            </div>
+          </header>
+          <div class="investment-thesis-grid">
+            ${study.theses.map(investmentThesisMarkup).join("")}
+          </div>
+        </section>
+
+        <section class="investment-scenario" aria-labelledby="investment-scenario-heading">
+          <header class="investment-scenario-header">
+            <p>04 / Scenario discipline</p>
+            <div>
+              <p class="investment-scenario-kicker">Downside lens / 2025</p>
+              <h2 class="investment-scenario-title" id="investment-scenario-heading">${study.scenario.title}</h2>
+            </div>
+            <p>${study.scenario.intro}</p>
+          </header>
+          <div class="investment-stress-list">
+            ${study.scenario.rows.map(investmentStressMarkup).join("")}
+          </div>
+          <p class="investment-scenario-conclusion">${study.scenario.conclusion}</p>
+        </section>
+
+        <section class="investment-evidence" aria-labelledby="investment-evidence-heading">
+          <header class="investment-section-heading">
+            <p>05 / Audit trail</p>
+            <div>
+              <h2 id="investment-evidence-heading">The report and model remain evidence, not the interface.</h2>
+              <p>Selected pages and the formula-backed summary are kept below the analysis so the original work can be checked without interrupting the reading flow.</p>
+            </div>
+          </header>
+          <div class="investment-evidence-grid">
+            ${study.evidence.map((mediaIndex) => mediaMarkup(project.media[mediaIndex])).join("")}
+          </div>
+        </section>
+
+        <section class="investment-reflection">
+          <p>Reflection</p>
+          <h2>${study.reflection.title}</h2>
+          <p>${study.reflection.body}</p>
+        </section>
+      </div>`;
+  }
+
   function defaultCaseStoryMarkup(project) {
     return `
       <figure class="case-feature">
@@ -329,9 +550,21 @@
     const index = projectIndex(project.id);
     const nextProject = orderedProjects[(index + 1) % orderedProjects.length];
     const category = categoryMap[project.category];
+    const articleClasses = [
+      "case-article",
+      project.lightStudy ? "case-article--light-performance" : "",
+      project.investmentStudy ? "case-article--investment" : "",
+    ]
+      .filter(Boolean)
+      .join(" ");
+    const caseStory = project.lightStudy
+      ? lightStudyMarkup(project)
+      : project.investmentStudy
+        ? investmentStudyMarkup(project)
+        : defaultCaseStoryMarkup(project);
 
     caseContent.innerHTML = `
-      <article class="case-article${project.lightStudy ? " case-article--light-performance" : ""}">
+      <article class="${articleClasses}">
         <header class="case-hero">
           <div class="case-topline">
             <p>${twoDigits(index + 1)} / ${twoDigits(projects.length)}</p>
@@ -351,7 +584,7 @@
           </dl>
         </section>
 
-        ${project.lightStudy ? lightStudyMarkup(project) : defaultCaseStoryMarkup(project)}
+        ${caseStory}
 
         ${sourceArchiveMarkup(project)}
 

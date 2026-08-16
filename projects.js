@@ -794,7 +794,8 @@ window.PORTFOLIO_PROJECTS = [
     methods: ["Comparative analysis", "Risk-adjusted metrics", "Scenario planning", "Portfolio allocation"],
     cover: {
       src: "assets/projects/investment/05-data-summary.png",
-      alt: "Workbook summary comparing returns volatility Sharpe ratio and CAGR across assets",
+      alt: "Risk and long-run growth profile for ten Australian asset classes from 2013 to 2024",
+      variant: "investment",
     },
     sections: [
       {
@@ -810,6 +811,117 @@ window.PORTFOLIO_PROJECTS = [
           "The recommended direction uses stable real estate and corporate bonds as anchors, then adds measured exposure to higher-growth industrial assets. Scenario reasoning tests how the mix behaves across changing monetary conditions.",
       },
     ],
+    investmentStudy: {
+      metrics: [
+        {
+          value: "10",
+          label: "Asset classes",
+          note: "Five property exposures plus equity, fixed income and commodities.",
+        },
+        {
+          value: "12Y",
+          label: "Observation window",
+          note: "Annual performance series from 2013 through 2024, inclusive.",
+        },
+        {
+          value: "04",
+          label: "Decision metrics",
+          note: "Average return, volatility, CAGR and Sharpe ratio.",
+        },
+        {
+          value: "+200bp",
+          label: "Stress scenario",
+          note: "A 2025 RBA rate rise tests the resilience of the portfolio thesis.",
+        },
+      ],
+      assumptions: [
+        {
+          label: "Risk-free rate",
+          value: "2.5%",
+          note: "Average RBA cash rate used in the Sharpe-ratio calculation.",
+        },
+        {
+          label: "Return basis",
+          value: "Total return",
+          note: "Capital movement and income are aligned where each asset class permits.",
+        },
+        {
+          label: "Initial basis",
+          value: "$1,000",
+          note: "A common starting value makes cumulative performance comparable.",
+        },
+      ],
+      assets: [
+        { rank: "01", code: "RES", name: "Residential Property", average: "6.77%", cagr: "6.76%", volatility: "0.77%", sharpe: "5.56", role: "Core", stance: "core", risk: 0.77, growth: 6.76 },
+        { rank: "02", code: "OFF", name: "Commercial Office", average: "5.15%", cagr: "8.47%", volatility: "0.56%", sharpe: "4.75", role: "Core", stance: "core", risk: 0.56, growth: 8.47 },
+        { rank: "03", code: "CB", name: "Corporate Bonds", average: "4.41%", cagr: "4.41%", volatility: "0.46%", sharpe: "4.18", role: "Core", stance: "core", risk: 0.46, growth: 4.41 },
+        { rank: "04", code: "WH", name: "Industrial Warehouse", average: "25.55%", cagr: "23.07%", volatility: "22.24%", sharpe: "1.04", role: "Growth", stance: "growth", risk: 22.24, growth: 23.07 },
+        { rank: "05", code: "ASX", name: "ASX 200", average: "8.47%", cagr: "0.08%", volatility: "7.55%", sharpe: "0.79", role: "Diversifier", stance: "diversifier", risk: 7.55, growth: 0.08 },
+        { rank: "06", code: "LOG", name: "Logistics Facilities", average: "20.32%", cagr: "17.49%", volatility: "23.09%", sharpe: "0.77", role: "Growth", stance: "growth", risk: 23.09, growth: 17.49 },
+        { rank: "07", code: "AU", name: "Gold (AUD)", average: "7.14%", cagr: "6.34%", volatility: "13.29%", sharpe: "0.35", role: "Diversifier", stance: "diversifier", risk: 13.29, growth: 6.34 },
+        { rank: "08", code: "RTL", name: "Retail Property", average: "5.67%", cagr: "4.73%", volatility: "13.61%", sharpe: "0.23", role: "Minimise", stance: "reduce", risk: 13.61, growth: 4.73 },
+        { rank: "09", code: "GB", name: "Government Bonds", average: "2.66%", cagr: "2.66%", volatility: "0.98%", sharpe: "0.16", role: "Minimise", stance: "reduce", risk: 0.98, growth: 2.66 },
+        { rank: "10", code: "FE", name: "Iron Ore (AUD)", average: "2.62%", cagr: "-2.70%", volatility: "34.63%", sharpe: "0.00", role: "Avoid", stance: "reduce", risk: 34.63, growth: -2.7 },
+      ],
+      theses: [
+        {
+          number: "01",
+          label: "Defensive core",
+          title: "Reward consistency before headline growth",
+          assets: "Residential Property · Commercial Office · Corporate Bonds",
+          body: "These three assets combine the study's highest Sharpe ratios with the lowest observed volatility, creating the portfolio's stability layer.",
+          signal: "Sharpe 4.18–5.56",
+        },
+        {
+          number: "02",
+          label: "Selective growth",
+          title: "Add upside without letting it define the risk budget",
+          assets: "Industrial Warehouse · Logistics Facilities",
+          body: "CAGRs above 17% justify measured exposure, while volatility above 22% argues against allowing either asset to become a core holding.",
+          signal: "CAGR 17.49–23.07%",
+        },
+        {
+          number: "03",
+          label: "Capital discipline",
+          title: "Use diversifiers deliberately; reduce weak risk-return trades",
+          assets: "Gold · ASX 200 / Retail · Government Bonds · Iron Ore",
+          body: "Gold and equities add breadth in small roles. Retail property, government bonds and iron ore are reduced where return, volatility or risk-adjusted reward is unconvincing.",
+          signal: "Explicit underweights",
+        },
+      ],
+      scenario: {
+        title: "+200bp RBA rate shock",
+        intro: "A tightening scenario converts the ranking into a portfolio test: which exposures lose valuation support, which retain structural demand, and where should risk remain capped?",
+        rows: [
+          {
+            market: "Fixed income",
+            pressure: "Bond prices fall as yields rise.",
+            response: "Keep government bonds limited; favour the relatively stronger income profile of corporate bonds.",
+          },
+          {
+            market: "Real estate",
+            pressure: "Higher borrowing costs pressure demand and valuations.",
+            response: "Maintain the stable core, but cap risk; retain only moderate industrial and logistics exposure supported by long leases and structural demand.",
+          },
+          {
+            market: "Equities",
+            pressure: "Higher discount rates weigh on valuations and earnings growth.",
+            response: "Use ASX 200 exposure for breadth rather than as the portfolio anchor.",
+          },
+          {
+            market: "Gold & commodities",
+            pressure: "Yielding assets become more competitive while global demand may weaken.",
+            response: "Keep gold as a small hedge and avoid adding to the study's weakest risk-return exposure, iron ore.",
+          },
+        ],
+        conclusion: "The stress response remains consistent with the base case: low-volatility assets form the foundation, high-growth exposures stay measured, and cyclical downside is deliberately underweighted.",
+      },
+      evidence: [1, 2, 3, 4],
+      reflection: {
+        title: "Comparable data was the real analytical challenge.",
+        body: "Price movement, rental or dividend income and reinvestment conventions differ across property, REITs, bonds, equities and commodities. Standardising those inputs made the comparison legible — and revealed commercial office as a stronger risk-adjusted performer than its post-COVID perception suggested.",
+      },
+    },
     media: [
       { type: "image", src: "assets/projects/investment/01-strategy-summary.jpg", alt: "First page of the Australian investment strategy report", caption: "Executive summary and 2025 direction." },
       { type: "image", src: "assets/projects/investment/02-key-metrics.jpg", alt: "Key metric overview for ten investment classes", caption: "Return, volatility, CAGR and Sharpe ratio form the comparison." },
