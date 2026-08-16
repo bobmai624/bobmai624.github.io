@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Hardware and making plan for PedalBalance Echo.">
+  <title>PedalBalance Echo — Prototype &amp; Making</title>
+  <link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+  <a class="skip-link" href="#main" data-ui="skip">Skip to content</a>
+  <header class="site-header">
+    <a class="portfolio-home" href="../index.html?lang=zh#work" data-portfolio-home><span data-ui="allWork">All work</span><small>BOWEN MAI</small></a>
+    <a class="brand" href="index.html" data-page-link>PEDALBALANCE ECHO</a>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a href="index.html" data-page-link data-ui="navVision">Project Vision</a>
+      <a href="prototype-making.html" aria-current="page" data-page-link data-ui="navMaking">Prototype &amp; Making</a>
+      <a href="experiment-capabilities.html" data-page-link data-ui="navExperiment">Experiment &amp; Capabilities</a>
+    </nav>
+    <a class="source-package" href="../files/pedalbalance-echo-html-portfolio.zip" download><span data-ui="downloadSource">Source files</span><span aria-hidden="true">↓</span></a>
+    <button class="prototype-button" type="button" data-open-prototype data-ui="openPrototype">Open Interactive Prototype</button>
+  </header>
+  <div class="language-switcher" aria-label="Language">
+    <button type="button" data-language="zh" aria-pressed="true">中文</button>
+    <button type="button" data-language="en" aria-pressed="false">EN</button>
+    <button type="button" data-language="ja" aria-pressed="false">日本語</button>
+  </div>
+  <main id="main">
+    <section class="making-hero">
+      <div class="making-hero-copy">
+        <p class="eyebrow">PAGE 02 · PROTOTYPE &amp; MAKING</p>
+        <h1 data-lang="zh">把身体闭环<br>搭出来。</h1><h1 data-lang="en" hidden>Build the bodily<br>loop.</h1><h1 data-lang="ja" hidden>身体ループを<br>組み立てる。</h1>
+        <p data-lang="zh">不是从零发明每个模块，而是把经过验证的传感、联网、触觉与记录方法，重新组合成一个自行车学习系统。</p>
+        <p data-lang="en" hidden>Do not reinvent every module. Reassemble proven sensing, networking, haptics and logging patterns into a cycling-learning system.</p>
+        <p data-lang="ja" hidden>すべてをゼロから発明せず、検証済みのセンシング、通信、触覚、記録方法を自転車学習システムへ再構成する。</p>
+        <div class="making-tags"><span>3 × ESP32 NODES</span><span>2 × PEDAL SENSORS</span><span>2 × ANKLE CUES</span><span>14 DAYS</span></div>
+      </div>
+      <div class="exploded-system" role="img" aria-label="Exploded view of left and right sensing nodes connected wirelessly to a coordinator with Hall cadence and servo output.">
+        <div class="node-card left-node"><small>LEFT FOOT NODE</small><b>FSR-L</b><b>DRV2605L</b><b>ANKLE-L</b><i>optional EMG</i></div>
+        <div class="wireless-path"><span>ESP-NOW</span><span>↔</span><span>ESP-NOW</span></div>
+        <div class="node-card hub-node"><small>COORDINATOR</small><b>FULL-REV MODEL</b><b>HALL EVENT</b><b>SERVO + USB</b><i>500 ms fail-safe</i></div>
+        <div class="node-card right-node"><small>RIGHT FOOT NODE</small><b>FSR-R</b><b>DRV2605L</b><b>ANKLE-R</b><i>pressure only</i></div>
+      </div>
+    </section>
+
+    <section class="content-section architecture-section">
+      <div class="section-heading wide">
+        <p class="kicker">01 · THREE SMALL RESPONSIBILITIES</p>
+        <h2 data-lang="zh">三个节点，而不是一团绕着曲柄的线。</h2><h2 data-lang="en" hidden>Three nodes—not a knot of wires around the crank.</h2><h2 data-lang="ja" hidden>クランク周りの配線束ではなく、3つのノード。</h2>
+        <p data-lang="zh">左右脚节点负责靠近身体的传感与振动，中央节点负责踏圈边界、算法、日志和可见指针。无线连接减少旋转区松散线材，也让每个模块可以单独测试。</p>
+        <p data-lang="en" hidden>Foot nodes keep sensing and vibration close to the body. The hub owns revolution boundaries, logic, logging and the visible pointer. Wireless separation reduces loose wiring near rotation and lets every unit be tested alone.</p>
+        <p data-lang="ja" hidden>足ノードは身体近くの計測と振動を担当し、中央ノードは回転境界、ロジック、ログ、可視ポインタを担当する。無線分離により回転部の緩い配線を減らし、各単位を個別に試験できる。</p>
+      </div>
+      <div class="architecture-grid">
+        <article><span>NODE 01</span><h3>Left body edge</h3><p data-lang="zh">读取左踏板；在左外踝提供短提示；可选读取外侧广肌附近的单通道sEMG。</p><p data-lang="en" hidden>Reads the left pedal, returns a short outer-ankle cue and optionally reads one vastus-lateralis sEMG channel.</p><p data-lang="ja" hidden>左ペダルを読み、左外果へ短い提示を返し、任意で外側広筋付近の単一sEMGを読む。</p></article>
+        <article><span>NODE 02</span><h3>Right body edge</h3><p data-lang="zh">读取右踏板并提供右侧提示；保持与左节点相同的采样、过滤和故障报告结构。</p><p data-lang="en" hidden>Reads the right pedal and returns right-side cues with the same sampling, filtering and fault-report structure.</p><p data-lang="ja" hidden>右ペダルを読み右側へ提示し、左ノードと同じサンプリング、フィルタ、障害報告構造を保つ。</p></article>
+        <article><span>NODE 03</span><h3>Machine interpreter</h3><p data-lang="zh">接收左右数据，用Hall事件切分完整踏圈，决定提示或保持安静，并把所有决定写入日志。</p><p data-lang="en" hidden>Receives both sides, segments complete revolutions with Hall events, decides cue or silence and logs every decision.</p><p data-lang="ja" hidden>左右データを受信し、Hallイベントで完全回転を区切り、提示か沈黙かを決め、判断をログへ残す。</p></article>
+      </div>
+    </section>
+
+    <section class="content-section component-section" id="components">
+      <div class="section-heading wide">
+        <p class="kicker">02 · COMPONENT LIBRARY</p>
+        <h2 data-lang="zh">先买能证明闭环的零件，<br>再考虑升级。</h2><h2 data-lang="en" hidden>Buy what proves the loop first.<br>Upgrade later.</h2><h2 data-lang="ja" hidden>まず閉ループを証明する部品を買い、<br>拡張は後にする。</h2>
+        <p data-lang="zh">下列商品图来自厂商，只用于本地评审和识别。公开作品集发布前应换成你的实拍；来源按钮仍保留，用来证明器材选择与学习路径。</p>
+        <p data-lang="en" hidden>The following manufacturer images support local review and identification only. Replace them with original build photographs before public publication; retain source links to document selection and learning lineage.</p>
+        <p data-lang="ja" hidden>以下のメーカー画像はローカル確認と識別用である。公開前に自分の制作写真へ置き換え、選定と学習経路を示す出典リンクは残す。</p>
+      </div>
+      <div class="filter-row" data-component-filters aria-label="Filter components"><button data-filter="All" aria-pressed="true">All</button><button data-filter="Compute" aria-pressed="false">Compute</button><button data-filter="Sense" aria-pressed="false">Sense</button><button data-filter="Return" aria-pressed="false">Return</button></div>
+      <div class="component-grid">
+        <article class="component-card" data-component-group="Compute"><figure><img src="assets/images/components/xiao-esp32c3.jpg" alt="Seeed Studio XIAO ESP32-C3 development board"><figcaption>© Seeed Studio · replace with own photo</figcaption></figure><div><span>COMPUTE · QTY 3</span><h3>XIAO ESP32-C3</h3><p data-lang="zh">三块相同小板降低集成差异；A0–A2优先用于可靠模拟读取。</p><p data-lang="en" hidden>Three matching compact boards reduce integration differences; prefer A0–A2 for reliable analogue reads.</p><p data-lang="ja" hidden>同じ小型基板3枚で統合差を減らし、安定したアナログ読取にはA0–A2を優先する。</p><a href="https://wiki.seeedstudio.com/XIAO_ESP32C3_Getting_Started/" target="_blank" rel="noreferrer">Official guide ↗</a></div></article>
+        <article class="component-card" data-component-group="Sense"><figure><img src="assets/images/components/fsr-round.jpg" alt="Round force-sensitive resistor with a long flexible tail"><figcaption>© Adafruit Industries · replace with own photo</figcaption></figure><div><span>SENSE · QTY 2</span><h3>Round FSR</h3><p data-lang="zh">廉价、薄、容易安装，但只适合相对范围。使用扩力片并逐个校准。</p><p data-lang="en" hidden>Thin, inexpensive and mountable, but suitable only for relative ranges. Use a force-spreading puck and calibrate each unit.</p><p data-lang="ja" hidden>薄く安価で取付しやすいが相対範囲向け。荷重分散板を使い個別校正する。</p><a href="https://learn.adafruit.com/force-sensitive-resistor-fsr" target="_blank" rel="noreferrer">FSR guide ↗</a></div></article>
+        <article class="component-card" data-component-group="Sense"><figure><img src="assets/images/components/hall-sensor.jpg" alt="Small three-lead Hall-effect sensor"><figcaption>© Adafruit Industries · replace with own photo</figcaption></figure><div><span>SENSE · QTY 1</span><h3>Hall + magnet</h3><p data-lang="zh">每圈只产生一个去抖事件，用来决定何时比较左右，而不是估算医疗级功率。</p><p data-lang="en" hidden>One debounced event per revolution decides when to compare sides; it does not estimate medical-grade power.</p><p data-lang="ja" hidden>1回転につき1回のデバウンス済みイベントで比較時点を決め、医療級パワーは推定しない。</p><a href="https://www.adafruit.com/product/158" target="_blank" rel="noreferrer">Product reference ↗</a></div></article>
+        <article class="component-card" data-component-group="Return"><figure><img src="assets/images/components/drv2605l.jpg" alt="Adafruit DRV2605L haptic driver breakout board"><figcaption>© Adafruit Industries · replace with own photo</figcaption></figure><div><span>RETURN · QTY 2</span><h3>DRV2605L</h3><p data-lang="zh">用现成效果库获得短而稳定的触觉，不把振动时间写进阻塞式延时。</p><p data-lang="en" hidden>Use the built-in effect library for short stable cues without blocking the sensing loop with delays.</p><p data-lang="ja" hidden>内蔵効果ライブラリで短く安定した提示を作り、遅延で計測ループを止めない。</p><a href="https://learn.adafruit.com/adafruit-drv2605-haptic-controller-breakout/overview" target="_blank" rel="noreferrer">Haptic guide ↗</a></div></article>
+        <article class="component-card" data-component-group="Return"><figure><img src="assets/images/components/vibration-motor.jpg" alt="Small disc-shaped vibration motor with red and blue wires"><figcaption>© Adafruit Industries · replace with own photo</figcaption></figure><div><span>RETURN · QTY 3</span><h3>Coin vibration motor</h3><p data-lang="zh">左右位置负责表达含义；强度只需清楚可辨，不追求越强越好。</p><p data-lang="en" hidden>Location carries meaning. Intensity only needs to be clearly distinguishable—not maximised.</p><p data-lang="ja" hidden>意味は左右位置が担う。強度は明確に識別できればよく、最大化しない。</p><a href="https://www.adafruit.com/product/1201" target="_blank" rel="noreferrer">Motor reference ↗</a></div></article>
+        <article class="component-card optional-card" data-component-group="Sense"><figure><img src="assets/images/components/sen0240.jpg" alt="DFRobot SEN0240 EMG transmitter and dry electrode boards"><figcaption>© DFRobot · replace with own photo</figcaption></figure><div><span>OPTIONAL READ-ONLY</span><h3>SEN0240 sEMG</h3><p data-lang="zh">只用于探索局部肌肉活动是否随主动纠正变化；不控制提示，不诊断，也不是整条腿的力量。</p><p data-lang="en" hidden>Explores whether local muscle activity changes with active correction. It does not control cues, diagnose or represent total-leg force.</p><p data-lang="ja" hidden>能動的修正に伴う局所筋活動の変化のみを探索し、提示制御、診断、脚全体の力の代用にはしない。</p><a href="https://wiki.dfrobot.com/sen0240/" target="_blank" rel="noreferrer">Official EMG guide ↗</a></div></article>
+      </div>
+      <p class="proxy-statement">MEASUREMENT CLAIM · complete-revolution relative pressure-contribution proxy</p>
+    </section>
+
+    <section class="content-section mounting-section">
+      <div class="section-heading wide"><p class="kicker">03 · BODY + BICYCLE MOUNTING</p><h2 data-lang="zh">安装方式就是测量的一部分。</h2><h2 data-lang="en" hidden>Mounting is part of the measurement.</h2><h2 data-lang="ja" hidden>取付方法も測定の一部である。</h2><p data-lang="zh">传感器、线材和触觉位置都必须固定、可复现、避开曲柄旋转区。每次改变软层、扩力片或绑带位置，都记录为新的原型版本。</p><p data-lang="en" hidden>Sensors, wires and cue locations must be fixed, repeatable and clear of the crank. Every change to foam, force spreader or strap position becomes a new documented prototype revision.</p><p data-lang="ja" hidden>センサ、配線、提示位置は固定・再現可能で、クランク回転域から離す。フォーム、荷重分散板、ストラップ位置の変更は新しい版として記録する。</p></div>
+      <div class="mounting-grid">
+        <article class="diagram-card"><div class="pedal-stack" aria-label="Pedal cross-section: shoe, soft cover, force-spreading puck, FSR, EVA and pedal body"><span>SHOE SOLE</span><span>SOFT COVER</span><span>FORCE-SPREADING PUCK</span><span class="fsr-layer">FSR SENSING CIRCLE</span><span>EVA 2–5 mm</span><span>PEDAL BODY</span></div><h3>FSR pedal sandwich</h3><p data-lang="zh">扩力片减少尖点压力；尾部进入连接器并做应力释放，不折叠或长时间直接焊接。</p><p data-lang="en" hidden>The spreader reduces point load. Route the tail into a connector with strain relief; do not fold or dwell with a soldering iron.</p><p data-lang="ja" hidden>分散板で点荷重を減らし、端子はストレインリリーフ付きコネクタへ通す。折り曲げや長時間の直接はんだ付けを避ける。</p></article>
+        <article class="diagram-card"><div class="installation-map" aria-label="Stationary pedal installation map"><div class="mini-rider"><i></i><b></b><span></span></div><em class="callout fsr-callout">① FSR in pedal</em><em class="callout ankle-callout">② ankle motor</em><em class="callout hall-callout">③ Hall + magnet</em><em class="callout hub-callout">④ hub + servo</em><strong>ROTATION KEEP-OUT</strong></div><h3>Stationary installation</h3><p data-lang="zh">Foot node位于鞋面外侧或踝带上方；Hub、电源和USB固定在静止部件，所有松线离开旋转弧。</p><p data-lang="en" hidden>The foot node sits outside the shoe or above the ankle strap. Hub, power and USB stay on fixed structure; every loose wire leaves the rotation arc.</p><p data-lang="ja" hidden>足ノードは靴外側または足首バンド上へ置く。Hub、電源、USBは静止部へ固定し、緩い配線を回転弧から除く。</p></article>
+        <article class="diagram-card"><div class="muscle-map" aria-label="Illustrative leg muscle map for cycling and optional read-only surface EMG"><div class="leg-silhouette"><span class="quad">QUADRICEPS<br>vastus lateralis</span><span class="ham">HAMSTRINGS</span><span class="calf">GASTROCNEMIUS</span><i class="emg-patch">READ-ONLY<br>sEMG</i></div><small>ILLUSTRATIVE · NOT A CLINICAL PLACEMENT GUIDE</small></div><h3>Muscle context, not force proof</h3><p data-lang="zh">外侧广肌是可解释的单通道入口，但踩踏由臀肌、股四头肌、腘绳肌、小腿等共同完成。</p><p data-lang="en" hidden>Vastus lateralis is one interpretable channel, while pedalling combines gluteal, quadriceps, hamstring and calf activity.</p><p data-lang="ja" hidden>外側広筋は解釈可能な1チャンネルだが、ペダリングには臀筋、四頭筋、ハムストリング、下腿筋が共同で働く。</p></article>
+        <article class="diagram-card"><div class="mechanical-detail"><div><span>MAGNET</span><b>↻</b><span>HALL</span><small>one event / rev</small></div><div><span>SERVO</span><b>↔</b><span>DIAL</span><small>observer display</small></div></div><h3>Mechanical evidence</h3><p data-lang="zh">Hall用于踏圈边界；舵机只向旁观者显示当前判断。两者都有软件限位和物理固定。</p><p data-lang="en" hidden>Hall defines revolution boundaries; the servo only displays the current interpretation to observers. Both need software limits and physical retention.</p><p data-lang="ja" hidden>Hallは回転境界を定義し、サーボは観察者へ現在判断を表示するだけ。両方にソフト制限と物理固定を設ける。</p></article>
+      </div>
+    </section>
+
+    <section class="content-section data-section">
+      <div class="section-heading wide"><p class="kicker">04 · DATA PIPELINE</p><h2 data-lang="zh">一圈完成后，机器才说话。</h2><h2 data-lang="en" hidden>The machine speaks only after the revolution ends.</h2><h2 data-lang="ja" hidden>1回転が終わってから機械が応答する。</h2><p data-lang="zh">这条流水线把原始电压逐步变成可解释提示，并在任何关键输入过期时关闭身体输出。</p><p data-lang="en" hidden>This pipeline turns raw voltage into an explainable cue and suppresses bodily output whenever a critical input becomes stale.</p><p data-lang="ja" hidden>生電圧を説明可能な提示へ変換し、重要入力が古くなれば身体出力を停止する。</p></div>
+      <div class="pipeline" aria-label="Eight-stage data pipeline">
+        <div data-build-step="1"><b>01</b><span>ADC sample</span><small>FSR-L / FSR-R</small></div>
+        <div data-build-step="2"><b>02</b><span>Filter</span><small>EMA + zero</small></div>
+        <div data-build-step="3"><b>03</b><span>Packet</span><small>ID + seq + fault</small></div>
+        <div data-build-step="4"><b>04</b><span>ESP-NOW</span><small>two body nodes</small></div>
+        <div data-build-step="5"><b>05</b><span>Hall boundary</span><small>one event / rev</small></div>
+        <div data-build-step="6"><b>06</b><span>Integrate</span><small>complete revolution</small></div>
+        <div data-build-step="7"><b>07</b><span>Rule</span><small>persistent error</small></div>
+        <div data-build-step="8"><b>08</b><span>Cue + log</span><small>reason recorded</small></div>
+      </div>
+      <div class="formula-box"><code>Lshare = ΣL / (ΣL + ΣR)</code><code>Rshare = 1 − Lshare</code><p>Compare the two sides only after one full revolution has been completed.</p></div>
+    </section>
+
+    <section class="content-section reuse-section">
+      <div class="section-heading wide"><p class="kicker">05 · ASSEMBLE FROM EXISTING WORK</p><h2 data-lang="zh">Reuse不是复制结果，<br>而是缩短到第一个可靠闭环。</h2><h2 data-lang="en" hidden>Reuse is not copying a result.<br>It shortens the path to a reliable loop.</h2><h2 data-lang="ja" hidden>Reuseは結果の模倣ではない。<br>信頼できる最初の閉ループまでを短縮する。</h2><p data-lang="zh">每个来源都明确写出复用、改写和排除的部分，许可证和教程类型也分开。</p><p data-lang="en" hidden>Every source names what is reused, adapted and excluded, while code licences stay separate from tutorial references.</p><p data-lang="ja" hidden>各出典でReuse、Adapt、Excludeを明示し、コードライセンスと教材参照を分離する。</p></div>
+      <div class="reuse-table">
+        <article><header><h3>qppd/smart-chair</h3><span>MIT</span></header><dl><dt>Reuse</dt><dd>FSR calibration · EMA · non-blocking haptics · CSV</dd><dt>Adapt</dt><dd>seat imbalance → complete-revolution pedals</dd><dt>Exclude</dt><dd>posture-health claims · five-sensor layout</dd></dl><a href="https://github.com/qppd/smart-chair" target="_blank" rel="noreferrer">Repository ↗</a></article>
+        <article><header><h3>esp32-ftms-server</h3><span>MIT</span></header><dl><dt>Reuse</dt><dd>Hall cadence · debounce · tach mount</dd><dt>Adapt</dt><dd>bike speed event → cycle boundary</dd><dt>Exclude</dt><dd>full BLE FTMS from two-week MVP</dd></dl><a href="https://github.com/jamesjmtaylor/esp32-ftms-server" target="_blank" rel="noreferrer">Repository ↗</a></article>
+        <article><header><h3>Adafruit DRV2605</h3><span>MIT</span></header><dl><dt>Reuse</dt><dd>I²C init · motor library · effects</dd><dt>Adapt</dt><dd>left/right semantics · feedback dose</dd><dt>Exclude</dt><dd>continuous vibration</dd></dl><a href="https://github.com/adafruit/Adafruit_DRV2605_Library" target="_blank" rel="noreferrer">Repository ↗</a></article>
+        <article><header><h3>Insole Pressure Sensor</h3><span>CC BY-NC 4.0</span></header><dl><dt>Reuse</dt><dd>future multi-sensor reference only</dd><dt>Adapt</dt><dd>none required for two-FSR MVP</dd><dt>Exclude</dt><dd>commercial reuse without permission</dd></dl><a href="https://github.com/Brillnova/Insole-Pressure-Sensor" target="_blank" rel="noreferrer">Repository ↗</a></article>
+      </div>
+    </section>
+
+    <section class="content-section tutorial-section">
+      <div class="section-heading wide"><p class="kicker">06 · LEARNING SHORTCUTS</p><h2 data-lang="zh">不从空白页开始。</h2><h2 data-lang="en" hidden>Do not start from a blank page.</h2><h2 data-lang="ja" hidden>白紙から始めない。</h2><p data-lang="zh">这些视频分别承担背景启发、无线通信、FSR接线和鞋垫制作示例。它们是学习资料，不是本项目完成的证据。</p><p data-lang="en" hidden>These videos provide context, wireless structure, FSR wiring and insole-making examples. They are learning resources—not evidence that this prototype has been built.</p><p data-lang="ja" hidden>背景、無線通信、FSR配線、インソール制作の例として参照する。教材であり、本プロトタイプ完成の証拠ではない。</p></div>
+      <div class="tutorial-grid">
+        <a href="https://www.youtube.com/watch?v=uQ-5BryUNv8" target="_blank" rel="noreferrer"><img src="assets/images/tutorials/uQ-5BryUNv8.jpg" alt="Thumbnail for Stanford seminar on modeling humans for humanoid robots"><span>CONTEXT</span><h3>Modeling Humans for Humanoid Robots</h3><p>Stanford Online</p></a>
+        <a href="https://www.youtube.com/watch?v=9alJwQG-Wbk" target="_blank" rel="noreferrer"><img src="assets/images/tutorials/9alJwQG-Wbk.jpg" alt="Thumbnail for Neuromuscular Aim Assist"><span>CONTEXT · NOT A BUILD GUIDE</span><h3>Neuromuscular Aim Assist</h3><p>Basically Homeless</p></a>
+        <a href="https://www.youtube.com/watch?v=qxwXwNS3Avw" target="_blank" rel="noreferrer"><img src="assets/images/tutorials/qxwXwNS3Avw.jpg" alt="Thumbnail for ESP-NOW communication tutorial"><span>WIRELESS</span><h3>ESP-NOW with ESP32 Explained</h3><p>Rui Santos</p></a>
+        <a href="https://www.youtube.com/watch?v=OLP-HwU36rU" target="_blank" rel="noreferrer"><img src="assets/images/tutorials/OLP-HwU36rU.jpg" alt="Thumbnail for ESP-NOW sensor dashboard tutorial"><span>DASHBOARD</span><h3>ESP-NOW Sensor Dashboard</h3><p>Rui Santos</p></a>
+        <a href="https://www.youtube.com/watch?v=_LuvkEGFas8" target="_blank" rel="noreferrer"><img src="assets/images/tutorials/_LuvkEGFas8.jpg" alt="Thumbnail for Arduino FSR tutorial"><span>PRESSURE INPUT</span><h3>Arduino FSR Tutorial</h3><p>Marc de Vinck</p></a>
+        <a href="https://www.youtube.com/watch?v=FMhggBEbbYE" target="_blank" rel="noreferrer"><img src="assets/images/tutorials/FMhggBEbbYE.jpg" alt="Thumbnail for smart pressure insole making video"><span>MAKING REFERENCE</span><h3>Smart pressure insole</h3><p>Brillnova</p></a>
+      </div>
+      <p class="media-note">Video thumbnails © their respective creators / YouTube · linked preview references for local review.</p>
+    </section>
+
+    <section class="content-section build-section">
+      <div class="section-heading wide"><p class="kicker">07 · 14-DAY BUILD</p><h2 data-lang="zh">每天都必须留下能展示的证据。</h2><h2 data-lang="en" hidden>Every day must leave visible evidence.</h2><h2 data-lang="ja" hidden>毎日、見せられる証拠を残す。</h2><p data-lang="zh">时间线按“能否继续”而不是“做了多久”划分。每个Gate没有通过，就先修复当前层，不把错误带进人体测试。</p><p data-lang="en" hidden>The timeline is divided by permission to continue, not hours spent. If a gate fails, repair the current layer instead of carrying the error into body testing.</p><p data-lang="ja" hidden>時間ではなく次へ進めるかで区切る。Gateに通らなければ現在層を修正し、誤差を人体試験へ持ち込まない。</p></div>
+      <div class="timeline-grid">
+        <article data-gate="D2"><span>D1–2 · SENSE</span><h3>One FSR, then two</h3><p>Wire → zero → equal-weight repeats</p><b>GATE · repeated load stays within a documented tolerance</b><small>Evidence: wiring photo + calibration CSV</small></article>
+        <article data-gate="D4"><span>D3–4 · CONNECT</span><h3>Two body nodes</h3><p>Packet ID → sequence → stale-data flag</p><b>GATE · 500 ms timeout → all haptics off</b><small>Evidence: packet-loss screen recording</small></article>
+        <article data-gate="D5"><span>D5 · SEGMENT</span><h3>Hall revolution</h3><p>Magnet retention → debounce → event log</p><b>GATE · exactly one event per revolution</b><small>Evidence: slow-motion video + log</small></article>
+        <article data-gate="D7"><span>D6–7 · RETURN</span><h3>Spatial haptics</h3><p>Left / right / silence → comfort check</p><b>GATE · at least 8/10 eyes-closed localisation</b><small>Evidence: localisation table</small></article>
+        <article data-gate="D9"><span>D8–9 · INTERFACE</span><h3>Simulation + hardware</h3><p>Same state model → different data source</p><b>GATE · identical interface and stop control</b><small>Evidence: side-by-side capture</small></article>
+        <article data-gate="D11"><span>D10–11 · PILOT</span><h3>Personal baseline</h3><p>60 s baseline → valid cycles → threshold</p><b>GATE · no cue from one instantaneous sample</b><small>Evidence: annotated timeline</small></article>
+        <article><span>D12–13 · STUDY</span><h3>C1 + E2 dry run</h3><p>Conditions → withdrawal → replay → export</p><b>CHECK · simulation labels remain visible</b><small>Evidence: 90-second demonstration video</small></article>
+        <article><span>D14 · PACKAGE</span><h3>Offline handoff</h3><p>Code → wiring → logs → limitations</p><b>CHECK · another person can replay the demo</b><small>Evidence: final folder + README</small></article>
+      </div>
+    </section>
+
+    <section class="content-section decision-section">
+      <div class="decision-grid">
+        <article><p class="kicker">TEST GATES FIRST</p><h2 data-lang="zh">通过，再增加复杂度。</h2><h2 data-lang="en" hidden>Pass before adding complexity.</h2><h2 data-lang="ja" hidden>合格してから複雑さを足す。</h2><p>2 × equal-load repeat · 500 ms fail-safe · 1 event/rev · 8/10 localisation</p></article>
+        <article><p class="kicker">PLANNING SNAPSHOT · 13 Aug 2026</p><h3>AUD 395–515</h3><p data-lang="zh">从零开始的预算范围，包括主要零件、耗材、运费和可选打印；正式购买前重新核对库存与价格。</p><p data-lang="en" hidden>From-zero planning envelope including primary parts, consumables, shipping and optional printing; recheck stock and price before purchase.</p><p data-lang="ja" hidden>主要部品、消耗品、送料、任意印刷を含むゼロからの計画幅。購入前に在庫と価格を再確認する。</p></article>
+        <article><p class="kicker">DELIBERATE EXCLUSIONS</p><h3>Exclude</h3><p data-lang="zh">道路骑行、DIY EMS/TENS/FES、多传感鞋垫、完整FTMS和医疗声称都不进入两周MVP。</p><p data-lang="en" hidden>Road riding, DIY EMS/TENS/FES, multi-sensor insoles, full FTMS and medical claims stay outside the two-week MVP.</p><p data-lang="ja" hidden>公道走行、DIY EMS/TENS/FES、多点インソール、完全FTMS、医療主張は2週間MVPから除外する。</p></article>
+      </div>
+      <a class="next-page" href="experiment-capabilities.html" data-page-link><span data-ui="nextExperiment">Next: test performance, learning and replay</span><span>→</span></a>
+    </section>
+  </main>
+  <footer class="site-footer"><span>PedalBalance Echo · Prototype &amp; Making</span><a href="../files/pedalbalance-echo-html-portfolio.zip" download data-ui="downloadSource">Source files</a><span><a href="SOURCES.md">Sources &amp; media register</a></span></footer>
+  <script type="module" src="assets/js/site.js"></script>
+</body>
+</html>

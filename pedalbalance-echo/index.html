@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="PedalBalance Echo — a human–machine–human cycling learning interface.">
+  <title>PedalBalance Echo — Project Vision</title>
+  <link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+  <a class="skip-link" href="#main" data-ui="skip">Skip to content</a>
+  <header class="site-header">
+    <a class="portfolio-home" href="../index.html?lang=zh#work" data-portfolio-home><span data-ui="allWork">All work</span><small>BOWEN MAI</small></a>
+    <a class="brand" href="index.html" data-page-link>PEDALBALANCE ECHO</a>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a href="index.html" aria-current="page" data-page-link data-ui="navVision">Project Vision</a>
+      <a href="prototype-making.html" data-page-link data-ui="navMaking">Prototype &amp; Making</a>
+      <a href="experiment-capabilities.html" data-page-link data-ui="navExperiment">Experiment &amp; Capabilities</a>
+    </nav>
+    <a class="source-package" href="../files/pedalbalance-echo-html-portfolio.zip" download><span data-ui="downloadSource">Source files</span><span aria-hidden="true">↓</span></a>
+    <button class="prototype-button" type="button" data-open-prototype data-ui="openPrototype">Open Interactive Prototype</button>
+  </header>
+  <div class="language-switcher" aria-label="Language">
+    <button type="button" data-language="zh" aria-pressed="true">中文</button>
+    <button type="button" data-language="en" aria-pressed="false">EN</button>
+    <button type="button" data-language="ja" aria-pressed="false">日本語</button>
+  </div>
+  <main id="main">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">HUMAN → MACHINE → HUMAN</p>
+        <h1 data-lang="zh">把踩踏感觉<br>送回身体</h1>
+        <h1 data-lang="en" hidden>Return pedalling<br>to the body</h1>
+        <h1 data-lang="ja" hidden>ペダリング感覚を<br>身体へ返す</h1>
+        <p data-lang="zh">检测左右踩踏，把机器判断送回脚踝，让骑行者主动纠正动作。</p>
+        <p data-lang="en" hidden>Sense bilateral pedalling and return the machine’s interpretation to the ankle so the rider can actively correct movement.</p>
+        <p data-lang="ja" hidden>左右のペダリングを検出し、機械の判断を足首へ返すことで、利用者が能動的に動きを修正する。</p>
+        <div class="hero-actions">
+          <a class="text-button" href="#system-loop" data-ui="exploreSystem">Explore the system</a>
+          <button type="button" data-open-prototype data-ui="openPrototype">Open Interactive Prototype</button>
+        </div>
+        <p class="microcopy">STATIONARY INDOOR PROTOTYPE · RELATIVE PRESSURE PROXY · NO DIY EMS</p>
+      </div>
+      <div class="hero-visual" aria-labelledby="hero-visual-title">
+        <div class="visual-label">
+          <span id="hero-visual-title">ILLUSTRATIVE SIMULATION</span>
+          <button type="button" data-animation-toggle data-ui="pauseAnimation" aria-pressed="false">Pause animation</button>
+        </div>
+        <canvas data-hero-canvas width="960" height="640" role="img" aria-label="Illustrative planar linkage of seated cycling: a fixed hip connects through two rigid leg segments to opposite pedals; complete revolution pressure data enters a machine node and a short cue returns to one ankle."></canvas>
+        <div class="hero-dashboard" data-hero-dashboard aria-label="Simulated complete-revolution dashboard">
+          <div><span>L complete rev.</span><strong data-left-value>50%</strong></div>
+          <div><span>R complete rev.</span><strong data-right-value>50%</strong></div>
+          <div><span>Body cue</span><strong data-cue-value>SILENT</strong></div>
+          <div><span>State</span><strong data-state-value>BALANCED</strong></div>
+        </div>
+      </div>
+    </section>
+    <section class="fact-strip" aria-label="Project facts">
+      <div><strong>2</strong><span>pedal inputs</span></div>
+      <div><strong>1</strong><span>complete revolution</span></div>
+      <div><strong>2</strong><span>ankle cue locations</span></div>
+      <div><strong>0</strong><span>screens required while correcting</span></div>
+    </section>
+
+    <section class="content-section split-grid" id="why-body">
+      <div class="section-heading">
+        <p class="kicker">01 · THE PROBLEM</p>
+        <h2 data-lang="zh">屏幕告诉你发生了什么，<br>身体却未必学会。</h2>
+        <h2 data-lang="en" hidden>A screen can show the error<br>without teaching the body.</h2>
+        <h2 data-lang="ja" hidden>画面は誤差を示せても、<br>身体に学習させるとは限らない。</h2>
+      </div>
+      <div class="body-copy">
+        <p data-lang="zh">骑行者需要低头读取图表，再把视觉数字翻译成动作。PedalBalance Echo 把提示放回发生问题的一侧脚踝：左侧贡献持续偏低，就提示左侧；回到个人容差范围，就保持安静。</p>
+        <p data-lang="en" hidden>A rider must look down, read a chart and translate a visual number into movement. PedalBalance Echo returns the cue to the ankle where correction is needed: sustained lower left contribution cues the left; returning inside personal tolerance restores silence.</p>
+        <p data-lang="ja" hidden>画面を見る方法では、数値を読み、それを動作へ翻訳する必要がある。PedalBalance Echo は修正が必要な側の足首へ手掛かりを返す。左の寄与が持続的に低ければ左へ提示し、個人の許容範囲へ戻れば沈黙する。</p>
+        <div class="feedback-rule" role="img" aria-label="Lower left contribution produces a left ankle cue; balance produces silence; lower right contribution produces a right ankle cue.">
+          <div class="left-rule"><span>LEFT LOW</span><b>◌ LEFT CUE</b></div>
+          <div class="balanced-rule"><span>IN TOLERANCE</span><b>SILENCE</b></div>
+          <div class="right-rule"><span>RIGHT LOW</span><b>RIGHT CUE ◌</b></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section revolution-section" id="full-revolution">
+      <div class="section-heading narrow">
+        <p class="kicker">02 · MEASURE THE RIGHT THING</p>
+        <h2 data-lang="zh">不要在错误的时间尺度上<br>比较两只脚。</h2>
+        <h2 data-lang="en" hidden>Do not compare two feet<br>at the wrong time scale.</h2>
+        <h2 data-lang="ja" hidden>誤った時間尺度で<br>両足を比較しない。</h2>
+        <p data-lang="zh">踩踏本来就左右交替。瞬时比较会把正常相位差误报为不对称；系统必须等一个 complete revolution 结束后，再比较这一圈的相对压力贡献。</p>
+        <p data-lang="en" hidden>Pedalling naturally alternates left and right. Instantaneous comparison can misread normal phase difference as asymmetry; the system waits for one complete revolution before comparing relative pressure contribution.</p>
+        <p data-lang="ja" hidden>ペダリングは左右が交互に働く。瞬間比較では正常な位相差を非対称と誤認し得るため、1回の complete revolution が終わってから相対圧力寄与を比較する。</p>
+      </div>
+      <div class="revolution-demo" data-revolution-demo>
+        <div class="demo-controls" role="group" aria-label="Comparison time scale">
+          <button type="button" data-mode="instant" aria-pressed="false">Instantaneous</button>
+          <button type="button" data-mode="revolution" aria-pressed="true">Complete revolution</button>
+        </div>
+        <div class="cycle-ring" aria-hidden="true">
+          <div class="crank-arm"></div><span class="pedal-dot left-dot">L</span><span class="pedal-dot right-dot">R</span>
+          <div class="ring-centre"><strong data-demo-result>48 / 52</strong><span>relative contribution</span></div>
+        </div>
+        <p class="demo-readout" data-demo-copy>One complete cycle: compare accumulated relative contribution once.</p>
+      </div>
+    </section>
+
+    <section id="system-loop" class="content-section loop-section">
+      <div class="section-heading wide">
+        <p class="kicker">03 · THE CORE LOOP</p>
+        <h2>Human → Machine → Human</h2>
+        <p data-lang="zh">项目不是把人变成机器的被动执行器，而是让机器压缩身体数据，再把一个可以被身体直接理解的最小提示返还给人。</p>
+        <p data-lang="en" hidden>The project does not turn a person into a passive machine actuator. The machine compresses bodily data and returns the smallest cue the body can directly interpret.</p>
+        <p data-lang="ja" hidden>人を機械の受動的な実行器にするのではない。機械が身体データを圧縮し、身体が直接理解できる最小限の手掛かりとして返す。</p>
+      </div>
+      <div class="loop-grid">
+        <article><span>01</span><strong>SENSE</strong><p>FSR-L / FSR-R<br>Hall cadence<br>optional read-only EMG</p></article>
+        <article><span>02</span><strong>INTERPRET</strong><p>segment one revolution<br>compare personal baseline<br>ignore brief deviations</p></article>
+        <article><span>03</span><strong>RETURN</strong><p>left ankle / right ankle<br>short vibration<br>silence inside tolerance</p></article>
+        <article><span>04</span><strong>LEARN</strong><p>active correction<br>withdraw assistance<br>test retention + transfer</p></article>
+      </div>
+    </section>
+
+    <section class="content-section scenario-section">
+      <div class="section-heading">
+        <p class="kicker">04 · ONE RIDING MOMENT</p>
+        <h2 data-lang="zh">一次提示怎样发生？</h2>
+        <h2 data-lang="en" hidden>What happens in one cue?</h2>
+        <h2 data-lang="ja" hidden>1回の提示はどう生まれるか。</h2>
+      </div>
+      <ol class="scenario-steps">
+        <li><b>01</b><span data-lang="zh">骑行者完成一圈踩踏。</span><span data-lang="en" hidden>The rider completes one crank revolution.</span><span data-lang="ja" hidden>利用者がクランクを1回転させる。</span></li>
+        <li><b>02</b><span data-lang="zh">机器累计左右相对压力贡献。</span><span data-lang="en" hidden>The machine accumulates bilateral relative pressure contribution.</span><span data-lang="ja" hidden>機械が左右の相対圧力寄与を積算する。</span></li>
+        <li><b>03</b><span data-lang="zh">短暂偏差被忽略；持续偏差才触发。</span><span data-lang="en" hidden>Brief deviation is ignored; persistent error can trigger.</span><span data-lang="ja" hidden>一時的偏差は無視し、持続誤差のみを対象にする。</span></li>
+        <li><b>04</b><span data-lang="zh">贡献较低一侧的脚踝出现短振动。</span><span data-lang="en" hidden>A short vibration appears at the lower-contributing ankle.</span><span data-lang="ja" hidden>寄与が低い側の足首へ短い振動を返す。</span></li>
+        <li><b>05</b><span data-lang="zh">人主动改变动作，机器不直接驱动肌肉。</span><span data-lang="en" hidden>The person actively changes movement; the machine does not drive muscle.</span><span data-lang="ja" hidden>人が能動的に動きを変え、機械は筋肉を直接駆動しない。</span></li>
+        <li><b>06</b><span data-lang="zh">回到容差范围后提示消失。</span><span data-lang="en" hidden>The cue disappears when performance returns inside tolerance.</span><span data-lang="ja" hidden>許容範囲へ戻ると提示は消える。</span></li>
+      </ol>
+    </section>
+
+    <section class="content-section research-section">
+      <div class="section-heading wide">
+        <p class="kicker">05 · TWO RESEARCH QUESTIONS</p>
+        <h2 data-lang="zh">同一个身体闭环，检验两种学习关系。</h2>
+        <h2 data-lang="en" hidden>One bodily loop, two learning relationships.</h2>
+        <h2 data-lang="ja" hidden>1つの身体ループで、2つの学習関係を検討する。</h2>
+      </div>
+      <div class="research-grid">
+        <article class="research-card c1-card">
+          <p class="tag">C1 · ASSISTANCE WITHDRAWAL</p>
+          <h3>Adaptive feedback</h3>
+          <p data-lang="zh">持续振动、固定淡出和“只在持续错误时提示”的自适应反馈，哪一种更可能在提示关闭后仍留下修正能力？</p>
+          <p data-lang="en" hidden>Which condition—continuous haptics, fixed fade or persistent-error adaptive feedback—best supports correction after the cue is removed?</p>
+          <p data-lang="ja" hidden>連続触覚、固定フェード、持続誤差に応じる適応提示のうち、提示撤去後の修正を最も支え得るのはどれか。</p>
+          <div class="condition-row"><span>VIS</span><span>CH</span><span>FF</span><span>AF</span></div>
+          <small>Training → No feedback → 24 h retention → Transfer</small>
+        </article>
+        <article class="research-card e2-card">
+          <p class="tag">E2 · BODILY TRACE REPLAY</p>
+          <h3>Past-self replay</h3>
+          <p data-lang="zh">把自己过去表现最好的一段轨迹重新变成左右脚踝提示，和看屏幕、接收匹配他人轨迹或没有历史轨迹相比，会怎样改变动作？</p>
+          <p data-lang="en" hidden>What changes when a rider’s best past trace returns through the ankles rather than a screen, a matched-other trace or no history?</p>
+          <p data-lang="ja" hidden>過去の自己ベスト軌跡を画面ではなく両足首へ返すと、他者軌跡や履歴なしの場合と比べて動作はどう変わるか。</p>
+          <div class="condition-row"><span>PS-H</span><span>MO-H*</span><span>PS-V</span><span>NF</span></div>
+          <small>* one-person prototype: simulated_matched_other</small>
+        </article>
+      </div>
+    </section>
+
+    <section class="content-section related-section">
+      <div class="section-heading wide">
+        <p class="kicker">06 · MECHANISMS, NOT RISKY REPLICATION</p>
+        <h2 data-lang="zh">从EMS研究学习“何时介入”，<br>而不是在家制作刺激器。</h2>
+        <h2 data-lang="en" hidden>Learn when to intervene from EMS research,<br>not how to build a home stimulator.</h2>
+        <h2 data-lang="ja" hidden>EMS研究から「いつ介入するか」を学び、<br>家庭用刺激器は作らない。</h2>
+      </div>
+      <div class="source-grid">
+        <article><span>CHI 2025</span><h3>Adaptive Electrical Muscle Stimulation</h3><p>Intervention decreases as performance improves; retention matters more than assisted performance.</p><a href="https://lab.plopes.org/published/2025-CHI-AdaptiveEMS.pdf" target="_blank" rel="noreferrer">Read paper ↗</a></article>
+        <article><span>CHI 2026</span><h3>My(o) Action</h3><p>Muscular signals become a material for interaction rather than a hidden physiological number.</p><a href="https://lab.plopes.org/" target="_blank" rel="noreferrer">Visit lab ↗</a></article>
+        <article><span>CHI 2017</span><h3>bioSync</h3><p>One person’s muscle signal can be transmitted to another body; here the receiver becomes a future self.</p><a href="https://lab.plopes.org/published/2017-CHI-bioSync.pdf" target="_blank" rel="noreferrer">Read paper ↗</a></article>
+      </div>
+      <aside class="safety-banner">
+        <div><strong>SAFETY TRANSLATION</strong><span>Vibration output · optional read-only EMG · stationary indoor pedalling</span></div>
+        <p data-lang="zh">本原型不制作或操作 DIY EMS/TENS/FES。FSR 只作为完整踏圈内的相对压力贡献代理指标，不代表功率、扭矩、医学诊断或肌肉强弱。</p>
+        <p data-lang="en" hidden>This prototype does not build or operate DIY EMS/TENS/FES. FSR is only a complete-revolution relative pressure-contribution proxy—not power, torque, diagnosis or muscle strength.</p>
+        <p data-lang="ja" hidden>本プロトタイプはDIY EMS/TENS/FESを制作・操作しない。FSRは1回転内の相対圧力寄与の代理指標であり、パワー、トルク、診断、筋力を示さない。</p>
+      </aside>
+    </section>
+
+    <section class="content-section closing-section">
+      <p class="kicker">WHY THIS PROJECT</p>
+      <h2 data-lang="zh">重点不是发明一个新的自行车配件，<br>而是证明我能把身体、机器与研究方法真正接起来。</h2>
+      <h2 data-lang="en" hidden>The point is not a new cycling accessory.<br>It is evidence that I can connect body, machine and research method.</h2>
+      <h2 data-lang="ja" hidden>新しい自転車部品の発明が目的ではない。<br>身体、機械、研究方法を実際につなぐ能力を示す。</h2>
+      <a class="next-page" href="prototype-making.html" data-page-link><span data-ui="nextMaking">Next: see how it is built</span><span>→</span></a>
+    </section>
+  </main>
+  <footer class="site-footer"><span>PedalBalance Echo · Research-through-making prototype</span><a href="../files/pedalbalance-echo-html-portfolio.zip" download data-ui="downloadSource">Source files</a><span>2026</span></footer>
+  <script type="module" src="assets/js/site.js"></script>
+</body>
+</html>
