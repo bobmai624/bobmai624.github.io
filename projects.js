@@ -24,6 +24,11 @@ window.PORTFOLIO_CATEGORIES = [
     label: "Strategy & Analytics",
     description: "Models and comparative evidence used to frame risk, value and recommendations.",
   },
+  {
+    id: "embodied-systems",
+    label: "Embodied Systems",
+    description: "Body sensing, haptics and experimental systems that connect movement with learning.",
+  },
 ];
 
 window.PORTFOLIO_PROJECTS = [
@@ -979,19 +984,227 @@ window.PORTFOLIO_PROJECTS = [
       { label: "Financial model · XLSX", href: "files/financial-feasibility-model.xlsx" },
     ],
   },
+  {
+    id: "pedalbalance-echo",
+    title: "PedalBalance Echo",
+    shortTitle: "PedalBalance Echo",
+    kicker: "Embodied interaction · research through making",
+    year: "2026",
+    category: "embodied-systems",
+    summary:
+      "A research-through-making case that translates questions from EMS and body-sharing research into a low-risk stationary cycling interface using relative pressure, complete-revolution modelling, bilateral haptics and optional read-only EMG.",
+    meaning:
+      "The project asks when embodied guidance should withdraw—and whether a well-labelled trace of a past self can return to support present action without taking agency away.",
+    role:
+      "Individual research and prototype plan · literature synthesis, system architecture, safety scoping, interaction logic, study design and evidence planning.",
+    methods: [
+      "Literature synthesis",
+      "Embodied interaction",
+      "Embedded-system architecture",
+      "Haptic mapping",
+      "Experimental design",
+      "Safety scoping",
+    ],
+    cover: {
+      variant: "pedal",
+      alt: "PedalBalance Echo system cover showing body input, machine interpretation and returned haptic guidance",
+    },
+    sections: [
+      {
+        eyebrow: "Research question",
+        title: "Return information to the body without taking over the movement",
+        body:
+          "The concept moves beyond another performance dashboard. Relative contribution is interpreted across complete revolutions, then returned to the corresponding ankle only after a deviation persists beyond a personal baseline.",
+      },
+      {
+        eyebrow: "System",
+        title: "One platform, two falsifiable directions",
+        body:
+          "C1 compares how guidance fades and what remains without assistance. E2 separates past-self identity from visual or haptic delivery, with simulated matched-other data labelled honestly in a one-person prototype.",
+      },
+      {
+        eyebrow: "Boundary",
+        title: "Learn the EMS mechanism without reproducing the risk",
+        body:
+          "The project uses pressure, Hall sensing, vibration and optional read-only surface EMG. It excludes DIY stimulation, medical claims and road cycling while preserving questions of timing, agency, withdrawal, retention and transfer.",
+      },
+    ],
+    media: [],
+    sources: [
+      {
+        label: "Trilingual portfolio content pack · ZIP",
+        href: "files/pedalbalance-echo-portfolio-content.zip",
+      },
+    ],
+    pedalStudy: {
+      statusLabel: "PLANNED STUDY · RESEARCH-THROUGH-MAKING",
+      statusNote:
+        "This case documents a research plan and interactive system prototype. Hardware validation and human-subject evaluation remain planned until supported by recorded build evidence and data.",
+      measurementNote:
+        "The two FSR channels estimate a relative pressure-contribution proxy across complete pedal revolutions. They do not measure cycling power, crank torque, muscle force or clinical asymmetry.",
+      facts: [
+        { value: "14", label: "day build plan", note: "from procurement to supervisor demonstration" },
+        { value: "03", label: "wireless nodes", note: "left foot, right foot and central hub" },
+        { value: "02", label: "research questions", note: "guidance withdrawal and past-self replay" },
+        { value: "00", label: "DIY EMS outputs", note: "body output is side-specific vibration" },
+      ],
+      loop: {
+        eyebrow: "01 / System loop",
+        title: "Human → Machine → Human → Learning",
+        body:
+          "The machine is useful not only when it returns information, but when it knows how to step away and leave an observable bodily strategy behind.",
+        aria: "Four-stage PedalBalance Echo system loop from body sensing to independent learning",
+        stages: [
+          { number: "01", title: "Human", body: "Left and right pressure, cadence and optional read-only sEMG enter the system.", tone: "sense" },
+          { number: "02", title: "Machine", body: "Hall events close each revolution; the hub calculates valid relative contribution and deviation.", tone: "compute" },
+          { number: "03", title: "Return", body: "A visual trace, servo pointer and side-specific ankle vibration return an interpretable cue.", tone: "return" },
+          { number: "04", title: "Learning", body: "Guidance is removed, then retention and transfer reveal what remains without the machine.", tone: "learn" },
+        ],
+      },
+      questions: [
+        {
+          code: "C1",
+          eyebrow: "WHEN SHOULD THE MACHINE WITHDRAW?",
+          title: "Guidance withdrawal",
+          body:
+            "Compare visual, continuous haptic, fixed-fade and adaptive persistent-error guidance. The important outcome is unaided post-test, 24-hour retention and changed-resistance transfer—not the smallest error while assistance is active.",
+          outcome: "Performance ≠ learning",
+        },
+        {
+          code: "E2",
+          eyebrow: "WHOSE GUIDANCE RETURNS?",
+          title: "Past-self replay",
+          body:
+            "Compare Past Self + Haptic, Matched Other + Haptic, Past Self + Visual and No History. A one-person build marks MO-H as simulated_matched_other so prototype validation is never presented as another person's data.",
+          outcome: "Past trace ≠ past-self effect",
+        },
+      ],
+      architecture: {
+        eyebrow: "02 / Prototype architecture",
+        title: "Three nodes keep one body loop debuggable.",
+        body:
+          "Narrow responsibilities let pressure, radio, revolution sensing, haptics and interface logic fail independently before they are integrated.",
+        nodes: [
+          { name: "Left foot", code: "L", role: "Sense + return", parts: "FSR · DRV2605L · vibration · optional sEMG · LiPo" },
+          { name: "Central hub", code: "H", role: "Interpret + record", parts: "ESP-NOW · Hall · cycle model · servo · USB Serial" },
+          { name: "Right foot", code: "R", role: "Sense + return", parts: "FSR · DRV2605L · vibration · LiPo" },
+        ],
+        failSafe: "500 ms without a valid node packet → silence both haptics and invalidate the revolution.",
+      },
+      logic: {
+        eyebrow: "03 / Cycle logic",
+        title: "Compare sides only after one full revolution.",
+        body:
+          "Pedalling alternates naturally. Frame-by-frame comparison would turn normal left-right timing into false alarms, so the calculation waits for Hall-defined revolution boundaries.",
+        formula: [
+          "left_area = ∫ calibrated left pressure over one revolution",
+          "right_area = ∫ calibrated right pressure over one revolution",
+          "left_share = left_area / (left_area + right_area)",
+          "delta = left_share − personal baseline",
+        ],
+        rules: [
+          "Invalid cycle or low total load → no cue",
+          "Three consecutive out-of-band cycles → weak cue",
+          "Continued deviation → medium, then short strong cue",
+          "Back within personal tolerance → immediate silence",
+        ],
+      },
+      c1: {
+        eyebrow: "04 / C1 study",
+        title: "Four ways for guidance to remain—or fade.",
+        body: "All conditions share the same apparatus; the decisive comparison happens after feedback is removed.",
+        conditions: [
+          { code: "V", title: "Visual", trigger: "continuous display", test: "no-feedback performance" },
+          { code: "CH", title: "Continuous haptic", trigger: "each out-of-band cycle", test: "dependency and adaptation" },
+          { code: "FF", title: "Fixed fade", trigger: "time schedule", test: "whether withdrawal timing fits" },
+          { code: "AF", title: "Adaptive", trigger: "3 persistent cycles", test: "retention and transfer" },
+        ],
+      },
+      e2: {
+        eyebrow: "05 / E2 study",
+        title: "Separate the history source from its delivery channel.",
+        body:
+          "Trajectory quality, cadence and difficulty must be matched before interpreting whether the identity of a past self changes the experience.",
+        conditions: [
+          { code: "PS-H", title: "Past Self + Haptic", source: "past-self trace", channel: "bilateral haptic" },
+          { code: "MO-H", title: "Matched Other + Haptic", source: "simulated_matched_other in n=1", channel: "bilateral haptic" },
+          { code: "PS-V", title: "Past Self + Visual", source: "same past-self trace", channel: "visual only" },
+          { code: "NF", title: "No History", source: "present task only", channel: "no historical guidance" },
+        ],
+      },
+      making: {
+        eyebrow: "06 / Making plan",
+        title: "Fourteen days, with an inspectable artefact every day.",
+        body:
+          "A software simulation explains the full logic from day one; hardware modules progressively replace simulated inputs so logistics cannot erase the case study.",
+        phases: [
+          { range: "D1–D4", title: "Trust the signals", evidence: "FSR traces · equal-weight checks · ESP-NOW logs · disconnect video" },
+          { range: "D5–D9", title: "Form the loop", evidence: "Hall test · cycle algorithm · haptic localisation · servo pointer · interface" },
+          { range: "D10–D14", title: "Rehearse the study", evidence: "sEMG timing · CAD · C1/E2 logs · data export · 90-second demo" },
+        ],
+        gates: ["one Hall event per revolution", "8/10 eyes-closed left-right localisation", "500 ms disconnect-to-silence", "simulation and hardware share one interface"],
+      },
+      safety: {
+        eyebrow: "07 / Safety boundary",
+        title: "Learn from EMS research without building a stimulator.",
+        body:
+          "EMS sends current into the body; EMG reads muscle activity. PedalBalance Echo uses no DIY EMS, TENS or FES. Its body output is short, side-specific vibration, and optional sEMG remains read-only and does not control cues.",
+        boundaries: [
+          "Stationary indoor pedalling only",
+          "Relative pressure proxy—not power",
+          "Read-only sEMG—not electrical stimulation",
+          "Maker self-test before any supervised participant research",
+        ],
+        limitations: [
+          "FSRs are sensitive to mounting, footwear and temperature.",
+          "One Hall event does not recover continuous crank angle.",
+          "One sEMG channel cannot represent an entire leg.",
+          "A self-test cannot establish a population effect.",
+        ],
+      },
+      capabilityEyebrow: "08 / Capability evidence",
+      capabilityTitle: "The outcome is an auditable chain, not a self-rating.",
+      capabilityBody:
+        "Each claimed ability connects to a file, photograph, log, protocol or recorded failure. Planned artefacts stay labelled as planned until they exist.",
+      capabilities: [
+        { title: "Literature", evidence: "Annotated mechanism map and translated design decisions" },
+        { title: "Electronics", evidence: "Divider, ADC, power and grounding schematics" },
+        { title: "Embedded logic", evidence: "Sampling, cycle state machine and fail-safe tests" },
+        { title: "Wireless", evidence: "ESP-NOW packet sequence, loss and return commands" },
+        { title: "Mechatronics", evidence: "Hall, magnet, servo and haptic mounting" },
+        { title: "Interaction", evidence: "Calibration, cue semantics, status and stop controls" },
+        { title: "Data", evidence: "Dictionary, raw CSV, quality flags and provenance" },
+        { title: "Study design", evidence: "Controls, withdrawal, retention, transfer and ethics boundary" },
+      ],
+      referenceEyebrow: "Research basis",
+      referenceTitle: "Mechanisms translated, not risks copied.",
+      references: [
+        { title: "Adaptive EMS", detail: "Adaptive withdrawal and unaided recall · CHI 2025", href: "https://doi.org/10.1145/3706598.3713676" },
+        { title: "My(o) Action", detail: "Read bodily intention before obvious action · CHI 2026", href: "https://lab.plopes.org/published/2026-CHI-MyoAction.pdf" },
+        { title: "bioSync", detail: "Human → machine → human transfer · CHI 2017", href: "https://doi.org/10.1145/3025453.3025829" },
+        { title: "Safe electricity-to-body systems", detail: "Why formal EMS needs independent safety engineering · TOCHI 2018", href: "https://doi.org/10.1145/3184743" },
+      ],
+      reflection: {
+        eyebrow: "Reflection",
+        title: "Research making is the judgement of what to connect—and what to leave out.",
+        body:
+          "The case does not claim mastery of EMS or completed training effects. It demonstrates how literature, bodies, electronics, code, mechanics and experimental controls can be translated into the smallest defensible loop, with clear evidence needed for every next claim.",
+      },
+    },
+  },
 ];
 
 window.PORTFOLIO_CAPABILITIES = {
   metrics: [
     {
-      value: "13",
+      value: "14",
       label: "Curated case studies",
       note: "Individual, group and co-design work presented as complete project stories.",
     },
     {
-      value: "05",
+      value: "06",
       label: "Connected practice areas",
-      note: "Digital interaction, UX systems, visual communication, spatial form and strategy.",
+      note: "Digital interaction, UX systems, visual communication, spatial form, strategy and embodied systems.",
     },
     {
       value: "21",

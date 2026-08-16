@@ -218,9 +218,33 @@
       </div>`;
   }
 
+  function pedalCoverMarkup(project) {
+    return `
+      <div class="pedal-cover" role="img" aria-label="${project.cover.alt}">
+        <div class="pedal-cover-topline"><span>PBE / 2026</span><span>RESEARCH THROUGH MAKING</span></div>
+        <div class="pedal-cover-title">
+          <strong>PedalBalance</strong>
+          <span>Echo</span>
+        </div>
+        <div class="pedal-cover-flow" aria-hidden="true">
+          <span class="pedal-cover-node pedal-cover-node--human">H</span>
+          <i></i>
+          <span class="pedal-cover-node pedal-cover-node--machine">M</span>
+          <i></i>
+          <span class="pedal-cover-node pedal-cover-node--return">R</span>
+          <i></i>
+          <span class="pedal-cover-node pedal-cover-node--learn">L</span>
+        </div>
+        <div class="pedal-cover-footer"><span>03 NODES</span><span>02 STUDIES</span><span>00 DIY EMS</span></div>
+      </div>`;
+  }
+
   function projectCoverMarkup(project) {
     if (project.cover.variant === "investment" && project.investmentStudy) {
       return investmentCoverMarkup(project);
+    }
+    if (project.cover.variant === "pedal" && project.pedalStudy) {
+      return pedalCoverMarkup(project);
     }
     return `<img src="${project.cover.src}" alt="${project.cover.alt}" loading="lazy" decoding="async" />`;
   }
@@ -625,6 +649,138 @@
       </div>`;
   }
 
+  function pedalStudyMarkup(project) {
+    const study = project.pedalStudy;
+    const sectionHeading = (section, id) => `
+      <header class="pedal-section-heading">
+        <p>${section.eyebrow}</p>
+        <div><h2 id="${id}">${section.title}</h2><p>${section.body}</p></div>
+      </header>`;
+
+    return `
+      <div class="pedal-study">
+        <section class="pedal-status" aria-label="${study.statusLabel}">
+          <p>${study.statusLabel}</p>
+          <p class="pedal-status-note">${study.statusNote}</p>
+        </section>
+
+        <section class="pedal-facts" aria-label="${project.title}">
+          ${study.facts.map((fact) => `
+            <article class="pedal-fact">
+              <strong>${fact.value}</strong>
+              <h3>${fact.label}</h3>
+              <p>${fact.note}</p>
+            </article>`).join("")}
+        </section>
+
+        <section class="pedal-loop" aria-labelledby="pedal-loop-heading">
+          ${sectionHeading(study.loop, "pedal-loop-heading")}
+          <div class="pedal-loop-track" role="img" aria-label="${study.loop.aria}">
+            ${study.loop.stages.map((stage) => `
+              <article class="pedal-loop-stage pedal-loop-stage--${stage.tone}">
+                <span>${stage.number}</span><h3>${stage.title}</h3><p>${stage.body}</p>
+              </article>`).join("")}
+          </div>
+        </section>
+
+        <section class="pedal-questions" aria-label="${project.title}">
+          ${study.questions.map((question) => `
+            <article class="pedal-question">
+              <div class="pedal-question-code">${question.code}</div>
+              <p>${question.eyebrow}</p>
+              <h2>${question.title}</h2>
+              <p>${question.body}</p>
+              <strong>${question.outcome}</strong>
+            </article>`).join("")}
+        </section>
+
+        <section class="pedal-architecture" aria-labelledby="pedal-architecture-heading">
+          ${sectionHeading(study.architecture, "pedal-architecture-heading")}
+          <div class="pedal-node-map">
+            ${study.architecture.nodes.map((node) => `
+              <article class="pedal-node">
+                <span>${node.code}</span><h3>${node.name}</h3><p>${node.role}</p><small>${node.parts}</small>
+              </article>`).join("")}
+          </div>
+          <p class="pedal-failsafe"><span>FAIL-SAFE</span>${study.architecture.failSafe}</p>
+        </section>
+
+        <section class="pedal-logic" aria-labelledby="pedal-logic-heading">
+          ${sectionHeading(study.logic, "pedal-logic-heading")}
+          <div class="pedal-logic-grid">
+            <ol class="pedal-formula">${study.logic.formula.map((line) => `<li>${line}</li>`).join("")}</ol>
+            <ol class="pedal-rules">${study.logic.rules.map((rule) => `<li>${rule}</li>`).join("")}</ol>
+          </div>
+          <p class="pedal-measurement-note">${study.measurementNote}</p>
+        </section>
+
+        <section class="pedal-experiments" aria-label="${project.title}">
+          <article class="pedal-experiment pedal-experiment--c1">
+            ${sectionHeading(study.c1, "pedal-c1-heading")}
+            <div class="pedal-condition-grid">
+              ${study.c1.conditions.map((item) => `
+                <article class="pedal-condition pedal-condition--c1">
+                  <span>${item.code}</span><h3>${item.title}</h3><p>${item.trigger}</p><small>${item.test}</small>
+                </article>`).join("")}
+            </div>
+          </article>
+          <article class="pedal-experiment pedal-experiment--e2">
+            ${sectionHeading(study.e2, "pedal-e2-heading")}
+            <div class="pedal-condition-grid">
+              ${study.e2.conditions.map((item) => `
+                <article class="pedal-condition pedal-condition--e2">
+                  <span>${item.code}</span><h3>${item.title}</h3><p>${item.source}</p><small>${item.channel}</small>
+                </article>`).join("")}
+            </div>
+          </article>
+        </section>
+
+        <section class="pedal-making" aria-labelledby="pedal-making-heading">
+          ${sectionHeading(study.making, "pedal-making-heading")}
+          <div class="pedal-phase-grid">
+            ${study.making.phases.map((phase) => `
+              <article class="pedal-phase"><span>${phase.range}</span><h3>${phase.title}</h3><p>${phase.evidence}</p></article>`).join("")}
+          </div>
+          <ul class="pedal-gates">${study.making.gates.map((gate) => `<li>${gate}</li>`).join("")}</ul>
+        </section>
+
+        <section class="pedal-safety" aria-labelledby="pedal-safety-heading">
+          <header class="pedal-section-heading">
+            <p>${study.safety.eyebrow}</p>
+            <div><h2 id="pedal-safety-heading">${study.safety.title}</h2></div>
+          </header>
+          <p class="pedal-safety-body">${study.safety.body}</p>
+          <div class="pedal-safety-grid">
+            <ul>${study.safety.boundaries.map((item) => `<li>${item}</li>`).join("")}</ul>
+            <ul>${study.safety.limitations.map((item) => `<li>${item}</li>`).join("")}</ul>
+          </div>
+        </section>
+
+        <section class="pedal-capabilities" aria-labelledby="pedal-capability-heading">
+          <header class="pedal-section-heading">
+            <p>${study.capabilityEyebrow}</p>
+            <div><h2 id="pedal-capability-heading">${study.capabilityTitle}</h2><p>${study.capabilityBody}</p></div>
+          </header>
+          <div class="pedal-capability-grid">
+            ${study.capabilities.map((item) => `
+              <article class="pedal-capability"><h3>${item.title}</h3><p>${item.evidence}</p></article>`).join("")}
+          </div>
+        </section>
+
+        <section class="pedal-references" aria-labelledby="pedal-reference-heading">
+          <header><p>${study.referenceEyebrow}</p><h2 id="pedal-reference-heading">${study.referenceTitle}</h2></header>
+          <div>
+            ${study.references.map((item) => `
+              <a href="${item.href}" target="_blank" rel="noreferrer"><strong>${item.title}</strong><span>${item.detail}</span><i aria-hidden="true">↗</i></a>`).join("")}
+          </div>
+        </section>
+
+        <section class="pedal-reflection">
+          <p>${study.reflection.eyebrow}</p><h2>${study.reflection.title}</h2><p>${study.reflection.body}</p>
+        </section>
+      </div>`;
+  }
+
   function defaultCaseStoryMarkup(project) {
     return `
       <figure class="case-feature">
@@ -696,6 +852,7 @@
       "case-article",
       project.lightStudy ? "case-article--light-performance" : "",
       project.investmentStudy ? "case-article--investment" : "",
+      project.pedalStudy ? "case-article--pedal" : "",
     ]
       .filter(Boolean)
       .join(" ");
@@ -703,7 +860,9 @@
       ? lightStudyMarkup(project)
       : project.investmentStudy
         ? investmentStudyMarkup(project)
-        : defaultCaseStoryMarkup(project);
+        : project.pedalStudy
+          ? pedalStudyMarkup(project)
+          : defaultCaseStoryMarkup(project);
 
     caseContent.innerHTML = `
       <article class="${articleClasses}">
