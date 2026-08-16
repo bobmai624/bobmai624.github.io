@@ -11,65 +11,76 @@
     <title>Bowen Mai — Design Portfolio</title>
     <link rel="stylesheet" href="style.css" />
     <script src="projects.js" defer></script>
+    <script src="i18n.js" defer></script>
     <script src="app.js" defer></script>
   </head>
   <body>
-    <a class="skip-link" href="#work">Skip to work</a>
+    <a class="skip-link" href="#work" data-i18n="skipToWork">Skip to work</a>
 
     <div class="page-intro" aria-hidden="true">
       <span>BM</span>
     </div>
 
     <header class="site-header">
-      <a class="brand" href="#top" aria-label="Bowen Mai, back to top">
+      <a class="brand" href="#top" aria-label="Bowen Mai, back to top" data-i18n-aria="brandAria">
         <span class="brand-name">Bowen Mai</span>
-        <span class="brand-discipline">Design portfolio</span>
+        <span class="brand-discipline" data-i18n="brandDiscipline">Design portfolio</span>
       </a>
-      <nav class="site-nav" aria-label="Primary navigation">
-        <a href="#work">Work</a>
-        <a href="#practice">Index</a>
-        <a href="#capabilities">Skills</a>
-        <a href="#resume" data-resume-open>Resume</a>
-      </nav>
+      <div class="site-controls">
+        <nav class="site-nav" aria-label="Primary navigation" data-i18n-aria="primaryNavigation">
+          <a href="#work" data-i18n="navWork">Work</a>
+          <a href="#practice" data-i18n="navIndex">Index</a>
+          <a href="#capabilities" data-i18n="navSkills">Skills</a>
+          <a href="#resume" data-resume-open data-i18n="navResume">Resume</a>
+        </nav>
+        <label class="language-control" for="language-select">
+          <span class="visually-hidden" data-i18n="languageLabel">Language</span>
+          <select id="language-select" aria-label="Language" data-i18n-aria="languageLabel">
+            <option value="en">EN</option>
+            <option value="zh">中文</option>
+            <option value="ja">日本語</option>
+          </select>
+        </label>
+      </div>
     </header>
 
     <main id="top">
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero-topline">
-          <p>Selected work</p>
+          <p data-i18n="heroTopline">Selected work</p>
           <p>2024—2026</p>
         </div>
-        <h1 id="hero-title">
+        <h1 id="hero-title" data-i18n-html="heroTitle">
           Designing meaning between
           <span>people, systems and form.</span>
         </h1>
         <div class="hero-bottom">
-          <p class="hero-position">
+          <p class="hero-position" data-i18n="heroPosition">
             Multidisciplinary designer connecting interaction, form and strategy.
           </p>
-          <a class="quiet-link" href="#practice">View practice index <span aria-hidden="true">↓</span></a>
+          <a class="quiet-link" href="#practice"><span data-i18n="viewPractice">View practice index</span> <span aria-hidden="true">↓</span></a>
         </div>
       </section>
 
       <section class="practice section-shell" id="practice" aria-labelledby="practice-heading">
         <header class="section-intro reveal">
-          <p class="section-number">01 / Practice index</p>
-          <h2 id="practice-heading">Five ways of working.</h2>
-          <p>
+          <p class="section-number" data-i18n="practiceNumber">01 / Practice index</p>
+          <h2 id="practice-heading" data-i18n="practiceTitle">Five ways of working.</h2>
+          <p data-i18n="practiceDescription">
             The portfolio is organised by the kind of design question being answered, so the
             relationship between projects is visible before the details begin.
           </p>
         </header>
-        <nav class="practice-index" id="practice-index" aria-label="Portfolio practice areas"></nav>
+        <nav class="practice-index" id="practice-index" aria-label="Portfolio practice areas" data-i18n-aria="practiceAria"></nav>
       </section>
 
       <section class="work section-shell" id="work" aria-labelledby="work-heading">
         <header class="section-intro reveal">
-          <p class="section-number">02 / Selected work</p>
-          <h2 id="work-heading">Work, organised by intention.</h2>
-          <p>
-            Thirteen project stories distilled from twenty-one assignments, each organised around
-            its central idea, process and outcome.
+          <p class="section-number" data-i18n="workNumber">02 / Selected work</p>
+          <h2 id="work-heading" data-i18n="workTitle">Work, organised by intention.</h2>
+          <p data-i18n="workDescription">
+            Thirteen project stories distilled from twenty-one assignment files. Each case begins
+            with its central idea; the original submission remains available at the end.
           </p>
         </header>
         <div class="project-groups" id="project-groups"></div>
@@ -78,9 +89,9 @@
       <section class="capabilities" id="capabilities" aria-labelledby="capabilities-title">
         <div class="capabilities-inner">
           <header class="section-intro capabilities-intro reveal">
-            <p class="section-number">03 / Capabilities</p>
-            <h2 id="capabilities-title">What I can do—and how I know.</h2>
-            <p>
+            <p class="section-number" data-i18n="capabilitiesNumber">03 / Capabilities</p>
+            <h2 id="capabilities-title" data-i18n="capabilitiesTitle">What I can do—and how I know.</h2>
+            <p data-i18n="capabilitiesDescription">
               A capability is more useful when it can be traced to a method, a tool and a visible
               outcome. This profile summarises the craft, reasoning and professional judgement
               demonstrated across the portfolio.
@@ -91,28 +102,29 @@
             class="capability-metrics"
             id="capability-metrics"
             aria-label="Portfolio capability evidence"
+            data-i18n-aria="capabilityEvidenceAria"
           ></div>
 
           <section class="capability-block" aria-labelledby="capability-groups-heading">
             <header class="capability-block-heading reveal">
-              <p>Professional disciplines</p>
-              <h3 id="capability-groups-heading">Skills connected to evidence.</h3>
+              <p data-i18n="disciplinesLabel">Professional disciplines</p>
+              <h3 id="capability-groups-heading" data-i18n="disciplinesTitle">Skills connected to evidence.</h3>
             </header>
             <div class="capability-groups" id="capability-groups"></div>
           </section>
 
           <section class="capability-block" aria-labelledby="capability-tools-heading">
             <header class="capability-block-heading reveal">
-              <p>Software &amp; workflow</p>
-              <h3 id="capability-tools-heading">How the tools are used.</h3>
+              <p data-i18n="toolsLabel">Software &amp; workflow</p>
+              <h3 id="capability-tools-heading" data-i18n="toolsTitle">How the tools are used.</h3>
             </header>
             <div class="capability-tools" id="capability-tools"></div>
           </section>
 
           <section class="capability-block" aria-labelledby="capability-qualities-heading">
             <header class="capability-block-heading reveal">
-              <p>Professional qualities</p>
-              <h3 id="capability-qualities-heading">Patterns behind the work.</h3>
+              <p data-i18n="qualitiesLabel">Professional qualities</p>
+              <h3 id="capability-qualities-heading" data-i18n="qualitiesTitle">Patterns behind the work.</h3>
             </header>
             <div class="capability-qualities" id="capability-qualities"></div>
           </section>
@@ -121,21 +133,21 @@
 
       <section class="profile section-shell" id="profile" aria-labelledby="profile-heading">
         <div class="profile-heading reveal">
-          <p class="section-number">04 / About</p>
-          <h2 id="profile-heading">Curious in method.<br />Clear in outcome.</h2>
+          <p class="section-number" data-i18n="aboutNumber">04 / About</p>
+          <h2 id="profile-heading" data-i18n-html="aboutTitle">Curious in method.<br />Clear in outcome.</h2>
         </div>
         <div class="profile-copy reveal">
-          <p>
+          <p data-i18n="aboutParagraphOne">
             I am a Bachelor of Design student at the University of Melbourne, specialising in User
             Experience Design. I move between research, visual judgement and structured analysis,
             choosing the form that makes each problem easier to understand.
           </p>
-          <p>
+          <p data-i18n="aboutParagraphTwo">
             My work ranges from interface prototypes and usability studies to publications,
             spatial narratives and financial models. Across them, the common task is the same:
             make complex evidence legible enough to support a decision.
           </p>
-          <a class="text-arrow" href="#resume" data-resume-open>Read the web resume <span>→</span></a>
+          <a class="text-arrow" href="#resume" data-resume-open><span data-i18n="readResume">Read the web resume</span> <span>→</span></a>
         </div>
       </section>
     </main>
@@ -143,10 +155,10 @@
     <footer class="site-footer">
       <div>
         <p>Bowen Mai</p>
-        <p>Melbourne, Australia</p>
+        <p data-i18n="location">Melbourne, Australia</p>
       </div>
       <a href="mailto:bobmy5464@gmail.com">bobmy5464@gmail.com</a>
-      <a href="#top">Back to top ↑</a>
+      <a href="#top"><span data-i18n="backToTop">Back to top</span> ↑</a>
     </footer>
 
     <section
@@ -157,8 +169,8 @@
       aria-labelledby="case-title"
       hidden
     >
-      <button class="overlay-close" id="case-close" type="button" aria-label="Close project">
-        <span>Close project</span>
+      <button class="overlay-close" id="case-close" type="button" aria-label="Close project" data-i18n-aria="closeProject">
+        <span data-i18n="closeProject">Close project</span>
         <span aria-hidden="true">×</span>
       </button>
       <div class="case-content" id="case-content"></div>
@@ -175,15 +187,15 @@
       <div class="game-shell">
         <header class="game-toolbar">
           <div>
-            <p>Interactive prototype</p>
-            <h2 id="game-title">Signal Aftershock</h2>
+            <p data-i18n="interactivePrototype">Interactive prototype</p>
+            <h2 id="game-title" data-i18n="gameTitle">Signal Aftershock</h2>
           </div>
           <div class="game-toolbar-actions">
             <a id="game-external" target="_blank" rel="noreferrer">
-              Open separately <span aria-hidden="true">↗</span>
+              <span data-i18n="openSeparately">Open separately</span> <span aria-hidden="true">↗</span>
             </a>
-            <button id="game-close" type="button" aria-label="Close Signal Aftershock game">
-              <span>Close game</span><span aria-hidden="true">×</span>
+            <button id="game-close" type="button" aria-label="Close Signal Aftershock game" data-i18n-aria="closeGameAria">
+              <span data-i18n="closeGame">Close game</span><span aria-hidden="true">×</span>
             </button>
           </div>
         </header>
@@ -191,6 +203,7 @@
           <iframe
             id="game-frame"
             title="Play Signal Aftershock"
+            data-i18n-title="playGameTitle"
             allow="fullscreen"
           ></iframe>
         </div>
@@ -205,20 +218,20 @@
       aria-labelledby="resume-title"
       hidden
     >
-      <button class="overlay-close overlay-close--dark" id="resume-close" type="button" aria-label="Close resume">
-        <span>Close resume</span>
+      <button class="overlay-close overlay-close--dark" id="resume-close" type="button" aria-label="Close resume" data-i18n-aria="closeResume">
+        <span data-i18n="closeResume">Close resume</span>
         <span aria-hidden="true">×</span>
       </button>
 
       <article class="resume-document">
         <header class="resume-hero">
           <div class="resume-topline">
-            <p>Resume / 2026</p>
-            <p>Melbourne, Australia</p>
+            <p data-i18n="resumeTopline">Resume / 2026</p>
+            <p data-i18n="location">Melbourne, Australia</p>
           </div>
           <h1 id="resume-title">Bowen Mai</h1>
           <div class="resume-profile-grid">
-            <p class="resume-summary">
+            <p class="resume-summary" data-i18n="resumeSummary">
               Bachelor of Design student at the University of Melbourne with experience in UX
               design, user research, web and interaction design, graphic design, market analysis
               and customer-facing retail. Skilled in Figma prototyping, usability evaluation,
@@ -233,15 +246,15 @@
         <section class="resume-section" aria-labelledby="experience-heading">
           <header class="resume-section-heading">
             <p>01</p>
-            <h2 id="experience-heading">Experience</h2>
+            <h2 id="experience-heading" data-i18n="experienceTitle">Experience</h2>
           </header>
           <div class="resume-list">
             <article class="resume-experience-row">
-              <p class="resume-date">Feb 2025 — Jul 2025</p>
+              <p class="resume-date" data-i18n="experienceOneDate">Feb 2025 — Jul 2025</p>
               <div>
-                <h3>UX Design Intern</h3>
+                <h3 data-i18n="experienceOneRole">UX Design Intern</h3>
                 <p class="resume-place">Tidy Teddy</p>
-                <p>
+                <p data-i18n="experienceOneBody">
                   Analysed target users, competitors, page structures, navigation and user journeys;
                   co-created wireframes, high-fidelity UI screens and interactive Figma prototypes;
                   and coordinated product, design and development feedback into implementation notes.
@@ -249,11 +262,11 @@
               </div>
             </article>
             <article class="resume-experience-row">
-              <p class="resume-date">Dec 2022 — Feb 2023</p>
+              <p class="resume-date" data-i18n="experienceTwoDate">Dec 2022 — Feb 2023</p>
               <div>
-                <h3>Graphic Designer Intern</h3>
-                <p class="resume-place">Pharmaceutical company</p>
-                <p>
+                <h3 data-i18n="experienceTwoRole">Graphic Designer Intern</h3>
+                <p class="resume-place" data-i18n="experienceTwoPlace">Pharmaceutical company</p>
+                <p data-i18n="experienceTwoBody">
                   Delivered e-commerce, packaging, poster, brochure and campaign assets; translated
                   product positioning into consistent visual hierarchies; and worked with business
                   and promotion teams to coordinate multi-channel delivery.
@@ -261,22 +274,22 @@
               </div>
             </article>
             <article class="resume-experience-row">
-              <p class="resume-date">Jun 2021 — Dec 2022</p>
+              <p class="resume-date" data-i18n="experienceThreeDate">Jun 2021 — Dec 2022</p>
               <div>
-                <h3>Sales Associate</h3>
+                <h3 data-i18n="experienceThreeRole">Sales Associate</h3>
                 <p class="resume-place">PUMA</p>
-                <p>
+                <p data-i18n="experienceThreeBody">
                   Identified customer needs, provided tailored product recommendations and supported
                   team sales targets during busy periods. Earned Top Sales Associate of the Month.
                 </p>
               </div>
             </article>
             <article class="resume-experience-row">
-              <p class="resume-date">Sep 2021 — Sep 2022</p>
+              <p class="resume-date" data-i18n="experienceFourDate">Sep 2021 — Sep 2022</p>
               <div>
-                <h3>Graphic Design Assistant</h3>
-                <p class="resume-place">Design studio</p>
-                <p>
+                <h3 data-i18n="experienceFourRole">Graphic Design Assistant</h3>
+                <p class="resume-place" data-i18n="experienceFourPlace">Design studio</p>
+                <p data-i18n="experienceFourBody">
                   Produced logos, posters, advertising materials, brand visuals and layouts, turning
                   client requirements and feedback into rapidly iterated design concepts.
                 </p>
@@ -288,30 +301,30 @@
         <section class="resume-section" aria-labelledby="education-heading">
           <header class="resume-section-heading">
             <p>02</p>
-            <h2 id="education-heading">Education</h2>
+            <h2 id="education-heading" data-i18n="educationTitle">Education</h2>
           </header>
           <div class="resume-list">
             <article class="resume-education-row">
-              <p class="resume-date">Jan 2024 — Present</p>
+              <p class="resume-date" data-i18n="educationOneDate">Jan 2024 — Present</p>
               <div>
-                <h3>Bachelor of Design — User Experience Design</h3>
-                <p class="resume-place">The University of Melbourne</p>
-                <p>User Research, UX Evaluation, Web &amp; Interaction Design, Graphic Design, Finance &amp; Business.</p>
+                <h3 data-i18n="educationOneDegree">Bachelor of Design — User Experience Design</h3>
+                <p class="resume-place" data-i18n="educationOnePlace">The University of Melbourne</p>
+                <p data-i18n="educationOneBody">User Research, UX Evaluation, Web &amp; Interaction Design, Graphic Design, Finance &amp; Business.</p>
               </div>
             </article>
             <article class="resume-education-row">
-              <p class="resume-date">Jan 2025 — Dec 2025</p>
+              <p class="resume-date" data-i18n="educationTwoDate">Jan 2025 — Dec 2025</p>
               <div>
-                <h3>One-Month Exchange Study</h3>
-                <p class="resume-place">Korea University</p>
+                <h3 data-i18n="educationTwoDegree">One-Month Exchange Study</h3>
+                <p class="resume-place" data-i18n="educationTwoPlace">Korea University</p>
               </div>
             </article>
             <article class="resume-education-row">
-              <p class="resume-date">Early 2026</p>
+              <p class="resume-date" data-i18n="educationThreeDate">Early 2026</p>
               <div>
-                <h3>Short-Term Exchange Study</h3>
-                <p class="resume-place">Ritsumeikan University, Japan</p>
-                <p>Japanese language and culture studies.</p>
+                <h3 data-i18n="educationThreeDegree">Short-Term Exchange Study</h3>
+                <p class="resume-place" data-i18n="educationThreePlace">Ritsumeikan University, Japan</p>
+                <p data-i18n="educationThreeBody">Japanese language and culture studies.</p>
               </div>
             </article>
           </div>
@@ -320,34 +333,34 @@
         <section class="resume-section" aria-labelledby="capabilities-heading">
           <header class="resume-section-heading">
             <p>03</p>
-            <h2 id="capabilities-heading">Selected capabilities</h2>
+            <h2 id="capabilities-heading" data-i18n="resumeCapabilitiesTitle">Selected capabilities</h2>
           </header>
           <div class="resume-capabilities">
             <article>
-              <h3>User research &amp; analysis</h3>
-              <p>Interviews, observation, personas, journey maps, task flows and pain-point synthesis.</p>
+              <h3 data-i18n="resumeCapabilityOneTitle">User research &amp; analysis</h3>
+              <p data-i18n="resumeCapabilityOneBody">Interviews, observation, personas, journey maps, task flows and pain-point synthesis.</p>
             </article>
             <article>
-              <h3>Usability &amp; UX evaluation</h3>
-              <p>Five-second, first-click, moderated usability, tree-testing, card-sorting and heuristic review.</p>
+              <h3 data-i18n="resumeCapabilityTwoTitle">Usability &amp; UX evaluation</h3>
+              <p data-i18n="resumeCapabilityTwoBody">Five-second, first-click, moderated usability, tree-testing, card-sorting and heuristic review.</p>
             </article>
             <article>
-              <h3>Web &amp; interaction design</h3>
-              <p>Information architecture, responsive structures, high-fidelity Figma prototypes and HTML/CSS/JavaScript foundations.</p>
+              <h3 data-i18n="resumeCapabilityThreeTitle">Web &amp; interaction design</h3>
+              <p data-i18n="resumeCapabilityThreeBody">Information architecture, responsive structures, high-fidelity Figma prototypes and HTML/CSS/JavaScript foundations.</p>
             </article>
             <article>
-              <h3>Business &amp; market analysis</h3>
-              <p>Comparative data review, cost-benefit reasoning, investment value, risk and feasibility analysis.</p>
+              <h3 data-i18n="resumeCapabilityFourTitle">Business &amp; market analysis</h3>
+              <p data-i18n="resumeCapabilityFourBody">Comparative data review, cost-benefit reasoning, investment value, risk and feasibility analysis.</p>
             </article>
             <article>
-              <h3>AI-assisted design &amp; testing</h3>
-              <p>ChatGPT, DeepSeek, Adobe Firefly and Stable Diffusion used with attention to quality, limitations and consistency.</p>
+              <h3 data-i18n="resumeCapabilityFiveTitle">AI-assisted design &amp; testing</h3>
+              <p data-i18n="resumeCapabilityFiveBody">ChatGPT, DeepSeek, Adobe Firefly and Stable Diffusion used with attention to quality, limitations and consistency.</p>
             </article>
           </div>
         </section>
 
         <footer class="resume-footer">
-          <p>The web version is the primary public resume. Contact me by email for a PDF copy.</p>
+          <p data-i18n="resumeFooterNote">The web version is the primary resume. A PDF copy is retained for applications and printing.</p>
         </footer>
       </article>
     </section>

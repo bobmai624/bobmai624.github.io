@@ -1,16 +1,26 @@
 (() => {
-  const projects = window.PORTFOLIO_PROJECTS || [];
-  const categories = window.PORTFOLIO_CATEGORIES || [];
-  const capabilities = window.PORTFOLIO_CAPABILITIES || {
+  const clone = (value) => JSON.parse(JSON.stringify(value));
+  const baseProjects = clone(window.PORTFOLIO_PROJECTS || []);
+  const baseCategories = clone(window.PORTFOLIO_CATEGORIES || []);
+  const baseCapabilities = clone(window.PORTFOLIO_CAPABILITIES || {
     metrics: [],
     groups: [],
     tools: [],
     qualities: [],
-  };
-  const categoryMap = Object.fromEntries(categories.map((category) => [category.id, category]));
-  const orderedProjects = categories.flatMap((category) =>
-    projects.filter((project) => project.category === category.id),
+  });
+  const languageContent = window.PORTFOLIO_I18N || {};
+  const supportedLanguages = ["en", "zh", "ja"];
+  const isPublicPortfolio = baseProjects.every((project) =>
+    project.sources.every((source) => source.external),
   );
+
+  let projects = clone(baseProjects);
+  let categories = clone(baseCategories);
+  let capabilities = clone(baseCapabilities);
+  let categoryMap = {};
+  let orderedProjects = [];
+  let currentLanguage = "en";
+  let currentUi = languageContent.en?.ui || {};
 
   const practiceIndex = document.querySelector("#practice-index");
   const projectGroups = document.querySelector("#project-groups");
@@ -27,6 +37,7 @@
   const gameClose = document.querySelector("#game-close");
   const resumeView = document.querySelector("#resume-view");
   const resumeClose = document.querySelector("#resume-close");
+  const languageSelect = document.querySelector("#language-select");
 
   let lastProjectTrigger = null;
   let lastGameTrigger = null;
@@ -35,6 +46,135 @@
   const projectIndex = (id) => orderedProjects.findIndex((project) => project.id === id);
   const projectById = (id) => orderedProjects.find((project) => project.id === id);
   const twoDigits = (value) => String(value).padStart(2, "0");
+
+  function mergeTranslation(base, override) {
+    if (override === undefined) return clone(base);
+    if (Array.isArray(base)) {
+      return base.map((item, index) => mergeTranslation(item, override?.[index]));
+    }
+    if (base && typeof base === "object") {
+      return Object.fromEntries(
+        Object.keys(base).map((key) => [key, mergeTranslation(base[key], override?.[key])]),
+      );
+    }
+    return override;
+  }
+
+  function sourceLabel(source) {
+    if (source.external) {
+      return currentLanguage === "zh" ? "打开可试玩原型" : "プレイ可能なプロトタイプを開く";
+    }
+    const extension = source.href.split(".").pop().split(/[?#]/)[0].toUpperCase();
+    if (currentLanguage === "zh") {
+      const type = extension === "XLSX" ? "数据与模型" : extension === "MP4" ? "项目视频" : "完整项目";
+      return `${type} · ${extension}`;
+    }
+    const type = extension === "XLSX" ? "データ／モデル" : extension === "MP4" ? "プロジェクト動画" : "全プロジェクト";
+    return `${type} · ${extension}`;
+  }
+
+  function localiseProject(baseProject, override) {
+    const project = mergeTranslation(baseProject, override || {});
+    if (currentLanguage === "en") return project;
+
+    project.cover.alt =
+      currentLanguage === "zh"
+        ? `“${project.title}”项目封面`
+        : `${project.title}のプロジェクト表紙`;
+    project.media = project.media.map((item, index) => ({
+      ...item,
+      alt:
+        currentLanguage === "zh"
+          ? `“${project.title}”项目图像 ${index + 1}`
+          : `${project.title}のプロジェクト画像 ${index + 1}`,
+      caption:
+        currentLanguage === "zh"
+          ? `项目过程与成果 · ${twoDigits(index + 1)}`
+          : `制作過程と成果 · ${twoDigits(index + 1)}`,
+    }));
+    project.sources = project.sources.map((source) => ({ ...source, label: sourceLabel(source) }));
+    return project;
+  }
+
+  function projectCountLabel(count) {
+    if (currentLanguage === "zh") return `${twoDigits(count)} 个项目`;
+    if (currentLanguage === "ja") return `${twoDigits(count)} 件`;
+    return `${twoDigits(count)} projects`;
+  }
+
+  function applyStaticTranslations(content) {
+    document.documentElement.lang = content.htmlLang;
+    document.title = content.meta.title;
+    document.querySelector('meta[name="description"]')?.setAttribute("content", content.meta.description);
+    document.querySelectorAll("[data-i18n]").forEach((element) => {
+      const value = content.site[element.dataset.i18n];
+      if (value !== undefined) element.textContent = value;
+    });
+    document.querySelectorAll("[data-i18n-html]").forEach((element) => {
+      const value = content.site[element.dataset.i18nHtml];
+      if (value !== undefined) element.innerHTML = value;
+    });
+    document.querySelectorAll("[data-i18n-aria]").forEach((element) => {
+      const value = content.site[element.dataset.i18nAria];
+      if (value !== undefined) element.setAttribute("aria-label", value);
+    });
+    document.querySelectorAll("[data-i18n-title]").forEach((element) => {
+      const value = content.site[element.dataset.i18nTitle];
+      if (value !== undefined) element.setAttribute("title", value);
+    });
+  }
+
+  function storedLanguage() {
+    try {
+      return window.localStorage.getItem("portfolio-language");
+    } catch (_error) {
+      return null;
+    }
+  }
+
+  function setStoredLanguage(language) {
+    try {
+      window.localStorage.setItem("portfolio-language", language);
+    } catch (_error) {
+      // The query string still preserves the choice when storage is unavailable.
+    }
+  }
+
+  function setLanguage(language, { updateUrl = false } = {}) {
+    currentLanguage = supportedLanguages.includes(language) ? language : "en";
+    const content = languageContent[currentLanguage] || languageContent.en;
+    currentUi = content.ui;
+    categories = baseCategories.map((category) =>
+      mergeTranslation(category, content.categories?.[category.id]),
+    );
+    projects = baseProjects.map((project) =>
+      localiseProject(project, content.projects?.[project.id]),
+    );
+    capabilities = mergeTranslation(baseCapabilities, content.capabilities);
+    categoryMap = Object.fromEntries(categories.map((category) => [category.id, category]));
+    orderedProjects = categories.flatMap((category) =>
+      projects.filter((project) => project.category === category.id),
+    );
+
+    applyStaticTranslations(content);
+    languageSelect.value = currentLanguage;
+    renderPortfolio();
+    renderCapabilities();
+    setupReveal();
+
+    const projectMatch = window.location.hash.match(/^#project\/(.+)$/);
+    if (projectMatch && !caseStudy.hidden) {
+      const project = projectById(decodeURIComponent(projectMatch[1]));
+      if (project) renderCaseStudy(project);
+    }
+
+    setStoredLanguage(currentLanguage);
+    if (updateUrl) {
+      const url = new URL(window.location.href);
+      url.searchParams.set("lang", currentLanguage);
+      history.replaceState(history.state, "", url);
+    }
+  }
 
   function investmentPointMarkup(asset, showLabel = false) {
     const maximumRisk = 34.63;
@@ -50,7 +190,7 @@
       <span
         class="investment-point investment-point--${asset.stance}"
         style="--point-x: ${x.toFixed(2)}%; --point-y: ${y.toFixed(2)}%"
-        title="${asset.name}: ${asset.volatility} volatility, ${asset.cagr} CAGR"
+        title="${asset.name}: ${asset.volatility} ${currentUi.volatility}, ${asset.cagr} ${currentUi.cagr}"
         aria-hidden="true"
       >${showLabel ? `<b>${asset.code}</b>` : ""}</span>`;
   }
@@ -61,19 +201,19 @@
       <div class="investment-cover" role="img" aria-label="${project.cover.alt}">
         <div class="investment-cover-topline">
           <span>PROP20001</span>
-          <span>Research note / 2025</span>
+          <span>${currentUi.researchNote}</span>
         </div>
-        <p class="investment-cover-title">Australian<br />Asset Allocation</p>
+        <p class="investment-cover-title">${currentUi.investmentCoverTitle}</p>
         <div class="investment-cover-plot" aria-hidden="true">
-          <span class="investment-cover-y">Long-run growth</span>
-          <span class="investment-cover-x">Observed volatility →</span>
+          <span class="investment-cover-y">${currentUi.longRunGrowth}</span>
+          <span class="investment-cover-x">${currentUi.observedVolatility}</span>
           ${study.assets.map((asset) => investmentPointMarkup(asset)).join("")}
         </div>
         <div class="investment-cover-stats">
-          <span class="investment-cover-stat"><b>10</b><small>assets</small></span>
-          <span class="investment-cover-stat"><b>12Y</b><small>window</small></span>
-          <span class="investment-cover-stat"><b>04</b><small>metrics</small></span>
-          <span class="investment-cover-stat"><b>+200bp</b><small>stress</small></span>
+          <span class="investment-cover-stat"><b>10</b><small>${currentUi.assets}</small></span>
+          <span class="investment-cover-stat"><b>12Y</b><small>${currentUi.window}</small></span>
+          <span class="investment-cover-stat"><b>04</b><small>${currentUi.metrics}</small></span>
+          <span class="investment-cover-stat"><b>+200bp</b><small>${currentUi.stress}</small></span>
         </div>
       </div>`;
   }
@@ -92,7 +232,7 @@
         <span class="practice-index-number">${twoDigits(index + 1)}</span>
         <span class="practice-index-name">${category.label}</span>
         <span class="practice-index-description">${category.description}</span>
-        <span class="practice-index-count">${twoDigits(count)} projects</span>
+        <span class="practice-index-count">${projectCountLabel(count)}</span>
         <span class="practice-index-arrow" aria-hidden="true">↓</span>
       </a>`;
   }
@@ -125,7 +265,7 @@
           <p class="work-group-number">${twoDigits(index + 1)}</p>
           <h2 id="group-title-${category.id}">${category.label}</h2>
           <p>${category.description}</p>
-          <p class="work-group-count">${twoDigits(categoryProjects.length)} projects</p>
+          <p class="work-group-count">${projectCountLabel(categoryProjects.length)}</p>
         </header>
         <div class="group-projects">
           ${categoryProjects.map(projectCardMarkup).join("")}
@@ -155,10 +295,10 @@
           <h3>${group.title}</h3>
           <p>${group.statement}</p>
         </div>
-        <ul class="capability-skill-list" aria-label="${group.title} methods">
+        <ul class="capability-skill-list" aria-label="${group.title} ${currentUi.methodsAria}">
           ${group.skills.map((skill) => `<li>${skill}</li>`).join("")}
         </ul>
-        <p class="capability-proof"><span>Evidence</span>${group.evidence}</p>
+        <p class="capability-proof"><span>${currentUi.evidence}</span>${group.evidence}</p>
       </article>`;
   }
 
@@ -171,7 +311,7 @@
           <p>${tool.domain}</p>
         </div>
         <p class="tool-workflow">${tool.workflow}</p>
-        <p class="tool-evidence"><span>Evidence</span>${tool.evidence}</p>
+        <p class="tool-evidence"><span>${currentUi.evidence}</span>${tool.evidence}</p>
       </article>`;
   }
 
@@ -197,7 +337,7 @@
       item.type === "video"
         ? `<video controls preload="metadata" poster="${item.poster || ""}" aria-label="${item.alt}">
              <source src="${item.src}" type="video/mp4" />
-             Your browser cannot play this video. <a href="${item.src}">Open the video file</a>.
+             ${currentUi.videoUnsupported} <a href="${item.src}">${currentUi.openVideo}</a>.
            </video>`
         : `<img src="${item.src}" alt="${item.alt}" loading="lazy" decoding="async" />`;
 
@@ -215,7 +355,7 @@
           <img src="${item.src}" alt="${item.alt}" loading="lazy" decoding="async" />
         </div>
         <figcaption>
-          <p class="light-study-counter">Study ${twoDigits(mediaIndex + 1)} / ${twoDigits(total)}</p>
+          <p class="light-study-counter">${currentUi.study} ${twoDigits(mediaIndex + 1)} / ${twoDigits(total)}</p>
           <h3>${item.title}</h3>
           <p class="light-study-principle">${item.principle}</p>
           <p class="light-study-finding">${item.finding}</p>
@@ -253,15 +393,15 @@
         <figure class="light-study-opening">
           <img src="${leadImage.src}" alt="${leadImage.alt}" />
           <figcaption>
-            <span>Opening study</span>
+            <span>${currentUi.openingStudy}</span>
             <span>${leadImage.caption}</span>
           </figcaption>
         </figure>
 
         <section class="light-study-highlights" aria-labelledby="light-highlights-heading">
           <header class="light-study-section-heading">
-            <p>Project highlights</p>
-            <h2 id="light-highlights-heading">What the experiments reveal</h2>
+            <p>${currentUi.projectHighlights}</p>
+            <h2 id="light-highlights-heading">${currentUi.lightHighlightsTitle}</h2>
           </header>
           <div class="light-study-highlight-grid">
             ${study.highlights
@@ -283,22 +423,22 @@
 
         <section class="light-study-comparison" aria-labelledby="light-comparison-heading">
           <header class="light-study-section-heading">
-            <p>Comparative finding</p>
-            <h2 id="light-comparison-heading">One light source, four material responses</h2>
+            <p>${currentUi.comparativeFinding}</p>
+            <h2 id="light-comparison-heading">${currentUi.lightComparisonTitle}</h2>
           </header>
-          <div class="light-study-comparison-table" role="table" aria-label="Material response comparison">
+          <div class="light-study-comparison-table" role="table" aria-label="${currentUi.materialResponseAria}">
             <div class="light-study-comparison-header" role="row">
-              <span role="columnheader">Material</span>
-              <span role="columnheader">Optical behaviour</span>
-              <span role="columnheader">Spatial effect</span>
+              <span role="columnheader">${currentUi.material}</span>
+              <span role="columnheader">${currentUi.opticalBehaviour}</span>
+              <span role="columnheader">${currentUi.spatialEffect}</span>
             </div>
             ${study.comparison
               .map(
                 (row) => `
                   <div class="light-study-comparison-row" role="row">
-                    <strong role="cell">${row.material}</strong>
-                    <span role="cell">${row.behaviour}</span>
-                    <span role="cell">${row.effect}</span>
+                    <strong role="cell" data-label="${currentUi.material}">${row.material}</strong>
+                    <span role="cell" data-label="${currentUi.opticalBehaviour}">${row.behaviour}</span>
+                    <span role="cell" data-label="${currentUi.spatialEffect}">${row.effect}</span>
                   </div>`,
               )
               .join("")}
@@ -327,10 +467,10 @@
       <div class="investment-leader-row" role="row">
         <span class="investment-leader-rank" role="cell">${asset.rank}</span>
         <strong role="cell">${asset.name}</strong>
-        <span role="cell" data-label="Average return">${asset.average}</span>
-        <span role="cell" data-label="CAGR">${asset.cagr}</span>
-        <span role="cell" data-label="Volatility">${asset.volatility}</span>
-        <span role="cell" data-label="Sharpe">${asset.sharpe}</span>
+        <span role="cell" data-label="${currentUi.averageReturn}">${asset.average}</span>
+        <span role="cell" data-label="${currentUi.cagr}">${asset.cagr}</span>
+        <span role="cell" data-label="${currentUi.volatility}">${asset.volatility}</span>
+        <span role="cell" data-label="${currentUi.sharpe}">${asset.sharpe}</span>
         <span class="investment-role investment-role--${asset.stance}" role="cell">${asset.role}</span>
       </div>`;
   }
@@ -354,8 +494,8 @@
       <article class="investment-stress-row">
         <p>${twoDigits(index + 1)}</p>
         <h3>${row.market}</h3>
-        <p><span>Pressure</span>${row.pressure}</p>
-        <p><span>Portfolio response</span>${row.response}</p>
+        <p><span>${currentUi.pressure}</span>${row.pressure}</p>
+        <p><span>${currentUi.portfolioResponse}</span>${row.response}</p>
       </article>`;
   }
 
@@ -365,27 +505,27 @@
     return `
       <div class="investment-study">
         <section class="investment-opening" aria-labelledby="investment-opening-heading">
-          <div class="investment-risk-map" role="img" aria-label="Ten asset classes plotted by volatility and compound annual growth rate">
+          <div class="investment-risk-map" role="img" aria-label="${currentUi.investmentMapAria}">
             <div class="investment-map-topline">
-              <span>Risk / return map</span>
+              <span>${currentUi.riskReturnMap}</span>
               <span>2013–2024</span>
             </div>
             <div class="investment-map-field">
-              <span class="investment-map-y">Higher CAGR</span>
-              <span class="investment-map-x">Higher volatility →</span>
+              <span class="investment-map-y">${currentUi.higherCagr}</span>
+              <span class="investment-map-x">${currentUi.higherVolatility}</span>
               ${study.assets.map((asset) => investmentPointMarkup(asset, true)).join("")}
             </div>
             <div class="investment-map-legend">
-              <span><i class="investment-legend-core"></i>Core</span>
-              <span><i class="investment-legend-growth"></i>Growth</span>
-              <span><i class="investment-legend-diversifier"></i>Diversifier</span>
-              <span><i class="investment-legend-reduce"></i>Reduce</span>
+              <span><i class="investment-legend-core"></i>${currentUi.core}</span>
+              <span><i class="investment-legend-growth"></i>${currentUi.growth}</span>
+              <span><i class="investment-legend-diversifier"></i>${currentUi.diversifier}</span>
+              <span><i class="investment-legend-reduce"></i>${currentUi.reduce}</span>
             </div>
           </div>
           <div class="investment-opening-copy">
-            <p class="investment-eyebrow">Investment thesis</p>
-            <h2 id="investment-opening-heading">Build from risk-adjusted return, not headline growth.</h2>
-            <p>The strongest growth assets also carry the greatest volatility. The recommendation therefore separates a low-volatility core from selective growth and explicit diversifiers.</p>
+            <p class="investment-eyebrow">${currentUi.investmentThesis}</p>
+            <h2 id="investment-opening-heading">${currentUi.investmentOpeningTitle}</h2>
+            <p>${currentUi.investmentOpeningBody}</p>
             <dl class="investment-assumptions">
               ${study.assumptions
                 .map(
@@ -402,10 +542,10 @@
 
         <section class="investment-method" aria-labelledby="investment-method-heading">
           <header class="investment-section-heading">
-            <p>01 / Research system</p>
+            <p>${currentUi.researchSystem}</p>
             <div>
-              <h2 id="investment-method-heading">One comparison frame across unlike assets.</h2>
-              <p>Property, bonds, equities and commodities are normalised into a common decision view. The page exposes the scope and assumptions before presenting the recommendation.</p>
+              <h2 id="investment-method-heading">${currentUi.researchSystemTitle}</h2>
+              <p>${currentUi.researchSystemBody}</p>
             </div>
           </header>
           <div class="investment-metric-grid">
@@ -415,33 +555,33 @@
 
         <section class="investment-ranking" aria-labelledby="investment-ranking-heading">
           <header class="investment-section-heading">
-            <p>02 / Comparative evidence</p>
+            <p>${currentUi.comparativeEvidence}</p>
             <div>
-              <h2 id="investment-ranking-heading">The ranking makes every trade-off visible.</h2>
-              <p>Assets are ordered by submitted Sharpe ratio. Average return and CAGR show reward; volatility shows the cost of pursuing it; the final column translates the evidence into a portfolio role.</p>
+              <h2 id="investment-ranking-heading">${currentUi.rankingTitle}</h2>
+              <p>${currentUi.rankingBody}</p>
             </div>
           </header>
-          <div class="investment-leaderboard" role="table" aria-label="Australian asset class performance comparison">
+          <div class="investment-leaderboard" role="table" aria-label="${currentUi.comparativeEvidence}">
             <div class="investment-leader-header" role="row">
-              <span role="columnheader">Rank</span>
-              <span role="columnheader">Asset class</span>
-              <span role="columnheader">Avg return</span>
-              <span role="columnheader">CAGR</span>
-              <span role="columnheader">Volatility</span>
-              <span role="columnheader">Sharpe</span>
-              <span role="columnheader">Role</span>
+              <span role="columnheader">${currentUi.rank}</span>
+              <span role="columnheader">${currentUi.assetClass}</span>
+              <span role="columnheader">${currentUi.averageReturn}</span>
+              <span role="columnheader">${currentUi.cagr}</span>
+              <span role="columnheader">${currentUi.volatility}</span>
+              <span role="columnheader">${currentUi.sharpe}</span>
+              <span role="columnheader">${currentUi.role}</span>
             </div>
             ${study.assets.map(investmentLeaderMarkup).join("")}
           </div>
-          <p class="investment-data-note">Values reproduce the submitted workbook summary; Sharpe ratios use the stated 2.5% risk-free-rate assumption.</p>
+          <p class="investment-data-note">${currentUi.investmentDataNote}</p>
         </section>
 
         <section class="investment-allocation" aria-labelledby="investment-allocation-heading">
           <header class="investment-section-heading">
-            <p>03 / Portfolio logic</p>
+            <p>${currentUi.portfolioLogic}</p>
             <div>
-              <h2 id="investment-allocation-heading">A role-based allocation, without false precision.</h2>
-              <p>The source recommendation identifies the direction of allocation rather than fixed percentage weights. The portfolio is therefore expressed as a clear hierarchy of core, growth and capital-discipline decisions.</p>
+              <h2 id="investment-allocation-heading">${currentUi.allocationTitle}</h2>
+              <p>${currentUi.allocationBody}</p>
             </div>
           </header>
           <div class="investment-thesis-grid">
@@ -451,9 +591,9 @@
 
         <section class="investment-scenario" aria-labelledby="investment-scenario-heading">
           <header class="investment-scenario-header">
-            <p>04 / Scenario discipline</p>
+            <p>${currentUi.scenarioDiscipline}</p>
             <div>
-              <p class="investment-scenario-kicker">Downside lens / 2025</p>
+              <p class="investment-scenario-kicker">${currentUi.downsideLens}</p>
               <h2 class="investment-scenario-title" id="investment-scenario-heading">${study.scenario.title}</h2>
             </div>
             <p>${study.scenario.intro}</p>
@@ -466,10 +606,10 @@
 
         <section class="investment-evidence" aria-labelledby="investment-evidence-heading">
           <header class="investment-section-heading">
-            <p>05 / Audit trail</p>
+            <p>${currentUi.auditTrail}</p>
             <div>
-              <h2 id="investment-evidence-heading">The report and model remain evidence, not the interface.</h2>
-              <p>Selected pages and the formula-backed summary are kept below the analysis so the original work can be checked without interrupting the reading flow.</p>
+              <h2 id="investment-evidence-heading">${currentUi.auditTitle}</h2>
+              <p>${currentUi.auditBody}</p>
             </div>
           </header>
           <div class="investment-evidence-grid">
@@ -478,7 +618,7 @@
         </section>
 
         <section class="investment-reflection">
-          <p>Reflection</p>
+          <p>${currentUi.reflection}</p>
           <h2>${study.reflection.title}</h2>
           <p>${study.reflection.body}</p>
         </section>
@@ -506,38 +646,40 @@
 
       <section class="case-evidence" aria-labelledby="evidence-heading">
         <header class="case-evidence-heading">
-          <p>Project evidence</p>
-          <h2 id="evidence-heading">Selected process and outcomes</h2>
+          <p>${currentUi.projectEvidence}</p>
+          <h2 id="evidence-heading">${currentUi.selectedProcess}</h2>
         </header>
         <div class="case-gallery">${project.media.map(mediaMarkup).join("")}</div>
       </section>`;
   }
 
   function sourceArchiveMarkup(project) {
-    if (!project.playableUrl && project.sources.length === 0) return "";
+    if (isPublicPortfolio && !project.playableUrl && project.sources.length === 0) return "";
+    const headingLabel = isPublicPortfolio ? currentUi.liveProject : currentUi.sourceArchive;
+    const headingTitle = isPublicPortfolio
+      ? currentUi.interactivePrototypeHeading
+      : currentUi.originalSubmissions;
+    const note = isPublicPortfolio ? currentUi.publicSourceNote : currentUi.sourceNote;
 
     return `
       <section class="source-archive" aria-labelledby="source-heading">
         <div>
-          <p>Live project</p>
-          <h2 id="source-heading">Interactive prototype</h2>
+          <p>${headingLabel}</p>
+          <h2 id="source-heading">${headingTitle}</h2>
         </div>
-        <p class="source-note">
-          The case study above explains the design process. Open the live prototype to experience
-          the interaction directly.
-        </p>
+        <p class="source-note">${note}</p>
         <div class="source-list">
           ${
             project.playableUrl
               ? `<button class="source-link source-link--play" type="button" data-play-game="${project.playableUrl}">
-                  <span>Play Signal Aftershock</span><span aria-hidden="true">↗</span>
+                  <span>${currentUi.playSignal}</span><span aria-hidden="true">↗</span>
                 </button>`
               : ""
           }
           ${project.sources
             .map(
               (source) => `
-                <a class="source-link" href="${source.href}" target="_blank" rel="noreferrer">
+                <a class="source-link" href="${source.href}" ${source.external ? 'target="_blank" rel="noreferrer"' : ""}>
                   <span>${source.label}</span><span aria-hidden="true">↗</span>
                 </a>`,
             )
@@ -575,12 +717,12 @@
           <p class="case-proposition">${project.meaning}</p>
         </header>
 
-        <section class="case-overview" aria-label="Project overview">
-          <p class="case-overview-label">Overview</p>
+        <section class="case-overview" aria-label="${currentUi.projectOverview}">
+          <p class="case-overview-label">${currentUi.overview}</p>
           <p class="case-summary">${project.summary}</p>
           <dl class="case-meta">
-            <div><dt>Role</dt><dd>${project.role}</dd></div>
-            <div><dt>Methods</dt><dd>${project.methods.join(" · ")}</dd></div>
+            <div><dt>${currentUi.role}</dt><dd>${project.role}</dd></div>
+            <div><dt>${currentUi.methods}</dt><dd>${project.methods.join(" · ")}</dd></div>
           </dl>
         </section>
 
@@ -589,7 +731,7 @@
         ${sourceArchiveMarkup(project)}
 
         <a class="case-next" href="#project/${nextProject.id}" data-next-project="${nextProject.id}">
-          <p>Next project / ${categoryMap[nextProject.category].label}</p>
+          <p>${currentUi.nextProject} / ${categoryMap[nextProject.category].label}</p>
           <p><span>${nextProject.shortTitle}</span><span aria-hidden="true">→</span></p>
         </a>
       </article>`;
@@ -675,7 +817,7 @@
     hideGame();
     updateBodyLock();
     if (restoreFocus && lastGameTrigger) {
-      window.setTimeout(() => lastGameTrigger.focus({ preventScroll: true }), 0);
+      lastGameTrigger.focus({ preventScroll: true });
     }
   }
 
@@ -757,10 +899,18 @@
     }
   }
 
-  renderPortfolio();
-  renderCapabilities();
-  setupReveal();
+  const requestedLanguage = new URL(window.location.href).searchParams.get("lang");
+  const initialLanguage = supportedLanguages.includes(requestedLanguage)
+    ? requestedLanguage
+    : supportedLanguages.includes(storedLanguage())
+      ? storedLanguage()
+      : "en";
+  setLanguage(initialLanguage);
   routeFromLocation();
+
+  languageSelect.addEventListener("change", (event) => {
+    setLanguage(event.target.value, { updateUrl: true });
+  });
 
   document.addEventListener("click", (event) => {
     const projectLink = event.target.closest("[data-project]");
