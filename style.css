@@ -182,18 +182,27 @@ button {
 }
 
 .language-control {
-  position: relative;
+  position: fixed;
+  right: max(16px, env(safe-area-inset-right));
+  bottom: max(16px, env(safe-area-inset-bottom));
+  z-index: 400;
   display: flex;
+  min-height: 44px;
   align-items: center;
+  border: 1px solid rgb(10 10 10 / 28%);
+  background: rgb(255 255 255 / 92%);
+  box-shadow: 0 10px 34px rgb(0 0 0 / 12%);
+  backdrop-filter: blur(14px);
 }
 
 .language-control select {
   min-width: 76px;
-  padding: 7px 25px 7px 10px;
-  border: 1px solid var(--line);
+  min-height: 42px;
+  padding: 7px 27px 7px 12px;
+  border: 0;
   border-radius: 0;
   color: var(--ink);
-  background: var(--paper);
+  background: transparent;
   font-size: 0.76rem;
   cursor: pointer;
 }
@@ -3331,7 +3340,7 @@ button {
 
   .language-control select {
     min-width: 62px;
-    padding: 6px 19px 6px 7px;
+    padding: 6px 23px 6px 9px;
     font-size: 0.69rem;
   }
 
@@ -4260,6 +4269,7 @@ button {
   .case-study,
   .page-intro,
   .skip-link,
+  .language-control,
   .resume-view .overlay-close {
     display: none !important;
   }

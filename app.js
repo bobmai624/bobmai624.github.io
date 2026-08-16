@@ -140,7 +140,26 @@
     }
   }
 
+  function captureReadingPosition() {
+    if (!caseStudy.hidden) return { surface: "case", top: caseStudy.scrollTop };
+    if (!resumeView.hidden) return { surface: "resume", top: resumeView.scrollTop };
+    return { surface: "window", top: window.scrollY };
+  }
+
+  function restoreReadingPosition(snapshot) {
+    window.requestAnimationFrame(() => {
+      if (snapshot.surface === "case" && !caseStudy.hidden) {
+        caseStudy.scrollTop = snapshot.top;
+      } else if (snapshot.surface === "resume" && !resumeView.hidden) {
+        resumeView.scrollTop = snapshot.top;
+      } else if (snapshot.surface === "window" && caseStudy.hidden && resumeView.hidden) {
+        window.scrollTo({ top: snapshot.top, left: window.scrollX, behavior: "auto" });
+      }
+    });
+  }
+
   function setLanguage(language, { updateUrl = false } = {}) {
+    const readingPosition = captureReadingPosition();
     currentLanguage = supportedLanguages.includes(language) ? language : "en";
     const content = languageContent[currentLanguage] || languageContent.en;
     currentUi = content.ui;
@@ -174,6 +193,7 @@
       url.searchParams.set("lang", currentLanguage);
       history.replaceState(history.state, "", url);
     }
+    restoreReadingPosition(readingPosition);
   }
 
   function investmentPointMarkup(asset, showLabel = false) {
@@ -1039,13 +1059,15 @@
     items.forEach((item) => observer.observe(item));
   }
 
-  function trapFocus(event, container) {
+  function trapFocus(event, container, additionalElements = []) {
     if (event.key !== "Tab") return;
     const focusable = Array.from(
       container.querySelectorAll(
         'a[href], button:not([disabled]), iframe, video[controls], [tabindex]:not([tabindex="-1"])',
       ),
-    ).filter((element) => !element.hidden);
+    )
+      .concat(additionalElements)
+      .filter((element) => element && !element.hidden && !element.disabled);
     if (!focusable.length) return;
     const first = focusable[0];
     const last = focusable[focusable.length - 1];
@@ -1111,9 +1133,9 @@
       else if (!resumeView.hidden) closeResume();
       return;
     }
-    if (!gameView.hidden) trapFocus(event, gameView);
-    else if (!caseStudy.hidden) trapFocus(event, caseStudy);
-    else if (!resumeView.hidden) trapFocus(event, resumeView);
+    if (!gameView.hidden) trapFocus(event, gameView, [languageSelect]);
+    else if (!caseStudy.hidden) trapFocus(event, caseStudy, [languageSelect]);
+    else if (!resumeView.hidden) trapFocus(event, resumeView, [languageSelect]);
   });
 
   window.addEventListener("popstate", routeFromLocation);
