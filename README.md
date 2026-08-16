@@ -2,7 +2,7 @@
 
 Public portfolio for Bowen Mai, built with plain HTML, CSS and JavaScript.
 
-**Live site:** https://bobmai624.github.io/bowen-mai-portfolio/
+**Live site:** https://bobmai624.github.io/
 
 ## Open the website
 
