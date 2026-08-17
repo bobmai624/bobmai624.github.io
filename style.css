@@ -1209,6 +1209,37 @@ button {
   font-size: 0.75rem;
 }
 
+/* Research-report pages contain small labels and evidence screenshots. Keep
+   their source colour and edge contrast instead of applying the visual-media
+   treatment used elsewhere in the portfolio. */
+.case-article--library .case-feature img,
+.case-article--library .case-media-frame img,
+.case-article--library .case-media-frame video {
+  filter: none;
+}
+
+.case-article--library .case-media-frame img {
+  image-rendering: auto;
+}
+
+.case-article--library .case-gallery {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.case-article--library .case-media--wide {
+  grid-column: 1;
+}
+
+.case-article--library .case-media--source-limited {
+  width: min(100%, 840px);
+  justify-self: center;
+}
+
+.case-article--library .case-media--video-native {
+  width: min(100%, 1280px);
+  justify-self: center;
+}
+
 .case-article--investment {
   --finance-ink: #101713;
   --finance-paper: #f1f2ed;

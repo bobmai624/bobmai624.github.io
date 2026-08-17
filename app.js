@@ -385,7 +385,7 @@
   }
 
   function mediaMarkup(item) {
-    const wide = item.layout === "wide" ? " case-media--wide" : "";
+    const layoutClass = item.layout ? ` case-media--${item.layout}` : "";
     const media =
       item.type === "video"
         ? `<video controls preload="metadata" poster="${item.poster || ""}" aria-label="${item.alt}">
@@ -395,7 +395,7 @@
         : `<img src="${item.src}" alt="${item.alt}" loading="lazy" decoding="async" />`;
 
     return `
-      <figure class="case-media${wide}">
+      <figure class="case-media${layoutClass}">
         <div class="case-media-frame">${media}</div>
         <figcaption>${item.caption || ""}</figcaption>
       </figure>`;
@@ -749,6 +749,7 @@
       "case-article",
       project.lightStudy ? "case-article--light-performance" : "",
       project.investmentStudy ? "case-article--investment" : "",
+      project.id === "library-evaluation" ? "case-article--library" : "",
     ]
       .filter(Boolean)
       .join(" ");

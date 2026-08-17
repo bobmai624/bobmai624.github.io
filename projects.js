@@ -187,6 +187,7 @@ window.PORTFOLIO_PROJECTS = [
         src: "assets/projects/library/03-eye-tracking.jpg",
         alt: "Eye-tracking diagram showing attention around a journal page",
         caption: "Gaze evidence explained why a small download control was missed.",
+        layout: "source-limited",
       },
       {
         type: "image",
@@ -213,7 +214,7 @@ window.PORTFOLIO_PROJECTS = [
         poster: "media/library-video-poster.png",
         alt: "Video presentation of the usability evaluation",
         caption: "Evaluation presentation · local video",
-        layout: "wide",
+        layout: "video-native",
       },
     ],
     sources: [
