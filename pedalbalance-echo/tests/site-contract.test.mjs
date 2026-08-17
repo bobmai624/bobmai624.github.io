@@ -21,6 +21,17 @@ test('three pages share navigation, language controls and prototype access', asy
   }
 });
 
+test('all pages version the shared stylesheet so deployed layout fixes bypass stale browser caches', async () => {
+  const stylesheetHrefs = [];
+  for (const page of pages) {
+    const html = await readFile(path.join(root, page), 'utf8');
+    const match = html.match(/href="(assets\/css\/site\.css\?v=[^"]+)"/);
+    assert.ok(match, `${page} must version the shared stylesheet`);
+    stylesheetHrefs.push(match[1]);
+  }
+  assert.equal(new Set(stylesheetHrefs).size, 1, 'all pages must request the same stylesheet version');
+});
+
 test('source registry starts as valid structured data', async () => {
   const sources = JSON.parse(await readFile(path.join(root, 'data/sources.json'), 'utf8'));
   assert.ok(Array.isArray(sources));

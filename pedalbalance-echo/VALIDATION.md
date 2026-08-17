@@ -6,7 +6,7 @@ Status: passed
 
 ## Completed automated checks
 
-- Core model/content suite: 49/49 passed after the nine-method presentation redesign.
+- Core model/content suite: 50/50 passed after the nine-method presentation redesign and title-boundary regression check.
 - Hero model: two rigid planar leg links per side, fixed hip joints, exactly opposite pedal targets, forward-bending knees, fixed foot-to-pedal attachment, bounded values and complete-revolution cue logic.
 - Experiment model: deterministic synthetic data, invalid-revolution exclusion, cue-dose summary, neutral `simulated_matched_other` provenance.
 - Prototype state machine: calibration gate, valid setup sequence, global STOP, fail-safe output clearing, replay provenance.
@@ -14,7 +14,7 @@ Status: passed
 - Prototype flow: nine participant-facing scenes, complete Chinese/English/Japanese action-system-check copy, cue/no-cue controls, past-self provenance and semantic CJK title breaks.
 - Presentation system: nine distinct visual grammars—closed loop, modular mechanism, causal sequence, design-space matrix, system facts, task conditions, replay provenance, study timeline and evidence comparison.
 - Final validator checks local assets, duplicate IDs, image alternatives, HTTPS sources, three-language counts, the nine-scene prototype story, safety boundaries and handoff documentation.
-- Complete suite after final handoff validation: 49/49 passed.
+- Complete suite after final handoff validation: 50/50 passed.
 
 ## Browser visual QA
 
