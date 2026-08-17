@@ -27,6 +27,24 @@ Official documentation, tutorial videos, product media and open-source code are 
 
 The revised Page 1 animation is an original Canvas reconstruction informed by three sources: Park, Caldwell and Umberger's planar OpenSim pedalling model; the OpenSim Educational Cycling Model; and Sauren et al.'s lower-limb cycling-animation paper. The site borrows the scientific abstraction—fixed pelvis, rigid leg segments, feet constrained to opposite pedals—not any paper video, figure, OpenSim render or third-party SVG asset. Exact citations, licences and verification dates are recorded in `data/sources.json` as `PAPER-PARK-PEDALING`, `DOC-OPENSIM-CYCLING` and `PAPER-SAUREN-ANIMATION`.
 
+## Nine presentation-method influences
+
+The interactive model uses nine academic projects as presentation references. It does not copy their figures, videos, slides, interface assets or validation claims; every displayed mechanism is an original HTML/CSS representation of PedalBalance Echo.
+
+| Primary source | Presentation method translated into PedalBalance |
+|---|---|
+| [Proprioceptive Interaction](https://hpi.de/baudisch/projects/proprioceptive.html) | Define bodily input and output with one closed-loop diagram. |
+| [HERMITS](https://tangible.media.mit.edu/project/hermits/) | Explain an invisible system as modular mechanical units with one role each. |
+| [Muscle-Propelled Force Feedback](https://hpi.de/baudisch/projects/muscle-propelled-force-feedback.html) | Separate normal action, machine intervention and voluntary response in three frames. |
+| [SwarmHaptics](https://shape.stanford.edu/research/2019-SwarmHaptics/) | Map the design space before showing scenarios and study outcomes. |
+| [Wireality](https://www.futureinterfaces.com/research/2020/wireality) | Put quantified system facts directly beside the mechanism. |
+| [PantoGuide](https://shape.stanford.edu/research/pantoguide/) | Begin with the participant's real task, then compare clear guidance conditions. |
+| [Linked-Stick](https://tangible.media.mit.edu/project/linkedstick/) | Make cross-time physical replay and source identity visible. |
+| [Breaking It Down Is Better](https://pmc.ncbi.nlm.nih.gov/articles/PMC4015469/) | Put baseline, training, withdrawal, retention and transfer on one timeline. |
+| [Robotic Assistance vs Visual Demonstration](https://pmc.ncbi.nlm.nih.gov/articles/PMC1569852/) | Separate assisted performance from unaided reproduction and learning evidence. |
+
+The exact lineage records are stored in `data/sources.json` under the `METHOD-*` identifiers. These sources support communication structure and experimental caution; they do not validate this planned PedalBalance study.
+
 ## Publication action
 
 Before adding this project to a public portfolio, replace the six product photographs with original photographs of the purchased parts and installed prototype. Keep the source links because they document selection, limitations and learning lineage.

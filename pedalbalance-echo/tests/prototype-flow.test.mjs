@@ -6,19 +6,40 @@ import {
   prototypeLabels
 } from '../assets/js/prototype-flow.js';
 
-test('the walkthrough follows seven participant-facing experiment stages', () => {
+const expectedKeys = [
+  'LOOP',
+  'MODULES',
+  'CUE_SEQUENCE',
+  'DESIGN_SPACE',
+  'SYSTEM_FACTS',
+  'TASK_CONDITIONS',
+  'REPLAY',
+  'TIMELINE',
+  'EVIDENCE'
+];
+
+const expectedVisualKinds = [
+  'loop',
+  'modules',
+  'sequence',
+  'matrix',
+  'metrics',
+  'conditions',
+  'replay',
+  'timeline',
+  'evidence'
+];
+
+test('the walkthrough synthesizes nine academic presentation methods into one story', () => {
   assert.deepEqual(PROTOTYPE_STEPS.map(({ key }) => key), [
-    'QUESTION',
-    'SETUP',
-    'BASELINE',
-    'TRAINING',
-    'NO_CUE',
-    'REPLAY',
-    'RESULTS'
+    ...expectedKeys
   ]);
+  assert.deepEqual(PROTOTYPE_STEPS.map(({ visualKind }) => visualKind), expectedVisualKinds);
+  assert.equal(new Set(PROTOTYPE_STEPS.map(({ referenceName }) => referenceName)).size, 9);
+  for (const step of PROTOTYPE_STEPS) assert.match(step.referenceUrl, /^https:\/\//);
 });
 
-test('each stage explains action, system behaviour and experimental check in all languages', () => {
+test('each scene resolves complete nested presentation content in all languages', () => {
   for (const language of ['zh', 'en', 'ja']) {
     for (let index = 0; index < PROTOTYPE_STEPS.length; index += 1) {
       const view = getPrototypeStep(index, language);
@@ -30,28 +51,36 @@ test('each stage explains action, system behaviour and experimental check in all
         'action',
         'system',
         'check',
-        'inputLabel',
-        'decisionLabel',
-        'cueLabel',
-        'outcomeLabel'
+        'visualTitle',
+        'referenceMethod'
       ]) {
         assert.equal(typeof view[field], 'string', `${language} stage ${index + 1} ${field}`);
         assert.ok(view[field].trim().length > 0, `${language} stage ${index + 1} ${field} is empty`);
+      }
+      assert.ok(Array.isArray(view.visualItems), `${language} stage ${index + 1} visualItems`);
+      assert.ok(view.visualItems.length >= 2, `${language} stage ${index + 1} needs visual items`);
+      for (const item of view.visualItems) {
+        assert.equal(typeof item.label, 'string');
+        assert.equal(typeof item.detail, 'string');
+        assert.ok(item.label.trim());
+        assert.ok(item.detail.trim());
       }
     }
   }
 });
 
-test('training, no-cue and replay stages expose the experiment controls', () => {
-  const training = getPrototypeStep(3, 'en');
-  const noCue = getPrototypeStep(4, 'en');
-  const replay = getPrototypeStep(5, 'en');
+test('cue, replay and evidence scenes preserve the experiment controls', () => {
+  const cue = getPrototypeStep(2, 'en');
+  const replay = getPrototypeStep(6, 'en');
+  const evidence = getPrototypeStep(8, 'en');
 
-  assert.equal(training.cueSide, 'left');
-  assert.equal(training.outputMode, 'cue');
-  assert.equal(noCue.cueSide, 'none');
-  assert.equal(noCue.outputMode, 'off');
+  assert.equal(cue.cueSide, 'left');
+  assert.equal(cue.outputMode, 'cue');
   assert.equal(replay.traceProvenance, 'past_self');
+  assert.equal(evidence.cueSide, 'none');
+  assert.equal(evidence.outputMode, 'off');
+  assert.match(evidence.visualItems[0].label, /assisted performance/i);
+  assert.match(evidence.visualItems[1].label, /unaided learning/i);
 });
 
 test('global prototype controls are localized', () => {
@@ -71,7 +100,7 @@ test('Chinese and Japanese headings carry semantic line breaks for narrow screen
 });
 
 test('unknown language and out-of-range indexes fall back safely', () => {
-  assert.equal(getPrototypeStep(-20, 'unknown').key, 'QUESTION');
-  assert.equal(getPrototypeStep(999, 'en').key, 'RESULTS');
+  assert.equal(getPrototypeStep(-20, 'unknown').key, 'LOOP');
+  assert.equal(getPrototypeStep(999, 'en').key, 'EVIDENCE');
   assert.equal(prototypeLabels('unknown').next, prototypeLabels('zh').next);
 });

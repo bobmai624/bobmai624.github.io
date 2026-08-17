@@ -352,5 +352,104 @@
     "publicUse": "cleared",
     "replacementStatus": "Lower-limb-only presentation informed an original redraw; no animation asset copied.",
     "verifiedDate": "2026-08-17"
+  },
+  {
+    "id": "METHOD-PROPRIOCEPTIVE",
+    "title": "Proprioceptive Interaction",
+    "type": "presentation-method",
+    "sourceUrl": "https://hpi.de/baudisch/projects/proprioceptive.html",
+    "licence": "Link and citation only",
+    "attribution": "Lopes et al., Hasso Plattner Institute, CHI 2015.",
+    "publicUse": "link-only",
+    "replacementStatus": "Closed-loop presentation informed an original PedalBalance diagram; no source media copied.",
+    "verifiedDate": "2026-08-17"
+  },
+  {
+    "id": "METHOD-HERMITS",
+    "title": "HERMITS",
+    "type": "presentation-method",
+    "sourceUrl": "https://tangible.media.mit.edu/project/hermits/",
+    "licence": "Link and citation only",
+    "attribution": "Nakagaki et al., MIT Tangible Media Group, UIST.",
+    "publicUse": "link-only",
+    "replacementStatus": "Modular mechanism presentation informed original CSS module diagrams; no source media copied.",
+    "verifiedDate": "2026-08-17"
+  },
+  {
+    "id": "METHOD-MUSCLE-FORCE",
+    "title": "Muscle-Propelled Force Feedback",
+    "type": "presentation-method",
+    "sourceUrl": "https://hpi.de/baudisch/projects/muscle-propelled-force-feedback.html",
+    "licence": "Link and citation only",
+    "attribution": "Lopes and Baudisch, Hasso Plattner Institute, CHI 2013.",
+    "publicUse": "link-only",
+    "replacementStatus": "Three-frame causality informed an original PedalBalance sequence; no source media copied.",
+    "verifiedDate": "2026-08-17"
+  },
+  {
+    "id": "METHOD-SWARMHAPTICS",
+    "title": "SwarmHaptics",
+    "type": "presentation-method",
+    "sourceUrl": "https://shape.stanford.edu/research/2019-SwarmHaptics/",
+    "licence": "Link and citation only",
+    "attribution": "Kim and Follmer, Stanford Shape Lab, CHI 2019.",
+    "publicUse": "link-only",
+    "replacementStatus": "Design-space organization informed an original PedalBalance variable matrix; no source media copied.",
+    "verifiedDate": "2026-08-17"
+  },
+  {
+    "id": "METHOD-WIREALITY",
+    "title": "Wireality",
+    "type": "presentation-method",
+    "sourceUrl": "https://www.futureinterfaces.com/research/2020/wireality",
+    "licence": "Link and citation only",
+    "attribution": "Fang et al., CMU Future Interfaces Group, CHI 2020.",
+    "publicUse": "link-only",
+    "replacementStatus": "Mechanism-adjacent metrics informed original PedalBalance fact cards; no source media copied.",
+    "verifiedDate": "2026-08-17"
+  },
+  {
+    "id": "METHOD-PANTOGUIDE",
+    "title": "PantoGuide",
+    "type": "presentation-method",
+    "sourceUrl": "https://shape.stanford.edu/research/pantoguide/",
+    "licence": "Link and citation only",
+    "attribution": "Chase et al., Stanford Shape Lab, ASSETS 2020.",
+    "publicUse": "link-only",
+    "replacementStatus": "Task-first condition framing informed original PedalBalance condition cards; no source media copied.",
+    "verifiedDate": "2026-08-17"
+  },
+  {
+    "id": "METHOD-LINKED-STICK",
+    "title": "Linked-Stick",
+    "type": "presentation-method",
+    "sourceUrl": "https://tangible.media.mit.edu/project/linkedstick/",
+    "licence": "Link and citation only",
+    "attribution": "Nakagaki et al., MIT Tangible Media Group, CHI.",
+    "publicUse": "link-only",
+    "replacementStatus": "Cross-time physical replay framing informed an original PedalBalance provenance visual; no source media copied.",
+    "verifiedDate": "2026-08-17"
+  },
+  {
+    "id": "METHOD-DECOMPOSITION",
+    "title": "Breaking It Down Is Better",
+    "type": "presentation-method",
+    "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4015469/",
+    "licence": "Open-access article; link and citation used",
+    "attribution": "Klein, Spencer and Reinkensmeyer, IEEE TNSRE 2012.",
+    "publicUse": "link-only",
+    "replacementStatus": "Full phase sequencing informed an original PedalBalance study timeline; no source media copied.",
+    "verifiedDate": "2026-08-17"
+  },
+  {
+    "id": "METHOD-ROBOT-LEARNING",
+    "title": "Learning to Perform a New Movement with Robotic Assistance",
+    "type": "presentation-method",
+    "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1569852/",
+    "licence": "Open-access article; link and citation used",
+    "attribution": "Liu, Cramer and Reinkensmeyer, Journal of NeuroEngineering and Rehabilitation 2006.",
+    "publicUse": "link-only",
+    "replacementStatus": "Unaided-reproduction evidence framing informed an original PedalBalance comparison; no source media copied.",
+    "verifiedDate": "2026-08-17"
   }
 ]

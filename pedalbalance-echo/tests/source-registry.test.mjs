@@ -48,3 +48,28 @@ test('scientific linkage visual records its biomechanics references without copy
     assert.equal(source.verifiedDate, '2026-08-17');
   }
 });
+
+test('nine presentation influences have primary-source lineage without copied media', async () => {
+  const sources = JSON.parse(await readFile(path.join(root, 'data/sources.json'), 'utf8'));
+  const byId = new Map(sources.map((source) => [source.id, source]));
+  const ids = [
+    'METHOD-PROPRIOCEPTIVE',
+    'METHOD-HERMITS',
+    'METHOD-MUSCLE-FORCE',
+    'METHOD-SWARMHAPTICS',
+    'METHOD-WIREALITY',
+    'METHOD-PANTOGUIDE',
+    'METHOD-LINKED-STICK',
+    'METHOD-DECOMPOSITION',
+    'METHOD-ROBOT-LEARNING'
+  ];
+  for (const id of ids) {
+    const source = byId.get(id);
+    assert.ok(source, `missing presentation influence ${id}`);
+    assert.match(source.sourceUrl, /^https:\/\//);
+    assert.equal(source.type, 'presentation-method');
+    assert.equal(source.publicUse, 'link-only');
+    assert.match(source.replacementStatus, /original|no source media copied/i);
+    assert.equal(source.verifiedDate, '2026-08-17');
+  }
+});

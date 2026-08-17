@@ -56,13 +56,15 @@ test('simulation, study status and stimulation boundaries are explicit', async (
   assert.doesNotMatch(allPages + prototype, /EMS.{0,40}(wiring|current|pulse width|electrode placement)/i);
 });
 
-test('prototype exposes the complete seven-stage experiment story', () => {
+test('prototype exposes the complete nine-method experiment story', () => {
   assert.deepEqual(PROTOTYPE_STEPS.map(({ key }) => key), [
-    'QUESTION', 'SETUP', 'BASELINE', 'TRAINING', 'NO_CUE', 'REPLAY', 'RESULTS'
+    'LOOP', 'MODULES', 'CUE_SEQUENCE', 'DESIGN_SPACE', 'SYSTEM_FACTS',
+    'TASK_CONDITIONS', 'REPLAY', 'TIMELINE', 'EVIDENCE'
   ]);
-  assert.match(getPrototypeStep(1, 'en').system, /500 ms/);
-  assert.equal(getPrototypeStep(5, 'en').traceProvenance, 'past_self');
-  assert.match(getPrototypeStep(6, 'en').summary, /illustrative/i);
+  assert.match(getPrototypeStep(0, 'en').summary, /pressure|pedal/i);
+  assert.equal(getPrototypeStep(6, 'en').traceProvenance, 'past_self');
+  assert.match(getPrototypeStep(8, 'en').summary, /illustrative|planned/i);
+  assert.equal(new Set(PROTOTYPE_STEPS.map(({ referenceName }) => referenceName)).size, 9);
 });
 
 test('handoff documentation includes local preview and verification evidence', async () => {
@@ -70,6 +72,6 @@ test('handoff documentation includes local preview and verification evidence', a
   const validation = await text('VALIDATION.md');
   assert.match(readme, /python3 -m http\.server/);
   assert.match(readme, /manufacturer.*image/i);
-  assert.match(validation, /43\/43/);
+  assert.match(validation, /49\/49/);
   assert.match(validation, /browser visual/i);
 });

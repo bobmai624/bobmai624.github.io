@@ -24,7 +24,7 @@ python3 -m http.server 9876
 2. `prototype-making.html` — 制作：三节点系统、零件照片、安装图、数据管线、可复用代码、教学视频、14天日程和预算。
 3. `experiment-capabilities.html` — 实验与能力：校准、C1条件、E2轨迹、指标、故障处理、安全、伦理以及12项能力证据。
 
-每页右上角可切换中文、英文和日文。“Open Interactive Prototype”会打开11幕全屏演示；STOP OUTPUT在每一幕都可用。
+每页右上角可切换中文、英文和日文。“Open Interactive Prototype”会打开九幕全屏演示；九幕分别采用闭环、模块、三帧因果、变量矩阵、系统数字、任务条件、轨迹来源、实验时间线和学习证据对照；STOP OUTPUT在每一幕都可用。
 
 ## 文件结构
 

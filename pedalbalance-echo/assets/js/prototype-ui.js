@@ -9,6 +9,38 @@ function currentLanguage() {
   return 'zh';
 }
 
+const VISUAL_KINDS = new Set([
+  'loop', 'modules', 'sequence', 'matrix', 'metrics',
+  'conditions', 'replay', 'timeline', 'evidence'
+]);
+
+function escapeHTML(value) {
+  return String(value ?? '')
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#039;');
+}
+
+export function sceneVisualMarkup(step) {
+  const visualKind = VISUAL_KINDS.has(step.visualKind) ? step.visualKind : 'loop';
+  const items = Array.isArray(step.visualItems) ? step.visualItems : [];
+  return `
+    <section class="academic-visual academic-${visualKind}" data-visual-kind="${visualKind}" aria-label="${escapeHTML(step.visualTitle)}">
+      <h3>${escapeHTML(step.visualTitle)}</h3>
+      <div class="academic-items">
+        ${items.map((visualItem, index) => `
+          <article style="--item-index:${index}">
+            <i class="academic-marker" aria-hidden="true"></i>
+            <small>${String(index + 1).padStart(2, '0')}</small>
+            <b>${escapeHTML(visualItem.label)}</b>
+            <span>${escapeHTML(visualItem.detail)}</span>
+          </article>`).join('')}
+      </div>
+    </section>`;
+}
+
 function buildOverlay() {
   const overlay = document.createElement('div');
   overlay.className = 'prototype-overlay';
@@ -16,7 +48,7 @@ function buildOverlay() {
   overlay.innerHTML = `
     <section class="prototype-dialog" role="dialog" aria-modal="true" aria-labelledby="prototype-title">
       <header class="prototype-header">
-        <div><b>PEDALBALANCE ECHO</b><span data-prototype-counter>01 / 07</span></div>
+        <div><b>PEDALBALANCE ECHO</b><span data-prototype-counter>01 / 09</span></div>
         <div class="prototype-header-tools">
           <div class="prototype-languages">
             <button type="button" data-prototype-language data-language="zh" aria-pressed="true">中文</button>
@@ -41,28 +73,12 @@ function buildOverlay() {
           </div>
           <div class="prototype-visual">
             <span class="simulation-stamp" data-simulation-label></span>
-            <div class="prototype-flow-grid">
-              <article class="flow-card flow-input" data-flow-card="input">
-                <span data-flow-input-title></span>
-                <strong data-flow-input></strong>
-                <div class="prototype-bars" aria-hidden="true"><i data-bar-left></i><i data-bar-right></i></div>
-              </article>
-              <article class="flow-card flow-decision" data-flow-card="decision">
-                <span data-flow-decision-title></span>
-                <strong data-flow-decision></strong>
-                <div class="decision-rule" aria-hidden="true"><i></i><i></i><i></i></div>
-              </article>
-              <article class="flow-card flow-cue" data-flow-card="cue">
-                <span data-flow-cue-title></span>
-                <strong data-flow-cue></strong>
-                <div class="ankle-pair" aria-hidden="true"><i class="ankle ankle-left">L</i><i class="ankle ankle-right">R</i></div>
-              </article>
-              <article class="flow-card flow-outcome" data-flow-card="outcome">
-                <span data-flow-outcome-title></span>
-                <strong data-flow-outcome></strong>
-                <div class="outcome-trace" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
-              </article>
+            <div class="prototype-reference">
+              <span data-reference-label></span>
+              <p data-reference-method></p>
+              <a data-reference-link target="_blank" rel="noreferrer"></a>
             </div>
+            <div class="prototype-scene-visual" data-scene-visual></div>
             <div class="prototype-machine-strip">
               <span data-machine-title></span>
               <b data-machine-state></b>
@@ -81,26 +97,26 @@ function buildOverlay() {
 
 function driveMachine(machine, stepKey) {
   machine.dispatch('RESET');
-  if (stepKey === 'QUESTION') return machine.snapshot();
+  if (stepKey === 'LOOP') return machine.snapshot();
 
   machine.dispatch('ACK_SAFETY');
   machine.dispatch('DISCOVER');
   machine.dispatch('DEVICE_READY');
-  if (stepKey === 'SETUP') return machine.snapshot();
+  if (stepKey === 'MODULES' || stepKey === 'SYSTEM_FACTS') return machine.snapshot();
 
   machine.dispatch('CALIBRATION_COMPLETE');
-  if (stepKey === 'BASELINE') return machine.snapshot();
+  if (stepKey === 'TASK_CONDITIONS') return machine.snapshot();
 
   machine.dispatch('BASELINE_COMPLETE');
-  if (stepKey === 'TRAINING') {
+  if (stepKey === 'CUE_SEQUENCE' || stepKey === 'DESIGN_SPACE') {
     machine.dispatch('START_TRAINING');
-    machine.dispatch({ type: 'SET_CUE', side: 'left' });
-  } else if (stepKey === 'NO_CUE') {
+    if (stepKey === 'CUE_SEQUENCE') machine.dispatch({ type: 'SET_CUE', side: 'left' });
+  } else if (stepKey === 'TIMELINE') {
     machine.dispatch('START_TRAINING');
     machine.dispatch('END_TRAINING');
   } else if (stepKey === 'REPLAY') {
     machine.dispatch({ type: 'START_REPLAY', provenance: 'past_self' });
-  } else if (stepKey === 'RESULTS') {
+  } else if (stepKey === 'EVIDENCE') {
     machine.dispatch('EXPORT');
   }
   return machine.snapshot();
@@ -131,6 +147,7 @@ export function mountPrototypeUI() {
 
     overlay.dataset.focus = step.focus;
     overlay.dataset.output = step.outputMode;
+    overlay.dataset.visualKind = step.visualKind;
     overlay.querySelector('[data-prototype-counter]').textContent = `${String(stepIndex + 1).padStart(2, '0')} / ${String(PROTOTYPE_STEPS.length).padStart(2, '0')}`;
     overlay.querySelector('[data-prototype-close]').textContent = labels.close;
     overlay.querySelector('[data-prototype-close]').setAttribute('aria-label', labels.close.replace(' ×', ''));
@@ -150,14 +167,11 @@ export function mountPrototypeUI() {
     overlay.querySelector('[data-simulation-label]').textContent = labels.simulation;
     overlay.querySelector('.prototype-progress').setAttribute('aria-label', labels.stepsLabel);
     overlay.querySelector('.prototype-visual').setAttribute('aria-label', labels.visualLabel);
-    overlay.querySelector('[data-flow-input-title]').textContent = labels.inputTitle;
-    overlay.querySelector('[data-flow-decision-title]').textContent = labels.decisionTitle;
-    overlay.querySelector('[data-flow-cue-title]').textContent = labels.cueTitle;
-    overlay.querySelector('[data-flow-outcome-title]').textContent = labels.outcomeTitle;
-    overlay.querySelector('[data-flow-input]').textContent = step.inputLabel;
-    overlay.querySelector('[data-flow-decision]').textContent = step.decisionLabel;
-    overlay.querySelector('[data-flow-cue]').textContent = step.cueLabel;
-    overlay.querySelector('[data-flow-outcome]').textContent = step.outcomeLabel;
+    overlay.querySelector('[data-reference-label]').textContent = labels.referenceLabel;
+    overlay.querySelector('[data-reference-method]').textContent = step.referenceMethod;
+    overlay.querySelector('[data-reference-link]').textContent = `${step.referenceName} ↗`;
+    overlay.querySelector('[data-reference-link]').href = step.referenceUrl;
+    overlay.querySelector('[data-scene-visual]').innerHTML = sceneVisualMarkup(step);
     overlay.querySelector('[data-machine-title]').textContent = labels.machineTitle;
     overlay.querySelector('[data-machine-state]').textContent = step.machineState;
     overlay.querySelector('[data-prototype-stop]').textContent = labels.stop;
@@ -174,8 +188,6 @@ export function mountPrototypeUI() {
 
     overlay.classList.toggle('is-cue-left', step.cueSide === 'left');
     overlay.classList.toggle('is-cue-right', step.cueSide === 'right');
-    overlay.querySelector('[data-bar-left]').style.height = `${step.values[0]}%`;
-    overlay.querySelector('[data-bar-right]').style.height = `${step.values[1]}%`;
   };
 
   const close = () => {
