@@ -146,8 +146,8 @@ window.PORTFOLIO_PROJECTS = [
       "Five-person group project · research planning, moderated testing, observation, analysis and report synthesis were completed collaboratively.",
     methods: ["5-second test", "Moderated usability testing", "Eye tracking", "Thematic synthesis"],
     cover: {
-      src: "assets/projects/library/cover-eye-tracking.jpg",
-      alt: "Eye-tracking evidence from the University of Melbourne Library usability evaluation",
+      src: "assets/projects/library/cover-session.jpg",
+      alt: "Two moderated usability-test participants working through University of Melbourne Library tasks",
     },
     sections: [
       {
@@ -169,6 +169,124 @@ window.PORTFOLIO_PROJECTS = [
           "Recommendations were prioritised and traced to observed findings, including a guided booking sequence, clearer eligibility errors, explicit labels, matched-search feedback and a visible Select Space action.",
       },
     ],
+    libraryStudy: {
+      cover: {
+        eyebrow: "INFO20004 · Mixed-method evaluation",
+        title: "Observe.\nTrace.\nPrioritise.",
+        body:
+          "A usability study that follows one clear chain: representative tasks, observed behaviour, converging evidence and design action.",
+      },
+      metrics: [
+        { value: "14", label: "online first-impression participants" },
+        { value: "5", label: "moderated lab participants" },
+        { value: "5", label: "representative library tasks" },
+        { value: "8", label: "prioritised recommendations" },
+      ],
+      journey: {
+        label: "01 / Evaluation journey",
+        title: "The study moves from perception to performance.",
+        body:
+          "The online test checked what the homepage communicated at a glance. The lab sessions then tested whether students could complete everyday library tasks, while timing, observation, think-aloud comments and gaze behaviour explained where each pathway broke down.",
+        steps: [
+          {
+            number: "01",
+            title: "First impression",
+            body: "A five-second exposure checked audience, purpose and immediate information hierarchy.",
+          },
+          {
+            number: "02",
+            title: "Task performance",
+            body: "Five students attempted room booking, APA 7, databases, past exams and journal download.",
+          },
+          {
+            number: "03",
+            title: "Behaviour evidence",
+            body: "Completion, time, difficulty, think-aloud notes and gaze paths were read together.",
+          },
+          {
+            number: "04",
+            title: "Design priority",
+            body: "Eight recommendations were linked to findings, staged and assigned a user priority.",
+          },
+        ],
+      },
+      findings: {
+        label: "02 / Evidence synthesis",
+        title: "Three patterns explain the main friction.",
+        body:
+          "The sample is intentionally small, so each claim remains tied to the observed participants. Together, task time, moderated behaviour and gaze evidence reveal where the interface failed to communicate sequence, relevance or action.",
+        items: [
+          {
+            stat: "5 / 5",
+            title: "Room booking became the critical path.",
+            body:
+              "Every lab participant struggled after reaching the booking area, and one could not finish within the eight-minute limit. The problem was not a single broken button; it was an unclear sequence with competing controls and weak progress feedback.",
+            image: "assets/projects/library/evidence-task-time.jpg",
+            alt: "Bar chart comparing average completion time across five library tasks",
+            caption: "Room booking took the longest average time; one incomplete attempt was excluded from the chart.",
+          },
+          {
+            stat: "4 / 5",
+            title: "Search results did not confirm relevance.",
+            body:
+              "Four participants were unsure whether they had found the correct mathematics databases. Results existed, but the interface did not clearly say why those results matched the query or whether the task was complete.",
+            image: "assets/projects/library/evidence-search-heatmap.jpg",
+            alt: "Eye-tracking heatmap over a University Library database result page",
+            caption: "Attention dispersed across the database page instead of settling on a clear relevance cue.",
+          },
+          {
+            stat: "F1–F8",
+            title: "Visible controls still lacked meaning.",
+            body:
+              "Booking heatmaps show attention spread across navigation, fields and status areas. Observation exposed the deeper issue: unlabeled icons, hidden eligibility rules and weak confirmation forced participants into trial and error.",
+            image: "assets/projects/library/evidence-booking-heatmap.jpg",
+            alt: "Two eye-tracking heatmaps from the room-booking task",
+            caption: "The evidence was used diagnostically: it supported observed confusion rather than replacing task data.",
+          },
+        ],
+      },
+      recommendations: {
+        label: "03 / Design handoff",
+        title: "Eight findings become eight concrete interface moves.",
+        body:
+          "The final handoff separates critical booking actions from search and labelling improvements. Each recommendation retains its report identifier so the proposed change can be traced back to the submitted evidence.",
+        groups: [
+          {
+            label: "Priority A · Critical paths",
+            items: [
+              { id: "R1", title: "Guide booking step by step", body: "Expose sequence and progress before users enter the next stage." },
+              { id: "R2", title: "Reveal Create Reservation at the right moment", body: "Make the primary action prominent only when it is applicable." },
+              { id: "R3", title: "Explain ineligible spaces", body: "Prevent dead ends with direct eligibility and recovery messages." },
+              { id: "R8", title: "Replace the green add icon", body: "Use an explicit Select Space button instead of an ambiguous symbol." },
+            ],
+          },
+          {
+            label: "Priority B · Search and language",
+            items: [
+              { id: "R4", title: "Rename Re:Cite", body: "Use Referencing and Citations so the destination is immediately legible." },
+              { id: "R5", title: "Confirm the subject match", body: "Show a message such as “Matched to: Mathematics” beside results." },
+              { id: "R6", title: "Surface All Filters", body: "Increase the visibility of the control needed to find past exams." },
+              { id: "R7", title: "Label utility icons", body: "Pair functions with words such as Download PDF instead of icon-only actions." },
+            ],
+          },
+        ],
+      },
+      limitation: {
+        label: "Scope note",
+        title: "Evidence for direction, not population-level proof.",
+        body:
+          "The online sample contained 14 students and the moderated sample contained 5 students. Think-aloud may have affected task speed, and the task set focused on common journeys rather than edge cases. The recommendations should therefore guide a next design iteration and larger follow-up test.",
+      },
+      video: {
+        label: "04 / Presentation",
+        title: "Watch the evaluation as one continuous argument.",
+        body:
+          "The presentation connects the task footage, observed breakdowns and recommendation logic. It is shown at the full reading width so interface details remain visible without opening a separate file.",
+        src: "media/unimelb-library-video-presentation.mp4",
+        poster: "media/library-video-poster.png",
+        caption: "Evaluation presentation · 05:09 · local video",
+      },
+    },
     media: [
       {
         type: "image",

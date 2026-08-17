@@ -706,6 +706,148 @@
       </section>`;
   }
 
+  function libraryMetricMarkup(metric) {
+    return `
+      <div class="library-metric">
+        <strong>${metric.value}</strong>
+        <span>${metric.label}</span>
+      </div>`;
+  }
+
+  function libraryJourneyStepMarkup(step) {
+    return `
+      <li class="library-journey-step">
+        <p>${step.number}</p>
+        <h3>${step.title}</h3>
+        <p>${step.body}</p>
+      </li>`;
+  }
+
+  function libraryFindingMarkup(item, index) {
+    return `
+      <article class="library-finding${index % 2 ? " library-finding--reverse" : ""}">
+        <figure class="library-finding-figure">
+          <img src="${item.image}" alt="${item.alt}" loading="lazy" decoding="async" />
+          <figcaption>${item.caption}</figcaption>
+        </figure>
+        <div class="library-finding-copy">
+          <p class="library-finding-stat">${item.stat}</p>
+          <h3>${item.title}</h3>
+          <p>${item.body}</p>
+        </div>
+      </article>`;
+  }
+
+  function libraryRecommendationGroupMarkup(group) {
+    return `
+      <section class="library-recommendation-group">
+        <h3>${group.label}</h3>
+        <div class="library-recommendation-list">
+          ${group.items
+            .map(
+              (item) => `
+                <article class="library-recommendation">
+                  <p>${item.id}</p>
+                  <div>
+                    <h4>${item.title}</h4>
+                    <p>${item.body}</p>
+                  </div>
+                </article>`,
+            )
+            .join("")}
+        </div>
+      </section>`;
+  }
+
+  function libraryStudyMarkup(project) {
+    const study = project.libraryStudy;
+    const coverTitle = study.cover.title.split("\n").join("<br />");
+
+    return `
+      <div class="library-study-story">
+        <section class="library-study-cover" aria-labelledby="library-study-cover-heading">
+          <div class="library-study-cover-copy">
+            <p>${study.cover.eyebrow}</p>
+            <h2 id="library-study-cover-heading">${coverTitle}</h2>
+            <p>${study.cover.body}</p>
+          </div>
+          <figure class="library-study-cover-image">
+            <img src="${project.cover.src}" alt="${project.cover.alt}" />
+          </figure>
+        </section>
+
+        <section class="library-metrics" aria-label="${study.journey.label}">
+          ${study.metrics.map(libraryMetricMarkup).join("")}
+        </section>
+
+        <section class="library-journey" aria-labelledby="library-journey-heading">
+          <header class="library-section-heading">
+            <p>${study.journey.label}</p>
+            <div>
+              <h2 id="library-journey-heading">${study.journey.title}</h2>
+              <p>${study.journey.body}</p>
+            </div>
+          </header>
+          <ol class="library-journey-steps">
+            ${study.journey.steps.map(libraryJourneyStepMarkup).join("")}
+          </ol>
+        </section>
+
+        <section class="library-findings" aria-labelledby="library-findings-heading">
+          <header class="library-section-heading library-section-heading--light">
+            <p>${study.findings.label}</p>
+            <div>
+              <h2 id="library-findings-heading">${study.findings.title}</h2>
+              <p>${study.findings.body}</p>
+            </div>
+          </header>
+          <div class="library-findings-list">
+            ${study.findings.items.map(libraryFindingMarkup).join("")}
+          </div>
+        </section>
+
+        <section class="library-recommendations" aria-labelledby="library-recommendations-heading">
+          <header class="library-section-heading">
+            <p>${study.recommendations.label}</p>
+            <div>
+              <h2 id="library-recommendations-heading">${study.recommendations.title}</h2>
+              <p>${study.recommendations.body}</p>
+            </div>
+          </header>
+          <div class="library-recommendation-groups">
+            ${study.recommendations.groups.map(libraryRecommendationGroupMarkup).join("")}
+          </div>
+        </section>
+
+        <aside class="library-limitation" aria-labelledby="library-limitation-heading">
+          <p>${study.limitation.label}</p>
+          <div>
+            <h2 id="library-limitation-heading">${study.limitation.title}</h2>
+            <p>${study.limitation.body}</p>
+          </div>
+        </aside>
+
+        <section class="library-video" aria-labelledby="library-video-heading">
+          <header class="library-section-heading library-section-heading--light">
+            <p>${study.video.label}</p>
+            <div>
+              <h2 id="library-video-heading">${study.video.title}</h2>
+              <p>${study.video.body}</p>
+            </div>
+          </header>
+          <figure class="library-video-figure">
+            <div class="library-video-stage">
+              <video controls preload="metadata" poster="${study.video.poster}" aria-label="${study.video.title}">
+                <source src="${study.video.src}" type="video/mp4" />
+                ${currentUi.videoUnsupported} <a href="${study.video.src}">${currentUi.openVideo}</a>.
+              </video>
+            </div>
+            <figcaption>${study.video.caption}</figcaption>
+          </figure>
+        </section>
+      </div>`;
+  }
+
   function sourceArchiveMarkup(project) {
     if (isPublicPortfolio && !project.playableUrl && project.sources.length === 0) return "";
     const headingLabel = isPublicPortfolio ? currentUi.liveProject : currentUi.sourceArchive;
@@ -757,7 +899,9 @@
       ? lightStudyMarkup(project)
       : project.investmentStudy
         ? investmentStudyMarkup(project)
-        : defaultCaseStoryMarkup(project);
+        : project.libraryStudy
+          ? libraryStudyMarkup(project)
+          : defaultCaseStoryMarkup(project);
 
     caseContent.innerHTML = `
       <article class="${articleClasses}">

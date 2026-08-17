@@ -2,9 +2,18 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
 import test from "node:test";
+import vm from "node:vm";
 import { fileURLToPath } from "node:url";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const projectsSource = fs.readFileSync(path.join(ROOT, "projects.js"), "utf8");
+const appSource = fs.readFileSync(path.join(ROOT, "app.js"), "utf8");
+const cssSource = fs.readFileSync(path.join(ROOT, "style.css"), "utf8");
+const dataContext = { window: {} };
+vm.runInNewContext(projectsSource, dataContext);
+const libraryProject = dataContext.window.PORTFOLIO_PROJECTS.find(
+  ({ id }) => id === "library-evaluation",
+);
 
 function pngDimensions(buffer) {
   const signature = buffer.subarray(0, 8).toString("hex");
@@ -58,14 +67,50 @@ test("Library report pages retain enough source pixels for a retina gallery", ()
   }
 });
 
-test("Library cover remains sharp at full-viewport width", () => {
-  const { width, height } = imageDimensions("assets/projects/library/cover-eye-tracking.jpg");
-  assert.ok(width >= 3000, `cover width ${width} is below 3000`);
-  assert.ok(height >= 2200, `cover height ${height} is below 2200`);
+test("Library cover uses a native video frame rather than an enlarged eye-tracking screenshot", () => {
+  assert.equal(libraryProject.cover.src, "assets/projects/library/cover-session.jpg");
+  assert.doesNotMatch(libraryProject.cover.src, /eye-tracking/i);
+
+  const { width, height } = imageDimensions(libraryProject.cover.src);
+  assert.ok(width >= 1280, `cover width ${width} is below the source frame`);
+  assert.ok(height >= 720, `cover height ${height} is below the source frame`);
 });
 
 test("Library video poster never falls below the source-video frame", () => {
   const { width, height } = imageDimensions("media/library-video-poster.png");
   assert.ok(width >= 1280, `poster width ${width} is below 1280`);
   assert.ok(height >= 720, `poster height ${height} is below 720`);
+});
+
+test("Library case study has a complete research narrative instead of a page gallery", () => {
+  const study = libraryProject.libraryStudy;
+  assert.ok(study, "libraryStudy data is missing");
+  assert.equal(study.metrics.length, 4);
+  assert.equal(study.journey.steps.length, 4);
+  assert.equal(study.findings.items.length, 3);
+  assert.equal(
+    study.recommendations.groups.flatMap(({ items }) => items).length,
+    8,
+    "all eight submitted recommendations should remain visible",
+  );
+
+  assert.match(appSource, /function libraryStudyMarkup\(project\)/);
+  assert.match(appSource, /project\.libraryStudy\s*\?\s*libraryStudyMarkup\(project\)/);
+});
+
+test("Library evidence crops use balanced landscape frames", () => {
+  for (const relativePath of libraryProject.libraryStudy.findings.items.map(({ image }) => image)) {
+    const { width, height } = imageDimensions(relativePath);
+    assert.ok(width >= 1200, `${relativePath} width ${width} is below 1200`);
+    assert.ok(height >= 700, `${relativePath} height ${height} is below 700`);
+    assert.ok(width / height >= 1.35, `${relativePath} is not a landscape evidence crop`);
+    assert.ok(width / height <= 2, `${relativePath} is too panoramic for a balanced evidence card`);
+  }
+});
+
+test("Library presentation video fills its dedicated 16:9 stage", () => {
+  const stageRule = cssSource.match(/\.library-video-stage video\s*\{([^}]+)\}/s)?.[1] || "";
+  assert.match(stageRule, /width:\s*100%/);
+  assert.match(stageRule, /aspect-ratio:\s*16\s*\/\s*9/);
+  assert.doesNotMatch(stageRule, /max-width/);
 });
