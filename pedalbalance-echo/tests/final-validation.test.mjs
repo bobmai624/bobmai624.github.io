@@ -72,6 +72,6 @@ test('handoff documentation includes local preview and verification evidence', a
   const validation = await text('VALIDATION.md');
   assert.match(readme, /python3 -m http\.server/);
   assert.match(readme, /manufacturer.*image/i);
-  assert.match(validation, /50\/50/);
+  assert.match(validation, /56\/56/);
   assert.match(validation, /browser visual/i);
 });

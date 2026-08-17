@@ -31,3 +31,29 @@ test('page two has substantial matching trilingual copy', async () => {
   assert.equal(count('zh'), count('ja'));
   assert.ok(count('zh') >= 18);
 });
+
+test('page two exposes the complete assembly journey without opening another interface', async () => {
+  const html = await readFile(path.join(root, 'prototype-making.html'), 'utf8');
+  assert.match(html, /href="#assembly"/);
+  assert.match(html, /<section[^>]+id="assembly"/);
+  assert.equal([...html.matchAll(/data-assembly-module=/g)].length, 6);
+  assert.ok([...html.matchAll(/data-assembly-step=/g)].length >= 24);
+  assert.ok(!/<details[\s>]/.test(html), 'Required assembly steps must not be hidden in details elements');
+});
+
+test('every assembly action publishes a check and safety-critical work publishes stop conditions', async () => {
+  const html = await readFile(path.join(root, 'prototype-making.html'), 'utf8');
+  const steps = [...html.matchAll(/data-assembly-step=/g)].length;
+  const checks = [...html.matchAll(/class="step-check"/g)].length;
+  const stops = [...html.matchAll(/class="step-stop"/g)].length;
+  assert.equal(checks, steps, 'Every action step needs a visible completion check');
+  assert.ok(stops >= 6, 'Each safety-critical module needs a visible stop condition');
+});
+
+test('the always-visible parts manifest covers the full bench build', async () => {
+  const html = await readFile(path.join(root, 'prototype-making.html'), 'utf8');
+  assert.ok([...html.matchAll(/data-part-id="P\d{2}"/g)].length >= 12);
+  for (const group of ['COMPUTE', 'SENSE', 'RETURN', 'MOUNT', 'POWER', 'TOOLS']) {
+    assert.match(html, new RegExp(`data-part-group="${group}"`));
+  }
+});

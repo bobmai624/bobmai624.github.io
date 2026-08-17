@@ -6,16 +6,18 @@ Status: passed
 
 ## Completed automated checks
 
-- Core model/content suite: 50/50 passed after the scroll-first case-journey redesign, optional-lab demotion and title-boundary regression check.
+- Core model/content suite: 56/56 passed after the scroll-first case-journey redesign and the Lego-style making-journal expansion.
 - Hero model: two rigid planar leg links per side, fixed hip joints, exactly opposite pedal targets, forward-bending knees, fixed foot-to-pedal attachment, bounded values and complete-revolution cue logic.
 - Experiment model: deterministic synthetic data, invalid-revolution exclusion, cue-dose summary, neutral `simulated_matched_other` provenance.
 - Prototype state machine: calibration gate, valid setup sequence, global STOP, fail-safe output clearing, replay provenance.
 - Content contracts: three shared pages, balanced trilingual copy, local images, component/source lineage, research status and limitations.
 - Main-page journey contract: `00–07` sections, always-visible four-step mechanism, three-moment revolution, five-stage study timeline, matching Chinese/English/Japanese blocks and exactly one popup trigger in the optional final lab.
+- Making-page instruction contract: one direct `#assembly` entry, 12 always-visible part IDs, 6 inline assembly modules, 24 action cards, one visible completion check per action and one stop condition per module. No required assembly instruction is hidden in a `details` element or modal.
 - Prototype flow: nine participant-facing scenes, complete Chinese/English/Japanese action-system-check copy, cue/no-cue controls, past-self provenance and semantic CJK title breaks.
 - Presentation system: nine distinct visual grammars—closed loop, modular mechanism, causal sequence, design-space matrix, system facts, task conditions, replay provenance, study timeline and evidence comparison.
 - Final validator checks local assets, duplicate IDs, image alternatives, HTTPS sources, three-language counts, the nine-scene prototype story, safety boundaries and handoff documentation.
-- Complete suite after final handoff validation: 50/50 passed.
+- Complete suite after final handoff validation: 56/56 passed.
+- Local HTTP smoke: making page and versioned stylesheet returned 200; the served HTML exposed 12 part IDs, 6 modules, 24 actions, 24 checks and 6 stop conditions.
 
 ## Browser visual QA
 
