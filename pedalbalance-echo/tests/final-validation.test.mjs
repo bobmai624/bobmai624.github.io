@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { readFile, access } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { PROTOTYPE_STEPS, getPrototypeStep, prototypeLabels } from '../assets/js/prototype-flow.js';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const pages = ['index.html', 'prototype-making.html', 'experiment-capabilities.html'];
@@ -45,23 +46,23 @@ test('each page carries substantial, balanced trilingual copy', async () => {
 
 test('simulation, study status and stimulation boundaries are explicit', async () => {
   const allPages = (await Promise.all(pages.map(text))).join('\n');
-  const prototype = await text('assets/js/prototype-ui.js');
+  const prototype = await text('assets/js/prototype-flow.js');
   assert.match(allPages, /ILLUSTRATIVE SIMULATION/i);
   assert.match(allPages, /PLANNED STUDY/i);
   assert.match(allPages, /NO DIY EMS/i);
   assert.match(allPages, /not power, torque, diagnosis|not power, torque, muscle strength or diagnosis/i);
-  assert.match(prototype, /Stationary trainer only/);
-  assert.match(prototype, /STOP OUTPUT/);
+  assert.match(prototype, /stationary indoor trainer only/i);
+  assert.equal(prototypeLabels('en').stop, 'STOP OUTPUT');
   assert.doesNotMatch(allPages + prototype, /EMS.{0,40}(wiring|current|pulse width|electrode placement)/i);
 });
 
-test('prototype exposes the complete eleven-scene learning loop', async () => {
-  const prototype = await text('assets/js/prototype-ui.js');
-  for (const scene of ['WELCOME', 'SAFETY', 'DISCOVERY', 'CALIBRATION', 'BASELINE', 'REVOLUTION', 'TRAINING', 'NO_FEEDBACK', 'REPLAY', 'FAULT', 'EXPORT']) {
-    assert.match(prototype, new RegExp(`key: '${scene}'`));
-  }
-  assert.match(prototype, /NODE_TIMEOUT_R/);
-  assert.match(prototype, /past_self/);
+test('prototype exposes the complete seven-stage experiment story', () => {
+  assert.deepEqual(PROTOTYPE_STEPS.map(({ key }) => key), [
+    'QUESTION', 'SETUP', 'BASELINE', 'TRAINING', 'NO_CUE', 'REPLAY', 'RESULTS'
+  ]);
+  assert.match(getPrototypeStep(1, 'en').system, /500 ms/);
+  assert.equal(getPrototypeStep(5, 'en').traceProvenance, 'past_self');
+  assert.match(getPrototypeStep(6, 'en').summary, /illustrative/i);
 });
 
 test('handoff documentation includes local preview and verification evidence', async () => {
@@ -69,6 +70,6 @@ test('handoff documentation includes local preview and verification evidence', a
   const validation = await text('VALIDATION.md');
   assert.match(readme, /python3 -m http\.server/);
   assert.match(readme, /manufacturer.*image/i);
-  assert.match(validation, /37\/37/);
+  assert.match(validation, /43\/43/);
   assert.match(validation, /browser visual/i);
 });

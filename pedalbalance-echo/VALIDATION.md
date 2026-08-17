@@ -6,24 +6,24 @@ Status: passed
 
 ## Completed automated checks
 
-- Core model/content suite: 37/37 passed after the scientific-linkage hero redesign.
+- Core model/content suite: 43/43 passed after the interaction-model redesign.
 - Hero model: two rigid planar leg links per side, fixed hip joints, exactly opposite pedal targets, forward-bending knees, fixed foot-to-pedal attachment, bounded values and complete-revolution cue logic.
 - Experiment model: deterministic synthetic data, invalid-revolution exclusion, cue-dose summary, neutral `simulated_matched_other` provenance.
 - Prototype state machine: calibration gate, valid setup sequence, global STOP, fail-safe output clearing, replay provenance.
 - Content contracts: three shared pages, balanced trilingual copy, local images, component/source lineage, research status and limitations.
-- Final validator checks local assets, duplicate IDs, image alternatives, HTTPS sources, three-language counts, 11 prototype scenes, safety boundaries and handoff documentation.
-- Complete suite after final handoff validation: 37/37 passed.
+- Prototype flow: seven participant-facing experiment stages, complete Chinese/English/Japanese action-system-check copy, cue/no-cue controls, past-self provenance and semantic CJK title breaks.
+- Final validator checks local assets, duplicate IDs, image alternatives, HTTPS sources, three-language counts, the seven-stage prototype story, safety boundaries and handoff documentation.
+- Complete suite after final handoff validation: 43/43 passed.
 
 ## Browser visual QA
 
 Passed in the in-app browser:
 
-- Desktop 1440 × 1000: the new two-link cycling mechanism, fixed hip, opposite pedals, complete-revolution machine node and dashboard inspected; zero horizontal overflow.
-- Mobile 390 × 844: the 405 px canvas, joints, pedal labels, return cue and dashboard inspected without cropping; zero horizontal overflow.
+- Desktop 1440 × 900: the seven-stage experiment navigation and input → decision → cue → observation evidence flow inspected; zero horizontal overflow.
+- Mobile 390 × 844: semantic Chinese/Japanese heading breaks, horizontal stage navigation and vertically scrolling evidence flow inspected without clipping; zero horizontal overflow.
 - Interaction: animation pause/resume verified; opening the full-screen prototype held the hero dashboard constant, and closing it resumed updates.
 - Motion safeguard: the unchanged `prefers-reduced-motion` path initializes the hero controller in its paused state.
-- Prototype: Chinese/English language switch, training cue and global STOP verified.
-- Failure scene: `NODE_TIMEOUT_R · 642ms · HAPTICS OFF` visible and bodily cue cleared.
+- Prototype: Chinese/English/Japanese switching inside the open overlay, localized navigation, left-ankle training cue, no-cue output-off state and global STOP verified.
 - Console: zero error-level entries after navigation and interaction.
 - Handoff: browser viewport reset to its default size and the Chinese project-vision page left open for review.
 
