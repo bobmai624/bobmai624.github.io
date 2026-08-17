@@ -170,9 +170,9 @@ main { min-height: 70vh; }
 .prototype-progress button[aria-current="step"] { background: var(--ink); color: var(--paper); }
 .prototype-progress button[aria-current="step"] b { color: #7ec8e4; }
 .prototype-stage { min-width: 0; min-height: 0; display: grid; grid-template-columns: minmax(390px, .92fr) minmax(520px, 1.08fr); }
-.prototype-copy { min-height: 0; overflow-y: auto; padding: clamp(1.5rem, 3.2vw, 3.6rem); display: flex; flex-direction: column; justify-content: center; }
+.prototype-copy { min-height: 0; overflow-y: auto; padding: clamp(1.5rem, 3.2vw, 3.6rem); display: flex; flex-direction: column; justify-content: center; container-type: inline-size; }
 .prototype-copy h2 { max-width: 14ch; margin: .65rem 0 1rem; font-size: clamp(2.35rem, 4.25vw, 4.9rem); line-height: .98; letter-spacing: -.045em; text-wrap: balance; white-space: pre-line; }
-html[lang^="zh"] .prototype-copy h2, html[lang^="ja"] .prototype-copy h2 { max-width: 10em; word-break: keep-all; overflow-wrap: normal; line-height: 1.06; letter-spacing: -.035em; }
+html[lang^="zh"] .prototype-copy h2, html[lang^="ja"] .prototype-copy h2 { max-width: 100%; font-size: clamp(2.35rem, 11cqi, 4.1rem); word-break: normal; overflow-wrap: anywhere; line-height: 1.06; letter-spacing: -.035em; }
 .prototype-summary { max-width: 52ch; margin: 0; color: var(--muted); font-size: clamp(.88rem, 1.05vw, 1.02rem); line-height: 1.62; }
 .prototype-explanation { margin: 1.35rem 0 0; border-top: 1px solid var(--ink); }
 .prototype-explanation > div { display: grid; grid-template-columns: minmax(82px, 105px) 1fr; gap: 1rem; padding: .72rem 0; border-bottom: 1px solid var(--line); }

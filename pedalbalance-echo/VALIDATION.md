@@ -21,7 +21,9 @@ Status: passed
 Passed in the in-app browser:
 
 - Desktop 1440 × 900: the nine-scene navigation and representative loop, causal-sequence, system-facts and evidence layouts inspected; zero horizontal overflow.
+- Large desktop 2048 × 1338: all nine Chinese, English and Japanese scene titles inspected; zero title overflow into the visual column.
 - Mobile 390 × 844: scene 01, scene 03 and scene 09 inspected with horizontal scene navigation and vertically scrolling evidence content; zero horizontal overflow.
+- Title regression fixture: the nine Chinese titles report `maxTitleOverflow = 0` at 2048 × 1338 after container-relative sizing and natural CJK wrapping.
 - Interaction: animation pause/resume verified; opening the full-screen prototype held the hero dashboard constant, and closing it resumed updates.
 - Motion safeguard: the unchanged `prefers-reduced-motion` path initializes the hero controller in its paused state.
 - Prototype: Chinese/English/Japanese switching inside the open overlay, route and scene preservation, localized navigation, left-ankle training cue, no-cue output-off state, global STOP and Escape-to-close verified.
