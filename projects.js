@@ -238,8 +238,8 @@ window.PORTFOLIO_PROJECTS = [
     playableUrl:
       "https://bobmai624.github.io/signal-aftershock-triangulation-race-site/?v=e571d4b",
     cover: {
-      src: "assets/projects/game/cover-command-map.jpg",
-      alt: "Dark emergency command-map interface for Signal Aftershock",
+      src: "assets/projects/game/cover-gameplay.jpg",
+      alt: "Live Signal Aftershock match with blue and orange relay lines across the emergency map",
     },
     sections: [
       {
