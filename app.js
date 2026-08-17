@@ -130,22 +130,6 @@
     });
   }
 
-  function storedLanguage() {
-    try {
-      return window.localStorage.getItem("portfolio-language");
-    } catch (_error) {
-      return null;
-    }
-  }
-
-  function setStoredLanguage(language) {
-    try {
-      window.localStorage.setItem("portfolio-language", language);
-    } catch (_error) {
-      // The query string still preserves the choice when storage is unavailable.
-    }
-  }
-
   function captureReadingPosition() {
     if (!caseStudy.hidden) return { surface: "case", top: caseStudy.scrollTop };
     if (!resumeView.hidden) return { surface: "resume", top: resumeView.scrollTop };
@@ -164,7 +148,7 @@
     });
   }
 
-  function setLanguage(language, { updateUrl = false } = {}) {
+  function setLanguage(language) {
     const readingPosition = captureReadingPosition();
     currentLanguage = supportedLanguages.includes(language) ? language : "en";
     const content = languageContent[currentLanguage] || languageContent.en;
@@ -193,12 +177,6 @@
       if (project) renderCaseStudy(project);
     }
 
-    setStoredLanguage(currentLanguage);
-    if (updateUrl) {
-      const url = new URL(window.location.href);
-      url.searchParams.set("lang", currentLanguage);
-      history.replaceState(history.state, "", url);
-    }
     restoreReadingPosition(readingPosition);
   }
 
@@ -1108,17 +1086,12 @@
     }
   }
 
-  const requestedLanguage = new URL(window.location.href).searchParams.get("lang");
-  const initialLanguage = supportedLanguages.includes(requestedLanguage)
-    ? requestedLanguage
-    : supportedLanguages.includes(storedLanguage())
-      ? storedLanguage()
-      : "en";
+  const initialLanguage = window.PORTFOLIO_LANGUAGE_SESSION?.begin(window) || "en";
   setLanguage(initialLanguage);
   routeFromLocation();
 
   languageSelect.addEventListener("change", (event) => {
-    setLanguage(event.target.value, { updateUrl: true });
+    setLanguage(event.target.value);
   });
 
   document.addEventListener("click", (event) => {

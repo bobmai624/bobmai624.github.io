@@ -72,15 +72,6 @@ const UI_COPY = {
   },
 };
 
-function storedLanguage() {
-  try {
-    return localStorage.getItem('portfolio-language')
-      || localStorage.getItem('pedalbalance-language');
-  } catch {
-    return null;
-  }
-}
-
 function updateLanguageLinks(language) {
   document.querySelectorAll('[data-page-link]').forEach((link) => {
     const url = new URL(link.getAttribute('href'), window.location.href);
@@ -93,8 +84,8 @@ function updateLanguageLinks(language) {
   });
 }
 
-export function setLanguage(language, { updateUrl = false } = {}) {
-  const lang = SUPPORTED_LANGUAGES.has(language) ? language : 'zh';
+export function setLanguage(language) {
+  const lang = SUPPORTED_LANGUAGES.has(language) ? language : 'en';
   document.documentElement.lang = lang === 'zh' ? 'zh-CN' : lang;
   document.querySelectorAll('[data-lang]').forEach((node) => {
     node.hidden = node.dataset.lang !== lang;
@@ -109,31 +100,14 @@ export function setLanguage(language, { updateUrl = false } = {}) {
   });
   updateLanguageLinks(lang);
 
-  try {
-    localStorage.setItem('portfolio-language', lang);
-    localStorage.setItem('pedalbalance-language', lang);
-  } catch {
-    // Query parameters still preserve the selected language.
-  }
-
-  if (updateUrl) {
-    const url = new URL(window.location.href);
-    url.searchParams.set('lang', lang);
-    history.replaceState(history.state, '', url);
-  }
   document.dispatchEvent(new CustomEvent('pedalbalance:language', { detail: { language: lang } }));
   return lang;
 }
 
 export function mountLanguageControls() {
-  const requested = new URL(window.location.href).searchParams.get('lang');
-  const initialLanguage = SUPPORTED_LANGUAGES.has(requested)
-    ? requested
-    : SUPPORTED_LANGUAGES.has(storedLanguage())
-      ? storedLanguage()
-      : 'zh';
+  const initialLanguage = window.PORTFOLIO_LANGUAGE_SESSION?.begin(window) || 'en';
   setLanguage(initialLanguage);
   document.querySelectorAll('[data-language]').forEach((button) => {
-    button.addEventListener('click', () => setLanguage(button.dataset.language, { updateUrl: true }));
+    button.addEventListener('click', () => setLanguage(button.dataset.language));
   });
 }

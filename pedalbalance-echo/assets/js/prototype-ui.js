@@ -1,6 +1,6 @@
 import { createPrototypeMachine } from './prototype-machine.js';
 import { PROTOTYPE_STEPS, getPrototypeStep, prototypeLabels } from './prototype-flow.js';
-import { setLanguage } from './language.js';
+import { setLanguage } from './language.js?v=20260817-english-default';
 
 function currentLanguage() {
   const lang = document.documentElement.lang || 'zh-CN';
@@ -211,7 +211,7 @@ export function mountPrototypeUI() {
 
   triggers.forEach((trigger) => trigger.addEventListener('click', () => open(trigger)));
   overlay.querySelectorAll('[data-prototype-language]').forEach((button) => {
-    button.addEventListener('click', () => setLanguage(button.dataset.language, { updateUrl: true }));
+    button.addEventListener('click', () => setLanguage(button.dataset.language));
   });
   overlay.querySelector('[data-prototype-close]').addEventListener('click', close);
   overlay.querySelector('[data-prototype-stop]').addEventListener('click', () => {

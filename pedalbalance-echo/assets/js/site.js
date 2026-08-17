@@ -1,8 +1,8 @@
-import { mountLanguageControls } from './language.js';
+import { mountLanguageControls } from './language.js?v=20260817-english-default';
 import { mountHeroCanvas } from './hero-canvas.js';
 import { mountComponentFilters } from './components.js';
 import { mountExperimentCharts } from './experiment-ui.js';
-import { mountPrototypeUI } from './prototype-ui.js';
+import { mountPrototypeUI } from './prototype-ui.js?v=20260817-english-default';
 
 document.addEventListener('DOMContentLoaded', () => {
   mountLanguageControls();
