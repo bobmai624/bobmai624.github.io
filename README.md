@@ -21,6 +21,7 @@ Then visit `http://127.0.0.1:4178/`.
 - `style.css` controls the monochrome-led, low-saturation typography, spacing, responsive layout, print resume and motion.
 - `app.js` renders the five grouped practice areas and Capabilities section, and controls project/resume opening, URL routing, focus and scroll reveals.
 - `assets/projects/` contains the website-ready project imagery.
+- `pedalbalance-echo/index.html` is the scroll-first PedalBalance Echo case journey. Its core loop, build journal, participant timeline and evidence ladder are readable without opening the optional nine-scene lab.
 
 The public repository intentionally excludes phone details, original assignment files, models,
 videos and the resume PDF. Those remain in the private local portfolio archive.

@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="PedalBalance Echo — a human–machine–human cycling learning interface.">
-  <title>PedalBalance Echo — Project Vision</title>
-  <link rel="stylesheet" href="assets/css/site.css?v=20260817-title-boundary">
+  <meta name="description" content="PedalBalance Echo — a human–machine–human cycling learning interface, documented as a complete case journey.">
+  <title>PedalBalance Echo — Case Journey</title>
+  <link rel="stylesheet" href="assets/css/site.css?v=20260817-inline-journey">
 </head>
 <body>
   <a class="skip-link" href="#main" data-ui="skip">Skip to content</a>
@@ -18,13 +18,15 @@
       <a href="experiment-capabilities.html" data-page-link data-ui="navExperiment">Experiment &amp; Capabilities</a>
     </nav>
     <a class="source-package" href="../files/pedalbalance-echo-html-portfolio.zip" download><span data-ui="downloadSource">Source files</span><span aria-hidden="true">↓</span></a>
-    <button class="prototype-button" type="button" data-open-prototype data-ui="openPrototype">Open Interactive Prototype</button>
+    <a class="header-journey-link" href="#journey" data-ui="startJourney">Start journey</a>
   </header>
+
   <div class="language-switcher" aria-label="Language">
     <button type="button" data-language="zh" aria-pressed="true">中文</button>
     <button type="button" data-language="en" aria-pressed="false">EN</button>
     <button type="button" data-language="ja" aria-pressed="false">日本語</button>
   </div>
+
   <main id="main">
     <section class="hero">
       <div class="hero-copy">
@@ -32,12 +34,14 @@
         <h1 data-lang="zh">把踩踏感觉<br>送回身体</h1>
         <h1 data-lang="en" hidden>Return pedalling<br>to the body</h1>
         <h1 data-lang="ja" hidden>ペダリング感覚を<br>身体へ返す</h1>
-        <p data-lang="zh">检测左右踩踏，把机器判断送回脚踝，让骑行者主动纠正动作。</p>
-        <p data-lang="en" hidden>Sense bilateral pedalling and return the machine’s interpretation to the ankle so the rider can actively correct movement.</p>
-        <p data-lang="ja" hidden>左右のペダリングを検出し、機械の判断を足首へ返すことで、利用者が能動的に動きを修正する。</p>
+        <p data-lang="zh">一个关于“机器如何提示、身体如何学习”的骑行交互实验。</p>
+        <p data-lang="en" hidden>A cycling interaction study of how a machine cues and how a body learns.</p>
+        <p data-lang="ja" hidden>機械がどう提示し、身体がどう学ぶかを扱うサイクリング・インタラクション実験。</p>
         <div class="hero-actions">
-          <a class="text-button" href="#system-loop" data-ui="exploreSystem">Explore the system</a>
-          <button type="button" data-open-prototype data-ui="openPrototype">Open Interactive Prototype</button>
+          <a class="text-button primary-text-button" href="#journey" data-ui="startJourney">Start the journey</a>
+          <span class="reading-time" data-lang="zh">向下滚动即可读完 · 无需打开弹窗</span>
+          <span class="reading-time" data-lang="en" hidden>Scroll to read the complete case · no popup required</span>
+          <span class="reading-time" data-lang="ja" hidden>スクロールだけで全体を読めます · ポップアップ不要</span>
         </div>
         <p class="microcopy">STATIONARY INDOOR PROTOTYPE · RELATIVE PRESSURE PROXY · NO DIY EMS</p>
       </div>
@@ -55,145 +59,228 @@
         </div>
       </div>
     </section>
+
     <section class="fact-strip" aria-label="Project facts">
       <div><strong>2</strong><span>pedal inputs</span></div>
       <div><strong>1</strong><span>complete revolution</span></div>
       <div><strong>2</strong><span>ankle cue locations</span></div>
-      <div><strong>0</strong><span>screens required while correcting</span></div>
+      <div><strong>0</strong><span>screens while correcting</span></div>
     </section>
 
-    <section class="content-section split-grid" id="why-body">
-      <div class="section-heading">
-        <p class="kicker">01 · THE PROBLEM</p>
-        <h2 data-lang="zh">屏幕告诉你发生了什么，<br>身体却未必学会。</h2>
-        <h2 data-lang="en" hidden>A screen can show the error<br>without teaching the body.</h2>
-        <h2 data-lang="ja" hidden>画面は誤差を示せても、<br>身体に学習させるとは限らない。</h2>
-      </div>
-      <div class="body-copy">
-        <p data-lang="zh">骑行者需要低头读取图表，再把视觉数字翻译成动作。PedalBalance Echo 把提示放回发生问题的一侧脚踝：左侧贡献持续偏低，就提示左侧；回到个人容差范围，就保持安静。</p>
-        <p data-lang="en" hidden>A rider must look down, read a chart and translate a visual number into movement. PedalBalance Echo returns the cue to the ankle where correction is needed: sustained lower left contribution cues the left; returning inside personal tolerance restores silence.</p>
-        <p data-lang="ja" hidden>画面を見る方法では、数値を読み、それを動作へ翻訳する必要がある。PedalBalance Echo は修正が必要な側の足首へ手掛かりを返す。左の寄与が持続的に低ければ左へ提示し、個人の許容範囲へ戻れば沈黙する。</p>
-        <div class="feedback-rule" role="img" aria-label="Lower left contribution produces a left ankle cue; balance produces silence; lower right contribution produces a right ankle cue.">
-          <div class="left-rule"><span>LEFT LOW</span><b>◌ LEFT CUE</b></div>
-          <div class="balanced-rule"><span>IN TOLERANCE</span><b>SILENCE</b></div>
-          <div class="right-rule"><span>RIGHT LOW</span><b>RIGHT CUE ◌</b></div>
-        </div>
-      </div>
-    </section>
+    <nav class="journey-nav" data-journey-nav aria-label="Case journey chapters">
+      <span>CASE JOURNEY</span>
+      <a href="#journey" data-ui="journeyOverview">Overview</a>
+      <a href="#journey-loop" data-ui="journeyLoop">Loop</a>
+      <a href="#journey-build" data-ui="journeyBuild">Build</a>
+      <a href="#journey-study" data-ui="journeyStudy">Study</a>
+      <a href="#journey-evidence" data-ui="journeyEvidence">Evidence</a>
+    </nav>
 
-    <section class="content-section revolution-section" id="full-revolution">
-      <div class="section-heading narrow">
-        <p class="kicker">02 · MEASURE THE RIGHT THING</p>
-        <h2 data-lang="zh">不要在错误的时间尺度上<br>比较两只脚。</h2>
-        <h2 data-lang="en" hidden>Do not compare two feet<br>at the wrong time scale.</h2>
-        <h2 data-lang="ja" hidden>誤った時間尺度で<br>両足を比較しない。</h2>
-        <p data-lang="zh">踩踏本来就左右交替。瞬时比较会把正常相位差误报为不对称；系统必须等一个 complete revolution 结束后，再比较这一圈的相对压力贡献。</p>
-        <p data-lang="en" hidden>Pedalling naturally alternates left and right. Instantaneous comparison can misread normal phase difference as asymmetry; the system waits for one complete revolution before comparing relative pressure contribution.</p>
-        <p data-lang="ja" hidden>ペダリングは左右が交互に働く。瞬間比較では正常な位相差を非対称と誤認し得るため、1回の complete revolution が終わってから相対圧力寄与を比較する。</p>
+    <section class="content-section journey-opening" id="journey">
+      <div class="journey-index"><b>00</b><span>PROJECT IN 30 SECONDS</span></div>
+      <div class="journey-opening-copy">
+        <p class="kicker">THE WHOLE IDEA</p>
+        <h2 data-lang="zh">先听完一整圈，<br>再给身体一个最小提示。</h2>
+        <h2 data-lang="en" hidden>Listen for one full revolution,<br>then return one minimal bodily cue.</h2>
+        <h2 data-lang="ja" hidden>1回転を最後まで捉え、<br>身体へ最小限の提示を返す。</h2>
+        <p data-lang="zh">左右踏板记录这一圈的相对贡献。机器只在偏差持续时判断哪一侧需要帮助，再用短振动提示相应脚踝。骑行者自己修正下一圈；机器不替人发力。</p>
+        <p data-lang="en" hidden>The pedals record relative contribution across a complete revolution. Only a persistent deviation makes the machine choose a side and return a short ankle vibration. The rider corrects the next revolution; the machine never supplies the effort.</p>
+        <p data-lang="ja" hidden>左右ペダルは1回転分の相対寄与を記録する。偏差が持続したときだけ機械が側を判断し、該当する足首へ短い振動を返す。次の1回転を修正するのは利用者自身であり、機械が力を代行することはない。</p>
       </div>
-      <div class="revolution-demo" data-revolution-demo>
-        <div class="demo-controls" role="group" aria-label="Comparison time scale">
-          <button type="button" data-mode="instant" aria-pressed="false">Instantaneous</button>
-          <button type="button" data-mode="revolution" aria-pressed="true">Complete revolution</button>
-        </div>
-        <div class="cycle-ring" aria-hidden="true">
-          <div class="crank-arm"></div><span class="pedal-dot left-dot">L</span><span class="pedal-dot right-dot">R</span>
-          <div class="ring-centre"><strong data-demo-result>48 / 52</strong><span>relative contribution</span></div>
-        </div>
-        <p class="demo-readout" data-demo-copy>One complete cycle: compare accumulated relative contribution once.</p>
-      </div>
-    </section>
-
-    <section id="system-loop" class="content-section loop-section">
-      <div class="section-heading wide">
-        <p class="kicker">03 · THE CORE LOOP</p>
-        <h2>Human → Machine → Human</h2>
-        <p data-lang="zh">项目不是把人变成机器的被动执行器，而是让机器压缩身体数据，再把一个可以被身体直接理解的最小提示返还给人。</p>
-        <p data-lang="en" hidden>The project does not turn a person into a passive machine actuator. The machine compresses bodily data and returns the smallest cue the body can directly interpret.</p>
-        <p data-lang="ja" hidden>人を機械の受動的な実行器にするのではない。機械が身体データを圧縮し、身体が直接理解できる最小限の手掛かりとして返す。</p>
-      </div>
-      <div class="loop-grid">
-        <article><span>01</span><strong>SENSE</strong><p>FSR-L / FSR-R<br>Hall cadence<br>optional read-only EMG</p></article>
-        <article><span>02</span><strong>INTERPRET</strong><p>segment one revolution<br>compare personal baseline<br>ignore brief deviations</p></article>
-        <article><span>03</span><strong>RETURN</strong><p>left ankle / right ankle<br>short vibration<br>silence inside tolerance</p></article>
-        <article><span>04</span><strong>LEARN</strong><p>active correction<br>withdraw assistance<br>test retention + transfer</p></article>
-      </div>
-    </section>
-
-    <section class="content-section scenario-section">
-      <div class="section-heading">
-        <p class="kicker">04 · ONE RIDING MOMENT</p>
-        <h2 data-lang="zh">一次提示怎样发生？</h2>
-        <h2 data-lang="en" hidden>What happens in one cue?</h2>
-        <h2 data-lang="ja" hidden>1回の提示はどう生まれるか。</h2>
-      </div>
-      <ol class="scenario-steps">
-        <li><b>01</b><span data-lang="zh">骑行者完成一圈踩踏。</span><span data-lang="en" hidden>The rider completes one crank revolution.</span><span data-lang="ja" hidden>利用者がクランクを1回転させる。</span></li>
-        <li><b>02</b><span data-lang="zh">机器累计左右相对压力贡献。</span><span data-lang="en" hidden>The machine accumulates bilateral relative pressure contribution.</span><span data-lang="ja" hidden>機械が左右の相対圧力寄与を積算する。</span></li>
-        <li><b>03</b><span data-lang="zh">短暂偏差被忽略；持续偏差才触发。</span><span data-lang="en" hidden>Brief deviation is ignored; persistent error can trigger.</span><span data-lang="ja" hidden>一時的偏差は無視し、持続誤差のみを対象にする。</span></li>
-        <li><b>04</b><span data-lang="zh">贡献较低一侧的脚踝出现短振动。</span><span data-lang="en" hidden>A short vibration appears at the lower-contributing ankle.</span><span data-lang="ja" hidden>寄与が低い側の足首へ短い振動を返す。</span></li>
-        <li><b>05</b><span data-lang="zh">人主动改变动作，机器不直接驱动肌肉。</span><span data-lang="en" hidden>The person actively changes movement; the machine does not drive muscle.</span><span data-lang="ja" hidden>人が能動的に動きを変え、機械は筋肉を直接駆動しない。</span></li>
-        <li><b>06</b><span data-lang="zh">回到容差范围后提示消失。</span><span data-lang="en" hidden>The cue disappears when performance returns inside tolerance.</span><span data-lang="ja" hidden>許容範囲へ戻ると提示は消える。</span></li>
+      <ol class="journey-summary" aria-label="Project logic in four statements">
+        <li><span>01</span><b data-lang="zh">完整一圈后再比较</b><b data-lang="en" hidden>Compare after one full revolution</b><b data-lang="ja" hidden>1回転後に比較する</b></li>
+        <li><span>02</span><b data-lang="zh">短暂波动不会触发</b><b data-lang="en" hidden>Ignore brief fluctuation</b><b data-lang="ja" hidden>一時的な変動は無視する</b></li>
+        <li><span>03</span><b data-lang="zh">低贡献侧收到短提示</b><b data-lang="en" hidden>Cue the lower-contributing side</b><b data-lang="ja" hidden>寄与が低い側へ短く提示する</b></li>
+        <li><span>04</span><b data-lang="zh">撤掉提示后检验学习</b><b data-lang="en" hidden>Test learning after cue removal</b><b data-lang="ja" hidden>提示撤去後の学習を検証する</b></li>
       </ol>
     </section>
 
-    <section class="content-section research-section">
-      <div class="section-heading wide">
-        <p class="kicker">05 · TWO RESEARCH QUESTIONS</p>
-        <h2 data-lang="zh">同一个身体闭环，检验两种学习关系。</h2>
-        <h2 data-lang="en" hidden>One bodily loop, two learning relationships.</h2>
-        <h2 data-lang="ja" hidden>1つの身体ループで、2つの学習関係を検討する。</h2>
+    <section class="content-section journey-problem" id="journey-problem">
+      <div class="journey-index"><b>01</b><span>WHY THE BODY</span></div>
+      <div class="section-heading">
+        <p class="kicker">THE PROBLEM</p>
+        <h2 data-lang="zh">屏幕给出数字，<br>身体还要翻译一次。</h2>
+        <h2 data-lang="en" hidden>A screen gives a number.<br>The body still has to translate it.</h2>
+        <h2 data-lang="ja" hidden>画面が数値を示しても、<br>身体はさらに翻訳しなければならない。</h2>
       </div>
-      <div class="research-grid">
-        <article class="research-card c1-card">
-          <p class="tag">C1 · ASSISTANCE WITHDRAWAL</p>
-          <h3>Adaptive feedback</h3>
-          <p data-lang="zh">持续振动、固定淡出和“只在持续错误时提示”的自适应反馈，哪一种更可能在提示关闭后仍留下修正能力？</p>
-          <p data-lang="en" hidden>Which condition—continuous haptics, fixed fade or persistent-error adaptive feedback—best supports correction after the cue is removed?</p>
-          <p data-lang="ja" hidden>連続触覚、固定フェード、持続誤差に応じる適応提示のうち、提示撤去後の修正を最も支え得るのはどれか。</p>
-          <div class="condition-row"><span>VIS</span><span>CH</span><span>FF</span><span>AF</span></div>
-          <small>Training → No feedback → 24 h retention → Transfer</small>
+      <div class="problem-comparison">
+        <article>
+          <span>SCREEN PATH · 4 STEPS</span>
+          <div class="path-line"><b>LOOK</b><i>→</i><b>READ</b><i>→</i><b>TRANSLATE</b><i>→</i><b>MOVE</b></div>
+          <p data-lang="zh">骑行者低头读取图表，再把视觉差异转换成动作。</p>
+          <p data-lang="en" hidden>The rider looks down, reads a chart and converts a visual difference into movement.</p>
+          <p data-lang="ja" hidden>利用者は画面を見て図表を読み、視覚的な差を動きへ変換する。</p>
         </article>
-        <article class="research-card e2-card">
-          <p class="tag">E2 · BODILY TRACE REPLAY</p>
-          <h3>Past-self replay</h3>
-          <p data-lang="zh">把自己过去表现最好的一段轨迹重新变成左右脚踝提示，和看屏幕、接收匹配他人轨迹或没有历史轨迹相比，会怎样改变动作？</p>
-          <p data-lang="en" hidden>What changes when a rider’s best past trace returns through the ankles rather than a screen, a matched-other trace or no history?</p>
-          <p data-lang="ja" hidden>過去の自己ベスト軌跡を画面ではなく両足首へ返すと、他者軌跡や履歴なしの場合と比べて動作はどう変わるか。</p>
-          <div class="condition-row"><span>PS-H</span><span>MO-H*</span><span>PS-V</span><span>NF</span></div>
-          <small>* one-person prototype: simulated_matched_other</small>
+        <article>
+          <span>BODY PATH · 2 STEPS</span>
+          <div class="path-line bodily-path"><b>FEEL SIDE</b><i>→</i><b>CORRECT</b></div>
+          <p data-lang="zh">提示直接回到需要注意的一侧脚踝；平衡时系统保持安静。</p>
+          <p data-lang="en" hidden>The cue returns to the ankle that needs attention; the system stays silent in tolerance.</p>
+          <p data-lang="ja" hidden>注意が必要な側の足首へ直接提示し、許容範囲内では沈黙を保つ。</p>
         </article>
+      </div>
+      <div class="feedback-rule" role="img" aria-label="Lower left contribution produces a left ankle cue; balance produces silence; lower right contribution produces a right ankle cue.">
+        <div class="left-rule"><span>LEFT LOW</span><b>◌ LEFT CUE</b></div>
+        <div class="balanced-rule"><span>IN TOLERANCE</span><b>SILENCE</b></div>
+        <div class="right-rule"><span>RIGHT LOW</span><b>RIGHT CUE ◌</b></div>
       </div>
     </section>
 
-    <section class="content-section related-section">
+    <section class="content-section journey-loop-section" id="journey-loop">
+      <div class="journey-index"><b>02</b><span>HOW THE LOOP WORKS</span></div>
       <div class="section-heading wide">
-        <p class="kicker">06 · MECHANISMS, NOT RISKY REPLICATION</p>
-        <h2 data-lang="zh">从EMS研究学习“何时介入”，<br>而不是在家制作刺激器。</h2>
-        <h2 data-lang="en" hidden>Learn when to intervene from EMS research,<br>not how to build a home stimulator.</h2>
-        <h2 data-lang="ja" hidden>EMS研究から「いつ介入するか」を学び、<br>家庭用刺激器は作らない。</h2>
+        <p class="kicker">HUMAN → MACHINE → HUMAN</p>
+        <h2 data-lang="zh">四步完成一次闭环。</h2>
+        <h2 data-lang="en" hidden>One closed loop in four steps.</h2>
+        <h2 data-lang="ja" hidden>4つの段階で閉ループをつくる。</h2>
+        <p data-lang="zh">这就是作品最重要的演示过程：数据从身体进入机器，经完整踏圈判断后，以最小提示返回身体。四步始终可见，不需要点击。</p>
+        <p data-lang="en" hidden>This is the project’s central demonstration: bodily data enters the machine, is interpreted across a complete revolution, and returns as a minimal cue. All four stages remain visible without a click.</p>
+        <p data-lang="ja" hidden>これが本作の中心的な実演である。身体データが機械へ入り、1回転分を判断した後、最小限の提示として身体へ戻る。4段階はクリックせず常に確認できる。</p>
       </div>
-      <div class="source-grid">
-        <article><span>CHI 2025</span><h3>Adaptive Electrical Muscle Stimulation</h3><p>Intervention decreases as performance improves; retention matters more than assisted performance.</p><a href="https://lab.plopes.org/published/2025-CHI-AdaptiveEMS.pdf" target="_blank" rel="noreferrer">Read paper ↗</a></article>
-        <article><span>CHI 2026</span><h3>My(o) Action</h3><p>Muscular signals become a material for interaction rather than a hidden physiological number.</p><a href="https://lab.plopes.org/" target="_blank" rel="noreferrer">Visit lab ↗</a></article>
-        <article><span>CHI 2017</span><h3>bioSync</h3><p>One person’s muscle signal can be transmitted to another body; here the receiver becomes a future self.</p><a href="https://lab.plopes.org/published/2017-CHI-bioSync.pdf" target="_blank" rel="noreferrer">Read paper ↗</a></article>
+      <div class="mechanism-story" aria-label="Sense decide cue correct mechanism">
+        <article><span>01 · INPUT</span><strong>SENSE</strong><small>FSR-L + FSR-R · HALL</small><p data-lang="zh">记录左右相对压力与每圈边界。</p><p data-lang="en" hidden>Record relative bilateral pressure and each revolution boundary.</p><p data-lang="ja" hidden>左右の相対圧力と各回転の境界を記録する。</p></article>
+        <article><span>02 · INTERPRET</span><strong>DECIDE</strong><small>COMPLETE REVOLUTION</small><p data-lang="zh">等一整圈结束，忽略短暂偏差。</p><p data-lang="en" hidden>Wait for the full revolution and ignore brief deviation.</p><p data-lang="ja" hidden>1回転の終了を待ち、一時的な偏差を無視する。</p></article>
+        <article><span>03 · RETURN</span><strong>CUE</strong><small>LEFT / SILENT / RIGHT</small><p data-lang="zh">只向低贡献侧返回一次短振动。</p><p data-lang="en" hidden>Return one short vibration only to the lower-contributing side.</p><p data-lang="ja" hidden>寄与が低い側だけへ短い振動を1回返す。</p></article>
+        <article><span>04 · LEARN</span><strong>CORRECT</strong><small>VOLUNTARY NEXT REV.</small><p data-lang="zh">人主动调整下一圈，机器随后重新倾听。</p><p data-lang="en" hidden>The rider voluntarily adjusts the next revolution; the machine listens again.</p><p data-lang="ja" hidden>利用者が次の1回転を能動的に調整し、機械は再び観測する。</p></article>
       </div>
-      <aside class="safety-banner">
-        <div><strong>SAFETY TRANSLATION</strong><span>Vibration output · optional read-only EMG · stationary indoor pedalling</span></div>
-        <p data-lang="zh">本原型不制作或操作 DIY EMS/TENS/FES。FSR 只作为完整踏圈内的相对压力贡献代理指标，不代表功率、扭矩、医学诊断或肌肉强弱。</p>
-        <p data-lang="en" hidden>This prototype does not build or operate DIY EMS/TENS/FES. FSR is only a complete-revolution relative pressure-contribution proxy—not power, torque, diagnosis or muscle strength.</p>
-        <p data-lang="ja" hidden>本プロトタイプはDIY EMS/TENS/FESを制作・操作しない。FSRは1回転内の相対圧力寄与の代理指標であり、パワー、トルク、診断、筋力を示さない。</p>
+      <aside class="revolution-rule">
+        <b>WHY ONE COMPLETE REVOLUTION?</b>
+        <p data-lang="zh">踩踏本来就左右交替。逐帧比较会把正常相位差误报为不对称；完整踏圈累计后，左右贡献才具有可比性。</p>
+        <p data-lang="en" hidden>Pedalling naturally alternates sides. Frame-by-frame comparison can misread normal phase difference as asymmetry; accumulated contributions become comparable only after a complete revolution.</p>
+        <p data-lang="ja" hidden>ペダリングは左右が交互に働く。フレーム単位の比較は正常な位相差を非対称と誤認し得るため、1回転分を積算して初めて左右を比較できる。</p>
+        <div class="revolution-notation"><span>0°</span><i></i><strong>Σ L : Σ R</strong><i></i><span>360°</span></div>
       </aside>
     </section>
 
-    <section class="content-section closing-section">
-      <p class="kicker">WHY THIS PROJECT</p>
-      <h2 data-lang="zh">重点不是发明一个新的自行车配件，<br>而是证明我能把身体、机器与研究方法真正接起来。</h2>
-      <h2 data-lang="en" hidden>The point is not a new cycling accessory.<br>It is evidence that I can connect body, machine and research method.</h2>
-      <h2 data-lang="ja" hidden>新しい自転車部品の発明が目的ではない。<br>身体、機械、研究方法を実際につなぐ能力を示す。</h2>
-      <a class="next-page" href="prototype-making.html" data-page-link><span data-ui="nextMaking">Next: see how it is built</span><span>→</span></a>
+    <section class="content-section journey-moment" id="journey-moment">
+      <div class="journey-index"><b>03</b><span>ONE REVOLUTION, THREE MOMENTS</span></div>
+      <div class="section-heading wide">
+        <p class="kicker">THE DEMONSTRATION</p>
+        <h2 data-lang="zh">一次提示，到底怎样发生？</h2>
+        <h2 data-lang="en" hidden>How does one cue actually happen?</h2>
+        <h2 data-lang="ja" hidden>1回の提示は、実際にどう生まれるのか。</h2>
+      </div>
+      <ol class="moment-frames">
+        <li>
+          <div class="moment-visual moment-pedal"><span>L</span><i></i><span>R</span></div>
+          <small>00–360°</small><h3 data-lang="zh">自然踩完一圈</h3><h3 data-lang="en" hidden>Pedal one natural revolution</h3><h3 data-lang="ja" hidden>自然に1回転する</h3>
+          <p data-lang="zh">系统先收集完整一圈，不在左右交替的瞬间做结论。</p><p data-lang="en" hidden>The system gathers the full revolution before judging alternating sides.</p><p data-lang="ja" hidden>左右が交互に働く瞬間には判断せず、1回転全体を収集する。</p>
+        </li>
+        <li>
+          <div class="moment-visual moment-decide"><span>48</span><b>:</b><span>52</span></div>
+          <small>AFTER 360°</small><h3 data-lang="zh">机器等待并判断</h3><h3 data-lang="en" hidden>The machine waits and decides</h3><h3 data-lang="ja" hidden>機械が待って判断する</h3>
+          <p data-lang="zh">若偏差超过个人容差且持续出现，才选择需要提示的一侧。</p><p data-lang="en" hidden>Only a deviation beyond personal tolerance that persists selects a cue side.</p><p data-lang="ja" hidden>個人許容範囲を超える偏差が持続した場合だけ、提示側を選ぶ。</p>
+        </li>
+        <li>
+          <div class="moment-visual moment-correct"><i></i><span>SHORT CUE</span><i></i></div>
+          <small>NEXT REVOLUTION</small><h3 data-lang="zh">身体修正下一圈</h3><h3 data-lang="en" hidden>The body corrects the next revolution</h3><h3 data-lang="ja" hidden>身体が次の1回転を修正する</h3>
+          <p data-lang="zh">对应脚踝收到短提示；人主动调整，回到容差后提示消失。</p><p data-lang="en" hidden>The matching ankle receives a short cue; the rider adjusts and silence returns in tolerance.</p><p data-lang="ja" hidden>該当する足首が短い提示を受け、利用者が調整し、許容範囲へ戻ると沈黙する。</p>
+        </li>
+      </ol>
+      <p class="journey-caption"><b>IMPORTANT</b><span data-lang="zh">这是一段“人 → 机器 → 人”的可操作演示，不是已完成的人体实验结果，也不代表机器直接驱动肌肉。</span><span data-lang="en" hidden>This is an operable Human → Machine → Human demonstration—not a completed human-study result and not direct machine-driven muscle actuation.</span><span data-lang="ja" hidden>これは「人 → 機械 → 人」を操作できる形で示す実演であり、完了済みの人体実験結果でも、機械による筋肉の直接駆動でもない。</span></p>
+    </section>
+
+    <section class="content-section journey-build-section" id="journey-build">
+      <div class="journey-index"><b>04</b><span>HOW IT WAS BUILT</span></div>
+      <div class="section-heading wide">
+        <p class="kicker">BUILD JOURNAL</p>
+        <h2 data-lang="zh">三个模块，沿一条可检查的数据链工作。</h2>
+        <h2 data-lang="en" hidden>Three modules work along one inspectable data chain.</h2>
+        <h2 data-lang="ja" hidden>3つのモジュールが、検証可能な1本のデータ連鎖で働く。</h2>
+        <p data-lang="zh">制作重点不是把零件装在一起，而是让“输入是否可信、每圈是否被正确切分、输出是否能安全清零”逐级可验证。</p>
+        <p data-lang="en" hidden>Making is not just assembly. Each level must show whether the input is repeatable, revolutions are segmented correctly and output can be safely cleared.</p>
+        <p data-lang="ja" hidden>制作は部品の組み立てだけではない。入力の再現性、回転分割の正確さ、出力の安全な解除を段階ごとに検証できるようにする。</p>
+      </div>
+      <div class="build-journal">
+        <article><span>MODULE 01</span><div class="module-mark sensor-mark"></div><h3 data-lang="zh">踏板感知</h3><h3 data-lang="en" hidden>Pedal sensing</h3><h3 data-lang="ja" hidden>ペダル感知</h3><p data-lang="zh">左右 FSR 读取相对压力趋势；Hall 传感器标记每一圈的开始与结束。</p><p data-lang="en" hidden>Bilateral FSRs read relative pressure trends; a Hall sensor marks each revolution boundary.</p><p data-lang="ja" hidden>左右FSRが相対圧力傾向を読み、Hallセンサーが各回転の境界を示す。</p></article>
+        <article><span>MODULE 02</span><div class="module-mark machine-mark"></div><h3 data-lang="zh">机器解释</h3><h3 data-lang="en" hidden>Machine interpretation</h3><h3 data-lang="ja" hidden>機械による解釈</h3><p data-lang="zh">微控制器累计一整圈、与个人基线比较，并过滤一次性的偏差。</p><p data-lang="en" hidden>The controller accumulates a full revolution, compares personal baseline and filters one-off deviations.</p><p data-lang="ja" hidden>コントローラが1回転分を積算し、個人基準と比較して一過性の偏差を除外する。</p></article>
+        <article><span>MODULE 03</span><div class="module-mark return-mark"></div><h3 data-lang="zh">脚踝返回</h3><h3 data-lang="en" hidden>Ankle return</h3><h3 data-lang="ja" hidden>足首への返却</h3><p data-lang="zh">两侧振动马达只发送短提示；停止键与超时机制把输出恢复为零。</p><p data-lang="en" hidden>Two vibration motors send only short cues; stop and timeout logic restore output to zero.</p><p data-lang="ja" hidden>左右の振動モータは短い提示だけを送り、停止・タイムアウト処理で出力をゼロへ戻す。</p></article>
+      </div>
+      <div class="evidence-gates">
+        <p><b>GATE A</b><span data-lang="zh">重复踩压产生方向一致的相对响应</span><span data-lang="en" hidden>Repeated pressure produces directionally consistent relative response</span><span data-lang="ja" hidden>反復圧力で方向が一致する相対応答を得る</span></p>
+        <p><b>GATE B</b><span data-lang="zh">每一整圈只产生一个 Hall 事件</span><span data-lang="en" hidden>One Hall boundary event is recorded per complete revolution</span><span data-lang="ja" hidden>1回転につきHall境界イベントを1回だけ記録する</span></p>
+        <p><b>GATE C</b><span data-lang="zh">停止、断连或超时会把所有输出清零</span><span data-lang="en" hidden>Stop, disconnect or timeout clears every output</span><span data-lang="ja" hidden>停止・切断・タイムアウト時に全出力を解除する</span></p>
+      </div>
+      <a class="inline-detail-link" href="prototype-making.html" data-page-link><span data-ui="makingDetails">See parts, mounting and 14-day build log</span><b>→</b></a>
+    </section>
+
+    <section class="content-section journey-study-section" id="journey-study">
+      <div class="journey-index"><b>05</b><span>WHAT THE PARTICIPANT EXPERIENCES</span></div>
+      <div class="section-heading wide">
+        <p class="kicker">STUDY JOURNEY</p>
+        <h2 data-lang="zh">提示只是中段，<br>真正的问题在提示消失之后。</h2>
+        <h2 data-lang="en" hidden>The cue is only the middle.<br>The real question begins after it disappears.</h2>
+        <h2 data-lang="ja" hidden>提示は中間段階にすぎない。<br>本当の問いは、提示が消えた後に始まる。</h2>
+        <p data-lang="zh">同一个人在相同任务节奏下经历五个阶段。这样才能区分“当下被帮助得更好”和“没有帮助时真的学会了”。</p>
+        <p data-lang="en" hidden>The same participant moves through five stages at a consistent task rhythm. This separates being helped now from learning that survives without help.</p>
+        <p data-lang="ja" hidden>同じ参加者が同じ課題リズムで5段階を経験する。これにより、その場で助けられた成績と、助けなしで残る学習を区別する。</p>
+      </div>
+      <ol class="participant-timeline">
+        <li><span>01</span><strong>BASELINE</strong><small data-lang="zh">60 秒 · 无提示</small><small data-lang="en" hidden>60 sec · no cue</small><small data-lang="ja" hidden>60秒 · 提示なし</small></li>
+        <li class="training-phase"><span>02</span><strong>TRAINING</strong><small data-lang="zh">持续 / 淡出 / 自适应</small><small data-lang="en" hidden>continuous / fade / adaptive</small><small data-lang="ja" hidden>連続 / フェード / 適応</small></li>
+        <li><span>03</span><strong>NO CUE</strong><small data-lang="zh">立即检验</small><small data-lang="en" hidden>immediate test</small><small data-lang="ja" hidden>直後テスト</small></li>
+        <li><span>04</span><strong>24 H RETENTION</strong><small data-lang="zh">隔日保持</small><small data-lang="en" hidden>next-day retention</small><small data-lang="ja" hidden>翌日保持</small></li>
+        <li><span>05</span><strong>TRANSFER</strong><small data-lang="zh">改变节奏再测试</small><small data-lang="en" hidden>test at a changed cadence</small><small data-lang="ja" hidden>異なるケイデンスで再検証</small></li>
+      </ol>
+      <div class="research-questions">
+        <article><span>C1 · ASSISTANCE WITHDRAWAL</span><h3>Adaptive feedback</h3><p data-lang="zh">只在持续错误时出现的自适应提示，是否比连续提示或固定淡出更能留下无提示时的修正能力？</p><p data-lang="en" hidden>Does persistent-error adaptive feedback preserve correction without cues better than continuous feedback or fixed fade?</p><p data-lang="ja" hidden>持続誤差にだけ応答する適応提示は、連続提示や固定フェードよりも、提示なしでの修正を残せるか。</p></article>
+        <article><span>E2 · BODILY TRACE REPLAY</span><h3>Past-self replay</h3><p data-lang="zh">把自己过去的最佳轨迹重新变成左右脚踝提示，与屏幕、匹配他人轨迹或无历史相比，会怎样改变动作？</p><p data-lang="en" hidden>What changes when a rider’s best past trace returns through the ankles rather than a screen, matched-other trace or no history?</p><p data-lang="ja" hidden>過去の自己ベスト軌跡を足首へ返すと、画面、他者対応軌跡、履歴なしと比べて動作はどう変わるか。</p></article>
+      </div>
+      <a class="inline-detail-link" href="experiment-capabilities.html" data-page-link><span data-ui="studyDetails">See conditions, measures and failure handling</span><b>→</b></a>
+    </section>
+
+    <section class="content-section journey-evidence-section" id="journey-evidence">
+      <div class="journey-index"><b>06</b><span>WHAT COUNTS AS EVIDENCE</span></div>
+      <div class="section-heading wide">
+        <p class="kicker">CLAIM LADDER</p>
+        <h2 data-lang="zh">把“能运行、能帮助、能学会”分开证明。</h2>
+        <h2 data-lang="en" hidden>Prove that it runs, helps and teaches as three different claims.</h2>
+        <h2 data-lang="ja" hidden>「動く・助ける・学習を残す」を別々の主張として検証する。</h2>
+      </div>
+      <div class="claim-ladder">
+        <article><span>LEVEL 01 · PROTOTYPE</span><strong data-lang="zh">机制能运行</strong><strong data-lang="en" hidden>The mechanism runs</strong><strong data-lang="ja" hidden>仕組みが動作する</strong><p data-lang="zh">输入、整圈分段、判断、提示与停止均可重复。</p><p data-lang="en" hidden>Input, revolution segmentation, decision, cue and stop are repeatable.</p><p data-lang="ja" hidden>入力、回転分割、判断、提示、停止を再現できる。</p></article>
+        <article><span>LEVEL 02 · PERFORMANCE</span><strong data-lang="zh">提示改善当下表现</strong><strong data-lang="en" hidden>Cues improve current performance</strong><strong data-lang="ja" hidden>提示が現在の成績を改善する</strong><p data-lang="zh">提示开启时，相对贡献误差下降且无明显提示追逐。</p><p data-lang="en" hidden>With cues on, relative-contribution error falls without obvious cue chasing.</p><p data-lang="ja" hidden>提示中に相対寄与誤差が減り、明確な提示追従が生じない。</p></article>
+        <article><span>LEVEL 03 · LEARNING</span><strong data-lang="zh">无提示时仍能保持</strong><strong data-lang="en" hidden>Improvement remains without cues</strong><strong data-lang="ja" hidden>提示なしでも改善が残る</strong><p data-lang="zh">立即、24 小时与新节奏测试仍显示改善，才接近学习证据。</p><p data-lang="en" hidden>Only immediate, 24-hour and changed-cadence tests can approach evidence of learning.</p><p data-lang="ja" hidden>直後、24時間後、異なるケイデンスで改善が残って初めて、学習の証拠に近づく。</p></article>
+      </div>
+      <aside class="evidence-status">
+        <div><span>CURRENT STATUS</span><strong>ILLUSTRATIVE SIMULATION + PLANNED STUDY</strong></div>
+        <p data-lang="zh">当前页面展示可操作机制与研究设计，不把模拟曲线写成参与者结果。FSR 只表示完整踏圈内的相对压力趋势，不是功率、扭矩、肌力或医学诊断。</p>
+        <p data-lang="en" hidden>The current page shows an operable mechanism and study design; simulated traces are not reported as participant results. FSR represents only relative pressure trends within a complete revolution—not power, torque, muscle strength or diagnosis.</p>
+        <p data-lang="ja" hidden>現在のページは操作可能な仕組みと研究計画を示すもので、模擬軌跡を参加者結果として扱わない。FSRが示すのは1回転内の相対圧力傾向だけであり、パワー、トルク、筋力、診断ではない。</p>
+      </aside>
+      <aside class="safety-banner">
+        <div><strong>SAFETY TRANSLATION</strong><span>VIBRATION OUTPUT · OPTIONAL READ-ONLY EMG · STATIONARY INDOOR PEDALLING · NO DIY EMS</span></div>
+        <p data-lang="zh">本原型借鉴 EMS 研究中“何时介入、何时撤除帮助”的机制，但不制作或操作 DIY EMS/TENS/FES。紧急停止、超时清零和静态室内使用是设计边界。</p>
+        <p data-lang="en" hidden>The prototype learns when to intervene and withdraw assistance from EMS research, but does not build or operate DIY EMS/TENS/FES. Emergency stop, timeout clearing and stationary indoor use are design boundaries.</p>
+        <p data-lang="ja" hidden>本プロトタイプはEMS研究から介入と支援撤去のタイミングを学ぶが、DIY EMS/TENS/FESは制作・操作しない。緊急停止、タイムアウト解除、屋内固定使用を設計境界とする。</p>
+      </aside>
+      <div class="reference-strip" aria-label="Research references">
+        <a href="https://lab.plopes.org/published/2025-CHI-AdaptiveEMS.pdf" target="_blank" rel="noreferrer"><span>CHI 2025</span><b>Adaptive Electrical Muscle Stimulation</b></a>
+        <a href="https://lab.plopes.org/" target="_blank" rel="noreferrer"><span>CHI 2026</span><b>My(o) Action</b></a>
+        <a href="https://lab.plopes.org/published/2017-CHI-bioSync.pdf" target="_blank" rel="noreferrer"><span>CHI 2017</span><b>bioSync</b></a>
+      </div>
+    </section>
+
+    <section class="content-section journey-lab-section" id="journey-lab">
+      <div class="journey-index"><b>07</b><span>OPTIONAL LAB</span></div>
+      <div class="journey-lab-copy">
+        <p class="kicker">CONTINUE EXPLORING</p>
+        <h2 data-lang="zh">核心故事已经讲完。<br>现在再进入交互实验室。</h2>
+        <h2 data-lang="en" hidden>The core story is complete.<br>Now enter the interactive lab.</h2>
+        <h2 data-lang="ja" hidden>中心となる物語はここで完結。<br>次にインタラクティブ・ラボへ。</h2>
+        <p data-lang="zh">九段演示用于进一步检查闭环、变量、任务与证据，不再承担理解作品的前置任务。</p>
+        <p data-lang="en" hidden>The nine-scene demonstration lets you inspect the loop, variables, task and evidence in more depth; it is no longer required to understand the project.</p>
+        <p data-lang="ja" hidden>9場面の実演では、閉ループ、変数、課題、証拠をさらに詳しく確認できるが、作品理解の前提ではない。</p>
+      </div>
+      <div class="journey-lab-actions">
+        <button class="large-prototype-button" type="button" data-open-prototype><span data-ui="openOptionalLab">Open optional interactive lab</span><span aria-hidden="true">↗</span></button>
+        <a href="prototype-making.html" data-page-link><span data-ui="makingDetails">See parts, mounting and 14-day build log</span><b>→</b></a>
+        <a href="experiment-capabilities.html" data-page-link><span data-ui="studyDetails">See conditions, measures and failure handling</span><b>→</b></a>
+        <a href="../files/pedalbalance-echo-html-portfolio.zip" download><span data-ui="downloadSource">Download source files</span><b>↓</b></a>
+      </div>
     </section>
   </main>
+
   <footer class="site-footer"><span>PedalBalance Echo · Research-through-making prototype</span><a href="../files/pedalbalance-echo-html-portfolio.zip" download data-ui="downloadSource">Source files</a><span>2026</span></footer>
   <script type="module" src="assets/js/site.js"></script>
 </body>
