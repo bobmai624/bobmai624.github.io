@@ -114,27 +114,113 @@ button {
 }
 
 .page-intro {
+  --intro-reveal: 250ms;
+  --intro-hold: 1000ms;
+  --intro-fade: 550ms;
   position: fixed;
   inset: 0;
   z-index: 999;
   display: grid;
   place-items: center;
+  overflow: hidden;
   color: var(--paper);
-  background: var(--ink);
-  font-size: clamp(3rem, 9vw, 8rem);
-  font-weight: 500;
-  letter-spacing: -0.08em;
+  background: radial-gradient(circle at 50% 45%, #1b1b1b 0%, #0b0b0b 56%, #000 100%);
   pointer-events: none;
-  animation: intro-away 900ms var(--ease) 260ms both;
+  transform-origin: center;
+  animation-name: intro-curtain;
+  animation-duration: var(--intro-fade);
+  animation-timing-function: var(--ease);
+  animation-delay: calc(var(--intro-reveal) + var(--intro-hold));
+  animation-fill-mode: both;
+  will-change: opacity, transform;
 }
 
-@keyframes intro-away {
+.intro-lockup {
+  display: grid;
+  justify-items: center;
+  gap: clamp(18px, 2.4vw, 28px);
+  animation: intro-lockup-in var(--intro-reveal) var(--ease) both;
+}
+
+.intro-mark {
+  position: relative;
+  display: grid;
+  width: clamp(94px, 10vw, 136px);
+  aspect-ratio: 1;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: center;
+  border: 1px solid rgb(255 255 255 / 82%);
+  animation: intro-mark-in var(--intro-reveal) var(--ease) both;
+}
+
+.intro-mark::after {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  border-left: 1px solid rgb(255 255 255 / 42%);
+  content: "";
+}
+
+.intro-letter {
+  display: grid;
+  min-width: 0;
+  place-items: center;
+  font-size: clamp(2.5rem, 5vw, 4.8rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.08em;
+}
+
+.intro-letter:first-child {
+  padding-left: 0.08em;
+}
+
+.intro-letter:last-child {
+  padding-right: 0.08em;
+}
+
+.intro-name {
+  font-size: clamp(0.67rem, 0.9vw, 0.82rem);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.34em;
+  text-indent: 0.34em;
+}
+
+@keyframes intro-curtain {
   0% {
     opacity: 1;
+    visibility: visible;
+    transform: scale(1);
   }
+
   100% {
-    visibility: hidden;
     opacity: 0;
+    visibility: hidden;
+    transform: scale(1.012);
+  }
+}
+
+@keyframes intro-lockup-in {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes intro-mark-in {
+  0% {
+    transform: scale(0.92);
+  }
+
+  100% {
+    transform: scale(1);
   }
 }
 

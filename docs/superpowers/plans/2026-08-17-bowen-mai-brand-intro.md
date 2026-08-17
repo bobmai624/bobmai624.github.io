@@ -44,7 +44,7 @@
 
 - [ ] Replace the single `BM` span with a framed two-letter monogram and full name.
 - [ ] Declare `--intro-hold: 1000ms` and `--intro-fade: 550ms` on `.page-intro`.
-- [ ] Give the curtain an explicit 1,600 ms timeline whose fade begins after the hold.
+- [ ] Give the curtain an explicit 1,800 ms timeline whose fade begins after the hold.
 - [ ] Give the lockup and mark short entrance animations that finish before the hold completes.
 - [ ] Add mobile sizing without changing other header or hero rules.
 - [ ] Run the focused test and confirm it passes.

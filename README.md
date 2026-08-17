@@ -39,3 +39,7 @@ The web resume is written directly inside the `#resume-view` section of `index.h
 ## Edit the capabilities section
 
 Edit `PORTFOLIO_CAPABILITIES` at the end of `projects.js`. Its four arrays map directly to the evidence counters, six professional disciplines, software workflow rows and professional-quality cards, so content changes do not require editing the page layout.
+
+## Edit the opening identity
+
+The CSS-only `BM` mark and `BOWEN MAI` wordmark are inside `.page-intro` near the top of `index.html`. Their appearance is controlled by the adjacent intro rules in `style.css`; change `--intro-reveal`, `--intro-hold` and `--intro-fade` there when adjusting the timing. Those three values are added together by CSS, so the current sequence reveals the mark for 0.25 seconds, holds it fully visible for one second, then fades the black curtain away over 0.55 seconds.

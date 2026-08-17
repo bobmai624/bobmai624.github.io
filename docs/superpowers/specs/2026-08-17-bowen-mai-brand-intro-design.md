@@ -14,7 +14,7 @@ The logo is a code-native `BM` monogram built from typography and borders rather
 2. **Hold, approximately 1,000 ms:** the mark and `BOWEN MAI` remain fully legible against the black curtain.
 3. **Exit, approximately 550 ms:** the whole curtain fades to transparent with a subtle scale increase; it becomes hidden and non-interactive at the end.
 
-The total intro is intentionally around 1.6 seconds. This gives the requested one-second brand hold while keeping the site responsive. Under `prefers-reduced-motion: reduce`, the intro remains disabled as in the existing site.
+The total intro is intentionally around 1.8 seconds: roughly 0.25 seconds to reveal, one full second at rest, and approximately 0.55 seconds to fade. Under `prefers-reduced-motion: reduce`, the intro remains disabled as in the existing site.
 
 ## Implementation boundaries
 
