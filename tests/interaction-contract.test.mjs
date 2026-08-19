@@ -14,3 +14,10 @@ test("the selected-work heading is an explicit focus fallback", () => {
   const html = fs.readFileSync("index.html", "utf8");
   assert.match(html, /id="work-heading"[^>]*tabindex="-1"/);
 });
+
+test("supplementary source files use a deliberately quieter visual tier", () => {
+  const app = fs.readFileSync("app.js", "utf8");
+  const styles = fs.readFileSync("style.css", "utf8");
+  assert.match(app, /source-link--supplementary/);
+  assert.match(styles, /\.source-link--supplementary\s*\{/);
+});

@@ -1,0 +1,6 @@
+node_modules/
+
+# Unredacted group submissions are retained in the private local archive only.
+files/unimelb-library-evaluation-report.pdf
+files/financial-feasibility-report.pdf
+files/financial-feasibility-model.xlsx

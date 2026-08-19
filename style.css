@@ -2739,6 +2739,15 @@ button {
   background: var(--ink);
 }
 
+.source-link--supplementary {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.source-link--supplementary:hover {
+  color: var(--paper);
+}
+
 .source-link--play {
   width: 100%;
   border-right: 0;

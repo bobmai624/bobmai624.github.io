@@ -25,9 +25,11 @@ Then visit `http://127.0.0.1:4178/`.
 - `assets/projects/` contains the website-ready project imagery.
 - `pedalbalance-echo/index.html` is the scroll-first PedalBalance Echo case journey. Its core loop, build journal, participant timeline and evidence ladder are readable without opening the optional nine-scene lab.
 
-The public repository keeps individual project evidence and presentation videos where authorship
-is clear. Unrestricted group-submission PDFs and shared spreadsheet models are excluded and remain
-in the private local portfolio archive.
+The public repository keeps individual evidence, presentation videos and approved group evidence.
+Vita's original group submissions remain as quiet supplementary links. Library and Financial
+Feasibility use privacy-safe public derivatives because their unredacted sources contain participant,
+student or collaborator data. All shared evidence retains explicit group-work attribution and receives
+no separate homepage promotion.
 
 ## Add another project
 

@@ -1412,7 +1412,7 @@ Object.assign(window.PORTFOLIO_I18N.en.ui, {
   outcome: "Outcome / learning",
   limitation: "Limitations",
   shareProject: "Share this case",
-  sharedSourceNote: "This is shared group work. Reviewed presentation evidence is available here; unrestricted copies of the joint submission and model are not published as my sole work.",
+  sharedSourceNote: "This is shared group work. Original submissions or privacy-safe public derivatives remain below as supplementary evidence and are not presented as my sole work.",
   resumeLabel: "Résumé",
   rankingBody: "Assets are ordered by independently recomputed Sharpe ratio. Average return and CAGR show reward; volatility shows the cost of pursuing it; the final column translates the evidence into a portfolio role.",
   investmentDataNote: "Portfolio figures were independently recomputed from the annual source rows using total return and a 2.5% risk-free rate. This corrects an Office column-reference error and an ASX income/compounding error in the submitted workbook summary; the original file remains labelled as submitted work.",
@@ -1467,7 +1467,7 @@ Object.assign(window.PORTFOLIO_I18N.zh.site, {
 
 Object.assign(window.PORTFOLIO_I18N.zh.ui, {
   context: "项目背景", ownership: "责任归属", myContribution: "我的贡献", outcome: "结果 / 学习", limitation: "局限", shareProject: "分享此案例",
-  sharedSourceNote: "这是共同完成的小组项目。此处保留经筛选的展示证据；联合提交文件与模型不会作为我的个人作品无限制公开。",
+  sharedSourceNote: "这是共同完成的小组项目。原始提交文件或经过匿名化的公开版本作为补充证据保留在下方，并不作为我的个人独立成果呈现。",
   resumeLabel: "简历",
   rankingBody: "资产按独立复算后的夏普比率排序。平均回报与复合年增长率说明收益，波动率说明代价，最后一列把证据转化为组合角色。",
   investmentDataNote: "网页数据按年度来源行、总回报口径与 2.5% 无风险利率独立复算，修正了原工作簿中商业办公楼列引用错误，以及 ASX 200 收益与复利错误；原文件仍明确标注为原始提交版本。",
@@ -1524,7 +1524,7 @@ Object.assign(window.PORTFOLIO_I18N.ja.site, {
 
 Object.assign(window.PORTFOLIO_I18N.ja.ui, {
   context: "背景", ownership: "担当範囲", myContribution: "自分の貢献", outcome: "結果／学び", limitation: "限界", shareProject: "このケースを共有",
-  sharedSourceNote: "共同制作です。確認済みの発表証拠を掲載し、共同提出物やモデルを自分だけの成果として無制限には公開しません。",
+  sharedSourceNote: "共同制作です。元の提出資料または匿名化した公開版を補足資料として下に残し、自分だけの成果としては提示しません。",
   resumeLabel: "履歴書",
   rankingBody: "独立再計算したシャープレシオ順に並べています。平均リターンとCAGRは成果、ボラティリティはその代価、最後の列は証拠を配分上の役割へ変換します。",
   investmentDataNote: "掲載値は年次データ、トータルリターン、無リスク金利2.5%で独立再計算し、提出モデルの商業オフィス列参照とASX 200の収益・複利の誤りを修正しました。元ファイルは提出版として明示します。",

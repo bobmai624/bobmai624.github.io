@@ -126,6 +126,27 @@ window.PORTFOLIO_PROJECTS = [
     ],
     sources: [
       { label: "Prototype walkthrough · MP4", href: "files/vita-chatbot-demo.mp4" },
+      {
+        label: "Conceptual design submission · PDF",
+        href: "files/aip-conceptual-design.pdf",
+        labels: { zh: "概念设计小组提交 · PDF", ja: "コンセプト設計・共同提出 · PDF" },
+        supplementary: true,
+        sharedAttribution: true,
+      },
+      {
+        label: "Future scenario submission · PDF",
+        href: "files/aip-future-scenario.pdf",
+        labels: { zh: "未来情景小组提交 · PDF", ja: "未来シナリオ・共同提出 · PDF" },
+        supplementary: true,
+        sharedAttribution: true,
+      },
+      {
+        label: "Refined prototype submission · PDF",
+        href: "files/aip-vita-refined-prototype.pdf",
+        labels: { zh: "精炼原型小组提交 · PDF", ja: "改良プロトタイプ・共同提出 · PDF" },
+        supplementary: true,
+        sharedAttribution: true,
+      },
     ],
   },
   {
@@ -334,6 +355,13 @@ window.PORTFOLIO_PROJECTS = [
     ],
     sources: [
       { label: "Video presentation · MP4", href: "files/unimelb-library-video-presentation.mp4" },
+      {
+        label: "Privacy-safe evidence summary · PDF",
+        href: "files/unimelb-library-evaluation-public-summary.pdf",
+        labels: { zh: "匿名化公开证据摘要 · PDF", ja: "匿名化した公開エビデンス概要 · PDF" },
+        supplementary: true,
+        sharedAttribution: true,
+      },
     ],
   },
   {
@@ -1094,7 +1122,22 @@ window.PORTFOLIO_PROJECTS = [
       { type: "image", src: "assets/projects/feasibility/06-risk-strategy.jpg", alt: "Risk assessment and mitigation strategy", caption: "Risk controls address delay, overrun and competitive pressure." },
       { type: "image", src: "assets/projects/feasibility/07-sensitivity-table.png", alt: "Workbook sensitivity table for occupancy and anchor rent", caption: "The underlying spreadsheet keeps scenario ranges visible.", layout: "wide" },
     ],
-    sources: [],
+    sources: [
+      {
+        label: "Privacy-safe evidence summary · PDF",
+        href: "files/financial-feasibility-public-summary.pdf",
+        labels: { zh: "匿名化公开证据摘要 · PDF", ja: "匿名化した公開エビデンス概要 · PDF" },
+        supplementary: true,
+        sharedAttribution: true,
+      },
+      {
+        label: "Privacy-safe model extract · XLSX",
+        href: "files/financial-feasibility-public-model.xlsx",
+        labels: { zh: "匿名化财务模型摘录 · XLSX", ja: "匿名化した財務モデル抜粋 · XLSX" },
+        supplementary: true,
+        sharedAttribution: true,
+      },
+    ],
   },
   {
     id: "pedalbalance-echo",
@@ -1274,7 +1317,7 @@ window.PORTFOLIO_PROJECTS = window.PORTFOLIO_PROJECTS.map((project) => ({
   sources: project.sources.map((source) => {
     if (!sourcePolicies[project.id]) return source;
     const isPresentation = source.href.endsWith(".mp4");
-    return { ...source, presentation: isPresentation, restricted: !isPresentation };
+    return { ...source, presentation: isPresentation, restricted: false };
   }),
 }));
 

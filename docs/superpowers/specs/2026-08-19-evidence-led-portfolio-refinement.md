@@ -20,7 +20,7 @@ The investment case uses independently recomputed metrics from the original annu
 
 ## Source governance
 
-Individual submissions may retain labelled originals. Shared group submissions and models are not offered as unrestricted public downloads; the case page shows reviewed excerpts and an authorship note. Public demonstration videos remain available when they are project presentations rather than participant recordings. The site never presents hidden participant evidence as public proof.
+Individual submissions retain labelled originals. At the portfolio owner's request, shared group evidence also remains available as supplementary links at the end of its related case study with explicit group-work attribution. Sources containing participant, student or collaborator data are replaced by privacy-safe public derivatives while unredacted originals remain private. Shared evidence receives no separate homepage promotion. Public demonstration videos remain available when they are project presentations rather than participant recordings. The site never presents hidden participant evidence as public proof.
 
 ## Interaction and sharing
 
