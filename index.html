@@ -6,14 +6,22 @@
     <meta name="theme-color" content="#ffffff" />
     <meta
       name="description"
-      content="Bowen Mai is a multidisciplinary designer connecting interaction, form and strategy."
+      content="Bowen Mai is a UX designer and researcher in Melbourne who turns user evidence into testable interfaces and interactive systems."
     />
-    <title>Bowen Mai — Design Portfolio</title>
-    <link rel="stylesheet" href="style.css?v=20260817-library-story" />
-    <script src="projects.js?v=20260817-library-story" defer></script>
-    <script src="i18n.js?v=20260817-library-story" defer></script>
+    <meta property="og:title" content="Bowen Mai — UX Designer &amp; Researcher" />
+    <meta property="og:description" content="Selected UX research, interaction design and visual communication work." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://bobmai624.github.io/" />
+    <meta property="og:image" content="https://bobmai624.github.io/assets/projects/library/cover-session.jpg" />
+    <link rel="canonical" href="https://bobmai624.github.io/" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230a0a0a'/%3E%3Ctext x='32' y='42' text-anchor='middle' font-family='Arial' font-size='28' fill='white'%3EBM%3C/text%3E%3C/svg%3E" />
+    <title>Bowen Mai — UX Designer &amp; Researcher</title>
+    <link rel="stylesheet" href="style.css?v=20260819-evidence-refinement" />
+    <script src="projects.js?v=20260819-evidence-refinement" defer></script>
+    <script src="portfolio-model.js?v=20260819-evidence-refinement" defer></script>
+    <script src="i18n.js?v=20260819-evidence-refinement" defer></script>
     <script src="language-session.js?v=20260817-english-default" defer></script>
-    <script src="app.js?v=20260817-english-default" defer></script>
+    <script src="app.js?v=20260819-evidence-refinement" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#work" data-i18n="skipToWork">Skip to work</a>
@@ -36,8 +44,9 @@
       <div class="site-controls">
         <nav class="site-nav" aria-label="Primary navigation" data-i18n-aria="primaryNavigation">
           <a href="#work" data-i18n="navWork">Work</a>
-          <a href="#practice" data-i18n="navIndex">Index</a>
           <a href="#capabilities" data-i18n="navSkills">Skills</a>
+          <a href="#profile" data-i18n="navAbout">About</a>
+          <a href="#archive" data-i18n="navArchive">Archive</a>
           <a href="#resume" data-resume-open data-i18n="navResume">Resume</a>
         </nav>
       </div>
@@ -55,40 +64,31 @@
     <main id="top">
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero-topline">
-          <p data-i18n="heroTopline">Selected work</p>
-          <p>2024—2026</p>
+          <p data-i18n="heroTopline">Bowen Mai — UX Designer &amp; Researcher</p>
+          <p data-i18n="heroLocation">Melbourne</p>
         </div>
         <h1 id="hero-title" data-i18n-html="heroTitle">
-          Designing meaning between
-          <span>people, systems and form.</span>
+          I turn user evidence into
+          <span>testable interfaces and interactive systems.</span>
         </h1>
         <div class="hero-bottom">
           <p class="hero-position" data-i18n="heroPosition">
-            Multidisciplinary designer connecting interaction, form and strategy.
+            UX Design student at the University of Melbourne. Recent work includes a 19-participant usability evaluation, an individual browser game and responsible-AI interaction prototypes.
           </p>
-          <a class="quiet-link" href="#practice"><span data-i18n="viewPractice">View practice index</span> <span aria-hidden="true">↓</span></a>
+          <div class="hero-actions">
+            <a class="quiet-link" href="#work"><span data-i18n="viewSelectedWork">View selected work</span> <span aria-hidden="true">↓</span></a>
+            <a class="quiet-link" href="#resume" data-resume-open><span data-i18n="viewResume">View résumé</span> <span aria-hidden="true">↗</span></a>
+            <a class="quiet-link" href="mailto:bobmy5464@gmail.com"><span data-i18n="contactMe">Contact me</span> <span aria-hidden="true">↗</span></a>
+          </div>
         </div>
-      </section>
-
-      <section class="practice section-shell" id="practice" aria-labelledby="practice-heading">
-        <header class="section-intro reveal">
-          <p class="section-number" data-i18n="practiceNumber">01 / Practice index</p>
-          <h2 id="practice-heading" data-i18n="practiceTitle">Six ways of working.</h2>
-          <p data-i18n="practiceDescription">
-            The portfolio is organised by the kind of design question being answered, so the
-            relationship between projects is visible before the details begin.
-          </p>
-        </header>
-        <nav class="practice-index" id="practice-index" aria-label="Portfolio practice areas" data-i18n-aria="practiceAria"></nav>
       </section>
 
       <section class="work section-shell" id="work" aria-labelledby="work-heading">
         <header class="section-intro reveal">
-          <p class="section-number" data-i18n="workNumber">02 / Selected work</p>
-          <h2 id="work-heading" data-i18n="workTitle">Work, organised by intention.</h2>
+          <p class="section-number" data-i18n="workNumber">01 / Selected work</p>
+          <h2 id="work-heading" tabindex="-1" data-i18n="workTitle">Selected Work</h2>
           <p data-i18n="workDescription">
-            Fourteen project stories spanning coursework and research through making. Each case
-            begins with its central idea; original evidence remains available at the end.
+            Four cases showing how I plan research, build testable interactions and turn evidence into design decisions.
           </p>
         </header>
         <div class="project-groups" id="project-groups"></div>
@@ -97,66 +97,58 @@
       <section class="capabilities" id="capabilities" aria-labelledby="capabilities-title">
         <div class="capabilities-inner">
           <header class="section-intro capabilities-intro reveal">
-            <p class="section-number" data-i18n="capabilitiesNumber">03 / Capabilities</p>
-            <h2 id="capabilities-title" data-i18n="capabilitiesTitle">What I can do—and how I know.</h2>
+            <p class="section-number" data-i18n="capabilitiesNumber">02 / Capabilities</p>
+            <h2 id="capabilities-title" data-i18n="capabilitiesTitle">Capabilities</h2>
             <p data-i18n="capabilitiesDescription">
-              A capability is more useful when it can be traced to a method, a tool and a visible
-              outcome. This profile summarises the craft, reasoning and professional judgement
-              demonstrated across the portfolio.
+              Three areas of practice, each connected to a project, an action and visible evidence.
             </p>
           </header>
 
-          <div
-            class="capability-metrics"
-            id="capability-metrics"
-            aria-label="Portfolio capability evidence"
-            data-i18n-aria="capabilityEvidenceAria"
-          ></div>
-
           <section class="capability-block" aria-labelledby="capability-groups-heading">
             <header class="capability-block-heading reveal">
-              <p data-i18n="disciplinesLabel">Professional disciplines</p>
-              <h3 id="capability-groups-heading" data-i18n="disciplinesTitle">Skills connected to evidence.</h3>
+              <p data-i18n="disciplinesLabel">Evidence-linked practice</p>
+              <h3 id="capability-groups-heading" data-i18n="disciplinesTitle">What I do</h3>
             </header>
             <div class="capability-groups" id="capability-groups"></div>
-          </section>
-
-          <section class="capability-block" aria-labelledby="capability-tools-heading">
-            <header class="capability-block-heading reveal">
-              <p data-i18n="toolsLabel">Software &amp; workflow</p>
-              <h3 id="capability-tools-heading" data-i18n="toolsTitle">How the tools are used.</h3>
-            </header>
-            <div class="capability-tools" id="capability-tools"></div>
-          </section>
-
-          <section class="capability-block" aria-labelledby="capability-qualities-heading">
-            <header class="capability-block-heading reveal">
-              <p data-i18n="qualitiesLabel">Professional qualities</p>
-              <h3 id="capability-qualities-heading" data-i18n="qualitiesTitle">Patterns behind the work.</h3>
-            </header>
-            <div class="capability-qualities" id="capability-qualities"></div>
           </section>
         </div>
       </section>
 
       <section class="profile section-shell" id="profile" aria-labelledby="profile-heading">
         <div class="profile-heading reveal">
-          <p class="section-number" data-i18n="aboutNumber">04 / About</p>
-          <h2 id="profile-heading" data-i18n-html="aboutTitle">Curious in method.<br />Clear in outcome.</h2>
+          <p class="section-number" data-i18n="aboutNumber">03 / About</p>
+          <h2 id="profile-heading" data-i18n="aboutTitle">About</h2>
         </div>
         <div class="profile-copy reveal">
           <p data-i18n="aboutParagraphOne">
-            I am a Bachelor of Design student at the University of Melbourne, specialising in User
-            Experience Design. I move between research, visual judgement and structured analysis,
-            choosing the form that makes each problem easier to understand.
+            I’m Bowen Mai, a UX Design student at the University of Melbourne. I plan usability research, prototype interaction flows and turn findings into concrete design decisions.
           </p>
           <p data-i18n="aboutParagraphTwo">
-            My work ranges from interface prototypes and usability studies to publications,
-            spatial narratives and financial models. Across them, the common task is the same:
-            make complex evidence legible enough to support a decision.
+            My recent work includes a mixed-method library evaluation, an individual browser game, a conversational-AI prototype and a research-through-making cycling system. I’m particularly interested in projects where research can lead to a testable interface or a clearer decision.
           </p>
           <a class="text-arrow" href="#resume" data-resume-open><span data-i18n="readResume">Read the web resume</span> <span>→</span></a>
         </div>
+      </section>
+
+      <section class="resume-contact-section section-shell" id="resume-contact" aria-labelledby="resume-contact-heading">
+        <header class="section-intro reveal">
+          <p class="section-number" data-i18n="resumeContactNumber">04 / Résumé &amp; contact</p>
+          <h2 id="resume-contact-heading" data-i18n="resumeContactTitle">Professional experience, in context.</h2>
+          <p data-i18n="resumeContactDescription">My UX internship and earlier design roles are documented in the web résumé. Client work remains private where public project evidence is unavailable.</p>
+        </header>
+        <div class="resume-contact-actions reveal">
+          <a class="quiet-link" href="#resume" data-resume-open><span data-i18n="readResume">Read the web résumé</span><span aria-hidden="true">↗</span></a>
+          <a class="quiet-link" href="mailto:bobmy5464@gmail.com"><span data-i18n="contactMe">Contact me</span><span aria-hidden="true">↗</span></a>
+        </div>
+      </section>
+
+      <section class="archive section-shell" id="archive" aria-labelledby="archive-heading">
+        <header class="section-intro reveal">
+          <p class="section-number" data-i18n="archiveNumber">05 / Archive</p>
+          <h2 id="archive-heading" data-i18n="archiveTitle">Archive</h2>
+          <p data-i18n="archiveDescription">Ten supporting projects across editorial, material, spatial and strategic practice.</p>
+        </header>
+        <div class="archive-projects" id="archive-projects"></div>
       </section>
     </main>
 
@@ -235,15 +227,14 @@
         <header class="resume-hero">
           <div class="resume-topline">
             <p data-i18n="resumeTopline">Resume / 2026</p>
-            <p data-i18n="location">Melbourne, Australia</p>
+            <button class="resume-print" id="resume-print" type="button" data-i18n="printResume">Print / Save PDF</button>
           </div>
           <h1 id="resume-title">Bowen Mai</h1>
           <div class="resume-profile-grid">
             <p class="resume-summary" data-i18n="resumeSummary">
               Bachelor of Design student at the University of Melbourne with experience in UX
               design, user research, web and interaction design, graphic design, market analysis
-              and customer-facing retail. Skilled in Figma prototyping, usability evaluation,
-              cross-functional communication and AI-assisted product testing.
+              and customer-facing retail. Skilled in Figma prototyping, usability evaluation and cross-functional communication.
             </p>
             <address class="resume-contact">
               <a href="mailto:bobmy5464@gmail.com">bobmy5464@gmail.com</a>
@@ -321,14 +312,14 @@
               </div>
             </article>
             <article class="resume-education-row">
-              <p class="resume-date" data-i18n="educationTwoDate">Jan 2025 — Dec 2025</p>
+              <p class="resume-date" data-i18n="educationTwoDate">2025 · One month</p>
               <div>
                 <h3 data-i18n="educationTwoDegree">One-Month Exchange Study</h3>
                 <p class="resume-place" data-i18n="educationTwoPlace">Korea University</p>
               </div>
             </article>
             <article class="resume-education-row">
-              <p class="resume-date" data-i18n="educationThreeDate">Early 2026</p>
+              <p class="resume-date" data-i18n="educationThreeDate">2026 · Short term</p>
               <div>
                 <h3 data-i18n="educationThreeDegree">Short-Term Exchange Study</h3>
                 <p class="resume-place" data-i18n="educationThreePlace">Ritsumeikan University, Japan</p>
@@ -360,15 +351,11 @@
               <h3 data-i18n="resumeCapabilityFourTitle">Business &amp; market analysis</h3>
               <p data-i18n="resumeCapabilityFourBody">Comparative data review, cost-benefit reasoning, investment value, risk and feasibility analysis.</p>
             </article>
-            <article>
-              <h3 data-i18n="resumeCapabilityFiveTitle">AI-assisted design &amp; testing</h3>
-              <p data-i18n="resumeCapabilityFiveBody">ChatGPT, DeepSeek, Adobe Firefly and Stable Diffusion used with attention to quality, limitations and consistency.</p>
-            </article>
           </div>
         </section>
 
         <footer class="resume-footer">
-          <p data-i18n="resumeFooterNote">The web version is the primary resume. A PDF copy is retained for applications and printing.</p>
+          <p data-i18n="resumeFooterNote">The web résumé is the current source. Use the print control to save a PDF copy.</p>
         </footer>
       </article>
     </section>

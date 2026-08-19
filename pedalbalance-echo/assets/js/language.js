@@ -1,4 +1,11 @@
 const SUPPORTED_LANGUAGES = new Set(['zh', 'en', 'ja']);
+const TRANSLATIONS = window.PEDALBALANCE_TRANSLATIONS || {
+  staticCopy: {},
+  attributeCopy: {},
+  pageMeta: {},
+};
+const sourceTextByNode = new WeakMap();
+const sourceAttributesByNode = new WeakMap();
 
 const UI_COPY = {
   zh: {
@@ -84,6 +91,51 @@ function updateLanguageLinks(language) {
   });
 }
 
+function replaceKnownCopy(source, language) {
+  const exact = TRANSLATIONS.staticCopy[source]?.[language];
+  return exact || source;
+}
+
+function localiseStaticText(language) {
+  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+  let node = walker.nextNode();
+  while (node) {
+    const parent = node.parentElement;
+    const excluded = parent?.closest('[data-lang], [data-ui], script, style');
+    if (!excluded) {
+      if (!sourceTextByNode.has(node)) sourceTextByNode.set(node, node.nodeValue);
+      const sourceValue = sourceTextByNode.get(node);
+      const match = sourceValue.match(/^(\s*)([\s\S]*?)(\s*)$/);
+      node.nodeValue = language === 'en'
+        ? sourceValue
+        : `${match[1]}${replaceKnownCopy(match[2], language)}${match[3]}`;
+    }
+    node = walker.nextNode();
+  }
+
+  document.querySelectorAll('[aria-label], [title]').forEach((element) => {
+    if (!sourceAttributesByNode.has(element)) {
+      sourceAttributesByNode.set(element, {
+        ariaLabel: element.getAttribute('aria-label'),
+        title: element.getAttribute('title'),
+      });
+    }
+    const source = sourceAttributesByNode.get(element);
+    for (const [attribute, value] of [['aria-label', source.ariaLabel], ['title', source.title]]) {
+      if (!value) continue;
+      const copy = TRANSLATIONS.attributeCopy[value]?.[language];
+      element.setAttribute(attribute, language === 'en' ? value : (copy || replaceKnownCopy(value, language)));
+    }
+  });
+
+  const pageName = window.location.pathname.split('/').pop() || 'index.html';
+  const meta = TRANSLATIONS.pageMeta[pageName]?.[language];
+  if (meta) {
+    document.title = meta.title;
+    document.querySelector('meta[name="description"]')?.setAttribute('content', meta.description);
+  }
+}
+
 export function setLanguage(language) {
   const lang = SUPPORTED_LANGUAGES.has(language) ? language : 'en';
   document.documentElement.lang = lang === 'zh' ? 'zh-CN' : lang;
@@ -98,6 +150,7 @@ export function setLanguage(language) {
     const copy = UI_COPY[lang][node.dataset.ui];
     if (copy) node.textContent = copy;
   });
+  localiseStaticText(lang);
   updateLanguageLinks(lang);
 
   document.dispatchEvent(new CustomEvent('pedalbalance:language', { detail: { language: lang } }));

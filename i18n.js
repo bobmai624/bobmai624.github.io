@@ -52,7 +52,7 @@ window.PORTFOLIO_I18N = {
       playGameTitle: "Play Signal Aftershock",
       closeResume: "Close resume",
       resumeTopline: "Resume / 2026",
-      resumeSummary: "Bachelor of Design student at the University of Melbourne with experience in UX design, user research, web and interaction design, graphic design, market analysis and customer-facing retail. Skilled in Figma prototyping, usability evaluation, cross-functional communication and AI-assisted product testing.",
+      resumeSummary: "UX Design student at the University of Melbourne with experience in user research, interaction design, graphic design, market analysis and customer-facing retail. Skilled in Figma prototyping, usability evaluation and cross-functional communication.",
       experienceTitle: "Experience",
       experienceOneDate: "Feb 2025 — Jul 2025",
       experienceOneRole: "UX Design Intern",
@@ -73,10 +73,10 @@ window.PORTFOLIO_I18N = {
       educationOneDegree: "Bachelor of Design — User Experience Design",
       educationOnePlace: "The University of Melbourne",
       educationOneBody: "User Research, UX Evaluation, Web & Interaction Design, Graphic Design, Finance & Business.",
-      educationTwoDate: "Jan 2025 — Dec 2025",
+      educationTwoDate: "2025 · One month",
       educationTwoDegree: "One-Month Exchange Study",
       educationTwoPlace: "Korea University",
-      educationThreeDate: "Early 2026",
+      educationThreeDate: "2026 · Short term",
       educationThreeDegree: "Short-Term Exchange Study",
       educationThreePlace: "Ritsumeikan University, Japan",
       educationThreeBody: "Japanese language and culture studies.",
@@ -89,10 +89,7 @@ window.PORTFOLIO_I18N = {
       resumeCapabilityThreeBody: "Information architecture, responsive structures, high-fidelity Figma prototypes and HTML/CSS/JavaScript foundations.",
       resumeCapabilityFourTitle: "Business & market analysis",
       resumeCapabilityFourBody: "Comparative data review, cost-benefit reasoning, investment value, risk and feasibility analysis.",
-      resumeCapabilityFiveTitle: "AI-assisted design & testing",
-      resumeCapabilityFiveBody: "ChatGPT, DeepSeek, Adobe Firefly and Stable Diffusion used with attention to quality, limitations and consistency.",
-      resumeFooterNote: "The web version is the primary resume. A PDF copy is retained for applications and printing.",
-      downloadResume: "Download resume PDF",
+      resumeFooterNote: "The web résumé is the current source. Use the print control to save a PDF copy.",
     },
     ui: {
       projectUnit: "projects",
@@ -223,7 +220,7 @@ window.PORTFOLIO_I18N = {
       playGameTitle: "试玩《余震信号》",
       closeResume: "关闭简历",
       resumeTopline: "简历 / 2026",
-      resumeSummary: "墨尔本大学设计学学士在读，拥有用户体验设计、用户研究、网页与交互设计、平面设计、市场分析及一线零售经验。熟悉 Figma 原型、可用性评估、跨职能沟通与人工智能辅助产品测试。",
+      resumeSummary: "墨尔本大学用户体验设计学生，具备用户研究、交互设计、平面设计、市场分析与零售服务经验，熟悉 Figma 原型、可用性评估与跨职能沟通。",
       experienceTitle: "工作经历",
       experienceOneDate: "2025年2月 — 2025年7月",
       experienceOneRole: "用户体验设计实习生",
@@ -244,10 +241,10 @@ window.PORTFOLIO_I18N = {
       educationOneDegree: "设计学学士 — 用户体验设计",
       educationOnePlace: "墨尔本大学",
       educationOneBody: "用户研究、用户体验评估、网页与交互设计、平面设计、金融与商业。",
-      educationTwoDate: "2025年1月 — 2025年12月",
+      educationTwoDate: "2025 · 一个月",
       educationTwoDegree: "一个月交换学习",
       educationTwoPlace: "高丽大学",
-      educationThreeDate: "2026年初",
+      educationThreeDate: "2026 · 短期",
       educationThreeDegree: "短期交换学习",
       educationThreePlace: "日本立命馆大学",
       educationThreeBody: "日语与日本文化学习。",
@@ -260,10 +257,7 @@ window.PORTFOLIO_I18N = {
       resumeCapabilityThreeBody: "信息架构、响应式结构、高保真 Figma 原型，以及 HTML、CSS、JavaScript 前端基础。",
       resumeCapabilityFourTitle: "商业与市场分析",
       resumeCapabilityFourBody: "比较数据分析、成本收益推理、投资价值、风险与可行性分析。",
-      resumeCapabilityFiveTitle: "人工智能辅助设计与测试",
-      resumeCapabilityFiveBody: "使用 ChatGPT、DeepSeek、Adobe Firefly 与 Stable Diffusion，同时审视质量、局限与一致性。",
-      resumeFooterNote: "网页版是主要简历；同时保留 PDF 版本，供求职申请与打印使用。",
-      downloadResume: "下载简历 PDF",
+      resumeFooterNote: "网页版简历是当前版本，可使用打印功能保存为 PDF。",
     },
     ui: {
       projectUnit: "个项目",
@@ -823,7 +817,7 @@ window.PORTFOLIO_I18N = {
       playGameTitle: "シグナル・アフターショックをプレイ",
       closeResume: "履歴書を閉じる",
       resumeTopline: "履歴書 / 2026",
-      resumeSummary: "メルボルン大学デザイン学部在学。UXデザイン、ユーザーリサーチ、ウェブ／インタラクションデザイン、グラフィックデザイン、市場分析、接客販売の経験があります。Figmaによるプロトタイピング、ユーザビリティ評価、部門横断コミュニケーション、AI支援型プロダクトテストを実践しています。",
+      resumeSummary: "メルボルン大学でUXデザインを学び、ユーザー調査、インタラクション、グラフィック、マーケット分析、販売実務を経験。Figma試作、ユーザビリティ評価、部門横断コミュニケーションを扱います。",
       experienceTitle: "職歴",
       experienceOneDate: "2025年2月 — 2025年7月",
       experienceOneRole: "UXデザイン・インターン",
@@ -844,10 +838,10 @@ window.PORTFOLIO_I18N = {
       educationOneDegree: "デザイン学士 — ユーザーエクスペリエンスデザイン",
       educationOnePlace: "メルボルン大学",
       educationOneBody: "ユーザーリサーチ、UX評価、ウェブ／インタラクションデザイン、グラフィックデザイン、金融・ビジネス。",
-      educationTwoDate: "2025年1月 — 2025年12月",
+      educationTwoDate: "2025 · 1か月",
       educationTwoDegree: "1か月間の交換留学",
       educationTwoPlace: "高麗大学校",
-      educationThreeDate: "2026年初頭",
+      educationThreeDate: "2026 · 短期",
       educationThreeDegree: "短期交換留学",
       educationThreePlace: "立命館大学",
       educationThreeBody: "日本語と日本文化を学習。",
@@ -860,10 +854,7 @@ window.PORTFOLIO_I18N = {
       resumeCapabilityThreeBody: "情報設計、レスポンシブ構造、高精細Figmaプロトタイプ、HTML・CSS・JavaScriptの基礎。",
       resumeCapabilityFourTitle: "ビジネス／市場分析",
       resumeCapabilityFourBody: "比較データ分析、費用便益の検討、投資価値、リスク、フィージビリティ分析。",
-      resumeCapabilityFiveTitle: "AI支援デザインとテスト",
-      resumeCapabilityFiveBody: "ChatGPT、DeepSeek、Adobe Firefly、Stable Diffusionを活用し、品質、限界、一貫性を検証。",
-      resumeFooterNote: "ウェブ版を主要な履歴書とし、応募・印刷用にPDF版も保管しています。",
-      downloadResume: "履歴書PDFをダウンロード",
+      resumeFooterNote: "ウェブ履歴書が現行版です。印刷機能からPDFとして保存できます。",
     },
     ui: {
       projectUnit: "件",
@@ -1369,3 +1360,202 @@ window.PORTFOLIO_I18N = {
     },
   },
 };
+
+Object.assign(window.PORTFOLIO_I18N.en, {
+  meta: {
+    title: "Bowen Mai — UX Designer & Researcher",
+    description: "Bowen Mai is a UX designer and researcher in Melbourne who turns user evidence into testable interfaces and interactive systems.",
+  },
+  caseFacts: {},
+});
+
+Object.assign(window.PORTFOLIO_I18N.en.site, {
+  brandDiscipline: "UX design portfolio",
+  navAbout: "About",
+  navArchive: "Archive",
+  heroTopline: "Bowen Mai — UX Designer & Researcher",
+  heroLocation: "Melbourne",
+  heroTitle: "I turn user evidence into <span>testable interfaces and interactive systems.</span>",
+  heroPosition: "UX Design student at the University of Melbourne. Recent work includes a 19-participant usability evaluation, an individual browser game and responsible-AI interaction prototypes.",
+  viewSelectedWork: "View selected work",
+  viewResume: "View résumé",
+  contactMe: "Contact me",
+  workNumber: "01 / Selected work",
+  workTitle: "Selected Work",
+  workDescription: "Four cases showing how I plan research, build testable interactions and turn evidence into design decisions.",
+  capabilitiesNumber: "02 / Capabilities",
+  capabilitiesTitle: "Capabilities",
+  capabilitiesDescription: "Three areas of practice, each connected to a project, an action and visible evidence.",
+  disciplinesLabel: "Evidence-linked practice",
+  disciplinesTitle: "What I do",
+  aboutNumber: "03 / About",
+  aboutTitle: "About",
+  aboutParagraphOne: "I’m Bowen Mai, a UX Design student at the University of Melbourne. I plan usability research, prototype interaction flows and turn findings into concrete design decisions.",
+  aboutParagraphTwo: "My recent work includes a mixed-method library evaluation, an individual browser game, a conversational-AI prototype and a research-through-making cycling system. I’m particularly interested in projects where research can lead to a testable interface or a clearer decision.",
+  resumeContactNumber: "04 / Résumé & contact",
+  resumeContactTitle: "Professional experience, in context.",
+  resumeContactDescription: "My UX internship and earlier design roles are documented in the web résumé. Client work remains private where public project evidence is unavailable.",
+  archiveNumber: "05 / Archive",
+  archiveTitle: "Archive",
+  archiveDescription: "Ten supporting projects across editorial, material, spatial and strategic practice.",
+  resumeSummary: "UX Design student at the University of Melbourne with experience in user research, interaction design, graphic design, market analysis and customer-facing retail. Skilled in Figma prototyping, usability evaluation and cross-functional communication.",
+  educationTwoDate: "2025 · One month",
+  educationThreeDate: "2026 · Short term",
+  printResume: "Print / Save PDF",
+  resumeFooterNote: "The web résumé is the current source. Use the print control to save a PDF copy.",
+});
+
+Object.assign(window.PORTFOLIO_I18N.en.ui, {
+  context: "Context",
+  ownership: "Ownership",
+  myContribution: "My contribution",
+  outcome: "Outcome / learning",
+  limitation: "Limitations",
+  shareProject: "Share this case",
+  sharedSourceNote: "This is shared group work. Reviewed presentation evidence is available here; unrestricted copies of the joint submission and model are not published as my sole work.",
+  resumeLabel: "Résumé",
+  rankingBody: "Assets are ordered by independently recomputed Sharpe ratio. Average return and CAGR show reward; volatility shows the cost of pursuing it; the final column translates the evidence into a portfolio role.",
+  investmentDataNote: "Portfolio figures were independently recomputed from the annual source rows using total return and a 2.5% risk-free rate. This corrects an Office column-reference error and an ASX income/compounding error in the submitted workbook summary; the original file remains labelled as submitted work.",
+  auditBody: "Selected pages remain below the analysis. The portfolio figures are a later audit layer, while the downloadable workbook is retained as the original submission and contains the disclosed formula issues.",
+});
+
+window.PORTFOLIO_I18N.en.capabilities = {
+  groups: window.PORTFOLIO_CAPABILITIES?.groups || [],
+};
+
+Object.assign(window.PORTFOLIO_I18N.zh, {
+  meta: {
+    title: "麦博文 — 用户体验设计师与研究者",
+    description: "麦博文是一位在墨尔本学习与实践的用户体验设计师和研究者，把用户证据转化为可测试的界面与交互系统。",
+  },
+  caseFacts: {
+    vita: { context: "大学小组项目 · 负责任人工智能交互概念", ownership: "四人团队；概念、研究、测试与展示共同完成", contribution: "我负责支持 Voiceflow 结构、路由逻辑、技术实现与原型检查，并记录编码工具的使用方式。", evidence: "精炼版 Voiceflow 原型、讲解视频与小组提交展示", outcome: "测试推动团队明确可编辑的假设、系统边界与人工转接节点。", limitation: "这是课程原型，不是已上线服务，也不能证明长期用户影响。" },
+    "library-evaluation": { context: "大学小组项目 · 混合方法可用性评估", ownership: "五人团队；研究计划、测试、分析与报告共同完成", contribution: "我参与研究计划、主持式评估、现场观察、证据综合与最终报告。", evidence: "14 名线上参与者、5 名主持式参与者、5 项代表任务与 8 条优先建议", outcome: "团队把空间预订、搜索和标签问题转化为八条可追溯的界面建议。", limitation: "学生样本规模有限，足以支持下一轮迭代，但不能代表总体规律。" },
+    "signal-aftershock": { context: "个人游戏设计项目 · 可试玩浏览器原型", ownership: "个人项目", contribution: "我独立设计规则系统、界面、视觉反馈与网页实现，并通过试玩持续修改。", evidence: "可试玩原型、开发记录与明确记录的规则变化", outcome: "删去卡牌、角色和攻击后，骰子与空间机制更清楚、更公平，也更容易学习。", limitation: "试玩测试规模较小，属于形成性测试，不能证明广泛受众偏好。" },
+    "film-to-book": { context: "个人编辑设计项目 · 把电影转译为出版物", ownership: "个人项目", contribution: "我完成视觉系统、节奏、字体、图像处理与整本书的最终编排。", evidence: "完整出版物 PDF 与精选过程跨页", outcome: "最终书籍通过尺度、打断和受控重复，把电影节奏转化为编辑序列。" },
+    "colour-systems": { context: "个人色彩工作室作品集 · 季节与比较研究", ownership: "个人项目", contribution: "我策划、制作并编辑构图、对比、材料与季节叙事中的色彩研究。", evidence: "两份提交作品集与精选高清研究图", outcome: "这些研究建立了控制色温、对比与视觉节奏的一致方法。" },
+    "light-performance": { context: "个人材料实验 · 用四种构造观察光", ownership: "个人项目", contribution: "我搭建材料测试、记录光学表现，并比较反射、扩散与阴影如何改变空间。", evidence: "四项实体实验、摄影记录与提交作品集", outcome: "比较清楚区分了纤维、半透明片、反光面与阴影如何重新分配同一光源。" },
+    pyrrha: { context: "个人空间设计项目 · 把叙事转化为模型与记号", ownership: "个人项目", contribution: "我完成空间概念、图纸、模型语言与最终视觉叙事。", evidence: "设计作品集、平面图、剖面图、轴测图与模型研究", outcome: "最终系统把碎片化故事线索转化为循环的空间序列与一致的记号语言。" },
+    "booking-systems": { context: "个人桌面研究 · Booking.com 批判性评估", ownership: "个人项目", contribution: "我梳理利益相关者，检查决策摩擦与劝导性模式，并提出更包容的设计方向。", evidence: "25 页评估报告，结合界面观察、系统图与公开文献", outcome: "评估把无障碍理解为认知与决策成本，并将层级、透明度与信任确定为设计重点。", limitation: "这不是 WCAG 合规审计，也没有进行辅助技术测试或残障参与者研究。" },
+    "melbourne-motion": { context: "个人平面设计项目 · 用运动与序列表现墨尔本", ownership: "个人项目", contribution: "我完成视觉概念、字体系统、图像序列与最终出版物。", evidence: "提交的视觉叙事与精选跨页", outcome: "作品通过裁切、重复与节奏，让城市被理解为运动，而不是静态地标集合。" },
+    "words-unleashed": { context: "个人字体项目 · 把语言扩展为图像与节奏", ownership: "个人项目", contribution: "我完成字体实验、构图规则与最终序列。", evidence: "项目 PDF 与精选字体研究", outcome: "序列展示尺度、间距与重复如何让文字从信息转化为视觉动作。" },
+    "trace-exaggeration": { context: "个人空间工作流 · 把观察转化为可编辑几何", ownership: "个人项目", contribution: "我描摹来源条件、建立 Rhino 模型，并通过多个视图测试拉伸、压缩与重复。", evidence: "演示文稿、Rhino 3DM 模型与导出图纸", outcome: "工作流把日常痕迹转化为一组受控的空间夸张。" },
+    "investment-strategy": { context: "个人金融课程项目 · 十类澳大利亚资产比较", ownership: "个人项目", contribution: "我收集年度数据、建立比较工作簿，并把回报、风险与情景证据转化为投资组合方向。", evidence: "十类资产各十二期年度观察；作品集阶段已独立复算", outcome: "修正后的比较支持低波动核心、适量增长敞口与明确低配。", limitation: "原提交工作簿存在公式和列引用错误；修正后的网页数据与原文件被明确区分。" },
+    "financial-feasibility": { context: "大学小组项目 · 零售开发财务可行性模型", ownership: "四人团队；建模、分析与建议共同完成", contribution: "我参与模型开发、情景分析、风险综合与最终策略建议。", evidence: "提交报告与 15 张工作表模型，覆盖建设、收入、债务与敏感性", outcome: "原报告建议在条件满足时推进，并把入住率、租金、成本与进度确定为关键变量。", limitation: "后续审计发现不同工作表与报告中的 NPV、IRR 尚未对齐，因此网页不把标题数字当作已核验事实。" },
+    "pedalbalance-echo": { context: "个人研究型制作项目 · 身体性骑行交互", ownership: "个人项目", contribution: "我综合文献、限定安全边界、设计感知与反馈架构、制作交互原型并规划研究。", evidence: "可操作界面原型、系统架构、制作日志与示意模拟", outcome: "项目把广泛的身体共享问题收束为两项可证伪研究：引导撤除与过去自我反馈。", limitation: "尚未进行人体研究或自制 EMS；模拟只说明实验流程，不代表实验结果。" },
+  },
+});
+
+Object.assign(window.PORTFOLIO_I18N.zh.site, {
+  brandDiscipline: "用户体验设计作品集", navAbout: "关于", navArchive: "档案",
+  heroTopline: "麦博文 — 用户体验设计师与研究者", heroLocation: "墨尔本",
+  heroTitle: "我把用户证据转化为<span>可测试的界面与交互系统。</span>",
+  heroPosition: "墨尔本大学用户体验设计学生。近期作品包括一项 19 人可用性评估、一款个人浏览器游戏，以及负责任人工智能交互原型。",
+  viewSelectedWork: "查看精选作品", viewResume: "查看简历", contactMe: "联系我",
+  workNumber: "01 / 精选作品", workTitle: "精选作品", workDescription: "四个案例，展示我如何规划研究、制作可测试交互，并把证据转化为设计决策。",
+  capabilitiesNumber: "02 / 能力", capabilitiesTitle: "能力", capabilitiesDescription: "三项实践能力，分别连接到具体项目、行动与可见证据。",
+  disciplinesLabel: "与证据相连的实践", disciplinesTitle: "我能做什么",
+  aboutNumber: "03 / 关于", aboutTitle: "关于我",
+  aboutParagraphOne: "我是麦博文，墨尔本大学用户体验设计学生。我规划可用性研究、制作交互流程原型，并把研究发现转化为具体设计决策。",
+  aboutParagraphTwo: "我近期完成了混合方法图书馆评估、个人浏览器游戏、对话式人工智能原型，以及研究型制作的骑行系统。我尤其关注能够从研究走向可测试界面或更清晰决策的项目。",
+  resumeContactNumber: "04 / 简历与联系", resumeContactTitle: "把专业经历放回具体语境。", resumeContactDescription: "我的用户体验实习与早期设计经历记录在网页版简历中；没有公开项目证据的客户工作继续保持私密。",
+  archiveNumber: "05 / 项目档案", archiveTitle: "项目档案", archiveDescription: "十个辅助项目，涵盖编辑、材料、空间与策略实践。",
+  resumeSummary: "墨尔本大学用户体验设计学生，具备用户研究、交互设计、平面设计、市场分析与零售服务经验，熟悉 Figma 原型、可用性评估与跨职能沟通。",
+  educationTwoDate: "2025 · 一个月", educationThreeDate: "2026 · 短期", printResume: "打印 / 存为 PDF",
+  resumeFooterNote: "网页版简历是当前版本；可使用打印按钮保存 PDF。",
+});
+
+Object.assign(window.PORTFOLIO_I18N.zh.ui, {
+  context: "项目背景", ownership: "责任归属", myContribution: "我的贡献", outcome: "结果 / 学习", limitation: "局限", shareProject: "分享此案例",
+  sharedSourceNote: "这是共同完成的小组项目。此处保留经筛选的展示证据；联合提交文件与模型不会作为我的个人作品无限制公开。",
+  resumeLabel: "简历",
+  rankingBody: "资产按独立复算后的夏普比率排序。平均回报与复合年增长率说明收益，波动率说明代价，最后一列把证据转化为组合角色。",
+  investmentDataNote: "网页数据按年度来源行、总回报口径与 2.5% 无风险利率独立复算，修正了原工作簿中商业办公楼列引用错误，以及 ASX 200 收益与复利错误；原文件仍明确标注为原始提交版本。",
+  auditBody: "精选页面保留在分析之后。网页数字属于后续审计层，下载的工作簿则保留原始提交状态及已披露的公式问题。",
+});
+
+window.PORTFOLIO_I18N.zh.capabilities = { groups: [
+  { title: "用户体验研究与评估", statement: "我规划可用性研究，结合行为与任务证据，并把发现转化为有优先级的设计建议。", skills: ["研究规划", "主持式可用性测试", "任务计时与观察", "出声思考引导", "眼动证据解读", "证据综合"], evidence: "图书馆评估 · 14 名线上参与者、5 名主持式参与者、5 项任务与 8 条可追溯建议。" },
+  { title: "交互设计与原型", statement: "我制作界面、对话流程与规则系统原型，再通过测试持续修改。", skills: ["用户与对话流程", "信息架构", "Figma 与 Voiceflow 原型", "HTML / CSS / JavaScript", "游戏规则与反馈状态", "迭代测试"], evidence: "《余震信号》· 个人可试玩浏览器游戏；Vita · 共同完成的 Voiceflow 原型与迭代记录。" },
+  { title: "视觉与策略沟通", statement: "我运用视觉层级与结构化分析，让复杂证据更容易理解并支持行动。", skills: ["编辑层级与字体", "视觉系统与序列", "演示叙事", "比较分析", "情景与风险沟通", "Figma、Adobe、Excel 与 Rhino 工作流"], evidence: "Film to Book · 完整编辑序列；澳大利亚投资策略 · 十类资产比较与独立复核的数据。" },
+] };
+
+Object.assign(window.PORTFOLIO_I18N.ja, {
+  meta: {
+    title: "Bowen Mai — UXデザイナー／リサーチャー",
+    description: "メルボルンで学ぶUXデザイナー／リサーチャーBowen Maiが、ユーザー根拠を検証可能な画面とインタラクティブシステムへ変換します。",
+  },
+  caseFacts: {
+    vita: { context: "大学グループ制作 · 責任あるAIインタラクション", ownership: "4人チーム。構想、調査、検証、発表を共同実施", contribution: "Voiceflowの構造、経路ロジック、技術実装、試作レビューを支援し、コーディングツールの使用も記録しました。", evidence: "改良Voiceflow試作、ウォークスルー動画、グループ発表資料", outcome: "検証を通じて、編集可能な仮説、システム境界、人への引き継ぎを明確にしました。", limitation: "授業用試作であり、運用サービスや長期的な利用効果の証拠ではありません。" },
+    "library-evaluation": { context: "大学グループ制作 · 混合手法によるユーザビリティ評価", ownership: "5人チーム。計画、実査、分析、報告を共同実施", contribution: "調査計画、モデレーテッド評価、観察、証拠統合、最終報告に参加しました。", evidence: "オンライン14人、対面5人、代表タスク5件、優先提案8件", outcome: "予約、検索、ラベルの問題を、根拠へ戻れる8件の画面提案へ変換しました。", limitation: "小規模な学生サンプルは次の反復を支えますが、母集団全体の証明ではありません。" },
+    "signal-aftershock": { context: "個人ゲームデザイン · プレイ可能なブラウザ試作", ownership: "個人制作", contribution: "ルール、画面、視覚フィードバック、ブラウザ実装を設計し、プレイテストで反復しました。", evidence: "プレイ可能な試作、開発記録、記録されたルール変更", outcome: "カード、役割、攻撃を削除し、サイコロと空間の中心機構を明瞭、公平、学びやすくしました。", limitation: "小規模な形成的テストであり、広い利用者層の嗜好を示すものではありません。" },
+    "film-to-book": { context: "個人エディトリアル制作 · 映画を出版物へ翻訳", ownership: "個人制作", contribution: "視覚システム、速度、文字、画像処理、全体構成を設計しました。", evidence: "完成PDFと選択した制作過程", outcome: "尺度、中断、制御した反復によって映画のリズムを編集上の連続へ変換しました。" },
+    "colour-systems": { context: "個人色彩スタジオ · 季節と比較の研究", ownership: "個人制作", contribution: "構成、対比、素材、季節物語を横断する色彩研究を企画・制作・編集しました。", evidence: "提出フォリオ2冊と高解像度の選択作品", outcome: "色温度、対比、視覚リズムを異なる課題で制御する一貫した方法を示しました。" },
+    "light-performance": { context: "個人素材実験 · 4つの構成で光を観察", ownership: "個人制作", contribution: "素材試験を制作し、光学的挙動を記録し、反射、拡散、影による空間変化を比較しました。", evidence: "4つの物理実験、写真記録、提出フォリオ", outcome: "繊維、半透明シート、反射面、影が同じ光源をどう再配分するかを区別しました。" },
+    pyrrha: { context: "個人空間デザイン · 物語を模型と記法へ翻訳", ownership: "個人制作", contribution: "空間構想、図面、模型言語、最終視覚物語を設計しました。", evidence: "提出フォリオ、平面、断面、軸測、模型研究", outcome: "断片的な物語の手掛かりを、循環する空間列と一貫した記法へ変換しました。" },
+    "booking-systems": { context: "個人デスク調査 · Booking.comの批判的レビュー", ownership: "個人制作", contribution: "関係者、判断負荷、説得的パターンを整理し、包摂的な再設計方向を提案しました。", evidence: "画面観察、システム図、公開文献による25ページのレビュー", outcome: "アクセシビリティを認知と判断の負荷として捉え、階層、透明性、信頼を設計優先事項にしました。", limitation: "WCAG適合監査、支援技術テスト、障害のある参加者による調査ではありません。" },
+    "melbourne-motion": { context: "個人グラフィック制作 · 動きと連続でメルボルンを表現", ownership: "個人制作", contribution: "視覚構想、文字システム、画像列、最終出版物を設計しました。", evidence: "提出した視覚物語と選択スプレッド", outcome: "切り抜き、反復、速度により、都市を静的な名所ではなく動きとして読ませました。" },
+    "words-unleashed": { context: "個人タイポグラフィ制作 · 言葉を画像とリズムへ展開", ownership: "個人制作", contribution: "文字実験、構成規則、最終連続を設計しました。", evidence: "提出PDFと選択した文字研究", outcome: "尺度、間隔、反復が、言葉を情報から視覚的な動作へ変えることを示しました。" },
+    "trace-exaggeration": { context: "個人空間ワークフロー · 観察を編集可能な形状へ", ownership: "個人制作", contribution: "原条件をトレースし、Rhinoモデルを構築し、伸長、圧縮、反復を複数視点で検証しました。", evidence: "発表資料、Rhino 3DM、書き出し図面", outcome: "日常の痕跡を、制御された空間的誇張の系列へ変換しました。" },
+    "investment-strategy": { context: "個人金融課題 · オーストラリア10資産の比較", ownership: "個人制作", contribution: "年次データを収集し、比較モデルを構築し、リターン、リスク、シナリオを配分方向へ変換しました。", evidence: "10資産各12年の観察値。ポートフォリオ掲載時に独立再計算", outcome: "修正後の比較は、低変動コア、限定的成長、明確な低配分を支持します。", limitation: "提出モデルに数式と列参照の誤りがあり、修正した掲載値と元ファイルを明確に分けています。" },
+    "financial-feasibility": { context: "大学グループ制作 · 商業開発の財務モデル", ownership: "4人チーム。モデル、分析、提案を共同実施", contribution: "モデル開発、シナリオ分析、リスク統合、最終提案に参加しました。", evidence: "建設、収益、負債、感応度を扱う提出報告と15シートモデル", outcome: "提出報告は条件付き実行を提案し、稼働率、賃料、費用、工程を主要因としました。", limitation: "後の監査でシートと報告のNPV・IRRが未照合と判明したため、見出し数値を検証済み事実として掲載しません。" },
+    "pedalbalance-echo": { context: "個人リサーチ・スルー・メイキング · 身体的サイクリング", ownership: "個人制作", contribution: "文献統合、安全範囲、センシングとフィードバック構成、操作試作、研究計画を担当しました。", evidence: "操作可能な画面試作、システム構成、制作記録、説明用シミュレーション", outcome: "広いボディシェアリングの問いを、ガイダンス撤去と過去自己フィードバックという反証可能な2研究へ絞りました。", limitation: "人体実験や自作EMSは未実施です。シミュレーションは手順を示すもので実験結果ではありません。" },
+  },
+});
+
+Object.assign(window.PORTFOLIO_I18N.ja.site, {
+  brandDiscipline: "UXデザイン・ポートフォリオ", navAbout: "概要", navArchive: "アーカイブ",
+  heroTopline: "Bowen Mai — UXデザイナー／リサーチャー", heroLocation: "メルボルン",
+  heroTitle: "ユーザー根拠を<span>検証可能な画面とインタラクティブシステムへ。</span>",
+  heroPosition: "メルボルン大学でUXデザインを専攻。19人のユーザビリティ評価、個人制作のブラウザゲーム、責任あるAIインタラクション試作に取り組みました。",
+  viewSelectedWork: "選択作品を見る", viewResume: "履歴書を見る", contactMe: "連絡する",
+  workNumber: "01 / 選択作品", workTitle: "選択作品", workDescription: "調査計画、検証可能なインタラクション、根拠から判断への変換を示す4つのケースです。",
+  capabilitiesNumber: "02 / 能力", capabilitiesTitle: "能力", capabilitiesDescription: "各プロジェクト、行動、目に見える根拠へ接続した3つの実践領域です。",
+  disciplinesLabel: "根拠につながる実践", disciplinesTitle: "できること",
+  aboutNumber: "03 / 概要", aboutTitle: "概要",
+  aboutParagraphOne: "Bowen Maiです。メルボルン大学でUXデザインを学び、ユーザビリティ調査を計画し、インタラクションフローを試作し、発見を具体的な設計判断へ変換します。",
+  aboutParagraphTwo: "混合手法の図書館評価、個人ブラウザゲーム、会話AI試作、研究制作によるサイクリングシステムに取り組みました。調査を検証可能な画面や明確な判断へつなぐプロジェクトに関心があります。",
+  resumeContactNumber: "04 / 履歴書・連絡", resumeContactTitle: "実務経験を文脈とともに。", resumeContactDescription: "UXインターンと以前のデザイン実務はウェブ履歴書に記載しています。公開できる証拠がないクライアント業務は非公開とします。",
+  archiveNumber: "05 / アーカイブ", archiveTitle: "アーカイブ", archiveDescription: "編集、素材、空間、戦略を横断する10件の補助プロジェクト。",
+  resumeSummary: "メルボルン大学でUXデザインを学び、ユーザー調査、インタラクション、グラフィック、マーケット分析、販売実務を経験。Figma試作、ユーザビリティ評価、部門横断コミュニケーションを扱います。",
+  educationTwoDate: "2025 · 1か月", educationThreeDate: "2026 · 短期", printResume: "印刷 / PDF保存",
+  resumeFooterNote: "ウェブ履歴書が現行版です。印刷ボタンからPDFとして保存できます。",
+});
+
+Object.assign(window.PORTFOLIO_I18N.ja.ui, {
+  context: "背景", ownership: "担当範囲", myContribution: "自分の貢献", outcome: "結果／学び", limitation: "限界", shareProject: "このケースを共有",
+  sharedSourceNote: "共同制作です。確認済みの発表証拠を掲載し、共同提出物やモデルを自分だけの成果として無制限には公開しません。",
+  resumeLabel: "履歴書",
+  rankingBody: "独立再計算したシャープレシオ順に並べています。平均リターンとCAGRは成果、ボラティリティはその代価、最後の列は証拠を配分上の役割へ変換します。",
+  investmentDataNote: "掲載値は年次データ、トータルリターン、無リスク金利2.5%で独立再計算し、提出モデルの商業オフィス列参照とASX 200の収益・複利の誤りを修正しました。元ファイルは提出版として明示します。",
+  auditBody: "選択ページは分析の後に残しています。掲載値は後の監査層であり、ダウンロードモデルは開示済みの数式問題を含む提出版です。",
+});
+
+window.PORTFOLIO_I18N.ja.capabilities = { groups: [
+  { title: "UXリサーチ／評価", statement: "ユーザビリティ調査を計画し、行動とタスクの証拠を統合して、優先順位のある設計提案へ変換します。", skills: ["調査計画", "モデレーテッドテスト", "タスク時間と観察", "発話思考の進行", "視線証拠の解釈", "証拠統合"], evidence: "図書館評価 · オンライン14人、対面5人、5タスク、根拠へ戻れる8提案。" },
+  { title: "インタラクション設計／試作", statement: "画面、会話フロー、ルールシステムを試作し、テストを通じて反復します。", skills: ["ユーザー／会話フロー", "情報設計", "Figma／Voiceflow試作", "HTML / CSS / JavaScript", "ゲーム規則と状態表示", "反復テスト"], evidence: "Signal Aftershock · 個人制作のブラウザゲーム。Vita · 共同Voiceflow試作と反復記録。" },
+  { title: "視覚／戦略コミュニケーション", statement: "視覚階層と構造化分析を用い、複雑な根拠を理解し行動しやすくします。", skills: ["編集階層と文字", "視覚システムと連続", "プレゼンテーション", "比較分析", "シナリオとリスク伝達", "Figma、Adobe、Excel、Rhino"], evidence: "Film to Book · 完成した編集連続。投資戦略 · 独立監査した10資産比較。" },
+] };
+
+for (const language of ["zh", "ja"]) {
+  const assets = window.PORTFOLIO_I18N[language].projects["investment-strategy"].investmentStudy.assets;
+  const names = language === "zh"
+    ? [["商业办公楼", "核心"], ["住宅房地产", "核心"], ["公司债券", "核心"], ["澳洲标普200指数", "分散配置"], ["工业仓储", "增长"], ["物流设施", "增长"], ["黄金（澳元）", "分散配置"], ["零售房地产", "降低配置"], ["政府债券", "降低配置"], ["铁矿石（澳元）", "回避"]]
+    : [["商業オフィス", "コア"], ["住宅不動産", "コア"], ["社債", "コア"], ["ASX 200", "分散"], ["産業用倉庫", "成長"], ["物流施設", "成長"], ["金（豪ドル）", "分散"], ["小売不動産", "縮小"], ["国債", "縮小"], ["鉄鉱石（豪ドル）", "回避"]];
+  names.forEach(([name, role], index) => Object.assign(assets[index], { name, role }));
+  window.PORTFOLIO_I18N[language].projects["investment-strategy"].investmentStudy.theses[0].signal = language === "zh" ? "夏普比率 4.18–10.70" : "シャープ 4.18–10.70";
+}
+
+Object.assign(window.PORTFOLIO_I18N.zh.projects["booking-systems"], {
+  kicker: "系统评估 · 包容性决策支持",
+  summary: "对 Booking.com 的个人批判性评估，梳理利益相关者依赖、决策成本、劝导性模式，以及更包容的复杂旅行平台再设计方向。",
+  role: "个人项目 · 界面观察、系统梳理、文献评估与批判性综合。",
+  methods: ["系统梳理", "界面观察", "利益相关者分析", "文献评估"],
+});
+
+Object.assign(window.PORTFOLIO_I18N.ja.projects["booking-systems"], {
+  kicker: "システム評価 · 包摂的な判断支援",
+  summary: "Booking.comの関係者依存、判断負荷、説得的パターンを整理し、より包摂的な旅行プラットフォームの方向を示す個人レビューです。",
+  role: "個人プロジェクト · 画面観察、システム整理、文献レビュー、批判的統合。",
+  methods: ["システム整理", "画面観察", "関係者分析", "文献レビュー"],
+});

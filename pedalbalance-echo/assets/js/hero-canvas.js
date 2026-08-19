@@ -120,7 +120,14 @@ function drawCrankDirection(ctx, centre, radius) {
   ctx.restore();
 }
 
-function drawScene(ctx, width, height, frame, time) {
+const CANVAS_COPY = {
+  en: { machine: 'MACHINE', revolution: 'COMPLETE REVOLUTION', silent: 'SILENT', left: 'LEFT', right: 'RIGHT', balanced: 'BALANCED', correcting: 'CORRECTING' },
+  zh: { machine: '机器', revolution: '完整踏圈', silent: '无提示', left: '左侧', right: '右侧', balanced: '平衡', correcting: '修正中' },
+  ja: { machine: '機械', revolution: '完全1回転', silent: '提示なし', left: '左', right: '右', balanced: '均衡', correcting: '修正中' },
+};
+
+function drawScene(ctx, width, height, frame, time, language = 'en') {
+  const copy = CANVAS_COPY[language] || CANVAS_COPY.en;
   ctx.clearRect(0, 0, width, height);
   ctx.fillStyle = COLORS.paper;
   ctx.fillRect(0, 0, width, height);
@@ -163,8 +170,8 @@ function drawScene(ctx, width, height, frame, time) {
   const nodeCentre = toPixels({ x: 0.19, y: 0.31 }, width, height);
   const nodeRadius = toPixelLength(0.078, width, height);
   circle(ctx, nodeCentre.x, nodeCentre.y, nodeRadius, COLORS.ink, 2, COLORS.ink);
-  label(ctx, 'MACHINE', nodeCentre.x, nodeCentre.y - 9, COLORS.paper, 10, 'center');
-  label(ctx, frame.state, nodeCentre.x, nodeCentre.y + 13,
+  label(ctx, copy.machine, nodeCentre.x, nodeCentre.y - 9, COLORS.paper, 10, 'center');
+  label(ctx, frame.state === 'BALANCED' ? copy.balanced : copy.correcting, nodeCentre.x, nodeCentre.y + 13,
     frame.state === 'BALANCED' ? '#78d9ab' : '#ff967b', 10, 'center');
 
   const inputRoute = [
@@ -185,7 +192,7 @@ function drawScene(ctx, width, height, frame, time) {
   }
 
   const cycleLabel = toPixels({ x: 0.50, y: 0.84 }, width, height);
-  label(ctx, 'COMPLETE REVOLUTION', cycleLabel.x, cycleLabel.y, COLORS.muted, 10, 'center');
+  label(ctx, copy.revolution, cycleLabel.x, cycleLabel.y, COLORS.muted, 10, 'center');
 }
 
 export function mountHeroCanvas(canvas, dashboard, options = {}) {
@@ -194,6 +201,7 @@ export function mountHeroCanvas(canvas, dashboard, options = {}) {
   let paused = reducedMotion;
   let rafId = 0;
   let start = performance.now();
+  let language = document.documentElement.lang === 'zh-CN' ? 'zh' : document.documentElement.lang || 'en';
 
   function resize() {
     const rect = canvas.getBoundingClientRect();
@@ -209,12 +217,13 @@ export function mountHeroCanvas(canvas, dashboard, options = {}) {
     const contributionBias = Math.sin(elapsed / 3600) * 0.16;
     const frame = cyclingFrame(phase, { contributionBias });
     const rect = canvas.getBoundingClientRect();
-    drawScene(context, rect.width, rect.height, frame, elapsed);
+    const copy = CANVAS_COPY[language] || CANVAS_COPY.en;
+    drawScene(context, rect.width, rect.height, frame, elapsed, language);
     if (dashboard) {
       dashboard.querySelector('[data-left-value]').textContent = `${Math.round(frame.leftContribution * 100)}%`;
       dashboard.querySelector('[data-right-value]').textContent = `${Math.round(frame.rightContribution * 100)}%`;
-      dashboard.querySelector('[data-cue-value]').textContent = frame.cueSide === 'none' ? 'SILENT' : frame.cueSide.toUpperCase();
-      dashboard.querySelector('[data-state-value]').textContent = frame.state;
+      dashboard.querySelector('[data-cue-value]').textContent = frame.cueSide === 'none' ? copy.silent : copy[frame.cueSide];
+      dashboard.querySelector('[data-state-value]').textContent = frame.state === 'BALANCED' ? copy.balanced : copy.correcting;
     }
     if (!paused) rafId = requestAnimationFrame(render);
   }
@@ -238,6 +247,11 @@ export function mountHeroCanvas(canvas, dashboard, options = {}) {
 
   resize();
   window.addEventListener('resize', resize);
+  document.addEventListener('pedalbalance:language', (event) => {
+    language = event.detail.language;
+    if (!paused) cancelAnimationFrame(rafId);
+    render(performance.now());
+  });
   render(performance.now());
   return { pause, resume, destroy, get paused() { return paused; } };
 }

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#f1f2ef"/>
+  <path d="M0 1h1200M0 629h1200" stroke="#151a19" stroke-width="2"/>
+  <text x="64" y="68" fill="#151a19" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="700" letter-spacing="2">BOWEN MAI · EMBODIED INTERACTION</text>
+  <text x="64" y="236" fill="#151a19" font-family="Arial,Helvetica,sans-serif" font-size="78" font-weight="700">PedalBalance</text>
+  <text x="64" y="320" fill="#151a19" font-family="Arial,Helvetica,sans-serif" font-size="78" font-weight="700">Echo</text>
+  <text x="68" y="382" fill="#68716d" font-family="Arial,Helvetica,sans-serif" font-size="22">Human → Machine → Human</text>
+  <text x="68" y="534" fill="#68716d" font-family="Arial,Helvetica,sans-serif" font-size="14" letter-spacing="1.5">OPERABLE PROTOTYPE · ILLUSTRATIVE SIMULATION · PLANNED STUDY</text>
+
+  <g transform="translate(680 100)">
+    <rect x="0" y="0" width="450" height="410" fill="#e2e2da" stroke="#151a19" stroke-width="2"/>
+    <path d="M51 287H399" stroke="#b9bfbb" stroke-width="2"/>
+    <circle cx="225" cy="260" r="82" fill="none" stroke="#b9bfbb" stroke-width="2"/>
+    <circle cx="225" cy="260" r="12" fill="#f1f2ef" stroke="#151a19" stroke-width="3"/>
+    <path d="M225 260L159 214M225 260l68 49" stroke="#151a19" stroke-width="5" stroke-linecap="round"/>
+    <path d="M143 67h164" stroke="#151a19" stroke-width="10" stroke-linecap="round"/>
+    <path d="M180 72l-44 73 23 69" fill="none" stroke="#151a19" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M269 72l50 82-26 155" fill="none" stroke="#68716d" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M129 214l58 2" stroke="#6f8490" stroke-width="15" stroke-linecap="round"/>
+    <path d="M276 310l59 2" stroke="#a77e65" stroke-width="15" stroke-linecap="round"/>
+    <circle cx="355" cy="104" r="52" fill="#151a19"/>
+    <text x="355" y="99" text-anchor="middle" fill="#f1f2ef" font-family="Arial,Helvetica,sans-serif" font-size="12" font-weight="700" letter-spacing="1.5">MACHINE</text>
+    <text x="355" y="119" text-anchor="middle" fill="#84aa9a" font-family="Arial,Helvetica,sans-serif" font-size="11" font-weight="700">WAIT · DECIDE</text>
+    <path d="M187 216C254 202 291 168 323 128" fill="none" stroke="#6f8490" stroke-width="2" stroke-dasharray="8 8"/>
+    <path d="M356 157C353 214 337 263 315 297" fill="none" stroke="#a77e65" stroke-width="2" stroke-dasharray="8 8"/>
+    <circle cx="315" cy="297" r="20" fill="none" stroke="#a77e65" stroke-width="3"/>
+    <circle cx="315" cy="297" r="29" fill="none" stroke="#a77e65" stroke-width="1.5"/>
+    <text x="26" y="382" fill="#6f8490" font-family="Arial,Helvetica,sans-serif" font-size="12" font-weight="700" letter-spacing="1">PRESSURE IN</text>
+    <text x="324" y="382" fill="#a77e65" font-family="Arial,Helvetica,sans-serif" font-size="12" font-weight="700" letter-spacing="1">CUE BACK</text>
+  </g>
+  <text x="1134" y="585" text-anchor="end" fill="#151a19" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="700">2026</text>
+</svg>

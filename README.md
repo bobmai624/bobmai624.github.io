@@ -16,21 +16,30 @@ Then visit `http://127.0.0.1:4178/`.
 
 ## Edit the content
 
-- `projects.js` is the single structured-content file. Projects and the complete Capabilities profile—including metrics, disciplines, software workflows and professional qualities—are listed there.
-- `index.html` contains the homepage introduction, profile, complete web resume and contact links.
+- `projects.js` contains the 14 project records, evidence facts, case-study media and source policies.
+- `portfolio-model.js` defines the four selected cases, the ten-project archive and stable share paths.
+- `i18n.js` contains complete English, Chinese and Japanese homepage, résumé and case-study translations.
+- `index.html` contains the concise homepage shell, complete web résumé and contact links.
 - `style.css` controls the monochrome-led, low-saturation typography, spacing, responsive layout, print resume and motion.
-- `app.js` renders the five grouped practice areas and Capabilities section, and controls project/resume opening, URL routing, focus and scroll reveals.
+- `app.js` renders Selected Work, Archive and the three evidence-linked Capabilities, and controls project/resume opening, metadata, URL routing, focus and scroll reveals.
 - `assets/projects/` contains the website-ready project imagery.
 - `pedalbalance-echo/index.html` is the scroll-first PedalBalance Echo case journey. Its core loop, build journal, participant timeline and evidence ladder are readable without opening the optional nine-scene lab.
 
-The public repository intentionally excludes phone details, original assignment files, models,
-videos and the resume PDF. Those remain in the private local portfolio archive.
+The public repository keeps individual project evidence and presentation videos where authorship
+is clear. Unrestricted group-submission PDFs and shared spreadsheet models are excluded and remain
+in the private local portfolio archive.
 
 ## Add another project
 
-Duplicate one object inside `projects.js`, then change its unique `id`, title, category, summary, `meaning`, cover, case-study sections and media. The `category` must match one of the five IDs in `PORTFOLIO_CATEGORIES`; the project will appear automatically in that section.
+Duplicate one object inside `projects.js`, then change its unique `id`, title, category, summary, `meaning`, cover, `caseFacts`, case-study sections and media. Add the ID to `portfolio-model.js` only if it should become one of the four homepage-selected cases; otherwise it appears in Archive.
 
 Keep new public image assets inside `assets/projects/`.
+
+After editing project titles, evidence or social images, regenerate the independent share pages:
+
+```bash
+node scripts/generate-share-pages.mjs
+```
 
 ## Edit the resume
 
@@ -38,7 +47,7 @@ The web resume is written directly inside the `#resume-view` section of `index.h
 
 ## Edit the capabilities section
 
-Edit `PORTFOLIO_CAPABILITIES` at the end of `projects.js`. Its four arrays map directly to the evidence counters, six professional disciplines, software workflow rows and professional-quality cards, so content changes do not require editing the page layout.
+Edit the three groups in `PORTFOLIO_CAPABILITIES` at the end of `projects.js`. Each capability must name a concrete project, action and visible form of evidence.
 
 ## Edit the opening identity
 

@@ -9,6 +9,7 @@
     qualities: [],
   });
   const languageContent = window.PORTFOLIO_I18N || {};
+  const portfolioModel = window.PortfolioModel;
   const supportedLanguages = ["en", "zh", "ja"];
   const isPublicPortfolio = baseProjects.every((project) =>
     project.sources.every((source) => source.external),
@@ -21,13 +22,16 @@
   let orderedProjects = [];
   let currentLanguage = "en";
   let currentUi = languageContent.en?.ui || {};
+  const canonical = document.querySelector('link[rel="canonical"]');
+  const metaDescription = document.querySelector('meta[name="description"]');
+  const ogTitle = document.querySelector('meta[property="og:title"]');
+  const ogDescription = document.querySelector('meta[property="og:description"]');
+  const ogUrl = document.querySelector('meta[property="og:url"]');
+  const ogImage = document.querySelector('meta[property="og:image"]');
 
-  const practiceIndex = document.querySelector("#practice-index");
   const projectGroups = document.querySelector("#project-groups");
-  const capabilityMetrics = document.querySelector("#capability-metrics");
+  const archiveProjects = document.querySelector("#archive-projects");
   const capabilityGroups = document.querySelector("#capability-groups");
-  const capabilityTools = document.querySelector("#capability-tools");
-  const capabilityQualities = document.querySelector("#capability-qualities");
   const caseStudy = document.querySelector("#case-study");
   const caseContent = document.querySelector("#case-content");
   const caseClose = document.querySelector("#case-close");
@@ -37,9 +41,13 @@
   const gameClose = document.querySelector("#game-close");
   const resumeView = document.querySelector("#resume-view");
   const resumeClose = document.querySelector("#resume-close");
+  const resumePrint = document.querySelector("#resume-print");
   const languageSelect = document.querySelector("#language-select");
+  const siteHeader = document.querySelector(".site-header");
+  const main = document.querySelector("main");
+  const siteFooter = document.querySelector(".site-footer");
 
-  let lastProjectTrigger = null;
+  let lastProjectTriggerId = null;
   let lastGameTrigger = null;
   let lastResumeTrigger = null;
 
@@ -51,6 +59,10 @@
     if (!project.caseHref) return `#project/${project.id}`;
     const separator = project.caseHref.includes("?") ? "&" : "?";
     return `${project.caseHref}${separator}lang=${encodeURIComponent(currentLanguage)}`;
+  }
+
+  function projectShareHref(project) {
+    return portfolioModel.projectSharePath(project);
   }
 
   function mergeTranslation(base, override) {
@@ -81,6 +93,8 @@
 
   function localiseProject(baseProject, override) {
     const project = mergeTranslation(baseProject, override || {});
+    const factOverride = languageContent[currentLanguage]?.caseFacts?.[baseProject.id];
+    project.caseFacts = mergeTranslation(baseProject.caseFacts, factOverride || {});
     if (currentLanguage === "en") return project;
 
     project.cover.alt =
@@ -130,6 +144,40 @@
     });
   }
 
+  function setMeta({ title, description, url, image }) {
+    document.title = title;
+    metaDescription?.setAttribute("content", description);
+    ogTitle?.setAttribute("content", title);
+    ogDescription?.setAttribute("content", description);
+    ogUrl?.setAttribute("content", url);
+    if (image) ogImage?.setAttribute("content", image);
+    canonical?.setAttribute("href", url);
+  }
+
+  function restoreHomeMeta() {
+    const content = languageContent[currentLanguage] || languageContent.en;
+    setMeta({
+      title: content.meta.title,
+      description: content.meta.description,
+      url: "https://bobmai624.github.io/",
+      image: "https://bobmai624.github.io/assets/projects/library/cover-session.jpg",
+    });
+  }
+
+  function applyProjectMeta(project) {
+    const shareUrl = `https://bobmai624.github.io/${projectShareHref(project)}`;
+    const socialImage = project.shareImage || project.cover?.src;
+    const cover = socialImage?.startsWith("assets/")
+      ? `https://bobmai624.github.io/${socialImage}`
+      : "https://bobmai624.github.io/assets/projects/library/cover-session.jpg";
+    setMeta({
+      title: `${project.title} — Bowen Mai`,
+      description: portfolioModel.projectDescription(project),
+      url: shareUrl,
+      image: cover,
+    });
+  }
+
   function captureReadingPosition() {
     if (!caseStudy.hidden) return { surface: "case", top: caseStudy.scrollTop };
     if (!resumeView.hidden) return { surface: "resume", top: resumeView.scrollTop };
@@ -161,9 +209,8 @@
     );
     capabilities = mergeTranslation(baseCapabilities, content.capabilities);
     categoryMap = Object.fromEntries(categories.map((category) => [category.id, category]));
-    orderedProjects = categories.flatMap((category) =>
-      projects.filter((project) => project.category === category.id),
-    );
+    const partition = portfolioModel.partitionProjects(projects);
+    orderedProjects = [...partition.selected, ...partition.archive];
 
     applyStaticTranslations(content);
     languageSelect.value = currentLanguage;
@@ -174,7 +221,18 @@
     const projectMatch = window.location.hash.match(/^#project\/(.+)$/);
     if (projectMatch && !caseStudy.hidden) {
       const project = projectById(decodeURIComponent(projectMatch[1]));
-      if (project) renderCaseStudy(project);
+      if (project) {
+        renderCaseStudy(project);
+        applyProjectMeta(project);
+      }
+    } else if (!resumeView.hidden) {
+      const content = languageContent[currentLanguage] || languageContent.en;
+      setMeta({
+        title: `${currentUi.resumeLabel} — Bowen Mai`,
+        description: content.site.resumeSummary,
+        url: "https://bobmai624.github.io/#resume",
+        image: "https://bobmai624.github.io/assets/projects/library/cover-session.jpg",
+      });
     }
 
     restoreReadingPosition(readingPosition);
@@ -253,23 +311,11 @@
     return `<img src="${project.cover.src}" alt="${project.cover.alt}" loading="lazy" decoding="async" />`;
   }
 
-  function practiceMarkup(category, index) {
-    const count = projects.filter((project) => project.category === category.id).length;
-    return `
-      <a class="practice-index-row reveal" href="#group-${category.id}">
-        <span class="practice-index-number">${twoDigits(index + 1)}</span>
-        <span class="practice-index-name">${category.label}</span>
-        <span class="practice-index-description">${category.description}</span>
-        <span class="practice-index-count">${projectCountLabel(count)}</span>
-        <span class="practice-index-arrow" aria-hidden="true">↓</span>
-      </a>`;
-  }
-
   function projectCardMarkup(project) {
     const index = projectIndex(project.id);
     const routeAttributes = project.caseHref
       ? `href="${projectHref(project)}" data-project-page="${project.id}"`
-      : `data-project="${project.id}" href="${projectHref(project)}"`;
+      : `data-project="${project.id}" href="${projectShareHref(project)}"`;
     return `
       <a class="project-card reveal" ${routeAttributes}>
         <figure class="project-figure">
@@ -282,40 +328,35 @@
             <h3>${project.shortTitle}</h3>
           </div>
           <p class="project-meaning">${project.meaning}</p>
+          <dl class="project-card-facts">
+            <div><dt>${currentUi.myContribution}</dt><dd>${project.caseFacts.contribution}</dd></div>
+            <div><dt>${currentUi.evidence}</dt><dd>${project.caseFacts.evidence}</dd></div>
+          </dl>
           <p class="project-year">${project.year}</p>
           <span class="project-arrow" aria-hidden="true">↗</span>
         </div>
       </a>`;
   }
 
-  function workGroupMarkup(category, index) {
-    const categoryProjects = projects.filter((project) => project.category === category.id);
+  function archiveCardMarkup(project, index) {
+    const category = categoryMap[project.category];
+    const routeAttributes = project.caseHref
+      ? `href="${projectHref(project)}" data-project-page="${project.id}"`
+      : `data-project="${project.id}" href="${projectShareHref(project)}"`;
     return `
-      <section class="work-group" id="group-${category.id}" aria-labelledby="group-title-${category.id}">
-        <header class="work-group-header reveal">
-          <p class="work-group-number">${twoDigits(index + 1)}</p>
-          <h2 id="group-title-${category.id}">${category.label}</h2>
-          <p>${category.description}</p>
-          <p class="work-group-count">${projectCountLabel(categoryProjects.length)}</p>
-        </header>
-        <div class="group-projects">
-          ${categoryProjects.map(projectCardMarkup).join("")}
-        </div>
-      </section>`;
+      <a class="archive-card reveal" ${routeAttributes}>
+        <p class="archive-card-number">${twoDigits(index + 1)}</p>
+        <div><p class="archive-card-kicker">${category.label} · ${project.year}</p><h3>${project.shortTitle}</h3></div>
+        <p>${project.caseFacts.outcome}</p>
+        <p class="archive-card-ownership">${project.caseFacts.ownership}</p>
+        <span aria-hidden="true">↗</span>
+      </a>`;
   }
 
   function renderPortfolio() {
-    practiceIndex.innerHTML = categories.map(practiceMarkup).join("");
-    projectGroups.innerHTML = categories.map(workGroupMarkup).join("");
-  }
-
-  function metricMarkup(metric) {
-    return `
-      <article class="capability-metric reveal">
-        <p class="capability-metric-value">${metric.value}</p>
-        <h3>${metric.label}</h3>
-        <p>${metric.note}</p>
-      </article>`;
+    const partition = portfolioModel.partitionProjects(projects);
+    projectGroups.innerHTML = `<div class="group-projects group-projects--selected">${partition.selected.map(projectCardMarkup).join("")}</div>`;
+    archiveProjects.innerHTML = partition.archive.map(archiveCardMarkup).join("");
   }
 
   function capabilityGroupMarkup(group) {
@@ -333,33 +374,8 @@
       </article>`;
   }
 
-  function toolMarkup(tool, index) {
-    return `
-      <article class="tool-row reveal">
-        <p class="tool-number">${twoDigits(index + 1)}</p>
-        <div class="tool-title">
-          <h3>${tool.name}</h3>
-          <p>${tool.domain}</p>
-        </div>
-        <p class="tool-workflow">${tool.workflow}</p>
-        <p class="tool-evidence"><span>${currentUi.evidence}</span>${tool.evidence}</p>
-      </article>`;
-  }
-
-  function qualityMarkup(quality, index) {
-    return `
-      <article class="quality-card reveal">
-        <p>${twoDigits(index + 1)}</p>
-        <h3>${quality.title}</h3>
-        <p>${quality.evidence}</p>
-      </article>`;
-  }
-
   function renderCapabilities() {
-    capabilityMetrics.innerHTML = capabilities.metrics.map(metricMarkup).join("");
     capabilityGroups.innerHTML = capabilities.groups.map(capabilityGroupMarkup).join("");
-    capabilityTools.innerHTML = capabilities.tools.map(toolMarkup).join("");
-    capabilityQualities.innerHTML = capabilities.qualities.map(qualityMarkup).join("");
   }
 
   function mediaMarkup(item) {
@@ -827,12 +843,17 @@
   }
 
   function sourceArchiveMarkup(project) {
-    if (isPublicPortfolio && !project.playableUrl && project.sources.length === 0) return "";
+    const publicSources = project.sources.filter((source) => !source.restricted);
+    if (!project.playableUrl && publicSources.length === 0 && project.sourcePolicy !== "shared") return "";
     const headingLabel = isPublicPortfolio ? currentUi.liveProject : currentUi.sourceArchive;
     const headingTitle = isPublicPortfolio
       ? currentUi.interactivePrototypeHeading
       : currentUi.originalSubmissions;
-    const note = isPublicPortfolio ? currentUi.publicSourceNote : currentUi.sourceNote;
+    const note = project.sourcePolicy === "shared"
+      ? currentUi.sharedSourceNote
+      : isPublicPortfolio
+        ? currentUi.publicSourceNote
+        : currentUi.sourceNote;
 
     return `
       <section class="source-archive" aria-labelledby="source-heading">
@@ -849,7 +870,7 @@
                 </button>`
               : ""
           }
-          ${project.sources
+          ${publicSources
             .map(
               (source) => `
                 <a class="source-link" href="${source.href}" target="_blank" rel="noreferrer">
@@ -857,6 +878,9 @@
                 </a>`,
             )
             .join("")}
+          <a class="source-link" href="${projectShareHref(project)}">
+            <span>${currentUi.shareProject}</span><span aria-hidden="true">↗</span>
+          </a>
         </div>
       </section>`;
   }
@@ -897,7 +921,12 @@
           <p class="case-overview-label">${currentUi.overview}</p>
           <p class="case-summary">${project.summary}</p>
           <dl class="case-meta">
-            <div><dt>${currentUi.role}</dt><dd>${project.role}</dd></div>
+            <div><dt>${currentUi.context}</dt><dd>${project.caseFacts.context}</dd></div>
+            <div><dt>${currentUi.ownership}</dt><dd>${project.caseFacts.ownership}</dd></div>
+            <div><dt>${currentUi.myContribution}</dt><dd>${project.caseFacts.contribution}</dd></div>
+            <div><dt>${currentUi.evidence}</dt><dd>${project.caseFacts.evidence}</dd></div>
+            <div><dt>${currentUi.outcome}</dt><dd>${project.caseFacts.outcome}</dd></div>
+            ${project.caseFacts.limitation ? `<div><dt>${currentUi.limitation}</dt><dd>${project.caseFacts.limitation}</dd></div>` : ""}
             <div><dt>${currentUi.methods}</dt><dd>${project.methods.join(" · ")}</dd></div>
           </dl>
         </section>
@@ -915,17 +944,24 @@
 
   function transition(change) {
     if (document.startViewTransition && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      document.startViewTransition(change);
-    } else {
-      change();
+      return document.startViewTransition(change).finished;
     }
+    change();
+    return Promise.resolve();
+  }
+
+  function focusWhenReady(element, finished = Promise.resolve()) {
+    finished.finally(() => {
+      window.requestAnimationFrame(() => element?.focus({ preventScroll: true }));
+    });
   }
 
   function updateBodyLock() {
-    document.body.classList.toggle(
-      "overlay-open",
-      !caseStudy.hidden || !gameView.hidden || !resumeView.hidden,
-    );
+    const overlayOpen = !caseStudy.hidden || !gameView.hidden || !resumeView.hidden;
+    document.body.classList.toggle("overlay-open", overlayOpen);
+    [siteHeader, main, siteFooter].forEach((element) => {
+      if (element) element.inert = overlayOpen;
+    });
   }
 
   function hideGame() {
@@ -954,30 +990,37 @@
       window.location.assign(projectHref(project));
       return;
     }
-    if (trigger) lastProjectTrigger = trigger;
+    lastProjectTriggerId = id;
 
-    transition(() => {
+    const transitionFinished = transition(() => {
       hideResume();
       renderCaseStudy(project);
       caseStudy.hidden = false;
       caseStudy.scrollTop = 0;
       updateBodyLock();
+      applyProjectMeta(project);
     });
 
     if (updateHistory && window.location.hash !== `#project/${id}`) {
       history.pushState({ project: id }, "", `#project/${id}`);
     }
-    window.setTimeout(() => caseClose.focus({ preventScroll: true }), 0);
+    focusWhenReady(caseClose, transitionFinished);
   }
 
   function closeProject({ restoreFocus = true, updateHistory = true } = {}) {
     if (caseStudy.hidden) return;
-    transition(hideProject);
+    const transitionFinished = transition(() => {
+      hideProject();
+      restoreHomeMeta();
+    });
     if (updateHistory && window.location.hash.startsWith("#project/")) {
       history.pushState({}, "", "#work");
     }
-    if (restoreFocus && lastProjectTrigger) {
-      window.setTimeout(() => lastProjectTrigger.focus({ preventScroll: true }), 0);
+    if (restoreFocus) {
+      const returnTarget = lastProjectTriggerId
+        ? document.querySelector(`[data-project="${lastProjectTriggerId}"]`)
+        : null;
+      focusWhenReady(returnTarget || document.querySelector("#work-heading"), transitionFinished);
     }
   }
 
@@ -989,7 +1032,7 @@
     caseStudy.inert = true;
     gameView.hidden = false;
     updateBodyLock();
-    window.setTimeout(() => gameClose.focus({ preventScroll: true }), 0);
+    focusWhenReady(gameClose);
   }
 
   function closeGame({ restoreFocus = true } = {}) {
@@ -1003,26 +1046,36 @@
 
   function openResume(trigger = null, updateHistory = true) {
     if (trigger) lastResumeTrigger = trigger;
-    transition(() => {
+    const transitionFinished = transition(() => {
       hideProject();
       resumeView.hidden = false;
       resumeView.scrollTop = 0;
       updateBodyLock();
+      const content = languageContent[currentLanguage] || languageContent.en;
+      setMeta({
+        title: `${currentUi.resumeLabel} — Bowen Mai`,
+        description: content.site.resumeSummary,
+        url: "https://bobmai624.github.io/#resume",
+        image: "https://bobmai624.github.io/assets/projects/library/cover-session.jpg",
+      });
     });
     if (updateHistory && window.location.hash !== "#resume") {
       history.pushState({ resume: true }, "", "#resume");
     }
-    window.setTimeout(() => resumeClose.focus({ preventScroll: true }), 0);
+    focusWhenReady(resumeClose, transitionFinished);
   }
 
   function closeResume({ restoreFocus = true, updateHistory = true } = {}) {
     if (resumeView.hidden) return;
-    transition(hideResume);
+    const transitionFinished = transition(() => {
+      hideResume();
+      restoreHomeMeta();
+    });
     if (updateHistory && window.location.hash === "#resume") {
       history.pushState({}, "", "#profile");
     }
     if (restoreFocus && lastResumeTrigger) {
-      window.setTimeout(() => lastResumeTrigger.focus({ preventScroll: true }), 0);
+      focusWhenReady(lastResumeTrigger, transitionFinished);
     }
   }
 
@@ -1077,6 +1130,11 @@
     if (!focusable.length) return;
     const first = focusable[0];
     const last = focusable[focusable.length - 1];
+    if (!focusable.includes(document.activeElement)) {
+      event.preventDefault();
+      first.focus();
+      return;
+    }
     if (event.shiftKey && document.activeElement === first) {
       event.preventDefault();
       last.focus();
@@ -1097,6 +1155,7 @@
   document.addEventListener("click", (event) => {
     const projectLink = event.target.closest("[data-project]");
     if (projectLink) {
+      if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
       event.preventDefault();
       openProject(projectLink.dataset.project, projectLink);
       return;
@@ -1126,6 +1185,7 @@
   caseClose.addEventListener("click", () => closeProject());
   gameClose.addEventListener("click", () => closeGame());
   resumeClose.addEventListener("click", () => closeResume());
+  resumePrint.addEventListener("click", () => window.print());
 
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {

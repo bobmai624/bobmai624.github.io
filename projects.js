@@ -125,9 +125,6 @@ window.PORTFOLIO_PROJECTS = [
       },
     ],
     sources: [
-      { label: "Future scenario · PDF", href: "files/aip-future-scenario.pdf" },
-      { label: "Conceptual design · PDF", href: "files/aip-conceptual-design.pdf" },
-      { label: "Refined prototype · PDF", href: "files/aip-vita-refined-prototype.pdf" },
       { label: "Prototype walkthrough · MP4", href: "files/vita-chatbot-demo.mp4" },
     ],
   },
@@ -336,7 +333,6 @@ window.PORTFOLIO_PROJECTS = [
       },
     ],
     sources: [
-      { label: "Evaluation report · PDF", href: "files/unimelb-library-evaluation-report.pdf" },
       { label: "Video presentation · MP4", href: "files/unimelb-library-video-presentation.mp4" },
     ],
   },
@@ -736,15 +732,15 @@ window.PORTFOLIO_PROJECTS = [
     id: "booking-systems",
     title: "Booking.com Systems Review",
     shortTitle: "Booking.com Review",
-    kicker: "Systems thinking · accessibility",
+    kicker: "Systems review · inclusive decision support",
     year: "2026",
     category: "ux-research",
     summary:
-      "An individual critical review of Booking.com that maps stakeholder dependencies, accessibility barriers, sustainability tensions and a participatory redesign direction for a complex travel platform.",
+      "An individual critical review of Booking.com that maps stakeholder dependencies, decision effort, persuasive patterns and a more inclusive redesign direction for a complex travel platform.",
     meaning:
       "The review reframes a booking interface as a network of people, incentives and consequences rather than a neutral transaction screen.",
-    role: "Individual project · desk research, systems mapping, accessibility review and critical synthesis.",
-    methods: ["Stakeholder mapping", "Impact mapping", "Accessibility review", "SDG analysis"],
+    role: "Individual project · interface observation, systems mapping, literature review and critical synthesis.",
+    methods: ["Systems mapping", "Interface observation", "Stakeholder analysis", "Literature review"],
     cover: {
       src: "assets/projects/booking/02-platform-overview.jpg",
       alt: "Booking.com platform overview with annotated interface screenshots",
@@ -976,11 +972,11 @@ window.PORTFOLIO_PROJECTS = [
         },
       ],
       assets: [
-        { rank: "01", code: "RES", name: "Residential Property", average: "6.77%", cagr: "6.76%", volatility: "0.77%", sharpe: "5.56", role: "Core", stance: "core", risk: 0.77, growth: 6.76 },
-        { rank: "02", code: "OFF", name: "Commercial Office", average: "5.15%", cagr: "8.47%", volatility: "0.56%", sharpe: "4.75", role: "Core", stance: "core", risk: 0.56, growth: 8.47 },
+        { rank: "01", code: "OFF", name: "Commercial Office", average: "8.47%", cagr: "8.47%", volatility: "0.56%", sharpe: "10.70", role: "Core", stance: "core", risk: 0.56, growth: 8.47 },
+        { rank: "02", code: "RES", name: "Residential Property", average: "6.77%", cagr: "6.76%", volatility: "0.77%", sharpe: "5.56", role: "Core", stance: "core", risk: 0.77, growth: 6.76 },
         { rank: "03", code: "CB", name: "Corporate Bonds", average: "4.41%", cagr: "4.41%", volatility: "0.46%", sharpe: "4.18", role: "Core", stance: "core", risk: 0.46, growth: 4.41 },
-        { rank: "04", code: "WH", name: "Industrial Warehouse", average: "25.55%", cagr: "23.07%", volatility: "22.24%", sharpe: "1.04", role: "Growth", stance: "growth", risk: 22.24, growth: 23.07 },
-        { rank: "05", code: "ASX", name: "ASX 200", average: "8.47%", cagr: "0.08%", volatility: "7.55%", sharpe: "0.79", role: "Diversifier", stance: "diversifier", risk: 7.55, growth: 0.08 },
+        { rank: "04", code: "ASX", name: "ASX 200", average: "12.97%", cagr: "12.72%", volatility: "7.55%", sharpe: "1.39", role: "Diversifier", stance: "diversifier", risk: 7.55, growth: 12.72 },
+        { rank: "05", code: "WH", name: "Industrial Warehouse", average: "25.55%", cagr: "23.07%", volatility: "22.24%", sharpe: "1.04", role: "Growth", stance: "growth", risk: 22.24, growth: 23.07 },
         { rank: "06", code: "LOG", name: "Logistics Facilities", average: "20.32%", cagr: "17.49%", volatility: "23.09%", sharpe: "0.77", role: "Growth", stance: "growth", risk: 23.09, growth: 17.49 },
         { rank: "07", code: "AU", name: "Gold (AUD)", average: "7.14%", cagr: "6.34%", volatility: "13.29%", sharpe: "0.35", role: "Diversifier", stance: "diversifier", risk: 13.29, growth: 6.34 },
         { rank: "08", code: "RTL", name: "Retail Property", average: "5.67%", cagr: "4.73%", volatility: "13.61%", sharpe: "0.23", role: "Minimise", stance: "reduce", risk: 13.61, growth: 4.73 },
@@ -994,7 +990,7 @@ window.PORTFOLIO_PROJECTS = [
           title: "Reward consistency before headline growth",
           assets: "Residential Property · Commercial Office · Corporate Bonds",
           body: "These three assets combine the study's highest Sharpe ratios with the lowest observed volatility, creating the portfolio's stability layer.",
-          signal: "Sharpe 4.18–5.56",
+          signal: "Sharpe 4.18–10.70",
         },
         {
           number: "02",
@@ -1098,10 +1094,7 @@ window.PORTFOLIO_PROJECTS = [
       { type: "image", src: "assets/projects/feasibility/06-risk-strategy.jpg", alt: "Risk assessment and mitigation strategy", caption: "Risk controls address delay, overrun and competitive pressure." },
       { type: "image", src: "assets/projects/feasibility/07-sensitivity-table.png", alt: "Workbook sensitivity table for occupancy and anchor rent", caption: "The underlying spreadsheet keeps scenario ranges visible.", layout: "wide" },
     ],
-    sources: [
-      { label: "Feasibility report · PDF", href: "files/financial-feasibility-report.pdf" },
-      { label: "Financial model · XLSX", href: "files/financial-feasibility-model.xlsx" },
-    ],
+    sources: [],
   },
   {
     id: "pedalbalance-echo",
@@ -1129,6 +1122,7 @@ window.PORTFOLIO_PROJECTS = [
       variant: "pedal",
       alt: "PedalBalance Echo system cover showing body input, machine interpretation and returned haptic guidance",
     },
+    shareImage: "assets/projects/pedalbalance/share-cover.png",
     sections: [
       {
         eyebrow: "Research question",
@@ -1159,234 +1153,180 @@ window.PORTFOLIO_PROJECTS = [
   },
 ];
 
+const caseFacts = {
+  vita: {
+    context: "University group project · responsible-AI interaction concept",
+    ownership: "Four-person team; shared concept, research, testing and presentation",
+    contribution: "I supported Voiceflow structure, routing logic, technical implementation and prototype review, and documented how coding tools were used.",
+    evidence: "Refined Voiceflow prototype, walkthrough video and submitted group presentation",
+    outcome: "Testing led the team to clarify editable hypotheses, system boundaries and human hand-off points.",
+    limitation: "A course prototype, not a deployed service or evidence of long-term user impact.",
+  },
+  "library-evaluation": {
+    context: "University group project · mixed-method usability evaluation",
+    ownership: "Five-person team; research planning, sessions, analysis and report were shared",
+    contribution: "I contributed to the research plan, moderated evaluation work, observation, evidence synthesis and final report.",
+    evidence: "14 online participants, 5 moderated participants, 5 representative tasks and 8 prioritised recommendations",
+    outcome: "The team translated observed booking, search and labelling failures into eight traceable interface recommendations.",
+    limitation: "The small student sample supports a next iteration, not population-level proof.",
+  },
+  "signal-aftershock": {
+    context: "Individual game-design project · playable browser prototype",
+    ownership: "Individual project",
+    contribution: "I designed the rule system, interface, visual feedback and browser implementation, then revised them through playtesting.",
+    evidence: "Playable prototype, development journal and documented rule changes",
+    outcome: "Removing cards, roles and attacks made the dice-and-space mechanic clearer, fairer and faster to learn.",
+    limitation: "Playtesting was formative and small-scale; it does not establish broad audience appeal.",
+  },
+  "film-to-book": {
+    context: "Individual editorial-design project · film translated into publication form",
+    ownership: "Individual project",
+    contribution: "I developed the visual system, pacing, typography, image treatment and final book sequence.",
+    evidence: "Complete publication PDF and selected process spreads",
+    outcome: "The final book turns cinematic rhythm into an editorial sequence through scale, interruption and controlled repetition.",
+  },
+  "colour-systems": {
+    context: "Individual colour-studio folio · seasonal and comparative studies",
+    ownership: "Individual project",
+    contribution: "I planned, produced and edited colour studies across composition, contrast, material and seasonal narrative.",
+    evidence: "Two submitted folios and selected high-resolution studies",
+    outcome: "The studies establish a consistent method for controlling temperature, contrast and visual rhythm across changing briefs.",
+  },
+  "light-performance": {
+    context: "Individual material experiment · light observed through four constructions",
+    ownership: "Individual project",
+    contribution: "I built the material tests, documented optical behaviour and compared how reflection, diffusion and shadow changed space.",
+    evidence: "Four physical experiments, photographic record and submitted folio",
+    outcome: "The comparison distinguishes how fibre, translucent sheet, reflective surface and shadow each redistribute one light source.",
+  },
+  pyrrha: {
+    context: "Individual spatial-design project · narrative translated into model and notation",
+    ownership: "Individual project",
+    contribution: "I developed the spatial concept, drawings, model language and final visual narrative.",
+    evidence: "Submitted design folio, plans, sections, axonometric views and model studies",
+    outcome: "The final system turns fragmented story cues into a looping spatial sequence with a consistent notation language.",
+  },
+  "booking-systems": {
+    context: "Individual desk-based critical review of Booking.com",
+    ownership: "Individual project",
+    contribution: "I mapped stakeholders, reviewed decision friction and persuasive patterns, and proposed an inclusive redesign direction.",
+    evidence: "25-page critical review using interface observation, systems mapping and published literature",
+    outcome: "The review reframes accessibility as cognitive and decision effort, then identifies hierarchy, transparency and trust as design priorities.",
+    limitation: "This was not a WCAG conformance audit, assistive-technology test or study with disabled participants.",
+  },
+  "melbourne-motion": {
+    context: "Individual graphic-design project · Melbourne represented through motion and sequence",
+    ownership: "Individual project",
+    contribution: "I created the visual concept, typographic system, image sequence and final publication.",
+    evidence: "Submitted visual narrative and selected spreads",
+    outcome: "The work uses cropping, repetition and pace to make the city read as movement rather than a static landmark set.",
+  },
+  "words-unleashed": {
+    context: "Individual typographic project · language expanded into image and rhythm",
+    ownership: "Individual project",
+    contribution: "I designed the typographic experiments, compositional rules and final sequence.",
+    evidence: "Submitted project PDF and selected typographic studies",
+    outcome: "The sequence demonstrates how scale, spacing and repetition can shift a word from information into visual action.",
+  },
+  "trace-exaggeration": {
+    context: "Individual spatial workflow · observation translated into editable geometry",
+    ownership: "Individual project",
+    contribution: "I traced source conditions, built the Rhino model and tested extension, compression and repetition across views.",
+    evidence: "Presentation deck, Rhino 3DM model and exported drawings",
+    outcome: "The workflow converts an everyday trace into a controlled family of spatial exaggerations.",
+  },
+  "investment-strategy": {
+    context: "Individual finance-course project · ten-asset Australian investment comparison",
+    ownership: "Individual project",
+    contribution: "I collected annual data, built the workbook comparison and translated return, risk and scenario evidence into a portfolio direction.",
+    evidence: "Twelve annual observations across ten asset classes, independently recomputed for this portfolio",
+    outcome: "The corrected comparison supports a low-volatility core, measured growth exposure and explicit underweights.",
+    limitation: "The submitted workbook contains formula and column-reference errors; corrected portfolio figures are labelled separately from the original file.",
+  },
+  "financial-feasibility": {
+    context: "University group project · retail-development feasibility model",
+    ownership: "Four-person team; modelling, analysis and recommendation were shared",
+    contribution: "I contributed to model development, scenario analysis, risk synthesis and the final strategic recommendation.",
+    evidence: "Submitted report and 15-sheet model covering construction, revenue, debt and sensitivity",
+    outcome: "The submitted report recommended a conditional proceed and identified occupancy, rent, cost and schedule as decisive drivers.",
+    limitation: "A later audit found unreconciled NPV and IRR outputs across sheets and the report, so the headline values are not presented here as verified facts.",
+  },
+  "pedalbalance-echo": {
+    context: "Individual research-through-making project · embodied cycling interaction",
+    ownership: "Individual project",
+    contribution: "I synthesised the literature, scoped safety, designed the sensing and feedback architecture, built the interaction prototype and specified the study plan.",
+    evidence: "Operable interface prototype, system architecture, build journal and illustrative simulation",
+    outcome: "The work turns a broad body-sharing question into two falsifiable studies about fading guidance and past-self feedback.",
+    limitation: "No human study or DIY EMS was conducted; simulations illustrate protocol logic rather than experimental results.",
+  },
+};
+
+const sourcePolicies = {
+  vita: "shared",
+  "library-evaluation": "shared",
+  "financial-feasibility": "shared",
+};
+
+window.PORTFOLIO_PROJECTS = window.PORTFOLIO_PROJECTS.map((project) => ({
+  ...project,
+  caseFacts: caseFacts[project.id],
+  sourcePolicy: sourcePolicies[project.id] || "individual",
+  sources: project.sources.map((source) => {
+    if (!sourcePolicies[project.id]) return source;
+    const isPresentation = source.href.endsWith(".mp4");
+    return { ...source, presentation: isPresentation, restricted: !isPresentation };
+  }),
+}));
+
 window.PORTFOLIO_CAPABILITIES = {
-  metrics: [
-    {
-      value: "14",
-      label: "Curated case studies",
-      note: "Individual, group and co-design work presented as complete project stories.",
-    },
-    {
-      value: "06",
-      label: "Connected practice areas",
-      note: "Digital interaction, UX systems, visual communication, spatial form, strategy and embodied systems.",
-    },
-    {
-      value: "21",
-      label: "Original assignment files",
-      note: "PDF, video, PowerPoint, Rhino and Excel evidence retained in the local archive.",
-    },
-    {
-      value: "51",
-      label: "Distinct methods documented",
-      note: "A portfolio vocabulary spanning research, prototyping, making and analysis.",
-    },
-  ],
   groups: [
     {
       number: "01",
-      title: "Product & Interaction Design",
+      title: "UX Research & Evaluation",
       statement:
-        "I turn uncertain product ideas into understandable flows, testable interfaces and explicit decision rules.",
+        "I plan usability studies, combine behavioural and task evidence, and turn findings into prioritised design recommendations.",
       skills: [
-        "Information architecture",
-        "User flows & task logic",
-        "Wireframes & high-fidelity UI",
-        "Conversation design",
-        "Interactive prototyping",
-        "Responsive page structure",
-        "Game rules & feedback states",
-        "Prototype testing",
+        "Research planning",
+        "Moderated usability testing",
+        "Task timing and observation",
+        "Think-aloud facilitation",
+        "Eye-tracking interpretation",
+        "Evidence synthesis",
       ],
       evidence:
-        "Two interactive systems anchor this capability: Vita, a Voiceflow reflection chatbot, and Signal Aftershock, a playable browser game with turn logic, scoring and animated feedback.",
+        "Library Evaluation · 14 online participants, 5 moderated participants, 5 tasks and 8 traceable recommendations.",
     },
     {
       number: "02",
-      title: "UX Research & Evaluation",
+      title: "Interaction Design & Prototyping",
       statement:
-        "I combine behavioural observation, measurable task performance and qualitative synthesis before recommending a design change.",
+        "I prototype interfaces, conversation flows and rule-based systems, then revise them through testing.",
       skills: [
-        "Five-second & first-click testing",
-        "Moderated usability testing",
-        "Think-aloud facilitation",
-        "Eye-tracking & heat-map reading",
-        "Task timing & difficulty ratings",
-        "SUS interpretation",
-        "Thematic synthesis",
-        "Heuristic & accessibility review",
+        "User and conversation flows",
+        "Information architecture",
+        "Figma and Voiceflow prototyping",
+        "HTML / CSS / JavaScript",
+        "Game rules and feedback states",
+        "Iterative testing",
       ],
       evidence:
-        "The Library evaluation combined 14 online participants with 5 laboratory participants, five timed tasks, Tobii eye tracking, observation, difficulty ratings and SUS responses.",
+        "Signal Aftershock · an individual playable browser game; Vita · shared Voiceflow prototype and documented iteration.",
     },
     {
       number: "03",
-      title: "Visual Communication & Editorial Craft",
+      title: "Visual & Strategic Communication",
       statement:
-        "I use hierarchy, sequence, image and material choices to make dense ideas easier to read, remember and navigate.",
+        "I use visual hierarchy and structured analysis to make complex evidence easier to understand and act on.",
       skills: [
-        "Typography & letterform systems",
-        "Editorial grids & pacing",
-        "Colour interaction",
-        "Image sampling & composition",
-        "Brand and campaign adaptation",
-        "Bookmaking & physical sequencing",
-        "Photography & art direction",
-        "Presentation storytelling",
+        "Editorial hierarchy and typography",
+        "Visual systems and sequencing",
+        "Presentation narratives",
+        "Comparative analysis",
+        "Scenario and risk communication",
+        "Figma, Adobe, Excel and Rhino workflows",
       ],
       evidence:
-        "Four visual and editorial case studies sit alongside professional experience producing e-commerce, packaging, poster, brochure, campaign, logo and brand-layout deliverables.",
-    },
-    {
-      number: "04",
-      title: "Spatial, Material & 3D Thinking",
-      statement:
-        "I translate observation and narrative into spatial relationships, then test those relationships through models, light and multiple views.",
-      skills: [
-        "Observational drawing",
-        "Tracing & abstraction",
-        "Spatial translation",
-        "Rhino 3D modelling",
-        "Perspective & orthographic views",
-        "Material and light staging",
-        "Narrative representation",
-        "Form iteration",
-      ],
-      evidence:
-        "Three spatial and material studies move from botanical tracing to Rhino geometry, coloured-light experiments and narrative city perspectives across physical and digital outputs.",
-    },
-    {
-      number: "05",
-      title: "Data, Finance & Strategic Analysis",
-      statement:
-        "I structure assumptions, compare scenarios and translate model outputs into recommendations that make risk visible.",
-      skills: [
-        "Data collection & cleaning",
-        "Comparative performance analysis",
-        "CAGR, volatility & Sharpe ratio",
-        "Discounted cash flow",
-        "NPV, IRR & payback",
-        "Loan and revenue schedules",
-        "Sensitivity & scenario analysis",
-        "Risk mitigation",
-      ],
-      evidence:
-        "The portfolio contains a 15-sheet retail feasibility model and an 11-sheet cross-asset workbook covering linked schedules, compounding, debt, discounted cash flow and risk-adjusted comparison.",
-    },
-    {
-      number: "06",
-      title: "Professional Delivery & Collaboration",
-      statement:
-        "I connect research, visual decisions and implementation conversations so a team can move from feedback to a clear next action.",
-      skills: [
-        "Requirement clarification",
-        "Cross-functional communication",
-        "Co-design & critique",
-        "Feedback synthesis",
-        "Implementation notes",
-        "Client and customer communication",
-        "Presentation & hand-off",
-        "Priority and deadline management",
-      ],
-      evidence:
-        "UX, graphic-design and retail roles show delivery across product, development, business, promotion and customer contexts; team projects add facilitation, shared testing and documented critique.",
-    },
-  ],
-  tools: [
-    {
-      name: "Figma",
-      domain: "Interface design & collaboration",
-      workflow:
-        "Builds wireframes and high-fidelity screens around information hierarchy, content modules, calls to action and user paths; uses interactive prototypes and shared boards to collect feedback and align product, design and development decisions.",
-      evidence: "UX internship · Vita design board · coursework prototypes",
-    },
-    {
-      name: "Voiceflow",
-      domain: "Conversational prototyping",
-      workflow:
-        "Structures chatbot behaviour with variables, workflows, Playbooks and knowledge bases; distinguishes flexible language handling from hard-coded transitions, then tests routing, system visibility, hand-offs and failure states.",
-      evidence: "Vita refined chatbot prototype",
-    },
-    {
-      name: "HTML / CSS / JavaScript",
-      domain: "Interactive web prototyping",
-      workflow:
-        "Uses front-end foundations to communicate and review implementation: responsive structures, interactive grid behaviour, line drawing, hover previews, turn controls, scoring displays, visual feedback and motion, with AI-assisted coding followed by hands-on testing.",
-      evidence: "Signal Aftershock browser prototype",
-    },
-    {
-      name: "Microsoft Excel",
-      domain: "Model building & analysis",
-      workflow:
-        "Organises assumptions and raw data across linked sheets; builds compounding returns, PMT loan schedules, revenue and cost projections, discounted cash flows, NPV/IRR, CAGR, volatility, Sharpe ratio, scenario tables and sensitivity comparisons.",
-      evidence: "15-sheet feasibility model · 11-sheet asset workbook",
-    },
-    {
-      name: "Rhino 3D",
-      domain: "Spatial modelling",
-      workflow:
-        "Converts traced observations into editable geometry, then extends, compresses and repeats selected fragments to test density, projection and spatial rhythm across perspective, side and orthographic views.",
-      evidence: "Trace to Exaggeration · local 3DM model",
-    },
-    {
-      name: "Lyssna + Tobii Eye Tracker",
-      domain: "Research instrumentation",
-      workflow:
-        "Runs first-impression testing through anonymised online surveys and supports laboratory studies with gaze tracking, heat maps, task timing, think-aloud observation, difficulty ratings and recorded interaction evidence.",
-      evidence: "19-participant Library usability evaluation",
-    },
-    {
-      name: "ChatGPT / DeepSeek / Claude / Codex",
-      domain: "AI-assisted reasoning & implementation",
-      workflow:
-        "Uses generative tools to organise information, compare concepts, refine copy, clarify technical systems and support implementation; reviews outputs for evidence, consistency, cultural assumptions, interaction logic and limitations before adoption.",
-      evidence: "Resume workflow · Vita AI declaration · Signal implementation",
-    },
-    {
-      name: "Adobe Firefly + Stable Diffusion",
-      domain: "Visual exploration",
-      workflow:
-        "Generates and compares visual directions during early exploration, then evaluates relevance, consistency and artefacts before selecting, editing or rejecting outputs rather than treating generated images as finished design decisions.",
-      evidence: "AI-assisted design and product-testing practice",
-    },
-    {
-      name: "PowerPoint",
-      domain: "Presentation & design communication",
-      workflow:
-        "Builds sequenced presentations that move from context and evidence to process, decision and outcome; coordinates large-format imagery, annotated diagrams, concise captions and export-ready project documentation.",
-      evidence: "Trace into Form deck · project presentation boards",
-    },
-  ],
-  qualities: [
-    {
-      title: "Evidence before opinion",
-      evidence:
-        "Recommendations are tied to observed behaviour, timed tasks, model outputs or visible design tests, making the reasoning traceable instead of relying on taste alone.",
-    },
-    {
-      title: "Iterative restraint",
-      evidence:
-        "The work improves by editing as well as adding: Signal removed cards, roles and attacks so the central geometric decision became clearer, fairer and easier to learn.",
-    },
-    {
-      title: "Ethical and inclusive judgement",
-      evidence:
-        "Research uses consent, anonymity and withdrawal rights, while AI and systems projects examine agency, accessibility, cultural bias, feedback and the consequences of design choices.",
-    },
-    {
-      title: "Systems thinking",
-      evidence:
-        "Interfaces are read as connected networks of users, incentives, rules and downstream effects; financial work similarly links assumptions to scenarios, thresholds and risks.",
-    },
-    {
-      title: "Cross-disciplinary translation",
-      evidence:
-        "A single practice moves between conversation flows, typography, spatial models and financial schedules while keeping the same goal: make complexity understandable enough to act on.",
-    },
-    {
-      title: "Clear collaborative delivery",
-      evidence:
-        "Professional and group work repeatedly converts stakeholder feedback into shared priorities, revised prototypes, implementation notes, presentations and specific next steps.",
+        "Film to Book · complete editorial sequence; Investment Strategy · ten-asset comparison with independently audited portfolio metrics.",
     },
   ],
 };
