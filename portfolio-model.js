@@ -1,8 +1,8 @@
 (() => {
   const selectedOrder = [
-    "library-evaluation",
-    "signal-aftershock",
     "vita",
+    "signal-aftershock",
+    "financial-feasibility",
     "pedalbalance-echo",
   ];
 
@@ -12,6 +12,15 @@
     const selectedIds = new Set(selectedOrder);
     const archive = projects.filter((project) => !selectedIds.has(project.id));
     return { selected, archive };
+  }
+
+  function groupProjectsByCategory(projects, categories) {
+    return categories
+      .map((category) => ({
+        category,
+        projects: projects.filter((project) => project.category === category.id),
+      }))
+      .filter((group) => group.projects.length > 0);
   }
 
   function projectSharePath(project) {
@@ -25,6 +34,7 @@
   window.PortfolioModel = {
     selectedOrder,
     partitionProjects,
+    groupProjectsByCategory,
     projectSharePath,
     projectDescription,
   };

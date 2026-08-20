@@ -16,10 +16,42 @@ test("the home model selects four evidence-led cases and archives the remaining 
   const model = window.PortfolioModel.partitionProjects(window.PORTFOLIO_PROJECTS);
   assert.deepEqual(
     Array.from(model.selected, (project) => project.id),
-    ["library-evaluation", "signal-aftershock", "vita", "pedalbalance-echo"],
+    ["vita", "signal-aftershock", "financial-feasibility", "pedalbalance-echo"],
   );
   assert.equal(model.archive.length, 10);
   assert.equal(new Set([...model.selected, ...model.archive].map((project) => project.id)).size, 14);
+});
+
+test("the ten supporting projects are grouped by their existing practice categories", () => {
+  const window = loadWindowScript("projects.js");
+  loadWindowScript("portfolio-model.js", window);
+
+  const partition = window.PortfolioModel.partitionProjects(window.PORTFOLIO_PROJECTS);
+  const groups = window.PortfolioModel.groupProjectsByCategory(
+    partition.archive,
+    window.PORTFOLIO_CATEGORIES,
+  );
+
+  assert.deepEqual(
+    Array.from(groups, (group) => group.category.id),
+    ["ux-research", "visual-editorial", "spatial-material", "strategy"],
+  );
+  assert.equal(groups.flatMap((group) => group.projects).length, 10);
+  assert.deepEqual(
+    Array.from(groups.flatMap((group) => group.projects), (project) => project.id),
+    [
+      "library-evaluation",
+      "booking-systems",
+      "film-to-book",
+      "colour-systems",
+      "melbourne-motion",
+      "words-unleashed",
+      "light-performance",
+      "pyrrha",
+      "trace-exaggeration",
+      "investment-strategy",
+    ],
+  );
 });
 
 test("every project exposes a comparable responsibility and evidence record", () => {

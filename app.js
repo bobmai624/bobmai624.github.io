@@ -52,6 +52,7 @@
   let lastResumeTrigger = null;
 
   const projectIndex = (id) => orderedProjects.findIndex((project) => project.id === id);
+  const catalogueIndex = (id) => baseProjects.findIndex((project) => project.id === id);
   const projectById = (id) => orderedProjects.find((project) => project.id === id);
   const twoDigits = (value) => String(value).padStart(2, "0");
 
@@ -120,7 +121,7 @@
   function projectCountLabel(count) {
     if (currentLanguage === "zh") return `${twoDigits(count)} 个项目`;
     if (currentLanguage === "ja") return `${twoDigits(count)} 件`;
-    return `${twoDigits(count)} projects`;
+    return `${twoDigits(count)} ${count === 1 ? "project" : "projects"}`;
   }
 
   function applyStaticTranslations(content) {
@@ -161,7 +162,7 @@
       title: content.meta.title,
       description: content.meta.description,
       url: "https://bobmai624.github.io/",
-      image: "https://bobmai624.github.io/assets/projects/library/cover-session.jpg",
+      image: "https://bobmai624.github.io/assets/projects/vita/04-refined-prototype.jpg",
     });
   }
 
@@ -312,52 +313,59 @@
     return `<img src="${project.cover.src}" alt="${project.cover.alt}" loading="lazy" decoding="async" />`;
   }
 
-  function projectCardMarkup(project) {
-    const index = projectIndex(project.id);
+  function featuredProjectMarkup(project, position) {
     const routeAttributes = project.caseHref
       ? `href="${projectHref(project)}" data-project-page="${project.id}"`
       : `data-project="${project.id}" href="${projectShareHref(project)}"`;
     return `
-      <a class="project-card reveal" ${routeAttributes}>
-        <figure class="project-figure">
+      <a class="featured-project featured-project--${position + 1} reveal" ${routeAttributes}>
+        <figure class="featured-project-figure">
           ${projectCoverMarkup(project)}
-          <figcaption>${twoDigits(index + 1)}</figcaption>
         </figure>
-        <div class="project-card-copy">
-          <div class="project-card-heading">
-            <p class="project-kicker">${project.kicker}</p>
+        <div class="featured-project-copy">
+          <p class="featured-project-number">${twoDigits(catalogueIndex(project.id) + 1)}</p>
+          <div>
+            <p class="featured-project-kicker">${project.kicker} · ${project.year}</p>
             <h3>${project.shortTitle}</h3>
           </div>
-          <p class="project-meaning">${project.meaning}</p>
-          <dl class="project-card-facts">
-            <div><dt>${currentUi.myContribution}</dt><dd>${project.caseFacts.contribution}</dd></div>
-            <div><dt>${currentUi.evidence}</dt><dd>${project.caseFacts.evidence}</dd></div>
-          </dl>
-          <p class="project-year">${project.year}</p>
-          <span class="project-arrow" aria-hidden="true">↗</span>
+          <span aria-hidden="true">↗</span>
         </div>
       </a>`;
   }
 
   function archiveCardMarkup(project, index) {
-    const category = categoryMap[project.category];
     const routeAttributes = project.caseHref
       ? `href="${projectHref(project)}" data-project-page="${project.id}"`
       : `data-project="${project.id}" href="${projectShareHref(project)}"`;
     return `
       <a class="archive-card reveal" ${routeAttributes}>
         <p class="archive-card-number">${twoDigits(index + 1)}</p>
-        <div><p class="archive-card-kicker">${category.label} · ${project.year}</p><h3>${project.shortTitle}</h3></div>
-        <p>${project.caseFacts.outcome}</p>
-        <p class="archive-card-ownership">${project.caseFacts.ownership}</p>
+        <div><p class="archive-card-kicker">${project.year}</p><h3>${project.shortTitle}</h3></div>
+        <p class="archive-card-summary">${project.caseFacts.outcome}</p>
         <span aria-hidden="true">↗</span>
       </a>`;
   }
 
+  function archiveGroupMarkup(group) {
+    return `
+      <section class="archive-group" aria-labelledby="archive-${group.category.id}">
+        <header class="archive-group-heading reveal">
+          <p>${projectCountLabel(group.projects.length)}</p>
+          <h3 id="archive-${group.category.id}">${group.category.label}</h3>
+        </header>
+        <div class="archive-group-list">
+          ${group.projects
+            .map((project) => archiveCardMarkup(project, catalogueIndex(project.id)))
+            .join("")}
+        </div>
+      </section>`;
+  }
+
   function renderPortfolio() {
     const partition = portfolioModel.partitionProjects(projects);
-    projectGroups.innerHTML = `<div class="group-projects group-projects--selected">${partition.selected.map(projectCardMarkup).join("")}</div>`;
-    archiveProjects.innerHTML = partition.archive.map(archiveCardMarkup).join("");
+    const archiveGroups = portfolioModel.groupProjectsByCategory(partition.archive, categories);
+    projectGroups.innerHTML = `<div class="featured-projects">${partition.selected.map(featuredProjectMarkup).join("")}</div>`;
+    archiveProjects.innerHTML = archiveGroups.map(archiveGroupMarkup).join("");
   }
 
   function capabilityGroupMarkup(group) {
