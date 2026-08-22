@@ -1096,8 +1096,8 @@ window.PORTFOLIO_PROJECTS = [
     role: "Four-person group project · model development, feasibility analysis and strategic recommendation.",
     methods: ["Discounted cash flow", "NPV & IRR", "Sensitivity analysis", "Risk mitigation"],
     cover: {
-      src: "assets/projects/feasibility/cover-sensitivity.jpg",
-      alt: "Sensitivity analysis chart from the retail mall feasibility report",
+      src: "assets/projects/feasibility/cover-project-brief.png",
+      alt: "Financial feasibility project brief summarising the retail mall model, scenario testing and decision drivers",
     },
     sections: [
       {
@@ -1162,10 +1162,10 @@ window.PORTFOLIO_PROJECTS = [
       "Safety scoping",
     ],
     cover: {
-      variant: "pedal",
-      alt: "PedalBalance Echo system cover showing body input, machine interpretation and returned haptic guidance",
+      src: "assets/projects/pedalbalance/prototype-pedalling.png",
+      alt: "PedalBalance Echo cycling prototype simulating complete-revolution sensing and bilateral pedalling feedback",
     },
-    shareImage: "assets/projects/pedalbalance/share-cover.png",
+    shareImage: "assets/projects/pedalbalance/prototype-pedalling.png",
     sections: [
       {
         eyebrow: "Research question",

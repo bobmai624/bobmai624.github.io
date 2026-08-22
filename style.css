@@ -2760,6 +2760,123 @@ button {
   text-align: left;
 }
 
+.playable-stage {
+  padding: var(--section-space) var(--gutter);
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  background: #deddd5;
+}
+
+.playable-stage-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 28px;
+  align-items: end;
+  margin-bottom: clamp(28px, 4vw, 52px);
+}
+
+.playable-stage-header p,
+.playable-stage-caption {
+  color: var(--muted);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.playable-stage-header h2 {
+  margin-top: 12px;
+  font-size: clamp(2.8rem, 5.5vw, 6rem);
+  font-weight: 400;
+  letter-spacing: -0.06em;
+  line-height: 0.94;
+}
+
+.playable-stage-header a {
+  display: flex;
+  gap: 20px;
+  min-width: 188px;
+  justify-content: space-between;
+  padding: 14px 0;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  font-size: 0.76rem;
+}
+
+.playable-stage-frame {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--ink);
+  background: #111;
+}
+
+.playable-stage-frame > img,
+.playable-stage-frame > iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.playable-stage-frame > img {
+  object-fit: cover;
+  filter: saturate(0.62) contrast(0.94) brightness(0.78);
+  transform: scale(1.01);
+}
+
+.playable-stage-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  width: min(430px, calc(100% - 40px));
+  grid-template-columns: 1fr auto;
+  gap: 10px 24px;
+  align-items: end;
+  padding: 22px 24px 24px;
+  border: 1px solid var(--paper);
+  color: var(--paper);
+  background: rgb(17 17 16 / 88%);
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+  transform: translate(-50%, -50%);
+  transition: transform 350ms var(--ease), background-color 250ms ease;
+}
+
+.playable-stage-play:hover {
+  background: var(--ink);
+  transform: translate(-50%, -50%) scale(1.025);
+}
+
+.playable-stage-play > span:first-child {
+  grid-column: 1 / -1;
+  color: #b8b8b3;
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.playable-stage-play strong {
+  font-size: clamp(1.2rem, 2.2vw, 2rem);
+  font-weight: 400;
+  letter-spacing: -0.035em;
+}
+
+.playable-stage-play > span:last-child {
+  font-size: 1.5rem;
+}
+
+.playable-stage-caption {
+  max-width: 650px;
+  margin-top: 14px;
+}
+
+.playable-stage.is-active .playable-stage-frame {
+  box-shadow: 0 28px 80px rgb(0 0 0 / 14%);
+}
+
 .game-view {
   position: fixed;
   inset: 0;
@@ -4210,6 +4327,37 @@ button {
 
   .game-view {
     padding: 8px;
+  }
+
+  .playable-stage {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+
+  .playable-stage-header {
+    display: grid;
+    align-items: start;
+  }
+
+  .playable-stage-header h2 {
+    font-size: clamp(2.5rem, 12vw, 3.7rem);
+  }
+
+  .playable-stage-header a {
+    min-width: 0;
+  }
+
+  .playable-stage-frame {
+    aspect-ratio: 4 / 3;
+  }
+
+  .playable-stage-play {
+    width: calc(100% - 24px);
+    padding: 17px 18px 19px;
+  }
+
+  .playable-stage-play strong {
+    font-size: 1.12rem;
   }
 
   .game-toolbar {

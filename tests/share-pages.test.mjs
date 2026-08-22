@@ -48,6 +48,6 @@ test("checked-in share pages match a fresh non-mutating generation", () => {
 
 test("PedalBalance uses a project-specific social image", () => {
   const html = fs.readFileSync("projects/pedalbalance-echo.html", "utf8");
-  assert.match(html, /og:image" content="https:\/\/bobmai624\.github\.io\/assets\/projects\/pedalbalance\/share-cover\.png"/);
-  assert.ok(fs.existsSync("assets/projects/pedalbalance/share-cover.png"));
+  assert.match(html, /og:image" content="https:\/\/bobmai624\.github\.io\/assets\/projects\/pedalbalance\/prototype-pedalling\.png"/);
+  assert.ok(fs.existsSync("assets/projects/pedalbalance/prototype-pedalling.png"));
 });

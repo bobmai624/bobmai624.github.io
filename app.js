@@ -10,6 +10,7 @@
   });
   const languageContent = window.PORTFOLIO_I18N || {};
   const portfolioModel = window.PortfolioModel;
+  const caseComponents = window.CaseComponents;
   const supportedLanguages = ["en", "zh", "ja"];
   const isPublicPortfolio = baseProjects.every((project) =>
     project.sources.every((source) => source.external),
@@ -702,6 +703,8 @@
           .join("")}
       </div>
 
+      ${caseComponents.playableStage(project, currentUi)}
+
       <section class="case-evidence" aria-labelledby="evidence-heading">
         <header class="case-evidence-heading">
           <p>${currentUi.projectEvidence}</p>
@@ -1190,6 +1193,18 @@
     if (playGameButton) {
       event.preventDefault();
       openGame(playGameButton.dataset.playGame, playGameButton);
+      return;
+    }
+
+    const inlinePlayButton = event.target.closest("[data-play-inline]");
+    if (inlinePlayButton) {
+      event.preventDefault();
+      const stage = inlinePlayButton.closest("[data-inline-game]");
+      const frame = stage?.querySelector(".playable-stage-frame");
+      if (!stage || !frame) return;
+      frame.innerHTML = caseComponents.playableFrame(stage.dataset.inlineGame, currentUi.playGameTitle);
+      stage.classList.add("is-active");
+      frame.querySelector("iframe")?.focus({ preventScroll: true });
     }
   });
 

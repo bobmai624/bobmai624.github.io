@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2400" height="1500" viewBox="0 0 2400 1500">
+  <rect width="2400" height="1500" fill="#e8e7df"/>
+  <g fill="none" stroke="#181a18" stroke-width="3">
+    <rect x="60" y="60" width="2280" height="1380"/>
+    <line x1="60" y1="176" x2="2340" y2="176"/>
+    <line x1="60" y1="1210" x2="2340" y2="1210"/>
+    <line x1="1410" y1="176" x2="1410" y2="1210"/>
+  </g>
+
+  <g font-family="Arial, Helvetica, sans-serif" fill="#181a18">
+    <text x="96" y="128" font-size="27" font-weight="700" letter-spacing="4">BOWEN MAI</text>
+    <text x="1090" y="128" font-size="24" letter-spacing="4">PROP20001</text>
+    <text x="2050" y="128" font-size="24" letter-spacing="4">GROUP / 2025</text>
+
+    <text x="96" y="298" font-size="23" letter-spacing="4" fill="#67766e">FINANCIAL FEASIBILITY STUDY</text>
+    <text x="90" y="500" font-size="158" font-weight="700" letter-spacing="-8">RETAIL MALL</text>
+    <text x="90" y="662" font-size="158" font-weight="700" letter-spacing="-8">FEASIBILITY</text>
+    <text x="96" y="742" font-size="35" fill="#454b47">A linked decision model for a Melbourne CBD development.</text>
+
+    <text x="96" y="910" font-size="122" font-weight="700">10,000 m²</text>
+    <text x="98" y="958" font-size="23" letter-spacing="3" fill="#67766e">PLANNED RETAIL FLOOR AREA</text>
+
+    <text x="96" y="1083" font-size="50" font-weight="700">18-MONTH BUILD</text>
+    <text x="625" y="1083" font-size="50" font-weight="700">15-SHEET MODEL</text>
+    <text x="98" y="1128" font-size="22" letter-spacing="3" fill="#67766e">PROGRAM</text>
+    <text x="627" y="1128" font-size="22" letter-spacing="3" fill="#67766e">EVIDENCE STACK</text>
+
+    <text x="1470" y="278" font-size="23" letter-spacing="4" fill="#67766e">DECISION ARCHITECTURE</text>
+  </g>
+
+  <g font-family="Arial, Helvetica, sans-serif">
+    <rect x="1470" y="348" width="770" height="154" fill="#181a18"/>
+    <text x="1510" y="404" font-size="22" letter-spacing="3" fill="#aeb9b2">01 / INPUTS</text>
+    <text x="1510" y="462" font-size="43" font-weight="700" fill="#f5f3eb">COST · INCOME · DEBT</text>
+
+    <rect x="1470" y="562" width="770" height="154" fill="none" stroke="#181a18" stroke-width="3"/>
+    <text x="1510" y="618" font-size="22" letter-spacing="3" fill="#67766e">02 / TEST</text>
+    <text x="1510" y="676" font-size="43" font-weight="700" fill="#181a18">SCENARIO · SENSITIVITY</text>
+
+    <rect x="1470" y="776" width="770" height="154" fill="#6b8175"/>
+    <text x="1510" y="832" font-size="22" letter-spacing="3" fill="#dce2dd">03 / TRANSLATE</text>
+    <text x="1510" y="890" font-size="43" font-weight="700" fill="#f5f3eb">RISK · RECOMMENDATION</text>
+
+    <line x1="1855" y1="502" x2="1855" y2="562" stroke="#181a18" stroke-width="3"/>
+    <path d="M1838 545 L1855 562 L1872 545" fill="none" stroke="#181a18" stroke-width="3"/>
+    <line x1="1855" y1="716" x2="1855" y2="776" stroke="#181a18" stroke-width="3"/>
+    <path d="M1838 759 L1855 776 L1872 759" fill="none" stroke="#181a18" stroke-width="3"/>
+
+    <text x="1470" y="1035" font-size="25" letter-spacing="4" fill="#67766e">MODEL OUTPUT</text>
+    <text x="1470" y="1110" font-size="54" font-weight="700" fill="#181a18">CONDITIONAL GO / NO-GO</text>
+  </g>
+
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="96" y="1270" font-size="21" letter-spacing="3" fill="#67766e">DECISIVE DRIVERS</text>
+    <g transform="translate(96 1312)">
+      <rect width="480" height="72" fill="#181a18"/>
+      <rect x="492" width="480" height="72" fill="#33443c"/>
+      <rect x="984" width="480" height="72" fill="#6b8175"/>
+      <rect x="1476" width="660" height="72" fill="#adb5af"/>
+      <text x="24" y="48" font-size="25" font-weight="700" fill="#f5f3eb">OCCUPANCY</text>
+      <text x="516" y="48" font-size="25" font-weight="700" fill="#f5f3eb">RENT</text>
+      <text x="1008" y="48" font-size="25" font-weight="700" fill="#f5f3eb">COST</text>
+      <text x="1500" y="48" font-size="25" font-weight="700" fill="#181a18">SCHEDULE</text>
+    </g>
+  </g>
+</svg>
