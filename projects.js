@@ -1204,6 +1204,8 @@ const caseFacts = {
     evidence: "Refined Voiceflow prototype, walkthrough video and submitted group presentation",
     outcome: "Testing led the team to clarify editable hypotheses, system boundaries and human hand-off points.",
     limitation: "A course prototype, not a deployed service or evidence of long-term user impact.",
+    homeContribution: "Group · Voiceflow structure, routing and prototype review",
+    homeEvidence: "Refined prototype + walkthrough video",
   },
   "library-evaluation": {
     context: "University group project · mixed-method usability evaluation",
@@ -1220,6 +1222,8 @@ const caseFacts = {
     evidence: "Playable prototype, development journal and documented rule changes",
     outcome: "Removing cards, roles and attacks made the dice-and-space mechanic clearer, fairer and faster to learn.",
     limitation: "Playtesting was formative and small-scale; it does not establish broad audience appeal.",
+    homeContribution: "Individual · Rules, interface, browser build and playtesting",
+    homeEvidence: "Playable game + documented rule changes",
   },
   "film-to-book": {
     context: "Individual editorial-design project · film translated into publication form",
@@ -1293,6 +1297,8 @@ const caseFacts = {
     evidence: "Submitted report and 15-sheet model covering construction, revenue, debt and sensitivity",
     outcome: "The submitted report recommended a conditional proceed and identified occupancy, rent, cost and schedule as decisive drivers.",
     limitation: "A later audit found unreconciled NPV and IRR outputs across sheets and the report, so the headline values are not presented here as verified facts.",
+    homeContribution: "Group · Model development, scenarios and risk synthesis",
+    homeEvidence: "15-sheet model + feasibility report",
   },
   "pedalbalance-echo": {
     context: "Individual research-through-making project · embodied cycling interaction",
@@ -1301,6 +1307,8 @@ const caseFacts = {
     evidence: "Operable interface prototype, system architecture, build journal and illustrative simulation",
     outcome: "The work turns a broad body-sharing question into two falsifiable studies about fading guidance and past-self feedback.",
     limitation: "No human study or DIY EMS was conducted; simulations illustrate protocol logic rather than experimental results.",
+    homeContribution: "Individual · Research, system architecture, prototype and study plan",
+    homeEvidence: "Operable prototype + build journal",
   },
 };
 

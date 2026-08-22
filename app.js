@@ -319,17 +319,19 @@
       : `data-project="${project.id}" href="${projectShareHref(project)}"`;
     return `
       <a class="featured-project featured-project--${position + 1} reveal" ${routeAttributes}>
-        <figure class="featured-project-figure">
-          ${projectCoverMarkup(project)}
-        </figure>
         <div class="featured-project-copy">
           <p class="featured-project-number">${twoDigits(catalogueIndex(project.id) + 1)}</p>
-          <div>
+          <div class="featured-project-details">
             <p class="featured-project-kicker">${project.kicker} · ${project.year}</p>
             <h3>${project.shortTitle}</h3>
+            <p class="featured-project-proof"><span>${currentUi.myContribution}</span>${project.caseFacts.homeContribution}</p>
+            <p class="featured-project-evidence"><span>${currentUi.evidence}</span>${project.caseFacts.homeEvidence}</p>
           </div>
           <span aria-hidden="true">↗</span>
         </div>
+        <figure class="featured-project-figure">
+          ${projectCoverMarkup(project)}
+        </figure>
       </a>`;
   }
 

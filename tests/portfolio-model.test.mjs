@@ -64,6 +64,23 @@ test("every project exposes a comparable responsibility and evidence record", ()
   }
 });
 
+test("selected projects provide concise homepage contribution and evidence in every language", () => {
+  const window = loadWindowScript("projects.js");
+  loadWindowScript("portfolio-model.js", window);
+  loadWindowScript("i18n.js", window);
+  const selected = window.PortfolioModel.partitionProjects(window.PORTFOLIO_PROJECTS).selected;
+
+  for (const project of selected) {
+    assert.ok(project.caseFacts.homeContribution?.trim(), `${project.id} needs an English homepage contribution`);
+    assert.ok(project.caseFacts.homeEvidence?.trim(), `${project.id} needs English homepage evidence`);
+    for (const language of ["zh", "ja"]) {
+      const facts = window.PORTFOLIO_I18N[language].caseFacts[project.id];
+      assert.ok(facts.homeContribution?.trim(), `${language} ${project.id} needs a homepage contribution`);
+      assert.ok(facts.homeEvidence?.trim(), `${language} ${project.id} needs homepage evidence`);
+    }
+  }
+});
+
 test("project share paths are stable HTML URLs", () => {
   const window = loadWindowScript("projects.js");
   loadWindowScript("portfolio-model.js", window);

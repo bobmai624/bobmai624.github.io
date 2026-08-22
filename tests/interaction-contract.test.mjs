@@ -31,6 +31,25 @@ test("selected and supporting work use distinct homepage presentation tiers", ()
   assert.match(styles, /\.archive-group\s*\{/);
 });
 
+test("featured work exposes contribution and evidence before its cover image", () => {
+  const app = fs.readFileSync("app.js", "utf8");
+  const copyIndex = app.indexOf('<div class="featured-project-copy">');
+  const figureIndex = app.indexOf('<figure class="featured-project-figure">');
+  assert.ok(copyIndex >= 0, "featured copy is missing");
+  assert.ok(figureIndex >= 0, "featured figure is missing");
+  assert.ok(copyIndex < figureIndex, "featured evidence must appear before the cover image");
+  assert.match(app, /project\.caseFacts\.homeContribution/);
+  assert.match(app, /project\.caseFacts\.homeEvidence/);
+  assert.match(app, /featured-project-proof/);
+});
+
+test("the homepage removes duplicated capability and resume-contact presentations", () => {
+  const html = fs.readFileSync("index.html", "utf8");
+  assert.doesNotMatch(html, /class="capability-block-heading/);
+  assert.doesNotMatch(html, /class="resume-contact-section/);
+  assert.match(html, /class="portfolio-index-summary"/);
+});
+
 test("supplementary source files use a deliberately quieter visual tier", () => {
   const app = fs.readFileSync("app.js", "utf8");
   const styles = fs.readFileSync("style.css", "utf8");
