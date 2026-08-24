@@ -43,6 +43,8 @@
   const resumeView = document.querySelector("#resume-view");
   const resumeClose = document.querySelector("#resume-close");
   const resumePrint = document.querySelector("#resume-print");
+  const contactView = document.querySelector("#contact-view");
+  const contactClose = document.querySelector("#contact-close");
   const languageSelect = document.querySelector("#language-select");
   const siteHeader = document.querySelector(".site-header");
   const main = document.querySelector("main");
@@ -51,6 +53,7 @@
   let lastProjectTriggerId = null;
   let lastGameTrigger = null;
   let lastResumeTrigger = null;
+  let lastContactTrigger = null;
 
   const projectIndex = (id) => orderedProjects.findIndex((project) => project.id === id);
   const catalogueIndex = (id) => baseProjects.findIndex((project) => project.id === id);
@@ -184,6 +187,7 @@
   function captureReadingPosition() {
     if (!caseStudy.hidden) return { surface: "case", top: caseStudy.scrollTop };
     if (!resumeView.hidden) return { surface: "resume", top: resumeView.scrollTop };
+    if (!contactView.hidden) return { surface: "contact", top: contactView.scrollTop };
     return { surface: "window", top: window.scrollY };
   }
 
@@ -193,7 +197,14 @@
         caseStudy.scrollTop = snapshot.top;
       } else if (snapshot.surface === "resume" && !resumeView.hidden) {
         resumeView.scrollTop = snapshot.top;
-      } else if (snapshot.surface === "window" && caseStudy.hidden && resumeView.hidden) {
+      } else if (snapshot.surface === "contact" && !contactView.hidden) {
+        contactView.scrollTop = snapshot.top;
+      } else if (
+        snapshot.surface === "window" &&
+        caseStudy.hidden &&
+        resumeView.hidden &&
+        contactView.hidden
+      ) {
         window.scrollTo({ top: snapshot.top, left: window.scrollX, behavior: "auto" });
       }
     });
@@ -235,6 +246,13 @@
         description: content.site.resumeSummary,
         url: "https://bobmai624.github.io/#resume",
         image: "https://bobmai624.github.io/assets/projects/library/cover-session.jpg",
+      });
+    } else if (!contactView.hidden) {
+      setMeta({
+        title: `${content.site.contactTitle} — Bowen Mai`,
+        description: content.site.contactIntro,
+        url: "https://bobmai624.github.io/#contact",
+        image: "https://bobmai624.github.io/assets/projects/vita/04-refined-prototype.jpg",
       });
     }
 
@@ -971,7 +989,7 @@
   }
 
   function updateBodyLock() {
-    const overlayOpen = !caseStudy.hidden || !gameView.hidden || !resumeView.hidden;
+    const overlayOpen = !caseStudy.hidden || !gameView.hidden || !resumeView.hidden || !contactView.hidden;
     document.body.classList.toggle("overlay-open", overlayOpen);
     [siteHeader, main, siteFooter].forEach((element) => {
       if (element) element.inert = overlayOpen;
@@ -997,6 +1015,11 @@
     updateBodyLock();
   }
 
+  function hideContact() {
+    contactView.hidden = true;
+    updateBodyLock();
+  }
+
   function openProject(id, trigger = null, updateHistory = true) {
     const project = projectById(id);
     if (!project) return;
@@ -1008,6 +1031,7 @@
 
     const transitionFinished = transition(() => {
       hideResume();
+      hideContact();
       renderCaseStudy(project);
       caseStudy.hidden = false;
       caseStudy.scrollTop = 0;
@@ -1062,6 +1086,7 @@
     if (trigger) lastResumeTrigger = trigger;
     const transitionFinished = transition(() => {
       hideProject();
+      hideContact();
       resumeView.hidden = false;
       resumeView.scrollTop = 0;
       updateBodyLock();
@@ -1093,6 +1118,42 @@
     }
   }
 
+  function openContact(trigger = null, updateHistory = true) {
+    if (trigger) lastContactTrigger = trigger;
+    const transitionFinished = transition(() => {
+      hideProject();
+      hideResume();
+      contactView.hidden = false;
+      contactView.scrollTop = 0;
+      updateBodyLock();
+      const content = languageContent[currentLanguage] || languageContent.en;
+      setMeta({
+        title: `${content.site.contactTitle} — Bowen Mai`,
+        description: content.site.contactIntro,
+        url: "https://bobmai624.github.io/#contact",
+        image: "https://bobmai624.github.io/assets/projects/vita/04-refined-prototype.jpg",
+      });
+    });
+    if (updateHistory && window.location.hash !== "#contact") {
+      history.pushState({ contact: true }, "", "#contact");
+    }
+    focusWhenReady(contactClose, transitionFinished);
+  }
+
+  function closeContact({ restoreFocus = true, updateHistory = true } = {}) {
+    if (contactView.hidden) return;
+    const transitionFinished = transition(() => {
+      hideContact();
+      restoreHomeMeta();
+    });
+    if (updateHistory && window.location.hash === "#contact") {
+      history.pushState({}, "", "#work");
+    }
+    if (restoreFocus && lastContactTrigger) {
+      focusWhenReady(lastContactTrigger, transitionFinished);
+    }
+  }
+
   function routeFromLocation() {
     const projectMatch = window.location.hash.match(/^#project\/(.+)$/);
     if (projectMatch) {
@@ -1108,8 +1169,13 @@
       openResume(null, false);
       return;
     }
+    if (window.location.hash === "#contact") {
+      openContact(null, false);
+      return;
+    }
     closeProject({ restoreFocus: false, updateHistory: false });
     closeResume({ restoreFocus: false, updateHistory: false });
+    closeContact({ restoreFocus: false, updateHistory: false });
   }
 
   function setupReveal() {
@@ -1189,6 +1255,13 @@
       return;
     }
 
+    const contactLink = event.target.closest("[data-contact-open]");
+    if (contactLink) {
+      event.preventDefault();
+      openContact(contactLink);
+      return;
+    }
+
     const playGameButton = event.target.closest("[data-play-game]");
     if (playGameButton) {
       event.preventDefault();
@@ -1211,6 +1284,7 @@
   caseClose.addEventListener("click", () => closeProject());
   gameClose.addEventListener("click", () => closeGame());
   resumeClose.addEventListener("click", () => closeResume());
+  contactClose.addEventListener("click", () => closeContact());
   resumePrint.addEventListener("click", () => window.print());
 
   document.addEventListener("keydown", (event) => {
@@ -1218,11 +1292,13 @@
       if (!gameView.hidden) closeGame();
       else if (!caseStudy.hidden) closeProject();
       else if (!resumeView.hidden) closeResume();
+      else if (!contactView.hidden) closeContact();
       return;
     }
     if (!gameView.hidden) trapFocus(event, gameView, [languageSelect]);
     else if (!caseStudy.hidden) trapFocus(event, caseStudy, [languageSelect]);
     else if (!resumeView.hidden) trapFocus(event, resumeView, [languageSelect]);
+    else if (!contactView.hidden) trapFocus(event, contactView, [languageSelect]);
   });
 
   window.addEventListener("popstate", routeFromLocation);
