@@ -5,6 +5,7 @@ import vm from "node:vm";
 const root = process.cwd();
 const window = {};
 vm.runInNewContext(fs.readFileSync(path.join(root, "projects.js"), "utf8"), { window });
+vm.runInNewContext(fs.readFileSync(path.join(root, "student-copy.js"), "utf8"), { window });
 
 const outputFlagIndex = process.argv.indexOf("--output-dir");
 const requestedOutput = outputFlagIndex >= 0 ? process.argv[outputFlagIndex + 1] : null;

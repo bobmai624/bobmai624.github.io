@@ -1,5 +1,5 @@
 const SUPPORTED_LANGUAGES = new Set(['zh', 'en', 'ja']);
-const TRANSLATIONS = window.PEDALBALANCE_TRANSLATIONS || {
+const TRANSLATIONS = (typeof window !== 'undefined' && window.PEDALBALANCE_TRANSLATIONS) || {
   staticCopy: {},
   attributeCopy: {},
   pageMeta: {},

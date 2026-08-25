@@ -18,7 +18,8 @@ Then visit `http://127.0.0.1:4178/`.
 
 - `projects.js` contains the 14 project records, evidence facts, case-study media and source policies.
 - `portfolio-model.js` defines the four selected cases, the ten-project archive and stable share paths.
-- `i18n.js` contains complete English, Chinese and Japanese homepage, résumé and case-study translations.
+- `i18n.js` contains the complete English, Chinese and Japanese translation catalogue.
+- `student-copy.js` contains the active student-voice overrides for the homepage, résumé, capabilities and all 14 projects. Edit this file first when changing public prose; the factual records and media remain in `projects.js`.
 - `index.html` contains the concise homepage shell, complete web résumé and contact links.
 - `style.css` controls the monochrome-led, low-saturation typography, spacing, responsive layout, print resume and motion.
 - `app.js` renders Selected Work, Archive and the three evidence-linked Capabilities, and controls project/resume opening, metadata, URL routing, focus and scroll reveals.
@@ -33,7 +34,7 @@ no separate homepage promotion.
 
 ## Add another project
 
-Duplicate one object inside `projects.js`, then change its unique `id`, title, category, summary, `meaning`, cover, `caseFacts`, case-study sections and media. Add the ID to `portfolio-model.js` only if it should become one of the four homepage-selected cases; otherwise it appears in Archive.
+Duplicate one object inside `projects.js`, then change its unique `id`, title, category, factual record, cover, `caseFacts`, case-study sections and media. Add matching English, Chinese and Japanese public prose in `student-copy.js`. Add the ID to `portfolio-model.js` only if it should become one of the four homepage-selected cases; otherwise it appears in Archive.
 
 Keep new public image assets inside `assets/projects/`.
 
@@ -49,7 +50,7 @@ The web resume is written directly inside the `#resume-view` section of `index.h
 
 ## Edit the capabilities section
 
-Edit the three groups in `PORTFOLIO_CAPABILITIES` at the end of `projects.js`. Each capability must name a concrete project, action and visible form of evidence.
+Edit the three translated capability groups in `student-copy.js`. Each capability should stay connected to a concrete project, action and visible form of evidence.
 
 ## Edit the opening identity
 

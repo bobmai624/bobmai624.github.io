@@ -1,6 +1,6 @@
 import { createPrototypeMachine } from './prototype-machine.js';
 import { PROTOTYPE_STEPS, getPrototypeStep, prototypeLabels } from './prototype-flow.js';
-import { setLanguage } from './language.js?v=20260820-complete-localization';
+import { setLanguage } from './language.js?v=20260825-student-voice';
 
 function currentLanguage() {
   const lang = document.documentElement.lang || 'zh-CN';

@@ -1,4 +1,4 @@
-import { mountLanguageControls } from './language.js?v=20260820-complete-localization';
+import { mountLanguageControls } from './language.js?v=20260825-student-voice';
 import { mountHeroCanvas } from './hero-canvas.js?v=20260820-complete-localization';
 import { mountComponentFilters } from './components.js?v=20260820-complete-localization';
 import { mountExperimentCharts } from './experiment-ui.js?v=20260820-complete-localization';
