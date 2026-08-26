@@ -24,7 +24,7 @@ Then visit `http://127.0.0.1:4178/`.
 - `style.css` controls the monochrome-led, low-saturation typography, spacing, responsive layout, print resume and motion.
 - `app.js` renders Selected Work, Archive and the three evidence-linked Capabilities, and controls project/resume opening, metadata, URL routing, focus and scroll reveals.
 - `assets/projects/` contains the website-ready project imagery.
-- `pedalbalance-echo/index.html` is the scroll-first PedalBalance Echo case journey. Its core loop, build journal, participant timeline and evidence ladder are readable without opening the optional nine-scene lab.
+- `musclekey/index.html` is the complete MuscleKey experiment site. It contains the materials guide, ten-step procedure, interactive sEMG threshold simulation, evidence boundaries and source register.
 
 The public repository keeps individual evidence, presentation videos and approved group evidence.
 Vita's original group submissions remain as quiet supplementary links. Library and Financial

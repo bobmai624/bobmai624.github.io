@@ -1,0 +1,700 @@
+<!doctype html>
+<html lang="en" data-language="en" class="i18n-pending">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="MuscleKey：使用MyoWare 2.0与Arduino，把前臂肌电转换为电脑输入的教学型人机交互实验。">
+  <meta name="theme-color" content="#f3f3f1">
+  <title>MuscleKey｜肌电电脑输入实验</title>
+  <link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到正文</a>
+
+  <header class="site-header">
+    <a class="portfolio-back" href="../index.html#work" data-portfolio-back>返回 Bowen Mai 作品集</a>
+    <a class="brand" href="#top" aria-label="MuscleKey首页">
+      <span class="brand-mark" aria-hidden="true">MK</span>
+      <span>MUSCLEKEY <small>EMG INPUT STUDY</small></span>
+    </a>
+    <button class="mobile-menu" type="button" data-mobile-menu aria-expanded="false" aria-controls="site-nav">目录</button>
+    <nav class="site-nav" id="site-nav" aria-label="页面目录">
+      <a href="#overview">实验</a>
+      <a href="#materials">材料</a>
+      <a href="#principle">原理</a>
+      <a href="#steps">步骤</a>
+      <a href="#references">引用</a>
+      <a class="nav-demo" href="#demo">运行模拟</a>
+    </nav>
+    <div class="language-switcher" aria-label="语言切换">
+      <button type="button" data-language="en" aria-pressed="true">EN</button>
+      <button type="button" data-language="zh" aria-pressed="false">中文</button>
+      <button type="button" data-language="ja" aria-pressed="false">日本語</button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="hero-copy">
+        <p class="eyebrow">SURFACE EMG → DIGITAL INPUT → VISUAL FEEDBACK</p>
+        <h1>让肌肉成为<br>电脑输入</h1>
+        <p class="hero-lead" data-hero-summary>看到目标后握拳。MyoWare读取前臂肌电，Arduino把阈值跨越变成一次数字事件，电脑记录反应时间并把结果立即反馈给人。</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#demo" data-open-demo>先运行交互模拟</a>
+          <a class="button quiet" href="#materials">查看采购清单</a>
+        </div>
+        <div class="hero-facts" aria-label="项目范围">
+          <span><b>01</b> 单通道前臂sEMG</span>
+          <span><b>30</b> 次反应时试验</span>
+          <span><b>0</b> 个机械执行器</span>
+        </div>
+      </div>
+
+      <div class="hero-stage" aria-label="MuscleKey系统示意">
+        <figure class="arm-figure">
+          <img src="assets/images/forearm-placement.jpg" alt="MyoWare 2.0传感器通过三片表面电极贴在前臂上">
+          <figcaption>前臂肌肉收缩 / Official placement example <a href="#ref-2">[2]</a></figcaption>
+          <span class="electrode-callout">3 × SURFACE ELECTRODES</span>
+        </figure>
+        <div class="signal-route" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="machine-card">
+          <p>LIVE ENVELOPE</p>
+          <div class="mini-wave" aria-hidden="true">
+            <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+          </div>
+          <div><span>EMG</span><strong>482</strong></div>
+          <div><span>THRESHOLD</span><strong>300</strong></div>
+          <b>SPACE EVENT ✓</b>
+        </div>
+      </div>
+
+      <div class="hero-flow" aria-label="实验闭环">
+        <article data-flow-node><span>01</span><b>屏幕目标</b><small>机器发出视觉提示</small></article>
+        <article data-flow-node><span>02</span><b>前臂收缩</b><small>人用握拳作答</small></article>
+        <article data-flow-node><span>03</span><b>MyoWare</b><small>肌电变成模拟电压</small></article>
+        <article data-flow-node><span>04</span><b>Arduino</b><small>阈值变成数字事件</small></article>
+        <article data-flow-node><span>05</span><b>屏幕反馈</b><small>返回时间与成功状态</small></article>
+      </div>
+    </section>
+
+    <section class="section overview" id="overview">
+      <div class="section-heading">
+        <p class="kicker">01 · WHAT THIS EXPERIMENT DOES</p>
+        <h2>不是测握力，<br>而是把肌肉激活变成输入。</h2>
+      </div>
+      <div class="overview-copy">
+        <p class="large-copy">MuscleKey复现University of Richmond发表的“肌电代替键盘”方法：肌肉信号越过个人阈值时，微控制器向电脑发送一次输入事件，再由软件记录反应时间。原研究证明了这条链路能够用于人机交互实验。<a href="#ref-1">[1]</a></p>
+        <div class="scope-grid">
+          <article>
+            <span>测量对象</span>
+            <h3>表面肌电 sEMG</h3>
+            <p>读取肌肉活动产生的皮肤表面电位变化，不等同于直接测量握力或关节力矩。</p>
+          </article>
+          <article>
+            <span>电脑事件</span>
+            <h3>一次阈值跨越</h3>
+            <p>信号由阈值下方越过上方时触发一次；持续用力不会连续触发。</p>
+          </article>
+          <article>
+            <span>实验输出</span>
+            <h3>可分析的数据</h3>
+            <p>保存反应时间、误触发、漏触发、EMG值与个体阈值，最后导出CSV。</p>
+          </article>
+        </div>
+        <aside class="boundary-note">
+          <b>范围边界</b>
+          <p>这是教学型、非医疗的读取实验。它不诊断疾病、不证明康复效果，也不把廉价EMS刺激器接到人体。</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section materials" id="materials">
+      <div class="section-heading wide-heading">
+        <p class="kicker">02 · MATERIALS</p>
+        <h2>一套单通道系统，<br>完成硬件、代码和实验全过程。</h2>
+        <p>最省事的路线是购买完整Development Kit；但SparkFun已经将该套装标记为停产和缺货。找不到库存时，按下表分开购买即可。<a href="#ref-3">[3]</a></p>
+      </div>
+
+      <div class="purchase-banner">
+        <div>
+          <span>最快购买方式</span>
+          <strong>完整套装库存 / 二手套装</strong>
+          <p>确认包含传感器、Link Shield、Arduino Shield、RedBoard、TRS线和电极。</p>
+        </div>
+        <img src="assets/images/kit.jpg" alt="MyoWare 2.0 Muscle Sensor Development Kit中的传感器、扩展板、RedBoard、线材和电极">
+      </div>
+
+      <div class="material-grid">
+        <article class="material-card essential" data-material-card>
+          <div class="material-image"><img src="assets/images/sensor.jpg" alt="红色三角形MyoWare 2.0肌电传感器"></div>
+          <header><span>01 · 必需</span><b>× 1</b></header>
+          <h3>MyoWare 2.0 Muscle Sensor</h3>
+          <p>放大、滤波、整流并输出ENV包络信号。购买时优先寻找当前版本DEV-27924。</p>
+          <small>作用：生理信号采集</small>
+        </article>
+        <article class="material-card essential" data-material-card>
+          <div class="material-image crop-kit"><img src="assets/images/kit.jpg" alt="MyoWare套装中的Link Shield与TRS连接线"></div>
+          <header><span>02 · 必需</span><b>× 1</b></header>
+          <h3>Link Shield + TRS线</h3>
+          <p>把传感器的供电、地线与ENV信号通过一根3.5 mm线送到Arduino Shield。</p>
+          <small>作用：免焊接信号连接</small>
+        </article>
+        <article class="material-card essential" data-material-card>
+          <div class="material-image"><img src="assets/images/arduino-shield.jpg" alt="带有六个TRS接口的MyoWare 2.0 Arduino Shield"></div>
+          <header><span>03 · 必需</span><b>× 1</b></header>
+          <h3>MyoWare Arduino Shield</h3>
+          <p>直接叠在Uno R3兼容板上。本实验只用A0接口，其余通道留作以后扩展。</p>
+          <small>作用：把传感器接到模拟输入</small>
+        </article>
+        <article class="material-card essential" data-material-card>
+          <div class="material-image"><img src="assets/images/redboard.jpg" alt="SparkFun RedBoard Plus Arduino兼容开发板"></div>
+          <header><span>04 · 必需</span><b>× 1</b></header>
+          <h3>RedBoard Plus</h3>
+          <p>Arduino Uno兼容开发板，读取A0数值、执行阈值逻辑，再通过USB发送到电脑。</p>
+          <small>作用：采样与事件判断</small>
+        </article>
+        <article class="material-card essential" data-material-card>
+          <div class="material-image"><img src="assets/images/forearm-placement.jpg" alt="贴在前臂上的三片圆形表面肌电电极"></div>
+          <header><span>05 · 消耗品</span><b>× 30–50</b></header>
+          <h3>一次性表面EMG电极片</h3>
+          <p>每次实验使用三片。多买一些用于重新贴附、跨日测试和失败排查。</p>
+          <small>作用：皮肤—传感器接触</small>
+        </article>
+        <article class="material-card safety-card" data-material-card>
+          <div class="material-image"><img src="assets/images/usb-isolator.jpg" alt="透明外壳的ADuM3160类USB隔离器示例"></div>
+          <header><span>06 · 安全</span><b>× 1</b></header>
+          <h3>USB隔离器</h3>
+          <p>放在电脑和RedBoard之间。具体型号和隔离规格须由实验室负责人确认；普通模块不能自动视为医疗级隔离设备。</p>
+          <small>作用：候选隔离措施，须经实验室确认</small>
+        </article>
+        <article class="material-card consumables" data-material-card>
+          <div class="consumable-icons" aria-hidden="true"><i></i><i></i><i></i></div>
+          <header><span>07 · 辅助</span><b>各 × 1</b></header>
+          <h3>酒精棉片、医用胶带、收纳盒</h3>
+          <p>清洁皮肤、固定线材、减少运动伪影，并保证每次实验采用相同的安装流程。</p>
+          <small>作用：重复性与整理</small>
+        </article>
+        <article class="material-card optional" data-material-card>
+          <div class="material-image crop-kit"><img src="assets/images/kit.jpg" alt="MyoWare套装中的LED Shield和Power Shield"></div>
+          <header><span>08 · 推荐</span><b>二选一 × 1</b></header>
+          <h3>LED Shield 或 Power Shield</h3>
+          <p>两块Shield都自带电池，只选择一种单独连接传感器完成无Arduino自检，绝不同时叠加。</p>
+          <small>作用：快速硬件自检</small>
+        </article>
+      </div>
+
+      <div class="software-strip" aria-label="需要安装的软件">
+        <span>FREE SOFTWARE</span>
+        <a href="https://www.arduino.cc/en/software" target="_blank" rel="noreferrer">Arduino IDE ↗</a>
+        <a href="https://github.com/AdvancerTechnologies/MyoWare-Arduino-Library" target="_blank" rel="noreferrer">MyoWare Library ↗</a>
+        <b>Chrome / Edge</b>
+        <b>Excel / Python</b>
+      </div>
+    </section>
+
+    <section class="section principle" id="principle">
+      <div class="section-heading wide-heading inverted">
+        <p class="kicker">03 · PRINCIPLE</p>
+        <h2>电活动被处理成一个数，<br>一个数再变成一次动作。</h2>
+      </div>
+
+      <div class="principle-pipeline">
+        <article>
+          <span>01</span>
+          <h3>运动单位募集</h3>
+          <p>握拳时，神经系统募集前臂肌肉中的运动单位，皮肤表面的电位发生变化。</p>
+        </article>
+        <i aria-hidden="true">→</i>
+        <article>
+          <span>02</span>
+          <h3>差分电极</h3>
+          <p>MID与END沿肌纤维方向测量，REF提供参考；三者共同抑制一部分共模噪声。</p>
+        </article>
+        <i aria-hidden="true">→</i>
+        <article>
+          <span>03</span>
+          <h3>ENV包络</h3>
+          <p>MyoWare放大、滤波、整流并平滑信号，输出0到供电电压范围内的模拟量。<a href="#ref-4">[4]</a></p>
+        </article>
+        <i aria-hidden="true">→</i>
+        <article>
+          <span>04</span>
+          <h3>ADC与阈值</h3>
+          <p>RedBoard把电压转成数字值；超过个人阈值时生成一次事件。</p>
+        </article>
+        <i aria-hidden="true">→</i>
+        <article>
+          <span>05</span>
+          <h3>软件反馈</h3>
+          <p>网页停止计时、显示成功状态、记录CSV，人根据反馈调整下一次动作。</p>
+        </article>
+      </div>
+
+      <div class="formula-layout">
+        <div class="formula-card">
+          <p>个人阈值的初始计算</p>
+          <code>T = (R<sub>max</sub> + C<sub>min</sub>) ÷ 2</code>
+          <dl>
+            <div><dt>R<sub>max</sub></dt><dd>放松阶段记录到的最高值</dd></div>
+            <div><dt>C<sub>min</sub></dt><dd>正常握拳阶段稳定出现的最低值</dd></div>
+            <div><dt>T</dt><dd>二者之间的初始触发阈值</dd></div>
+          </dl>
+        </div>
+        <div class="hysteresis-card">
+          <div class="threshold-chart" role="img" aria-label="肌电值先超过触发阈值产生一次事件，随后下降到较低的释放阈值后才能重新触发">
+            <div class="trigger-line"><span>TRIGGER 300</span></div>
+            <div class="release-line"><span>RELEASE 190</span></div>
+            <div class="signal-curve"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <b>EVENT</b>
+          </div>
+          <h3>双阈值避免抖动</h3>
+          <p>超过高阈值只触发一次；必须下降到较低的释放阈值后，系统才允许下一次触发。这比单一阈值稳定。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section wiring" id="wiring">
+      <div class="section-heading">
+        <p class="kicker">04 · CONNECTION &amp; SAFETY</p>
+        <h2>只需要一条<br>可检查的信号路径。</h2>
+      </div>
+      <div>
+        <div class="wiring-flow" aria-label="实验硬件连接顺序">
+          <div><span>人体侧</span><b>前臂三电极</b><small>MID · END · REF</small></div>
+          <i>→</i>
+          <div><span>传感器</span><b>MyoWare + Link</b><small>ENV · VIN · GND</small></div>
+          <i>→</i>
+          <div><span>线材</span><b>3.5 mm TRS</b><small>单根免焊接</small></div>
+          <i>→</i>
+          <div><span>微控制器</span><b>Shield A0 + RedBoard</b><small>AnalogRead</small></div>
+          <i>→</i>
+          <div><span>隔离</span><b>USB Isolator</b><small>电脑必须脱离市电</small></div>
+          <i>→</i>
+          <div><span>软件侧</span><b>实验网页</b><small>事件 · RT · CSV</small></div>
+        </div>
+
+        <div class="safety-grid">
+          <article class="safe">
+            <span>DO</span>
+            <h3>可以做</h3>
+            <ul>
+              <li>使用电池供电、未接充电器的笔记本</li>
+              <li>在电脑与RedBoard之间加入USB隔离器</li>
+              <li>每次连接或拆卸Shield前先断电</li>
+              <li>LED/Power Shield必须从传感器拆下后才能充电</li>
+              <li>只贴在完整、无刺激的前臂皮肤</li>
+              <li>以“非医疗教学原型”描述结果</li>
+            </ul>
+          </article>
+          <article class="stop">
+            <span>STOP</span>
+            <h3>不要做</h3>
+            <ul>
+              <li>人体连接时给笔记本充电或连接扩展坞</li>
+              <li>人体连接时给LED/Power Shield充电</li>
+              <li>同时叠加LED Shield与Power Shield</li>
+              <li>把传感器贴在胸部、颈部或破损皮肤</li>
+              <li>把廉价EMS刺激器接进这条线路</li>
+              <li>把EMG数值称为精确握力</li>
+              <li>未经同意在其他参与者身上试验</li>
+            </ul>
+          </article>
+        </div>
+        <p class="safety-source">安全要求依据SparkFun官方MyoWare教程：连接人体并进行USB调试时建议使用USB隔离；没有隔离器时，使用未接墙上电源的电池供电笔记本。Power/LED Shield充电前必须从人体侧传感器拆下。<a href="#ref-2">[2]</a></p>
+      </div>
+    </section>
+
+    <section class="section steps" id="steps">
+      <div class="section-heading wide-heading">
+        <p class="kicker">05 · FOOLPROOF INSTRUCTION</p>
+        <h2>照着照片做。<br>每一步都有验收标准。</h2>
+        <p>这不是摘要，而是一份可以放在工作台旁逐项勾选的操作手册。先完成当前步骤的“成功标志”，再进入下一步；如果不符合，就按“失败时检查”处理。</p>
+      </div>
+
+      <aside class="evidence-legend" aria-label="引用类型说明">
+        <div><b>怎么读引用</b><p>每一步底部都能打开原教程。先看标签，再判断这句话属于厂商要求、测量规范、伦理要求，还是本项目自己的参数。</p></div>
+        <span class="legend-official">官方要求</span>
+        <span class="legend-standard">测量规范</span>
+        <span class="legend-ethics">研究伦理</span>
+        <span class="legend-project">项目参数 ≠ 标准</span>
+      </aside>
+
+      <div class="instruction-progress" aria-label="操作进度">
+        <div>
+          <span>YOUR PROGRESS</span>
+          <strong data-instruction-progress>0 / 10</strong>
+        </div>
+        <div class="progress-track" aria-hidden="true"><i data-instruction-progress-fill></i></div>
+        <button type="button" data-instruction-reset>清空勾选，重新开始</button>
+      </div>
+
+      <div class="instruction-manual">
+        <article class="instruction-step" data-instruction-step data-step-id="safety">
+          <figure class="instruction-photo">
+            <img src="assets/images/disconnect-laptop-power.jpg" alt="SparkFun官方照片：把笔记本电脑电源适配器从插座拔下">
+            <figcaption>正确状态：电脑使用电池，并且充电器没有插在墙上。官方安全示范 <a href="#ref-2">[2]</a></figcaption>
+          </figure>
+          <div class="instruction-body">
+            <header><span>STEP 01 · 开始前 3 分钟</span><h3>先把人体测量变成安全的离线系统</h3></header>
+            <div class="instruction-block prepare" data-prepare><b>准备好</b><p>电池有电的笔记本、USB隔离器、USB线；检查前臂皮肤完整，没有伤口或明显刺激。</p></div>
+            <div class="instruction-block dont" data-dont><b>不要这样做</b><p>人体连接传感器时，严禁给笔记本、Power Shield或LED Shield充电，不接扩展坞；不贴胸部、颈部或破损皮肤；本项目不接任何EMS刺激器。</p></div>
+            <div class="instruction-block actions" data-actions><b>照着做</b><ol><li>保存文件并拔掉充电器。</li><li>确认屏幕仍亮，电池模式可用。</li><li>把USB隔离器放在电脑与RedBoard之间。</li><li>拍一张包含“已拔下充电器 + 隔离器”的安全照片。</li></ol></div>
+            <div class="instruction-block done" data-done><b>成功标志</b><p>电脑可以运行，但墙上电源与人体测量线路没有连接；安全照片清楚可读。</p></div>
+            <div class="instruction-block troubleshoot" data-troubleshoot><b>失败时检查</b><p>电池不足就先充满、拔线后再开始；没有USB隔离器时，只能使用未接市电的电池笔记本。</p></div>
+            <aside class="step-source official" data-step-source><span data-evidence-type>官方要求</span><p>人体连接电脑进行串口调试时，SparkFun建议使用USB隔离器；没有隔离器时使用未接墙上电源的电池笔记本。Power/LED Shield不得连接人体充电。</p><a href="https://learn.sparkfun.com/tutorials/getting-started-with-the-myoware-20-muscle-sensor-ecosystem/hardware-hookup" target="_blank" rel="noreferrer">SparkFun · Hardware Hookup ↗</a><a href="https://learn.sparkfun.com/tutorials/getting-started-with-the-myoware-20-muscle-sensor-ecosystem/-myoware-20-power-shield" target="_blank" rel="noreferrer">SparkFun · Power Shield danger note ↗</a></aside>
+            <label class="instruction-check"><input type="checkbox" data-instruction-check data-step-id="safety"><span>我已完成并保存安全照片</span></label>
+          </div>
+        </article>
+
+        <article class="instruction-step" data-instruction-step data-step-id="inventory">
+          <figure class="instruction-photo">
+            <img src="assets/images/kit.jpg" alt="SparkFun MyoWare 2.0开发套件中的全部零件">
+            <figcaption>把实物按照这张套件图排开，缺什么会一眼看出来。官方产品图 <a href="#ref-3">[3]</a></figcaption>
+          </figure>
+          <div class="instruction-body">
+            <header><span>STEP 02 · 第一天</span><h3>清点零件，并建立可审查的项目目录</h3></header>
+            <div class="instruction-block prepare" data-prepare><b>准备好</b><p>MyoWare传感器、Link/Power/LED/Arduino Shield、TRS线、RedBoard、USB隔离器、电极片、酒精棉、电脑。</p></div>
+            <div class="instruction-block dont" data-dont><b>不要这样做</b><p>不要在通电状态叠放Shield；不要把包装全部丢掉，型号和订单信息是作品集证据。</p></div>
+            <div class="instruction-block actions" data-actions><b>照着做</b><ol><li>按照片顺序把零件摆在白纸上。</li><li>逐个写下名称、数量、型号和用途。</li><li>建立 hardware、arduino、web、data、analysis、docs 六个文件夹。</li><li>拍一张俯视开箱照，放入 docs。</li></ol></div>
+            <div class="instruction-block done" data-done><b>成功标志</b><p>BOM中每个实物都能在开箱照里找到；六个目录都已建立。</p></div>
+            <div class="instruction-block troubleshoot" data-troubleshoot><b>失败时检查</b><p>缺电极片或隔离器就先暂停人体测试；缺LED Shield可以跳过第3步，但不能跳过安全步骤。</p></div>
+            <aside class="step-source project" data-step-source><span data-evidence-type>项目参数</span><p>套件组成来自SparkFun产品资料；六文件夹结构是本项目为了证据追溯采用的工作流，不是厂商标准。</p><a href="https://www.sparkfun.com/myoware-2-0-muscle-sensor-development-kit.html" target="_blank" rel="noreferrer">SparkFun · Development Kit contents ↗</a></aside>
+            <label class="instruction-check"><input type="checkbox" data-instruction-check data-step-id="inventory"><span>我已完成BOM与开箱照片</span></label>
+          </div>
+        </article>
+
+        <article class="instruction-step" data-instruction-step data-step-id="led-test">
+          <figure class="instruction-photo">
+            <img src="assets/images/led-shield-status.jpg" alt="MyoWare 2.0 LED Shield状态灯和肌肉信号灯条的官方近照">
+            <figcaption>先认出电源、充电与肌肉信号LED的位置，再上电。官方硬件图 <a href="#ref-2">[2]</a></figcaption>
+          </figure>
+          <div class="instruction-body">
+            <header><span>STEP 03 · 不接Arduino</span><h3>用LED Shield完成最小可行自检</h3></header>
+            <div class="instruction-block prepare" data-prepare><b>准备好</b><p>MyoWare传感器，以及已预先充满电的LED Shield或Power Shield，二选一；本步不连接RedBoard或电脑。</p></div>
+            <div class="instruction-block dont" data-dont><b>不要这样做</b><p>不要同时叠加两块带电Shield；连接人体时严禁充电；不要歪着压卡扣或用金属工具撬。</p></div>
+            <div class="instruction-block actions" data-actions><b>照着做</b><ol><li>在无人连接状态完成充电，然后拔掉充电线。</li><li>选择LED Shield或Power Shield其中一块。</li><li>断电状态下对齐GND/REF和三个卡扣，在桌面上均匀按合。</li><li>贴到前臂后打开电源。</li><li>放松5秒、轻握2秒、放松5秒，重复3次并录像。</li></ol></div>
+            <div class="instruction-block done" data-done><b>成功标志</b><p>LED Shield灯条或Power Shield的ENV灯随轻握增强、放松下降；三轮趋势一致即可。</p></div>
+            <div class="instruction-block troubleshoot" data-troubleshoot><b>失败时检查</b><p>完全不亮：关闭电源、从人体移除并拆下Shield后再检查电池；一直满格：先重贴电极并减少线材拉扯，不要先拧增益。</p></div>
+            <aside class="step-source official" data-step-source><span data-evidence-type>官方要求</span><p>官方Standalone Example明确写的是Power Shield或LED Shield，二选一；两者都自带电池。连接传感器时不得充电。</p><a href="https://learn.sparkfun.com/tutorials/getting-started-with-the-myoware-20-muscle-sensor-ecosystem/standalone-example-0-leds" target="_blank" rel="noreferrer">SparkFun · Standalone Example 0: LEDs ↗</a><a href="https://learn.sparkfun.com/tutorials/getting-started-with-the-myoware-20-muscle-sensor-ecosystem/-myoware-20-led-shield" target="_blank" rel="noreferrer">SparkFun · LED Shield danger note ↗</a></aside>
+            <label class="instruction-check"><input type="checkbox" data-instruction-check data-step-id="led-test"><span>我已录下三轮LED自检</span></label>
+          </div>
+        </article>
+
+        <article class="instruction-step" data-instruction-step data-step-id="skin-prep">
+          <figure class="instruction-photo">
+            <img src="assets/images/skin-cleaning.jpg" alt="SparkFun官方照片：用酒精棉清洁前臂皮肤">
+            <figcaption>清洁的是要贴电极的区域；等待皮肤完全变干再贴。官方操作图 <a href="#ref-2">[2]</a></figcaption>
+          </figure>
+          <div class="instruction-body">
+            <header><span>STEP 04 · 每次测量都重复</span><h3>找到目标肌肉，并清洁同一块皮肤</h3></header>
+            <div class="instruction-block prepare" data-prepare><b>准备好</b><p>酒精棉、纸巾、可水洗皮肤笔、手机相机；手掌朝上坐好，前臂放松。</p></div>
+            <div class="instruction-block dont" data-dont><b>不要这样做</b><p>不要贴在有毛发堆积、乳液、汗液、伤口或红肿的位置；不舒服就立即停止。</p></div>
+            <div class="instruction-block actions" data-actions><b>照着做</b><ol><li>轻握拳，触摸前臂掌侧最明显收紧的位置。</li><li>用皮肤笔画一条沿前臂长度方向的小线。</li><li>用酒精棉从中心向外擦拭。</li><li>等待完全干燥，并拍“空白定位照”。</li></ol></div>
+            <div class="instruction-block done" data-done><b>成功标志</b><p>照片能看到目标区域和方向线；皮肤干燥、无不适，位置可在下一次复现。</p></div>
+            <div class="instruction-block troubleshoot" data-troubleshoot><b>失败时检查</b><p>找不到收紧位置：换成更轻、更慢的握拳；皮肤仍湿就多等30秒，不能立刻贴。</p></div>
+            <aside class="step-source official" data-step-source><span data-evidence-type>官方要求</span><p>SparkFun操作图要求先确定肌群、使用酒精棉清洁并等待皮肤干燥；MyoWare Advanced Guide解释位置与方向为什么影响信号质量。</p><a href="https://learn.sparkfun.com/tutorials/getting-started-with-the-myoware-20-muscle-sensor-ecosystem/hardware-hookup" target="_blank" rel="noreferrer">SparkFun · Hardware Hookup / skin preparation ↗</a><a href="https://myoware.com/wp-content/uploads/2022/03/MyoWare_v2_AdvancedGuide-Updated.pdf" target="_blank" rel="noreferrer">MyoWare · Advanced Guide PDF ↗</a></aside>
+            <label class="instruction-check"><input type="checkbox" data-instruction-check data-step-id="skin-prep"><span>我已保存定位照并确认皮肤无不适</span></label>
+          </div>
+        </article>
+
+        <article class="instruction-step" data-instruction-step data-step-id="electrodes">
+          <figure class="instruction-photo">
+            <img src="assets/images/electrode-snaps.jpg" alt="三个一次性电极先扣到MyoWare传感器底部卡扣的官方照片">
+            <figcaption>关键顺序：先在手外扣好三个电极，再撕胶贴上手臂。官方操作图 <a href="#ref-2">[2]</a></figcaption>
+          </figure>
+          <div class="instruction-body">
+            <header><span>STEP 05 · 佩戴</span><h3>先扣电极，再把整组传感器贴到前臂</h3></header>
+            <div class="instruction-block prepare" data-prepare><b>准备好</b><p>3片新的扣式电极、MyoWare传感器、上一步定位照；确认传感器电源关闭。</p></div>
+            <div class="instruction-block dont" data-dont><b>不要这样做</b><p>不要先把电极粘在皮肤上再用力扣板；不要让MID与END横跨肌肉方向；不要重复使用失去粘性的电极。</p></div>
+            <div class="instruction-block actions" data-actions><b>照着做</b><ol><li>在手外把三片电极扣到传感器底部。</li><li>撕掉背胶，不碰中央导电胶。</li><li>MID放在肌腹中部，END沿肌肉长度方向，REF放在相邻活动较少处。</li><li>轻压胶圈固定，并拍正上方佩戴照。</li></ol></div>
+            <div class="instruction-block done" data-done><b>成功标志</b><p>三个胶圈完整贴合，板子不晃动；照片能清楚辨认手的方向、MID/END/REF和前臂位置。</p></div>
+            <div class="instruction-block troubleshoot" data-troubleshoot><b>失败时检查</b><p>边缘翘起就换新电极；动作时板子晃动就固定线材，仍不稳则重新清洁与粘贴。</p></div>
+            <aside class="step-source standard" data-step-source><span data-evidence-type>测量规范</span><p>MyoWare建议MID位于肌腹、END沿肌纤维方向约1–3 cm处、REF位于相邻电活动较少区域；SENIAM同样强调双极电极方向、间距与线材固定。</p><a href="https://myoware.com/wp-content/uploads/2022/03/MyoWare_v2_AdvancedGuide-Updated.pdf" target="_blank" rel="noreferrer">MyoWare · Advanced Guide / electrode placement ↗</a><a href="http://seniam.org/fixation.htm" target="_blank" rel="noreferrer">SENIAM · Original archive (HTTP) ↗</a></aside>
+            <label class="instruction-check"><input type="checkbox" data-instruction-check data-step-id="electrodes"><span>我已完成一致且可复现的电极佩戴</span></label>
+          </div>
+        </article>
+
+        <article class="instruction-step" data-instruction-step data-step-id="hardware-chain">
+          <figure class="instruction-photo">
+            <img src="assets/images/stack-alignment.jpg" alt="MyoWare Shield与传感器GND和REF标记对齐后按合的官方照片">
+            <figcaption>卡扣不是任意方向；先对齐GND与REF，再垂直按合。官方操作图 <a href="#ref-2">[2]</a></figcaption>
+          </figure>
+          <div class="instruction-body">
+            <header><span>STEP 06 · 断电接线</span><h3>按一条固定路线连接硬件</h3></header>
+            <div class="instruction-block prepare" data-prepare><b>准备好</b><p>佩戴好的传感器、Link Shield、3.5 mm TRS线、Arduino Shield、RedBoard、USB隔离器。</p></div>
+            <div class="instruction-block dont" data-dont><b>不要这样做</b><p>不要让LED/Power Shield继续留在传感器上；不要通电插拔Shield；不要让TRS线悬空拉扯手臂；不要接错Arduino通道。</p></div>
+            <div class="instruction-block actions" data-actions><b>照着做</b><ol><li>关闭电源，拆下第3步使用的LED或Power Shield。</li><li>Arduino Shield垂直插到RedBoard。</li><li>Link Shield按GND/REF方向扣到MyoWare。</li><li>TRS线一端接Link Shield，另一端接Arduino Shield通道A0。</li><li>电脑 → USB隔离器 → USB线 → RedBoard。</li><li>对照下一步的完整接线图逐项复核。</li></ol></div>
+            <div class="instruction-block done" data-done><b>成功标志</b><p>接线链只有一条清楚路径：前臂 → MyoWare/Link → TRS → A0 → RedBoard → 隔离器 → 电池笔记本。</p></div>
+            <div class="instruction-block troubleshoot" data-troubleshoot><b>失败时检查</b><p>卡扣对不上就停下核对GND/REF，不能硬压；拆卸时按官方方式从边缘均匀分离，不扭板。</p></div>
+            <aside class="step-source official" data-step-source><span data-evidence-type>官方要求</span><p>接线顺序来自SparkFun单通道Analog Read示例；官方要求堆叠前断电、Link Shield与Arduino Shield使用对应TRS通道，并遵守电脑隔离要求。</p><a href="https://learn.sparkfun.com/tutorials/getting-started-with-the-myoware-20-muscle-sensor-ecosystem/arduino-example-1-analog-read---single-sensor" target="_blank" rel="noreferrer">SparkFun · Analog Read — Single Sensor ↗</a><a href="https://myoware.com/products/link-and-arduino-shields/" target="_blank" rel="noreferrer">MyoWare · Link & Arduino Shields ↗</a></aside>
+            <label class="instruction-check"><input type="checkbox" data-instruction-check data-step-id="hardware-chain"><span>我已拍下可辨认每个接口的接线照片</span></label>
+          </div>
+        </article>
+
+        <article class="instruction-step" data-instruction-step data-step-id="arduino-code">
+          <figure class="instruction-photo">
+            <img src="assets/images/analog-read-setup.jpg" alt="MyoWare、Link Shield、TRS线、Arduino Shield和RedBoard完整连接的官方照片">
+            <figcaption>最终硬件应接近这张官方Analog Read示范图；图中线材连接到Arduino Shield。<a href="#ref-2">[2]</a></figcaption>
+          </figure>
+          <div class="instruction-body">
+            <header><span>STEP 07 · 官方代码</span><h3>上传单通道Analog Read示例</h3></header>
+            <div class="instruction-block prepare" data-prepare><b>准备好</b><p>Arduino IDE、官方MyoWare Arduino Library、已连接的RedBoard；保存代码到arduino文件夹。</p></div>
+            <div class="instruction-block dont" data-dont><b>不要这样做</b><p>不要从陌生博客复制不明代码；不要一开始同时读多通道；不要在串口监视器和绘图器中设置不同波特率。</p></div>
+            <div class="instruction-block actions" data-actions><b>照着做</b><ol><li>安装Arduino IDE。</li><li>Library Manager搜索并安装MyoWare库，或使用官方GitHub版本 <a href="#ref-4">[4]</a>。</li><li>打开单传感器Analog Read示例。</li><li>选择实际开发板与串口，把输入设为A0。</li><li>上传，打开Serial Monitor，使用示例定义的波特率。</li></ol></div>
+            <div class="instruction-block done" data-done><b>成功标志</b><p>IDE显示上传完成；串口持续出现数字；放松与握拳时数字范围有可重复变化。</p></div>
+            <div class="instruction-block troubleshoot" data-troubleshoot><b>失败时检查</b><p>无法上传：重选Board/Port并关闭占用串口的窗口；只有0或满量程：重新确认A0、TRS和输出模式。</p></div>
+            <aside class="step-source official" data-step-source><span data-evidence-type>官方要求</span><p>代码只从Advancer Technologies官方库或SparkFun官方示例获取。库中的ReadMyoWareVoltage用于读取和换算单通道输出。</p><a href="https://github.com/AdvancerTechnologies/MyoWare-Arduino-Library" target="_blank" rel="noreferrer">Advancer Technologies · MyoWare Arduino Library ↗</a><a href="https://github.com/sparkfun/SparkFun_MyoWare_Code_Examples" target="_blank" rel="noreferrer">SparkFun · MyoWare Code Examples ↗</a></aside>
+            <label class="instruction-check"><input type="checkbox" data-instruction-check data-step-id="arduino-code"><span>我已保存能运行的Arduino代码与上传截图</span></label>
+          </div>
+        </article>
+
+        <article class="instruction-step" data-instruction-step data-step-id="signal-check">
+          <figure class="instruction-photo">
+            <img src="assets/images/serial-plotter-envelope.png" alt="SparkFun官方Serial Plotter截图：前臂收缩时MyoWare包络信号升高">
+            <figcaption>合格趋势：放松时低，收缩时形成清楚峰值，松开后回落。官方Serial Plotter示例 <a href="#ref-2">[2]</a></figcaption>
+          </figure>
+          <div class="instruction-body">
+            <header><span>STEP 08 · 信号验收</span><h3>先看曲线质量，再谈阈值</h3></header>
+            <div class="instruction-block prepare" data-prepare><b>准备好</b><p>已上传的Analog Read程序、Arduino Serial Plotter、手机计时器、data文件夹。</p></div>
+            <div class="instruction-block dont" data-dont><b>不要这样做</b><p>不要把峰值大小直接叫作握力；不要为追求“漂亮曲线”先调增益；不要在电极位置改变后沿用旧阈值。</p></div>
+            <div class="instruction-block actions" data-actions><b>照着做</b><ol><li>打开Serial Plotter。</li><li>放松10秒并记下最高值Rmax。</li><li>轻握2秒、放松3秒，重复5次并记下最低峰值Cmin。</li><li>正常握拳再做5次。</li><li>保存全屏截图和原始数值。</li></ol></div>
+            <div class="instruction-block done" data-done><b>成功标志</b><p>至少5次收缩都有峰；松开后能回到接近基线；最理想是Rmax明显低于Cmin。</p></div>
+            <div class="instruction-block troubleshoot" data-troubleshoot><b>失败时检查</b><p>基线乱跳：手臂静止、固定线材、重贴电极；信号无变化：核对A0与输出模式；先解决接触问题再调参数。</p></div>
+            <aside class="step-source official" data-step-source><span data-evidence-type>官方要求</span><p>Serial Plotter曲线形态和ENV输出观察来自SparkFun单通道示例；实际采样率由开发板和代码决定，应运行官方TestMyoWareSamplingRate并把结果写入日志。</p><a href="https://learn.sparkfun.com/tutorials/getting-started-with-the-myoware-20-muscle-sensor-ecosystem/arduino-example-1-analog-read---single-sensor" target="_blank" rel="noreferrer">SparkFun · Serial Plotter example ↗</a><a href="https://github.com/AdvancerTechnologies/MyoWare-Arduino-Library" target="_blank" rel="noreferrer">Official library · TestMyoWareSamplingRate ↗</a></aside>
+            <label class="instruction-check"><input type="checkbox" data-instruction-check data-step-id="signal-check"><span>我已保存放松/轻握/正常握拳曲线</span></label>
+          </div>
+        </article>
+
+        <article class="instruction-step" data-instruction-step data-step-id="calibration">
+          <figure class="instruction-photo">
+            <img src="assets/images/forearm-placement.jpg" alt="MyoWare传感器贴在前臂目标肌肉上的官方示范照片">
+            <figcaption>每次校准前，用照片核对同一只手、同一方向与相近位置。官方佩戴示范 <a href="#ref-2">[2]</a></figcaption>
+          </figure>
+          <div class="instruction-body">
+            <header><span>STEP 09 · 事件阈值</span><h3>把连续EMG变成一次“肌肉按键”</h3></header>
+            <div class="instruction-block prepare" data-prepare><b>准备好</b><p>上一步的Rmax与Cmin、带注释的Arduino代码、网页中的交互原型。</p></div>
+            <div class="instruction-block dont" data-dont><b>不要这样做</b><p>不要直接照搬网页里的300/190示例值；不要让持续握拳连续产生多次事件；不要省略重新放松才能复位的规则。</p></div>
+            <div class="instruction-block actions" data-actions><b>照着做</b><ol><li>先取触发阈值T = Rmax + 0.4 × (Cmin − Rmax)。</li><li>释放阈值设得低于T，形成滞回。</li><li>加入约250 ms防抖和“触发后必须松开才复位”。</li><li>按“放松 → 轻握 → 放松”做10轮。</li><li>记录正确触发、误触发和漏触发。</li></ol></div>
+            <div class="instruction-block done" data-done><b>成功标志</b><p>10轮中至少9轮只触发一次；放松时无误触发；持续握住不会连发。记录实际阈值，不追求通用数值。</p></div>
+            <div class="instruction-block troubleshoot" data-troubleshoot><b>失败时检查</b><p>放松误触发就提高T或重贴电极；轻握漏触发就适度降低T；连发则检查释放阈值、状态变量和防抖。</p></div>
+            <aside class="step-source project" data-step-source><span data-evidence-type>项目参数</span><p>双阈值状态机用于避免持续收缩连发；公式中的0.4、250 ms防抖和9/10验收是本原型的初始工程参数，不是MyoWare或ISEK规定值。报告时必须公开这些处理参数。</p><a href="https://isek.org/emg-standards/" target="_blank" rel="noreferrer">ISEK · EMG Reporting Standards ↗</a><a href="https://doi.org/10.1525/collabra.92" target="_blank" rel="noreferrer">Crawford et al. · EMG as computer input ↗</a></aside>
+            <label class="instruction-check"><input type="checkbox" data-instruction-check data-step-id="calibration"><span>我已通过10轮阈值验收</span></label>
+          </div>
+        </article>
+
+        <article class="instruction-step" data-instruction-step data-step-id="formal-run">
+          <figure class="instruction-photo">
+            <img src="assets/images/disconnect-shields.jpg" alt="SparkFun官方照片：实验结束后从边缘正确拆开MyoWare Shield">
+            <figcaption>记录完成后先断电，再像图中那样均匀拆开Shield，不拉扯电极或线材。官方操作图 <a href="#ref-2">[2]</a></figcaption>
+          </figure>
+          <div class="instruction-body">
+            <header><span>STEP 10 · 个人工程试运行与收尾</span><h3>完成30次个人工程试运行，并把两类证据分开保存</h3></header>
+            <div class="instruction-block prepare" data-prepare><b>准备好</b><p>第8步真实Serial Plotter记录、第9步阈值记录、当前网页模拟界面、屏幕录制和独立文件夹。</p></div>
+            <div class="instruction-block dont" data-dont><b>不要这样做</b><p>当前网页不读取MyoWare：模拟数据不能作为人体研究结果，也不能与真实串口数据混在同一CSV；不要称为医疗或复健效果。</p></div>
+            <div class="instruction-block actions" data-actions><b>照着做</b><ol><li>将真实硬件记录放入data/real，将网页输出放入data/simulated。</li><li>在网页练习5次，确认交互逻辑。</li><li>运行30次模拟试验，每10次休息30秒，导出CSV并在文件名加入simulated。</li><li>另存第8步的真实串口数据、采样率和电极记录。</li><li>录60–90秒视频，分别标注“真实硬件信号验证”和“模拟交互逻辑”。</li><li>先断电，再从人体移除并拆开传感器与Shield。</li></ol></div>
+            <div class="instruction-block done" data-done><b>成功标志</b><p>查看者能区分真实信号证据和模拟交互证据；不存在把模拟CSV冒充真实参与者数据的情况。</p></div>
+            <div class="instruction-block troubleshoot" data-troubleshoot><b>失败时检查</b><p>数据异常先保留原文件并写实验日志；若电极移动或阈值漂移，停止本轮、重新校准，不能悄悄删除坏数据。</p></div>
+            <aside class="step-source project" data-step-source><span data-evidence-type>项目参数</span><p>5次练习、30次模拟试运行和每10次休息30秒是作品集工程演示参数，不代表统计学样本量依据。Crawford等提供EMG输入实验的先例；如涉及其他参与者，必须按NHMRC及所属机构流程审查。</p><a href="https://doi.org/10.1525/collabra.92" target="_blank" rel="noreferrer">Crawford et al. · Published EMG input method ↗</a><a href="https://www.nhmrc.gov.au/research-policy/ethics/national-statement-ethical-conduct-human-research" target="_blank" rel="noreferrer">NHMRC · National Statement 2025 ↗</a></aside>
+            <label class="instruction-check"><input type="checkbox" data-instruction-check data-step-id="formal-run"><span>我已完成个人工程试运行并分开打包真实/模拟证据</span></label>
+          </div>
+        </article>
+      </div>
+
+      <aside class="completion-standard" data-completion-standard>
+        <div><span>WHAT “FINISHED” LOOKS LIKE</span><h3>做成什么样，才算真的完成？</h3></div>
+        <ul>
+          <li><b>01</b> BOM与开箱照片</li>
+          <li><b>02</b> 安全状态与接线照片</li>
+          <li><b>03</b> LED自检与完整演示视频</li>
+          <li><b>04</b> 带注释的Arduino代码</li>
+          <li><b>05</b> Serial Plotter曲线截图</li>
+          <li><b>06</b> 阈值校准表与10轮验收</li>
+          <li><b>07</b> 30次模拟试运行CSV（文件名标明simulated）</li>
+          <li><b>08</b> 一页分析与限制说明</li>
+        </ul>
+        <p>这八项同时存在，才足以证明你完成了安全搭建、真实信号观察、嵌入式代码和模拟交互逻辑。模拟数据不能作为人体研究结果；真实硬件—网页一体化只有在串口接入与时间同步实现并验证后才能声称完成。</p>
+      </aside>
+
+      <aside class="research-gate" data-research-gate>
+        <header><span>STOP GATE · BEFORE TESTING OTHER PEOPLE</span><h3>下面四项未获确认，就停留在本人个人工程试运行。</h3><p>是否需要低风险审查或HREC审批由所属机构决定；网页不能替代导师、实验室负责人或伦理办公室的判断。</p></header>
+        <div class="research-gate-grid">
+          <article><b>01 · 授权</b><h4>导师与机构确认</h4><p>提交风险评估、设备清单、电气隔离方案和实验流程，取得适用的伦理审查及场地授权。</p></article>
+          <article><b>02 · 参与者</b><h4>知情同意与退出权</h4><p>说明目的、动作、时间、可预见不适、照片用途和数据用途；参与者可随时停止且无需解释。</p></article>
+          <article><b>03 · 停止条件</b><h4>不适或设备异常立即停止</h4><p>疼痛、灼热、电击感、明显红肿、头晕，或电池发热、变形、异味、线路损坏时，立即断电并通知负责人。</p></article>
+          <article><b>04 · 数据</b><h4>分离、匿名与可追溯</h4><p>真实/模拟数据分开；记录采样率、时间戳、阈值和版本；人物照片须获得明确同意并按机构期限保存。</p></article>
+        </div>
+        <footer><span data-evidence-type>研究伦理</span><p>依据澳大利亚NHMRC 2025 National Statement及HREA。2025版自2026年6月23日起生效；具体路径仍以所属机构要求为准。</p><a href="https://www.nhmrc.gov.au/research-policy/ethics/national-statement-ethical-conduct-human-research" target="_blank" rel="noreferrer">NHMRC · National Statement 2025 ↗</a><a href="https://www.nhmrc.gov.au/research-policy/ethics/human-research-ethics-application-form" target="_blank" rel="noreferrer">NHMRC · HREA ↗</a></footer>
+      </aside>
+    </section>
+
+    <section class="section demo" id="demo">
+      <div class="section-heading wide-heading inverted">
+        <p class="kicker">06 · INTERACTIVE PROTOTYPE</p>
+        <h2>现在就试一次：<br>肌电怎样变成按键。</h2>
+        <p>这个页面只模拟ENV信号和阈值逻辑，不读取真实硬件。只有完成并验证串口接入、实际采样率、统一时间戳和端到端延迟后，才能将真实MyoWare数据用于工程试验记录。</p>
+      </div>
+
+      <div class="demo-console">
+        <div class="demo-target-panel">
+          <div class="target ready" data-target-state="ready">
+            <span>WAIT</span>
+            <b>等待绿色目标</b>
+          </div>
+          <div class="target go" data-target-state="go" hidden>
+            <span>GO</span>
+            <b>现在握拳</b>
+          </div>
+          <p data-demo-status>点击“开始一次试验”，然后等待目标变绿。</p>
+          <button class="button primary" type="button" data-demo-start>开始一次试验</button>
+          <button class="contract-button" type="button" data-contract-button>
+            <span>按住模拟握拳</span>
+            <small>松开模拟放松</small>
+          </button>
+          <label class="manual-control">
+            <span>也可以手动改变模拟EMG</span>
+            <input type="range" min="80" max="600" value="110" data-emg-slider>
+          </label>
+        </div>
+
+        <div class="demo-signal-panel">
+          <header>
+            <div><span>LIVE ENV</span><strong data-current-emg>110</strong></div>
+            <div><span>TRIGGER</span><strong>300</strong></div>
+            <div><span>RELEASE</span><strong>190</strong></div>
+            <div><span>LATEST RT</span><strong data-latest-reaction>—</strong></div>
+          </header>
+          <canvas width="900" height="300" data-signal-canvas aria-label="模拟肌电包络信号曲线，包含释放阈值和触发阈值"></canvas>
+          <div class="signal-legend"><span class="legend-emg">EMG envelope</span><span class="legend-trigger">Trigger 300</span><span class="legend-release">Release 190</span></div>
+          <div class="event-state" data-event-state><i></i><span>READY FOR INPUT</span></div>
+        </div>
+      </div>
+
+      <div class="results-panel">
+        <header>
+          <div><span>模拟记录</span><b>先理解逻辑，再连接真实硬件</b></div>
+          <div>
+            <button type="button" data-demo-clear>清空</button>
+            <button type="button" data-demo-export>导出CSV</button>
+          </div>
+        </header>
+        <div class="result-metrics">
+          <div><span>VALID</span><strong data-summary-valid>0</strong></div>
+          <div><span>MEDIAN</span><strong data-summary-median>—</strong></div>
+          <div><span>FALSE START</span><strong data-summary-false>0</strong></div>
+          <div><span>MISS</span><strong data-summary-miss>0</strong></div>
+        </div>
+        <div class="trial-table" role="table" aria-label="模拟试验记录">
+          <div role="row" class="table-head"><span>TRIAL</span><span>STATUS</span><span>REACTION</span><span>PEAK EMG</span></div>
+          <div data-trial-list></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section citation-guide" id="citation-guide">
+      <div class="section-heading">
+        <p class="kicker">07 · HOW TO CITE</p>
+        <h2>引用不是装饰，<br>而是说明哪部分来自哪里。</h2>
+      </div>
+      <div class="citation-rules">
+        <article>
+          <span>研究方法</span>
+          <h3>引用论文</h3>
+          <p>当你说“肌电可以替代电脑按键”“研究通过个人阈值采集反应时”时，引用University of Richmond论文。</p>
+          <code>Crawford, L. E., Vavra, D. T., &amp; Corbin, J. C. (2017). Thinking Outside the Button Box… Collabra: Psychology, 3(1), 15. https://doi.org/10.1525/collabra.92</code>
+        </article>
+        <article>
+          <span>硬件与安全</span>
+          <h3>引用官方文档</h3>
+          <p>电极方向、Shield连接、ENV输出、USB隔离和非医疗声明，应引用SparkFun/Advancer Technologies官方文档。</p>
+          <code>SparkFun Electronics. (n.d.). Getting Started with the MyoWare 2.0 Muscle Sensor Ecosystem. Accessed 26 Aug 2026.</code>
+        </article>
+        <article>
+          <span>复用代码</span>
+          <h3>引用GitHub仓库与许可证</h3>
+          <p>在README中写清仓库地址、使用的示例名称、修改内容和许可证；不要把官方示例写成自己的原创驱动。</p>
+          <code>Advancer Technologies. MyoWare-Arduino-Library. GitHub repository, MIT License.</code>
+        </article>
+        <article>
+          <span>图片</span>
+          <h3>图注紧跟图片</h3>
+          <p>图片下面标记作者/网站、图片用途和编号；页面末尾再列完整链接。产品照片不能替代对性能的实验验证。</p>
+          <code>Figure 2. MyoWare 2.0 forearm attachment example. Source: SparkFun Electronics [2].</code>
+        </article>
+      </div>
+    </section>
+
+    <section class="section future" id="future">
+      <div class="section-heading wide-heading">
+        <p class="kicker">08 · WHY THIS HELPS NEXT</p>
+        <h2>小实验的价值，<br>是把研究能力变成可验证证据。</h2>
+      </div>
+      <div class="capability-map">
+        <article><span>01</span><h3>人体与肌肉</h3><p>能说明前臂肌群、电极方向、肌腹与参考电极，而不是只会接模块。</p><b>证据：电极标注图</b></article>
+        <article><span>02</span><h3>生理传感</h3><p>理解raw、rectified与envelope的区别，并知道sEMG不是力传感器。</p><b>证据：信号曲线</b></article>
+        <article><span>03</span><h3>嵌入式代码</h3><p>完成模拟采样、平滑、双阈值、状态机、防抖和串口输出。</p><b>证据：Arduino仓库</b></article>
+        <article><span>04</span><h3>网页交互</h3><p>把硬件事件映射到界面状态、计时、反馈、数据表和CSV。</p><b>证据：可运行原型</b></article>
+        <article><span>05</span><h3>实验设计</h3><p>设置练习、随机等待、误触发、漏触发、休息和停止条件。</p><b>证据：实验协议</b></article>
+        <article><span>06</span><h3>数据分析</h3><p>报告中位数、离散程度与失败率，不只展示一条漂亮曲线。</p><b>证据：CSV与图表</b></article>
+        <article><span>07</span><h3>可重复性</h3><p>记录电极重贴、跨日漂移、疲劳和线材运动等影响。</p><b>证据：调试日志</b></article>
+        <article><span>08</span><h3>研究伦理</h3><p>区分教学原型、健康参与者研究与临床系统，不夸大结果。</p><b>证据：安全与同意页</b></article>
+      </div>
+
+      <div class="research-bridge">
+        <div>
+          <span>NOW · MUSCLEKEY</span>
+          <h3>读取当下的身体动作</h3>
+          <p>一个人、一个肌肉通道、一次电脑输入。</p>
+        </div>
+        <i>→</i>
+        <div>
+          <span>NEXT · PERSONAL TRACE</span>
+          <h3>保存个人肌肉轨迹</h3>
+          <p>比较跨日阈值、动作稳定性与疲劳变化。</p>
+        </div>
+        <i>→</i>
+        <div>
+          <span>FUTURE · BODYSHARING</span>
+          <h3>把机器解释返回给人</h3>
+          <p>未来可在伦理和合规条件下研究振动、听觉或专业刺激设备。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section references" id="references">
+      <div class="section-heading wide-heading inverted">
+        <p class="kicker">09 · SOURCES &amp; CREDITS</p>
+        <h2>论文、官方资料、代码与图片，<br>分别登记。</h2>
+      </div>
+      <ol class="reference-list">
+        <li id="ref-1" data-reference><span>研究论文</span><p>Crawford, L. E., Vavra, D. T., &amp; Corbin, J. C. (2017). <em>Thinking Outside the Button Box: EMG as a Computer Input Device for Psychological Research.</em> Collabra: Psychology, 3(1), 15.</p><a href="https://doi.org/10.1525/collabra.92" target="_blank" rel="noreferrer">DOI ↗</a></li>
+        <li id="ref-2" data-reference><span>官方硬件文档</span><p>SparkFun Electronics. <em>Getting Started with the MyoWare 2.0 Muscle Sensor Ecosystem.</em> 电极位置、硬件连接、Serial Plotter与USB安全说明。</p><a href="https://learn.sparkfun.com/tutorials/getting-started-with-the-myoware-20-muscle-sensor-ecosystem/all" target="_blank" rel="noreferrer">Tutorial ↗</a></li>
+        <li id="ref-3" data-reference><span>官方产品资料</span><p>SparkFun Electronics. <em>MyoWare 2.0 Muscle Sensor Development Kit.</em> 套装组成、停产状态与非医疗声明；访问日期：2026-08-26。</p><a href="https://www.sparkfun.com/myoware-2-0-muscle-sensor-development-kit.html" target="_blank" rel="noreferrer">Product page ↗</a></li>
+        <li id="ref-4" data-reference><span>官方技术资料</span><p>SparkFun Electronics. <em>MyoWare Muscle Sensors.</em> 三种输出模式、滤波与ENV包络基本说明。</p><a href="https://www.sparkfun.com/myoware" target="_blank" rel="noreferrer">Technical overview ↗</a></li>
+        <li id="ref-5" data-reference><span>开源代码</span><p>Advancer Technologies. <em>MyoWare-Arduino-Library.</em> 官方Arduino示例与库，MIT License。</p><a href="https://github.com/AdvancerTechnologies/MyoWare-Arduino-Library" target="_blank" rel="noreferrer">GitHub ↗</a></li>
+        <li id="ref-6" data-reference><span>开放研究材料</span><p>Crawford et al.项目数据与分析材料，Open Science Framework。</p><a href="https://osf.io/f8uhj/" target="_blank" rel="noreferrer">OSF ↗</a></li>
+        <li id="ref-7" data-reference><span>图片来源</span><p>Development Kit、RedBoard、Arduino Shield与前臂佩戴图：SparkFun Electronics；当前传感器产品图：Evelta；USB隔离器示例图：52Pi。图片仅用于零件识别。</p><a href="https://www.sparkfun.com/myoware" target="_blank" rel="noreferrer">SparkFun ↗</a></li>
+        <li id="ref-8" data-reference><span>电极操作</span><p>Advancer Technologies. <em>MyoWare 2.0 Advanced Guide.</em> 双极电极、肌腹定位、1–3 cm间距、方向和参考电极说明。</p><a href="https://myoware.com/wp-content/uploads/2022/03/MyoWare_v2_AdvancedGuide-Updated.pdf" target="_blank" rel="noreferrer">Official PDF ↗</a></li>
+        <li id="ref-9" data-reference><span>sEMG规范</span><p>SENIAM. <em>Placement and Fixation of the Sensor.</em> 双极电极方向、距离、固定与参考位置建议。原站目前仅HTTP地址可直接访问。</p><a href="http://seniam.org/fixation.htm" target="_blank" rel="noreferrer">SENIAM archive ↗</a></li>
+        <li id="ref-10" data-reference><span>报告规范</span><p>International Society of Electrophysiology and Kinesiology. <em>EMG Reporting Standards.</em></p><a href="https://isek.org/emg-standards/" target="_blank" rel="noreferrer">ISEK ↗</a></li>
+        <li id="ref-11" data-reference><span>人体研究伦理</span><p>NHMRC, ARC &amp; Universities Australia. <em>National Statement on Ethical Conduct in Human Research 2025.</em> 2026年6月23日起生效。</p><a href="https://www.nhmrc.gov.au/research-policy/ethics/national-statement-ethical-conduct-human-research" target="_blank" rel="noreferrer">NHMRC ↗</a></li>
+        <li id="ref-12" data-reference><span>伦理申请工具</span><p>NHMRC. <em>Human Research Ethics Application.</em> 用于按National Statement准备人体研究伦理申请。</p><a href="https://www.nhmrc.gov.au/research-policy/ethics/human-research-ethics-application-form" target="_blank" rel="noreferrer">HREA ↗</a></li>
+      </ol>
+      <p class="evidence-note">页面中的交互曲线是解释算法的模拟，不是参与者数据；未来研究帮助属于能力路线，不是已经验证的临床效果。</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div><b>MUSCLEKEY</b><span>Educational EMG → computer input prototype</span></div>
+    <p>READ-ONLY sEMG · NON-MEDICAL · NO DIY EMS</p>
+    <a href="#top">返回顶部 ↑</a>
+  </footer>
+
+  <script src="../language-session.js"></script>
+  <script src="assets/js/translations.js"></script>
+  <script src="assets/js/translations-steps.js"></script>
+  <script src="assets/js/translations-results.js"></script>
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/core.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

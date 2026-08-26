@@ -6,7 +6,7 @@ Resolve the two rounds of portfolio audit findings without replacing the existin
 
 ## Editorial hierarchy
 
-The home page is for a hiring reader first. It introduces Bowen as a UX designer and researcher, surfaces three verifiable proof points, and presents four selected cases in this order: Library Evaluation, Signal Aftershock, Vita and PedalBalance Echo. The remaining ten projects stay available in a compact Archive.
+The home page is for a hiring reader first. It introduces Bowen as a UX designer and researcher, surfaces three verifiable proof points, and presents four selected cases in this order: Vita, Signal Aftershock, Financial Feasibility and MuscleKey. The remaining ten projects stay available in a compact Archive.
 
 The Practice Index, portfolio-count metrics, professional-quality claims and standalone AI-tool cards are removed. Capabilities are reduced to three evidence-linked areas: UX research and evaluation; interaction design and prototyping; visual and strategic communication.
 
@@ -14,7 +14,7 @@ The Practice Index, portfolio-count metrics, professional-quality claims and sta
 
 Every project carries a consistent compact record: context, ownership, Bowen's contribution, evidence/status, outcome or learning, and limitation where relevant. Team work is labelled as shared work and does not imply sole authorship. Project claims must not exceed the evidence shown.
 
-PedalBalance remains an operable prototype and research plan, not a completed human or EMS study. Booking.com is described as a desk-based inclusive decision-support review, not a standards-compliant accessibility audit. Financial feasibility reports the submitted recommendation while explicitly disclosing that the workbook and report contain unreconciled outputs.
+MuscleKey remains a teaching prototype with a browser simulation and documented hardware procedure, not a completed human, clinical or live serial study. Booking.com is described as a desk-based inclusive decision-support review, not a standards-compliant accessibility audit. Financial feasibility reports the submitted recommendation while explicitly disclosing that the workbook and report contain unreconciled outputs.
 
 The investment case uses independently recomputed metrics from the original annual rows. It identifies the formula issues in the submitted summary rather than silently presenting them as valid.
 

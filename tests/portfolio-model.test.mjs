@@ -16,7 +16,7 @@ test("the home model selects four evidence-led cases and archives the remaining 
   const model = window.PortfolioModel.partitionProjects(window.PORTFOLIO_PROJECTS);
   assert.deepEqual(
     Array.from(model.selected, (project) => project.id),
-    ["vita", "signal-aftershock", "financial-feasibility", "pedalbalance-echo"],
+    ["vita", "signal-aftershock", "financial-feasibility", "musclekey"],
   );
   assert.equal(model.archive.length, 10);
   assert.equal(new Set([...model.selected, ...model.archive].map((project) => project.id)).size, 14);

@@ -54,7 +54,7 @@
         "visual-editorial": { description: "Books, type, images and colour studies made through material experiments and repeated visual testing." },
         "spatial-material": { description: "Projects where observation, light and narrative were developed through models, drawings and physical tests." },
         strategy: { description: "Finance and systems coursework using data, assumptions and scenarios to explain a decision and its limits." },
-        "embodied-systems": { description: "A research-through-making project about sensing movement, returning feedback and testing what remains after guidance stops." },
+        "embodied-systems": { description: "An individual experiment about reading muscle activity and translating it into a small, testable computer input." },
       },
       capabilities: {
         groups: [
@@ -233,19 +233,19 @@
             homeContribution: "Group project · I worked on the model, scenarios and risk review",
           },
         },
-        "pedalbalance-echo": {
-          summary: "PedalBalance Echo is an individual research-through-making project. I used pressure sensing, complete-revolution comparison and ankle vibration to explore how cycling feedback might be returned to the body with lower risk than DIY EMS.",
-          meaning: "The project focuses on two questions: what remains after guidance stops, and whether a clearly labelled trace from a rider’s past performance can help a later attempt.",
-          role: "Individual research and prototype plan. I reviewed the literature, set the safety boundary, designed the system and interaction, built the interface prototype and planned the study.",
+        musclekey: {
+          summary: "MuscleKey is an individual sEMG interaction prototype. I used a MyoWare sensor, Arduino threshold logic and a browser simulation to study how a forearm contraction could become one computer-input event and a reaction-time record.",
+          meaning: "The main learning was separating muscle electrical activity, an engineered input event and a claim about force or health. The current prototype demonstrates the first two only.",
+          role: "Individual project. I reviewed the method and safety documentation, planned the hardware chain, wrote the threshold and trial logic, built the interactive website and documented a ten-step procedure.",
           sections: [
-            { title: "Returning a small cue after a complete revolution", body: "The prototype compares the left and right contribution across a complete revolution. If a difference continues beyond the rider’s personal baseline, it returns a short vibration to the corresponding ankle. It does not try to control the movement." },
-            { title: "Two proposed studies on withdrawal and past-self feedback", body: "C1 compares different ways of fading guidance and then tests performance without cues. E2 separates the identity of a past-self trace from whether it is shown on a screen or returned through vibration. In the current one-person prototype, any matched-other trace is clearly labelled as simulated." },
-            { title: "Keeping the mechanism while avoiding DIY EMS", body: "The prototype uses pressure, Hall sensing, vibration and optional read-only surface EMG. No DIY stimulation, medical claim or road-cycling test was included. The current simulations explain the proposed procedure; they are not human-study results." },
+            { title: "From muscle activity to one input event", body: "MyoWare reads the forearm’s surface EMG envelope. A trigger threshold creates one event, while a lower release threshold means the signal must settle before another event can occur." },
+            { title: "A ten-step procedure that can be checked", body: "The website records materials, offline safety, electrode placement, wiring, signal inspection, calibration, trial logic and evidence packaging. Each step has a success sign and a troubleshooting check." },
+            { title: "Keeping real and simulated evidence separate", body: "The browser simulator explains ENV and threshold logic but does not read live hardware. It is not participant data, a force measurement or a medical result, and the project does not use DIY EMS stimulation." },
           ],
           caseFacts: {
-            contribution: "I reviewed the literature, set the safety boundary, designed the sensing and feedback system, built the interface prototype and wrote the proposed study plan.",
-            outcome: "The project narrows a broad body-sharing topic into two proposed studies about fading guidance and past-self feedback.",
-            homeContribution: "Individual project · I researched, designed and prototyped the proposed study",
+            contribution: "I reviewed the method and safety documentation, planned the hardware chain, wrote the threshold and trial logic, built the website and documented the ten-step procedure.",
+            outcome: "The finished teaching prototype shows how one read-only sEMG channel can be traced from sensing to a computer-input event without overstating what the signal measures.",
+            homeContribution: "Individual project · I planned the hardware chain, wrote the logic and built the website",
           },
         },
       },
@@ -304,7 +304,7 @@
         "visual-editorial": { description: "我通过材料实验和反复测试，练习书籍、字体、图像与色彩的组织。" },
         "spatial-material": { description: "我用模型、图纸和实体实验，把观察、光线与叙事转化为空间表达。" },
         strategy: { description: "我在金融与系统课程中使用数据、假设和情景说明一个判断及其限制。" },
-        "embodied-systems": { description: "一项关于动作感知、反馈和提示撤除后学习效果的研究型制作。" },
+        "embodied-systems": { description: "一项个人实验，练习读取肌肉活动，并把它转化为小型、可测试的电脑输入。" },
       },
       capabilities: {
         groups: [
@@ -449,14 +449,14 @@
             { title: "测试最可能改变结果的假设", body: "我们测试了出租率、主力租户租金、延误、建造成本超支和竞争。报告再把这些风险连接到有条件的建议和可能的控制措施。" },
           ],
         },
-        "pedalbalance-echo": {
-          summary: "PedalBalance Echo 是一项个人研究型制作。我用压力感知、完整踏圈比较和脚踝振动，探索能否用比 DIY EMS 风险更低的方式把骑行反馈还给身体。",
-          meaning: "项目集中在两个问题：提示停止后还留下什么，以及明确标注的过去自我轨迹能否帮助下一次尝试。",
-          role: "个人研究与原型计划。我阅读文献、设定安全边界、设计系统与交互、制作界面原型，并规划研究流程。",
+        musclekey: {
+          summary: "MuscleKey 是一项个人 sEMG 交互原型。我用 MyoWare 传感器、Arduino 阈值逻辑和浏览器模拟，练习如何把一次前臂收缩转换成电脑输入事件，并记录反应时间。",
+          meaning: "这个项目最重要的学习，是把肌肉电活动、经过设计的输入事件，以及关于力量或健康的结论区分开。当前原型只演示前两者。",
+          role: "个人项目。我查阅研究方法与安全资料，规划硬件链路，编写阈值和试验逻辑，制作交互网页，并整理了一套十步操作流程。",
           sections: [
-            { title: "完成一圈之后再返回小幅提示", body: "原型比较完整一圈中左右两侧的贡献。如果差异持续超过骑行者自己的基线，系统会向对应脚踝返回一次短振动，但不会控制动作。" },
-            { title: "两项关于提示撤除与过去自我的拟议研究", body: "C1 比较不同的提示渐退方式，并在无提示条件下测试表现。E2 把过去自我轨迹的身份和显示方式分开比较。在当前单人原型中，任何匹配他人的轨迹都会明确标为模拟。" },
-            { title: "保留研究机制，同时避免 DIY EMS", body: "原型使用压力、霍尔传感、振动和可选的只读表面肌电，不包含 DIY 电刺激、医疗结论或道路骑行测试。当前模拟用于解释拟议流程，并不是人体研究结果。" },
+            { title: "从肌肉活动到一次输入事件", body: "MyoWare 读取前臂的表面肌电包络。信号越过触发阈值时生成一次事件；只有回落到较低的释放阈值后，系统才允许再次触发。" },
+            { title: "一套可以逐项检查的十步流程", body: "网页记录材料、离线安全、电极位置、接线、信号检查、校准、试验逻辑和证据整理。每一步都有成功标志和失败排查。" },
+            { title: "把真实证据和模拟证据分开", body: "浏览器模拟用于解释 ENV 与阈值逻辑，但不会读取真实硬件。它不是参与者数据、力量测量或医疗结果，项目也不使用 DIY EMS 刺激。" },
           ],
         },
       },
@@ -500,7 +500,7 @@
         "visual-editorial": { description: "素材の試作と見直しを重ね、書籍、文字、画像、色の組み方を学びました。" },
         "spatial-material": { description: "模型、図面、実物実験を使い、観察、光、物語を空間表現へ移しました。" },
         strategy: { description: "金融とシステムの授業で、データ、仮定、シナリオを使い、判断と限界を説明しました。" },
-        "embodied-systems": { description: "動きの計測、フィードバック、案内を止めた後の学習を扱うリサーチ・スルー・メイキングです。" },
+        "embodied-systems": { description: "筋活動を読み取り、小さく検証できるコンピュータ入力へ変える個人実験です。" },
       },
       capabilities: {
         groups: [
@@ -595,10 +595,10 @@
           meaning: "稼働率、賃料、費用、工程の仮定が判断をどう変えるかを、モデルで確認できました。",
           role: "4人のグループ制作です。モデル、シナリオ分析、リスク整理、最終提案に参加しました。",
         },
-        "pedalbalance-echo": {
-          summary: "PedalBalance Echoは個人のリサーチ・スルー・メイキングです。圧力計測、1回転単位の比較、足首への振動を使い、DIY EMSより危険の少ない方法で自転車のフィードバックを身体へ戻せるかを考えました。",
-          meaning: "案内を止めた後に何が残るか、明確に表示した過去の自分の軌跡が次の試行を助けるか、という二つの問いを扱います。",
-          role: "個人の調査と試作計画です。文献確認、安全範囲、システムとインタラクション、画面試作、研究手順を作成しました。",
+        musclekey: {
+          summary: "MuscleKeyは、sEMGを使った個人制作のインタラクション試作です。MyoWareセンサー、Arduinoの閾値処理、ブラウザ上のシミュレーションを使い、前腕の収縮を1回のコンピュータ入力と反応時間記録へ変える流れを検討しました。",
+          meaning: "この制作で特に学んだのは、筋電活動、設計した入力イベント、力や健康に関する主張を分けて扱うことです。現在の試作が示すのは前の二つまでです。",
+          role: "個人制作です。研究方法と安全資料を確認し、ハードウェアの流れ、閾値と試行ロジック、インタラクティブなウェブページ、10段階の手順を作成しました。",
         },
       },
     },

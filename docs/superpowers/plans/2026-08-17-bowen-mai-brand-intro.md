@@ -59,7 +59,7 @@
 - Produces: deployed GitHub Pages intro and a brief maintainability note.
 
 - [ ] Document the intro timing variables and CSS-only logo.
-- [ ] Run the complete root and PedalBalance test suites plus `git diff --check`.
+- [ ] Run the complete root and current interactive-project test suites plus `git diff --check`.
 - [ ] Commit and push to `main`.
 - [ ] Wait for the matching GitHub Pages workflow to succeed.
 - [ ] Verify the public HTML and versioned stylesheet contain the new mark and animation.

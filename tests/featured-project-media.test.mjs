@@ -59,16 +59,16 @@ test("Retail Mall Feasibility uses a purpose-built high-resolution project cover
   assert.ok(height >= 1500, `financial cover height ${height} is below 1500`);
 });
 
-test("PedalBalance Echo uses a high-resolution screenshot of the working pedalling prototype", () => {
+test("MuscleKey uses a high-resolution screenshot of the working sEMG interaction", () => {
   const { PORTFOLIO_PROJECTS } = loadWindowScript("projects.js");
-  const project = PORTFOLIO_PROJECTS.find(({ id }) => id === "pedalbalance-echo");
+  const project = PORTFOLIO_PROJECTS.find(({ id }) => id === "musclekey");
 
-  assert.equal(project.cover.src, "assets/projects/pedalbalance/prototype-pedalling.png");
+  assert.equal(project.cover.src, "assets/projects/musclekey/interactive-demo.png");
   assert.equal(project.shareImage, project.cover.src);
-  assert.match(project.cover.alt, /prototype|pedal|cycling|interface/i);
+  assert.match(project.cover.alt, /sEMG|muscle|signal|prototype|interface/i);
   const { width, height } = pngDimensions(project.cover.src);
-  assert.ok(width >= 2000, `PedalBalance cover width ${width} is below 2000`);
-  assert.ok(height >= 1200, `PedalBalance cover height ${height} is below 1200`);
+  assert.ok(width >= 2000, `MuscleKey cover width ${width} is below 2000`);
+  assert.ok(height >= 1200, `MuscleKey cover height ${height} is below 1200`);
 });
 
 test("the inline playable frame has complete English, Chinese and Japanese labels", () => {

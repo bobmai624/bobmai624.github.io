@@ -1140,57 +1140,61 @@ window.PORTFOLIO_PROJECTS = [
     ],
   },
   {
-    id: "pedalbalance-echo",
-    title: "PedalBalance Echo",
-    shortTitle: "PedalBalance Echo",
-    kicker: "Embodied interaction · research through making",
+    id: "musclekey",
+    title: "MuscleKey",
+    shortTitle: "MuscleKey",
+    kicker: "sEMG interaction · individual experiment",
     year: "2026",
     category: "embodied-systems",
-    caseHref: "pedalbalance-echo/index.html",
+    caseHref: "musclekey/index.html",
     summary:
-      "A research-through-making case that translates questions from EMS and body-sharing research into a low-risk stationary cycling interface using relative pressure, complete-revolution modelling, bilateral haptics and optional read-only EMG.",
+      "An individual sEMG interaction prototype using a MyoWare sensor, Arduino threshold logic and a browser simulation to study how one forearm contraction could become a computer-input event.",
     meaning:
-      "The project asks when embodied guidance should withdraw—and whether a well-labelled trace of a past self can return to support present action without taking agency away.",
+      "The project separates muscle electrical activity, an engineered input event and claims about force or health. The current prototype demonstrates the first two only.",
     role:
-      "Individual research and prototype plan · literature synthesis, system architecture, safety scoping, interaction logic, study design and evidence planning.",
+      "Individual project · method review, safety scoping, hardware planning, threshold logic, interactive website and ten-step procedure.",
     methods: [
-      "Literature synthesis",
-      "Embodied interaction",
-      "Embedded-system architecture",
-      "Haptic mapping",
-      "Experimental design",
+      "Surface EMG",
+      "Arduino threshold logic",
+      "Interaction prototyping",
+      "Instruction design",
+      "Evidence documentation",
       "Safety scoping",
     ],
     cover: {
-      src: "assets/projects/pedalbalance/prototype-pedalling.png",
-      alt: "PedalBalance Echo cycling prototype simulating complete-revolution sensing and bilateral pedalling feedback",
+      src: "assets/projects/musclekey/interactive-demo.png",
+      alt: "MuscleKey sEMG interaction prototype showing a live signal, activation thresholds and reaction-time trial controls",
     },
-    shareImage: "assets/projects/pedalbalance/prototype-pedalling.png",
+    shareImage: "assets/projects/musclekey/interactive-demo.png",
     sections: [
       {
-        eyebrow: "Research question",
-        title: "Return information to the body without taking over the movement",
+        eyebrow: "Input chain",
+        title: "Turn one muscle activation into one input event",
         body:
-          "The concept moves beyond another performance dashboard. Relative contribution is interpreted across complete revolutions, then returned to the corresponding ankle only after a deviation persists beyond a personal baseline.",
+          "MyoWare reads the surface EMG envelope from the forearm. A trigger threshold creates one digital event, while a lower release threshold requires the signal to settle before another event can be recorded.",
       },
       {
-        eyebrow: "System",
-        title: "One platform, two falsifiable directions",
+        eyebrow: "Procedure",
+        title: "Document the build as ten checkable steps",
         body:
-          "C1 compares how guidance fades and what remains without assistance. E2 separates past-self identity from visual or haptic delivery, with simulated matched-other data labelled honestly in a one-person prototype.",
+          "The website breaks the experiment into materials, offline safety, electrode placement, wiring, signal inspection, calibration, trial logic and evidence packaging. Each step includes a success sign and a troubleshooting check.",
       },
       {
-        eyebrow: "Boundary",
-        title: "Learn the EMS mechanism without reproducing the risk",
+        eyebrow: "Evidence boundary",
+        title: "Keep simulated interaction and real hardware evidence separate",
         body:
-          "The project uses pressure, Hall sensing, vibration and optional read-only surface EMG. It excludes DIY stimulation, medical claims and road cycling while preserving questions of timing, agency, withdrawal, retention and transfer.",
+          "The browser simulator explains ENV and threshold logic but does not read the sensor. It is not participant data, a force measurement or a medical result, and the project does not use DIY EMS stimulation.",
       },
     ],
     media: [],
     sources: [
       {
-        label: "Interactive HTML portfolio · ZIP",
-        href: "files/pedalbalance-echo-html-portfolio.zip",
+        label: "Experiment method and build notes · README",
+        href: "musclekey/README.md",
+      },
+      {
+        label: "Research and media source register · Markdown",
+        href: "musclekey/SOURCES.md",
       },
     ],
   },
@@ -1300,15 +1304,15 @@ const caseFacts = {
     homeContribution: "Group · Model development, scenarios and risk synthesis",
     homeEvidence: "15-sheet model + feasibility report",
   },
-  "pedalbalance-echo": {
-    context: "Individual research-through-making project · embodied cycling interaction",
+  musclekey: {
+    context: "Individual teaching prototype · read-only surface EMG interaction",
     ownership: "Individual project",
-    contribution: "I synthesised the literature, scoped safety, designed the sensing and feedback architecture, built the interaction prototype and specified the study plan.",
-    evidence: "Operable interface prototype, system architecture, build journal and illustrative simulation",
-    outcome: "The work turns a broad body-sharing question into two falsifiable studies about fading guidance and past-self feedback.",
-    limitation: "No human study or DIY EMS was conducted; simulations illustrate protocol logic rather than experimental results.",
-    homeContribution: "Individual · Research, system architecture, prototype and study plan",
-    homeEvidence: "Operable prototype + build journal",
+    contribution: "I reviewed the method and safety documentation, planned the hardware chain, wrote the threshold and trial logic, built the interactive website and documented a ten-step procedure.",
+    evidence: "Working browser simulation, tested threshold logic, ten-step illustrated procedure and a source register",
+    outcome: "The project produces a clear teaching prototype for tracing one forearm sEMG signal from sensing to a digital input event.",
+    limitation: "The website does not yet read live serial data, and no participant or clinical study was conducted. Simulated CSV remains separate from hardware evidence.",
+    homeContribution: "Individual project · I planned the hardware chain, wrote the logic and built the website",
+    homeEvidence: "Interactive simulation + ten-step illustrated procedure",
   },
 };
 

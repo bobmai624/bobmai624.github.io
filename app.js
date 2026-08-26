@@ -301,33 +301,9 @@
       </div>`;
   }
 
-  function pedalCoverMarkup(project) {
-    return `
-      <div class="pedal-cover" role="img" aria-label="${project.cover.alt}">
-        <div class="pedal-cover-topline"><span>PBE / 2026</span><span>RESEARCH THROUGH MAKING</span></div>
-        <div class="pedal-cover-title">
-          <strong>PedalBalance</strong>
-          <span>Echo</span>
-        </div>
-        <div class="pedal-cover-flow" aria-hidden="true">
-          <span class="pedal-cover-node pedal-cover-node--human">H</span>
-          <i></i>
-          <span class="pedal-cover-node pedal-cover-node--machine">M</span>
-          <i></i>
-          <span class="pedal-cover-node pedal-cover-node--return">R</span>
-          <i></i>
-          <span class="pedal-cover-node pedal-cover-node--learn">L</span>
-        </div>
-        <div class="pedal-cover-footer"><span>03 NODES</span><span>02 STUDIES</span><span>00 DIY EMS</span></div>
-      </div>`;
-  }
-
   function projectCoverMarkup(project) {
     if (project.cover.variant === "investment" && project.investmentStudy) {
       return investmentCoverMarkup(project);
-    }
-    if (project.cover.variant === "pedal") {
-      return pedalCoverMarkup(project);
     }
     return `<img src="${project.cover.src}" alt="${project.cover.alt}" loading="lazy" decoding="async" />`;
   }

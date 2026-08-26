@@ -3,7 +3,7 @@
     "vita",
     "signal-aftershock",
     "financial-feasibility",
-    "pedalbalance-echo",
+    "musclekey",
   ];
 
   function partitionProjects(projects) {

@@ -1,7 +1,7 @@
 (function registerLanguageSession(global) {
   const DEFAULT_LANGUAGE = "en";
   const SUPPORTED_LANGUAGES = new Set(["en", "zh", "ja"]);
-  const STORAGE_KEYS = ["portfolio-language", "pedalbalance-language"];
+  const STORAGE_KEYS = ["portfolio-language", "musclekey-language"];
 
   function clearSavedLanguage(runtime) {
     try {
