@@ -16,12 +16,13 @@
     <link rel="canonical" href="https://bobmai624.github.io/" />
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230a0a0a'/%3E%3Ctext x='32' y='42' text-anchor='middle' font-family='Arial' font-size='28' fill='white'%3EBM%3C/text%3E%3C/svg%3E" />
     <title>Bowen Mai — UX Design Student</title>
-    <link rel="stylesheet" href="style.css?v=20260824-resume-contact" />
+    <link rel="stylesheet" href="style.css?v=20260830-cv-update" />
     <script src="projects.js?v=20260822-project-media" defer></script>
     <script src="portfolio-model.js?v=20260822-project-media" defer></script>
     <script src="case-components.js?v=20260822-project-media" defer></script>
     <script src="i18n.js?v=20260824-resume-contact" defer></script>
-    <script src="student-copy.js?v=20260825-student-voice" defer></script>
+    <script src="student-copy.js?v=20260830-cv-update" defer></script>
+    <script src="cv-copy.js?v=20260830-cv-update" defer></script>
     <script src="language-session.js?v=20260817-english-default" defer></script>
     <script src="app.js?v=20260824-resume-contact" defer></script>
   </head>
@@ -49,7 +50,7 @@
           <a href="#capabilities" data-i18n="navSkills">Skills</a>
           <a href="#profile" data-i18n="navAbout">About</a>
           <a href="#archive" data-i18n="navArchive">Archive</a>
-          <a href="#resume" data-resume-open data-i18n="navResume">Resume</a>
+          <a href="#resume" data-resume-open data-i18n="navResume">CV</a>
         </nav>
       </div>
     </header>
@@ -76,7 +77,7 @@
           </div>
           <div class="portfolio-index-actions">
             <p class="portfolio-index-summary" data-i18n="workDescription">Four projects I selected from my work in AI interaction, game design, financial modelling and embodied research.</p>
-            <a class="quiet-link" href="#resume" data-resume-open><span data-i18n="viewResume">View résumé</span> <span aria-hidden="true">↗</span></a>
+            <a class="cv-primary-link" href="#resume" data-resume-open><span data-i18n="viewResume">View CV</span> <span aria-hidden="true">↗</span></a>
             <a class="quiet-link" href="#contact" data-contact-open><span data-i18n="contactMe">Contact me</span> <span aria-hidden="true">↗</span></a>
           </div>
         </header>
@@ -111,7 +112,7 @@
           <p data-i18n="aboutParagraphTwo">
             The projects here move between conversational AI, games, financial modelling, visual design and embodied interaction. I use the portfolio to show both what I made and what I learned while making it.
           </p>
-          <a class="text-arrow" href="#resume" data-resume-open><span data-i18n="readResume">Read the web resume</span> <span>→</span></a>
+          <a class="text-arrow" href="#resume" data-resume-open><span data-i18n="readResume">Read my CV</span> <span>→</span></a>
         </div>
       </section>
 
@@ -191,72 +192,35 @@
       aria-labelledby="resume-title"
       hidden
     >
-      <button class="overlay-close overlay-close--dark" id="resume-close" type="button" aria-label="Close resume" data-i18n-aria="closeResume">
-        <span data-i18n="closeResume">Close resume</span>
+      <button class="overlay-close overlay-close--dark" id="resume-close" type="button" aria-label="Close CV" data-i18n-aria="closeResume">
+        <span data-i18n="closeResume">Close CV</span>
         <span aria-hidden="true">×</span>
       </button>
 
       <article class="resume-document">
         <header class="resume-hero">
           <div class="resume-topline">
-            <p data-i18n="resumeTopline">Resume / 2026</p>
-            <button class="resume-print" id="resume-print" type="button" data-i18n="printResume">Print / Save PDF</button>
+            <p data-i18n="resumeTopline">Curriculum Vitae (CV)</p>
+            <button class="resume-print" id="resume-print" type="button" data-i18n="printResume">Print / Save CV</button>
           </div>
           <div class="resume-identity">
-            <h1 id="resume-title">Bowen Mai</h1>
-            <p class="resume-focus" data-i18n="resumeFocus">UX design · Research · Digital products · Business analysis</p>
+            <h1 id="resume-title">MAI BOWEN</h1>
+            <p class="resume-focus" data-i18n="resumeFocus">UX Research | Interaction Design | Human-Computer Interaction</p>
           </div>
-          <div class="resume-profile-grid">
-            <p class="resume-summary" data-i18n="resumeSummary">
-              I’m studying UX Design in the Bachelor of Design at the University of Melbourne. Through coursework, internships and work experience, I have gained experience in user research, applied psychology, HCI, digital product design, business and market analysis, and frontline retail.
-            </p>
-            <address class="resume-contact">
-              <a href="https://bobmai624.github.io/">bobmai624.github.io</a>
-              <a href="mailto:bobmy5464@gmail.com">bobmy5464@gmail.com</a>
-              <a href="tel:+61449024862">0449 024 862</a>
-              <span>WeChat · mai205204</span>
-            </address>
-          </div>
+          <address class="resume-contact resume-contact--cv">
+            <a href="https://bobmai624.github.io/">Portfolio: https://bobmai624.github.io/</a>
+            <a href="mailto:bobmy5464@gmail.com">bobmy5464@gmail.com</a>
+          </address>
         </header>
 
-        <section class="resume-section" aria-labelledby="experience-heading">
+        <section class="resume-section" aria-labelledby="resume-profile-heading">
           <header class="resume-section-heading">
             <p>01</p>
-            <h2 id="experience-heading" data-i18n="experienceTitle">Consulting &amp; business experience</h2>
+            <h2 id="resume-profile-heading" data-i18n="resumeProfileTitle">Research Profile</h2>
           </header>
-          <div class="resume-list">
-            <article class="resume-experience-row">
-              <p class="resume-date" data-i18n="experienceOneDate">May 2026 — Dec 2026</p>
-              <div>
-                <h3 data-i18n="experienceOneRole">Product Manager / Digital Consulting</h3>
-                <p class="resume-place" data-i18n="experienceOnePlace">Liuxue Linghang Study &amp; Migration</p>
-                <p data-i18n="experienceOneBody">Structured Chinese candidates’ Australian job-search needs across candidate, role, employer and application stages; researched occupations and employers; and combined UiPath/RPA with Codex-assisted workflows for extraction, cleaning and batch processing with human review, source validation, privacy controls and exception escalation.</p>
-              </div>
-            </article>
-            <article class="resume-experience-row">
-              <p class="resume-date" data-i18n="experienceTwoDate">Feb 2026 — Jun 2026</p>
-              <div>
-                <h3 data-i18n="experienceTwoRole">HCI Research Assistant</h3>
-                <p class="resume-place" data-i18n="experienceTwoPlace">The University of Melbourne</p>
-                <p data-i18n="experienceTwoBody">Supported student course-satisfaction and HCI research by defining research questions, stakeholders and evaluation dimensions; designed mixed-method surveys; cleaned and analysed responses; synthesised open-ended feedback; and translated findings into charts, HCI insights, course recommendations, reports and presentations.</p>
-              </div>
-            </article>
-            <article class="resume-experience-row">
-              <p class="resume-date" data-i18n="experienceThreeDate">Feb 2025 — Jul 2025</p>
-              <div>
-                <h3 data-i18n="experienceThreeRole">UI/UX Design Intern</h3>
-                <p class="resume-place" data-i18n="experienceThreePlace">TidyTeddy</p>
-                <p data-i18n="experienceThreeBody">Analysed users, competitors, page structures, navigation and journeys for a website redesign; prioritised friction points; and translated research into target-state information architecture, high-fidelity interfaces and interactive prototypes refined through product, design and development feedback.</p>
-              </div>
-            </article>
-            <article class="resume-experience-row">
-              <p class="resume-date" data-i18n="experienceFourDate">Jun 2021 — Dec 2022</p>
-              <div>
-                <h3 data-i18n="experienceFourRole">Sales Advisor</h3>
-                <p class="resume-place" data-i18n="experienceFourPlace">PUMA</p>
-                <p data-i18n="experienceFourBody">Identified customer needs through questions and recommended products around budget, preference and use context, building frontline experience in customer insight, sales conversion and service. Recognised as Top Sales Advisor of the Month.</p>
-              </div>
-            </article>
+          <div class="resume-profile-copy">
+            <p data-i18n="resumeProfileOne">Bachelor of Design candidate at the University of Melbourne, with completed coursework and practical experience in applied psychology, UX research, interaction design, and mixed methods. My work has included questionnaire development, interviews, usability testing, survey-data cleaning, initial descriptive analysis, open-text coding, research reporting, and interactive Figma prototyping.</p>
+            <p data-i18n="resumeProfileTwo">My future research direction grows from a question that now drives my interest in embodied interaction, namely how people can perceive gradual changes in their own bodies when progress is too slow to notice day by day. I hope to explore whether a person's past exertion-related bodily state can be recorded, calibrated, and replayed across sessions so that rehabilitation progress becomes easier to perceive. This is research I want to pursue rather than work I have already completed. Graduate study would allow me to build the necessary capabilities in wearable sensing, psychophysics, haptic prototyping, longitudinal evaluation, and research ethics, beginning with technical calibration and healthy-adult studies before considering rehabilitation feasibility.</p>
           </div>
         </section>
 
@@ -267,27 +231,73 @@
           </header>
           <div class="resume-list">
             <article class="resume-education-row">
-              <p class="resume-date" data-i18n="educationOneDate">Feb 2024 — Feb 2027</p>
+              <p class="resume-date" data-i18n="educationOneDate">Feb 2024 - Expected Feb 2027</p>
               <div>
-                <h3 data-i18n="educationOneDegree">Bachelor of Design — User Experience Design</h3>
-                <p class="resume-place" data-i18n="educationOnePlace">The University of Melbourne</p>
-                <p data-i18n="educationOneBody">Melbourne, Australia · Applied Psychology, User Research, Quantitative &amp; Qualitative Research, UX Evaluation, Finance &amp; Business · Returning to China in March 2027 and available to commence work.</p>
+                <h3 data-i18n="educationOneDegree">The University of Melbourne | Bachelor of Design</h3>
+                <p class="resume-place" data-i18n="educationOnePlace">Melbourne, Australia</p>
+                <p data-i18n="educationOneFocus">Focus: Human-Computer Interaction and User Experience Design.</p>
+                <p data-i18n="educationOneBody">Relevant coursework: User Research, Quantitative and Qualitative Research, Usability Evaluation, Web and Interaction Design, Finance, and Business.</p>
               </div>
             </article>
             <article class="resume-education-row">
-              <p class="resume-date" data-i18n="educationTwoDate">Jul 2025 — Aug 2025</p>
+              <p class="resume-date" data-i18n="educationTwoDate">Jul 2025 - Aug 2025</p>
               <div>
-                <h3 data-i18n="educationTwoDegree">Short-Term Exchange Study</h3>
-                <p class="resume-place" data-i18n="educationTwoPlace">Korea University</p>
-                <p data-i18n="educationTwoBody">Seoul, South Korea · Cross-cultural study.</p>
+                <h3 data-i18n="educationTwoDegree">Korea University | Short-Term Exchange Study</h3>
+                <p class="resume-place" data-i18n="educationTwoPlace">Seoul, South Korea</p>
+                <p data-i18n="educationTwoBody">Cross-cultural study and international academic experience.</p>
               </div>
             </article>
             <article class="resume-education-row">
-              <p class="resume-date" data-i18n="educationThreeDate">Jan 2026 — Feb 2026</p>
+              <p class="resume-date" data-i18n="educationThreeDate">Jan 2026 - Feb 2026</p>
               <div>
-                <h3 data-i18n="educationThreeDegree">Short-Term Exchange Study</h3>
-                <p class="resume-place" data-i18n="educationThreePlace">Ritsumeikan University</p>
-                <p data-i18n="educationThreeBody">Japan · Japanese language and culture studies.</p>
+                <h3 data-i18n="educationThreeDegree">Ritsumeikan University | Short-Term Exchange Study</h3>
+                <p class="resume-place" data-i18n="educationThreePlace">Kyoto, Japan</p>
+                <p data-i18n="educationThreeBody">Japanese language and culture study in an international learning environment.</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="resume-section" aria-labelledby="experience-heading">
+          <header class="resume-section-heading">
+            <p>03</p>
+            <h2 id="experience-heading" data-i18n="experienceTitle">Research &amp; Relevant Experience</h2>
+          </header>
+          <div class="resume-list">
+            <article class="resume-experience-row">
+              <p class="resume-date" data-i18n="experienceOneDate">Feb 2026 - Jun 2026</p>
+              <div>
+                <h3 data-i18n="experienceOneRole">HCI Research Assistant</h3>
+                <p class="resume-place" data-i18n="experienceOnePlace">The University of Melbourne</p>
+                <p class="resume-subtitle" data-i18n="experienceOneSubtitle">AI-Supported Education and Student Course Experience Research Project</p>
+                <ul class="resume-bullets">
+                  <li data-i18n="experienceOneBulletOne">Supported an education research project examining how AI tools could be integrated into university teaching to improve student course experience and teaching quality.</li>
+                  <li data-i18n="experienceOneBulletTwo">Helped develop a mixed-method course-satisfaction questionnaire with quantitative scales and open-ended items; organised and cleaned responses, conducted initial descriptive analysis, and coded qualitative feedback.</li>
+                  <li data-i18n="experienceOneBulletThree">Joined university research meetings and prepared charts, report drafts, and presentation materials that connected student feedback with HCI questions around AI-supported learning.</li>
+                </ul>
+              </div>
+            </article>
+            <article class="resume-experience-row">
+              <p class="resume-date" data-i18n="experienceTwoDate">Feb 2025 - Jul 2025</p>
+              <div>
+                <h3 data-i18n="experienceTwoRole">UI/UX Design Intern</h3>
+                <p class="resume-place" data-i18n="experienceTwoPlace">TidyTeddy</p>
+                <ul class="resume-bullets">
+                  <li data-i18n="experienceTwoBulletOne">Worked on a project to update TidyTeddy's cleaning-services website and develop new functions, starting with sketches, button placement, page structure, and low-fidelity web and mobile prototypes.</li>
+                  <li data-i18n="experienceTwoBulletTwo">Converted the approved flows into high-fidelity web and mobile prototypes in Figma, defining responsive layouts, component states, navigation, and handoff specifications.</li>
+                  <li data-i18n="experienceTwoBulletThree">Coordinated design handoff and implementation feedback with the IT team, revised the interface during development, and supported the formal launch of the updated website and new features.</li>
+                </ul>
+              </div>
+            </article>
+            <article class="resume-experience-row">
+              <p class="resume-date" data-i18n="experienceThreeDate">May 2026 - Present</p>
+              <div>
+                <h3 data-i18n="experienceThreeRole">Product Manager / Digital Consultant</h3>
+                <p class="resume-place" data-i18n="experienceThreePlace">Linghang Education &amp; Migration Service</p>
+                <ul class="resume-bullets">
+                  <li data-i18n="experienceThreeBulletOne">Mapped back-office study-abroad and migration workflows, identified repetitive research and document tasks, and designed UiPath/RPA and AI-assisted processes with Codex to reduce manual work in information collection, checking, template use, and knowledge reuse.</li>
+                  <li data-i18n="experienceThreeBulletTwo">Designed study-abroad service packages by translating client goals, academic background, eligibility, timelines, and risks into service options and task plans; applied source verification, human review, privacy controls, and exception handling to AI-supported work.</li>
+                </ul>
               </div>
             </article>
           </div>
@@ -295,61 +305,69 @@
 
         <section class="resume-section" aria-labelledby="resume-projects-heading">
           <header class="resume-section-heading">
-            <p>03</p>
-            <h2 id="resume-projects-heading" data-i18n="resumeProjectsTitle">Consulting, research &amp; digital transformation projects</h2>
+            <p>04</p>
+            <h2 id="resume-projects-heading" data-i18n="resumeProjectsTitle">Selected Research Projects</h2>
           </header>
           <div class="resume-list">
             <article class="resume-experience-row">
-              <p class="resume-date" data-i18n="resumeProjectOneDate">May 2026 — Dec 2026</p>
-              <div><h3 data-i18n="resumeProjectOneTitle">Australian employment-market research &amp; career opportunity analysis</h3><p data-i18n="resumeProjectOneBody">Built an industry, region, occupation, employer, skill and qualification research framework; used Excel to organise public job and employer data; and turned standardised, cleaned, deduplicated and source-checked findings into market segments, opportunity priorities, candidate profiles and job-search recommendations.</p></div>
+              <p class="resume-date" data-i18n="resumeProjectOneDate">Feb 2026 - Jun 2026</p>
+              <div><h3 data-i18n="resumeProjectOneTitle">AI-Supported Education and Student Course Experience Study | University of Melbourne</h3><ul class="resume-bullets"><li data-i18n="resumeProjectOneBulletOne">Contributed to a mixed-method education research project examining student course satisfaction and how AI tools might support university teaching, helping structure evaluation dimensions and questionnaire items.</li><li data-i18n="resumeProjectOneBulletTwo">Organised and cleaned survey responses, conducted initial descriptive analysis, coded open-text feedback, and prepared charts, report drafts, and presentation materials for university research meetings.</li></ul></div>
             </article>
             <article class="resume-experience-row">
-              <p class="resume-date" data-i18n="resumeProjectTwoDate">May 2026 — Dec 2026</p>
-              <div><h3 data-i18n="resumeProjectTwoTitle">Australian career research &amp; China–Australia talent-matching automation</h3><p data-i18n="resumeProjectTwoBody">Separated candidate needs, occupation research, employer screening, matching recommendations and application tracking into traceable workflows; combined UiPath/RPA and Codex for browser operations, extraction, cleaning, validation and batch organisation while retaining human review, provenance, privacy and escalation controls.</p></div>
+              <p class="resume-date" data-i18n="resumeProjectTwoDate">2024 - 2026</p>
+              <div><h3 data-i18n="resumeProjectTwoTitle">User Research and Behavioural Analysis | University Coursework</h3><ul class="resume-bullets"><li data-i18n="resumeProjectTwoBulletOne">Used questionnaires, interviews, observation, and task analysis to examine users' goals, behaviours, constraints, satisfaction, and decision paths across digital products and services.</li><li data-i18n="resumeProjectTwoBulletTwo">Synthesised evidence into personas, journey maps, task flows, pain points, and prioritised research and design opportunities.</li></ul></div>
             </article>
             <article class="resume-experience-row">
-              <p class="resume-date" data-i18n="resumeProjectThreeDate">Feb 2026 — Jun 2026</p>
-              <div><h3 data-i18n="resumeProjectThreeTitle">Student course-satisfaction &amp; HCI research</h3><p data-i18n="resumeProjectThreeBody">Designed a survey around course content, teaching experience and learning support; combined quantitative items with open questions; cleaned and summarised the data; and converted findings into HCI insights, course-improvement recommendations, charts, a report draft and an internal presentation.</p></div>
+              <p class="resume-date" data-i18n="resumeProjectThreeDate">2024 - 2026</p>
+              <div><h3 data-i18n="resumeProjectThreeTitle">Usability Evaluation and Accessibility | University Coursework</h3><ul class="resume-bullets"><li data-i18n="resumeProjectThreeBulletOne">Evaluated websites and digital platforms through usability testing, first-click tests, five-second tests, and card sorting, examining task efficiency, errors, friction, and comprehension.</li><li data-i18n="resumeProjectThreeBulletTwo">Applied Nielsen's heuristics, WAI accessibility guidance, and ISO 9241 principles to diagnose interface problems and prioritise design recommendations.</li></ul></div>
             </article>
             <article class="resume-experience-row">
-              <p class="resume-date" data-i18n="resumeProjectFourDate">2025</p>
-              <div><h3 data-i18n="resumeProjectFourTitle">TidyTeddy digital customer experience &amp; conversion-path optimisation</h3><p data-i18n="resumeProjectFourBody">Benchmarked competitors across value proposition, structure, hierarchy, interaction and conversion; mapped the current journey and friction; then translated the diagnosis into target-state information architecture, high-fidelity prototypes and staged redesign recommendations refined through team feedback.</p></div>
+              <p class="resume-date" data-i18n="resumeProjectFourDate">2024 - 2026</p>
+              <div><h3 data-i18n="resumeProjectFourTitle">Web Interaction Design and Prototyping | University Coursework</h3><ul class="resume-bullets"><li data-i18n="resumeProjectFourBulletOne">Designed information architecture, responsive page layouts, visual hierarchy, interface states, and interaction flows in Figma.</li><li data-i18n="resumeProjectFourBulletTwo">Built and tested interactive prototypes and developed foundational HTML, CSS, and JavaScript knowledge for collaboration across design and development.</li></ul></div>
             </article>
             <article class="resume-experience-row">
-              <p class="resume-date" data-i18n="resumeProjectFiveDate">Feb 2025 — Jun 2025</p>
-              <div><h3 data-i18n="resumeProjectFiveTitle">Australian multi-asset investment strategy analysis</h3><p data-i18n="resumeProjectFiveBody">Standardised annual data for ten Australian assets from 2013–2024 and compared average returns, volatility, CAGR and Sharpe ratios in Excel; added interest-rate pressure scenarios and translated the results into a diversified strategy centred on stable property and corporate debt.</p></div>
+              <p class="resume-date" data-i18n="resumeProjectFiveDate">Feb 2025 - Jun 2025</p>
+              <div><h3 data-i18n="resumeProjectFiveTitle">Quantitative Decision Analysis | Australian Multi-Asset Strategy</h3><ul class="resume-bullets"><li data-i18n="resumeProjectFiveBulletOne">Analysed 2013-2024 annual data for 10 Australian asset classes in Excel, comparing mean returns, volatility, compound annual growth, Sharpe ratios, and interest-rate stress scenarios to form a risk-aware allocation recommendation.</li></ul></div>
             </article>
             <article class="resume-experience-row">
-              <p class="resume-date" data-i18n="resumeProjectSixDate">Feb 2025 — Jun 2025</p>
-              <div><h3 data-i18n="resumeProjectSixTitle">Melbourne CBD retail-mall investment feasibility analysis</h3><p data-i18n="resumeProjectSixBody">Contributed to a 15-sheet model for a 10,000 m² retail mall, connecting construction costs, an 18-month programme, tenant mix, occupancy, rent, operating costs and five-year debt; used DCF, NPV/IRR and sensitivity analysis to examine schedule, cost, competition and leasing risks.</p></div>
+              <p class="resume-date" data-i18n="resumeProjectSixDate">2025 - 2026</p>
+              <div><h3 data-i18n="resumeProjectSixTitle">Human-AI Workflow Design and Product Testing</h3><ul class="resume-bullets"><li data-i18n="resumeProjectSixBulletOne">Examined how generative AI and RPA can support information collection, synthesis, template building, visual exploration, and product testing while retaining source verification, human review, privacy protection, and exception handling.</li></ul></div>
             </article>
           </div>
         </section>
 
         <section class="resume-section" aria-labelledby="capabilities-heading">
           <header class="resume-section-heading">
-            <p>04</p>
-            <h2 id="capabilities-heading" data-i18n="resumeCapabilitiesTitle">Skills &amp; languages</h2>
+            <p>05</p>
+            <h2 id="capabilities-heading" data-i18n="resumeCapabilitiesTitle">Research, Design &amp; Technical Skills</h2>
           </header>
           <div class="resume-capabilities">
             <article>
-              <h3 data-i18n="resumeCapabilityOneTitle">Research &amp; business analysis</h3>
-              <p data-i18n="resumeCapabilityOneBody">Quantitative and qualitative research, survey design, interviews, applied-psychology methods, data collection and cleaning, basic statistics, market and competitor analysis, customer and candidate profiles, needs analysis, process mapping, risk awareness and recommendation prioritisation.</p>
+              <h3 data-i18n="resumeCapabilityOneTitle">UX Research</h3>
+              <p data-i18n="resumeCapabilityOneBody">Questionnaire development, qualitative interviews, observation, task analysis, usability testing, first-click testing, five-second testing, card sorting, eye-tracking testing, and accessibility evaluation.</p>
             </article>
             <article>
-              <h3 data-i18n="resumeCapabilityTwoTitle">Digital tools, presentation &amp; design</h3>
-              <p data-i18n="resumeCapabilityTwoBody">Excel cleaning and charts, PowerPoint frameworks, data visualisation and report drafting; UiPath/RPA, Codex, ChatGPT, DeepSeek and Figma; graphic design, information hierarchy, prototypes, concept validation, output checking and cross-team collaboration.</p>
+              <h3 data-i18n="resumeCapabilityTwoTitle">Interaction Design &amp; Prototyping</h3>
+              <p data-i18n="resumeCapabilityTwoBody">Personas, journey maps, information architecture, wireframing, responsive interface design, and interactive Figma prototyping.</p>
             </article>
-            <article class="resume-capability-wide">
-              <h3 data-i18n="resumeLanguagesTitle">Languages</h3>
-              <p data-i18n="resumeLanguagesBody">Chinese (native) · English (fluent) · Japanese (basic)</p>
+            <article>
+              <h3 data-i18n="resumeCapabilityThreeTitle">Data Analysis</h3>
+              <p data-i18n="resumeCapabilityThreeBody">Survey-data cleaning, descriptive statistics, open-text coding, thematic analysis, charting, and data visualisation in Excel.</p>
+            </article>
+            <article>
+              <h3 data-i18n="resumeCapabilityFourTitle">Programming &amp; AI Automation</h3>
+              <p data-i18n="resumeCapabilityFourBody">HTML, CSS, and JavaScript; AI-assisted workflow design, UiPath/RPA, Codex, ChatGPT, source verification, human review, and exception handling.</p>
+            </article>
+            <article>
+              <h3 data-i18n="resumeCapabilityFiveTitle">Project Delivery</h3>
+              <p data-i18n="resumeCapabilityFiveBody">Research planning, requirements definition, research meetings, stakeholder communication, service-journey mapping, design handoff, and cross-functional delivery.</p>
+            </article>
+            <article>
+              <h3 data-i18n="resumeCapabilitySixTitle">Languages</h3>
+              <p data-i18n="resumeCapabilitySixBody">Mandarin Chinese (native), English (fluent), and Japanese (basic).</p>
             </article>
           </div>
         </section>
-
-        <footer class="resume-footer">
-          <p data-i18n="resumeFooterNote">Updated from the current résumé supplied on 24 August 2026. Use the print control to save a PDF copy.</p>
-        </footer>
       </article>
     </section>
 

@@ -544,6 +544,24 @@ button {
   text-transform: none;
 }
 
+.cv-primary-link {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  align-items: center;
+  padding: 15px 18px;
+  border: 1px solid var(--ink);
+  color: var(--paper);
+  background: var(--ink);
+  transition: color 260ms var(--ease), background 260ms var(--ease);
+}
+
+.cv-primary-link:hover,
+.cv-primary-link:focus-visible {
+  color: var(--ink);
+  background: var(--paper);
+}
+
 .section-shell {
   max-width: var(--max-width);
   margin: 0 auto;
@@ -3212,6 +3230,11 @@ button {
   border-bottom: 1px solid var(--ink);
 }
 
+.resume-contact--cv {
+  align-items: flex-end;
+  text-align: right;
+}
+
 .resume-section {
   display: grid;
   grid-template-columns: 3fr 9fr;
@@ -3241,6 +3264,17 @@ button {
 
 .resume-list {
   border-bottom: 1px solid var(--ink);
+}
+
+.resume-profile-copy {
+  display: grid;
+  gap: clamp(28px, 4vw, 52px);
+  max-width: 1060px;
+}
+
+.resume-profile-copy p {
+  font-size: clamp(1.08rem, 1.55vw, 1.5rem);
+  line-height: 1.55;
 }
 
 .resume-experience-row,
@@ -3275,6 +3309,21 @@ button {
   font-size: 0.82rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
+}
+
+.resume-subtitle {
+  max-width: 800px;
+  margin: -10px 0 18px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.resume-bullets {
+  display: grid;
+  gap: 10px;
+  max-width: 900px;
+  padding-left: 1.15em;
+  line-height: 1.58;
 }
 
 .resume-experience-row div > p:last-child,
@@ -4630,6 +4679,10 @@ body {
   justify-content: space-between;
   padding: 12px 0;
   border-top: 1px solid var(--line);
+}
+
+.portfolio-index-actions .cv-primary-link {
+  margin-top: 18px;
 }
 
 .portfolio-index-actions .quiet-link:last-child {

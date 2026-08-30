@@ -6,44 +6,43 @@ import vm from "node:vm";
 function loadI18n() {
   const window = {};
   const context = vm.createContext({ window });
-  vm.runInContext(fs.readFileSync("i18n.js", "utf8"), context, { filename: "i18n.js" });
+  for (const file of ["projects.js", "i18n.js", "student-copy.js", "cv-copy.js"]) {
+    vm.runInContext(fs.readFileSync(file, "utf8"), context, { filename: file });
+  }
   return window.PORTFOLIO_I18N;
 }
 
-test("the web resume reflects the latest dated education and professional history in all three languages", () => {
+test("the web CV reflects the supplied education and research history in all three languages", () => {
   const i18n = loadI18n();
   const expected = {
     en: {
-      education: ["Feb 2024 — Feb 2027", "Jul 2025 — Aug 2025", "Jan 2026 — Feb 2026"],
+      education: ["Feb 2024 - Expected Feb 2027", "Jul 2025 - Aug 2025", "Jan 2026 - Feb 2026"],
       experience: [
-        ["May 2026 — Dec 2026", /Liuxue Linghang|Study.*Migration/i],
-        ["Feb 2026 — Jun 2026", /HCI Research Assistant/i],
-        ["Feb 2025 — Jul 2025", /UX Design Intern/i],
-        ["Jun 2021 — Dec 2022", /Sales (Associate|Advisor)/i],
+        ["Feb 2026 - Jun 2026", /HCI Research Assistant/i],
+        ["Feb 2025 - Jul 2025", /UX Design Intern/i],
+        ["May 2026 - Present", /Linghang Education|Product Manager/i],
       ],
-      projects: /Consulting, research & digital transformation projects/i,
-      languages: /Chinese.*English.*Japanese/i,
+      projects: /Selected Research Projects/i,
+      languages: /Mandarin Chinese.*English.*Japanese/i,
     },
     zh: {
-      education: ["2024年2月 — 2027年2月", "2025年7月 — 2025年8月", "2026年1月 — 2026年2月"],
+      education: ["2024年2月 - 预计2027年2月", "2025年7月 - 2025年8月", "2026年1月 - 2026年2月"],
       experience: [
-        ["2026年5月 — 2026年12月", /留学领航留学移民/],
-        ["2026年2月 — 2026年6月", /HCI 研究助理/],
-        ["2025年2月 — 2025年7月", /UI\/UX 设计实习生/],
-        ["2021年6月 — 2022年12月", /销售顾问/],
+        ["2026年2月 - 2026年6月", /HCI 研究助理/],
+        ["2025年2月 - 2025年7月", /UI\/UX 设计实习生/],
+        ["2026年5月 - 至今", /领航教育|产品经理/],
       ],
-      projects: /咨询、研究与数字化转型项目/,
-      languages: /中文.*英语.*日语/,
+      projects: /精选研究项目/,
+      languages: /普通话.*英语.*日语/,
     },
     ja: {
-      education: ["2024年2月 — 2027年2月", "2025年7月 — 2025年8月", "2026年1月 — 2026年2月"],
+      education: ["2024年2月 - 2027年2月修了予定", "2025年7月 - 2025年8月", "2026年1月 - 2026年2月"],
       experience: [
-        ["2026年5月 — 2026年12月", /留学領航/],
-        ["2026年2月 — 2026年6月", /HCIリサーチアシスタント/],
-        ["2025年2月 — 2025年7月", /UI\/UXデザイン・インターン/],
-        ["2021年6月 — 2022年12月", /販売アドバイザー/],
+        ["2026年2月 - 2026年6月", /HCIリサーチアシスタント/],
+        ["2025年2月 - 2025年7月", /UI\/UXデザイン・インターン/],
+        ["2026年5月 - 現在", /Linghang Education|プロダクトマネージャー/],
       ],
-      projects: /コンサルティング・リサーチ・デジタル変革プロジェクト/,
+      projects: /主な研究プロジェクト/,
       languages: /中国語.*英語.*日本語/,
     },
   };
@@ -56,22 +55,22 @@ test("the web resume reflects the latest dated education and professional histor
       `${language} education dates are stale`,
     );
     for (const [index, [date, role]] of facts.experience.entries()) {
-      const number = ["One", "Two", "Three", "Four"][index];
+      const number = ["One", "Two", "Three"][index];
       assert.equal(site[`experience${number}Date`], date, `${language} experience ${index + 1} date is stale`);
       assert.match(
         `${site[`experience${number}Place`] || ""} ${site[`experience${number}Role`] || ""}`,
         role,
         `${language} experience ${index + 1} is stale`,
       );
-      assert.ok(site[`experience${number}Body`]?.length > 80, `${language} experience ${index + 1} lacks detail`);
+      assert.ok(site[`experience${number}BulletOne`]?.length > 40, `${language} experience ${index + 1} lacks detail`);
     }
     assert.match(site.resumeProjectsTitle, facts.projects);
     for (const number of ["One", "Two", "Three", "Four", "Five", "Six"]) {
       assert.ok(site[`resumeProject${number}Date`], `${language} project ${number} date is missing`);
       assert.ok(site[`resumeProject${number}Title`], `${language} project ${number} title is missing`);
-      assert.ok(site[`resumeProject${number}Body`]?.length > 70, `${language} project ${number} lacks evidence`);
+      assert.ok(site[`resumeProject${number}BulletOne`]?.length > 35, `${language} project ${number} lacks evidence`);
     }
-    assert.match(site.resumeLanguagesBody, facts.languages);
+    assert.match(site.resumeCapabilitySixBody, facts.languages);
   }
 });
 

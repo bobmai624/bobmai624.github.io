@@ -7,11 +7,13 @@ test("the student-voice copy layer loads after localization and before rendering
   const html = fs.readFileSync("index.html", "utf8");
   const i18nIndex = html.indexOf('src="i18n.js');
   const copyIndex = html.indexOf('src="student-copy.js');
+  const cvCopyIndex = html.indexOf('src="cv-copy.js');
   const appIndex = html.indexOf('src="app.js');
 
   assert.ok(i18nIndex >= 0, "i18n.js is missing");
   assert.ok(copyIndex > i18nIndex, "student-copy.js must load after i18n.js");
-  assert.ok(appIndex > copyIndex, "student-copy.js must load before app.js renders the page");
+  assert.ok(cvCopyIndex > copyIndex, "cv-copy.js must load after the general student copy layer");
+  assert.ok(appIndex > cvCopyIndex, "CV copy must load before app.js renders the page");
 });
 
 test("share-page metadata uses the same English copy layer as the portfolio", () => {
