@@ -131,7 +131,7 @@ button { color: inherit; }
 .hero h1 {
   max-width: 8ch;
   margin: 1.2rem 0 1.5rem;
-  font-size: clamp(4.4rem, 7vw, 8.2rem);
+  font-size: clamp(3.8rem, 5.5vw, 6.6rem);
   line-height: .87;
   letter-spacing: -.075em;
 }
@@ -212,7 +212,7 @@ button { color: inherit; }
 
 .section { width: var(--page); margin: 0 auto; padding: clamp(6rem, 10vw, 10rem) 0; }
 .section-heading { display: grid; grid-template-columns: .72fr 1.28fr; gap: 6vw; margin-bottom: 4rem; }
-.section-heading h2 { max-width: 17ch; margin: -.1em 0 0; font-size: clamp(3rem, 5.8vw, 6.6rem); line-height: .94; letter-spacing: -.06em; }
+.section-heading h2 { max-width: 17ch; margin: -.1em 0 0; font-size: clamp(2.6rem, 4.2vw, 4.9rem); line-height: .94; letter-spacing: -.06em; }
 .wide-heading { display: block; }
 .wide-heading h2 { max-width: 15ch; margin-top: 1.2rem; }
 .wide-heading > p:last-child { max-width: 60ch; margin-top: 1.8rem; color: var(--muted); font-size: 1.05rem; line-height: 1.75; }
@@ -220,7 +220,7 @@ button { color: inherit; }
 .inverted > p:last-child { color: #aebbc0; }
 .overview { display: grid; grid-template-columns: .8fr 1.2fr; gap: 7vw; }
 .overview .section-heading { display: block; margin: 0; }
-.overview .section-heading h2 { margin-top: 1rem; font-size: clamp(3rem, 5vw, 5.6rem); }
+.overview .section-heading h2 { margin-top: 1rem; font-size: clamp(2.6rem, 4vw, 4.7rem); }
 .large-copy { margin: 0 0 3rem; color: var(--ink-soft); font-size: clamp(1.25rem, 2vw, 1.8rem); line-height: 1.55; }
 .large-copy a { color: var(--teal); font-size: .75em; }
 .scope-grid { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--ink); }
@@ -289,7 +289,7 @@ button { color: inherit; }
 .wiring { display: grid; grid-template-columns: minmax(0, .65fr) minmax(0, 1.35fr); gap: 6vw; }
 .wiring > div { min-width: 0; }
 .wiring .section-heading { display: block; margin: 0; }
-.wiring .section-heading h2 { margin-top: 1rem; font-size: clamp(3rem, 5vw, 5.6rem); }
+.wiring .section-heading h2 { margin-top: 1rem; font-size: clamp(2.6rem, 4vw, 4.7rem); }
 .wiring-flow { display: grid; grid-template-columns: repeat(11, auto); align-items: center; overflow-x: auto; padding-bottom: .6rem; }
 .wiring-flow div { min-width: 135px; min-height: 145px; padding: 1rem; display: flex; flex-direction: column; border: 1px solid var(--ink); }
 .wiring-flow > i { padding: .45rem; color: var(--teal); font-style: normal; font-weight: 900; }
@@ -450,7 +450,7 @@ button { color: inherit; }
 
 .citation-guide { display: grid; grid-template-columns: .65fr 1.35fr; gap: 6vw; }
 .citation-guide .section-heading { display: block; margin: 0; }
-.citation-guide .section-heading h2 { margin-top: 1rem; font-size: clamp(3rem, 5vw, 5.6rem); }
+.citation-guide .section-heading h2 { margin-top: 1rem; font-size: clamp(2.6rem, 4vw, 4.7rem); }
 .citation-rules { border-top: 1px solid var(--ink); }
 .citation-rules article { padding: 1.4rem 0; display: grid; grid-template-columns: 110px .7fr 1fr; gap: 1.3rem; border-bottom: 1px solid var(--ink); }
 .citation-rules article > span { color: var(--teal); font-size: .65rem; font-weight: 850; }.citation-rules h3 { margin: 0; }.citation-rules p { margin: 0; color: var(--muted); line-height: 1.6; }
@@ -480,7 +480,7 @@ button { color: inherit; }
 @media (max-width: 1100px) {
   :root { --page: min(100% - 40px, 1000px); }
   .hero { grid-template-columns: 1fr 1fr; }
-  .hero h1 { font-size: clamp(3.8rem, 7vw, 6.3rem); }
+  .hero h1 { font-size: clamp(3.5rem, 5.5vw, 5.8rem); }
   .material-grid, .capability-map { grid-template-columns: repeat(2, 1fr); }
   .principle-pipeline { grid-template-columns: repeat(5, 1fr); }
   .principle-pipeline > i { display: none; }
@@ -513,7 +513,7 @@ button { color: inherit; }
   .site-nav .nav-demo { padding-inline: .8rem; text-align: center; }
   .hero { min-height: auto; display: block; }
   .hero-copy { padding: 4.5rem 20px 3rem; }
-  .hero h1 { font-size: clamp(4rem, 18vw, 6rem); }
+  .hero h1 { font-size: clamp(2.9rem, 11vw, 4.5rem); }
   .hero-stage { min-height: 590px; border-left: 0; border-top: 1px solid var(--ink); }
   .arm-figure { left: 5%; top: 7%; width: 83%; }
   .electrode-callout { right: -1rem; top: 13%; }
@@ -524,7 +524,7 @@ button { color: inherit; }
   .hero-flow article:last-child { border-bottom: 0; }
   .section { padding-top: 5rem; padding-bottom: 5rem; }
   .section-heading, .overview { display: block; }
-  .section-heading h2, .overview .section-heading h2, .wiring .section-heading h2, .citation-guide .section-heading h2 { margin-top: 1rem; font-size: clamp(2.7rem, 13vw, 4.4rem); }
+  .section-heading h2, .overview .section-heading h2, .wiring .section-heading h2, .citation-guide .section-heading h2 { margin-top: 1rem; font-size: clamp(2.1rem, 8.5vw, 3.2rem); }
   .overview-copy { margin-top: 2.5rem; }
   .scope-grid { grid-template-columns: 1fr; }
   .scope-grid article { min-height: 210px; border-right: 0; border-bottom: 1px solid var(--ink); }.scope-grid article:last-child { border-bottom: 0; }
@@ -568,4 +568,15 @@ button { color: inherit; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+}
+
+/* Keep display typography readable at every width without mid-word breaks. */
+h1,
+h2,
+h3 {
+  hyphens: none;
+  line-break: strict;
+  overflow-wrap: normal;
+  text-wrap: balance;
+  word-break: normal;
 }

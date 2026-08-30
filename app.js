@@ -899,6 +899,7 @@
     const category = categoryMap[project.category];
     const articleClasses = [
       "case-article",
+      `case-article--${project.id}`,
       project.lightStudy ? "case-article--light-performance" : "",
       project.investmentStudy ? "case-article--investment" : "",
       project.id === "library-evaluation" ? "case-article--library" : "",
