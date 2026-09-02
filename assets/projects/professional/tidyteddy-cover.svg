@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">TidyTeddy website design to release</title>
+  <desc id="desc">An editorial composition showing desktop and mobile interface structures connected to a product-delivery path.</desc>
+  <rect width="1600" height="1000" fill="#f4f2ed"/>
+  <path d="M0 0h22v1000H0z" fill="#b47c67"/>
+  <g font-family="Arial, Helvetica, sans-serif" fill="#171717">
+    <text x="94" y="72" font-size="23" letter-spacing="5">UI/UX INTERNSHIP · 2025</text>
+    <text x="94" y="214" font-size="83" font-weight="700">TIDYTEDDY</text>
+    <text x="94" y="304" font-size="65" font-weight="400">FROM WEBSITE DESIGN TO RELEASE</text>
+    <text x="98" y="370" font-size="27" fill="#5e5d59">Journey review · responsive flows · implementation feedback</text>
+  </g>
+  <g transform="translate(94 460)" fill="#fff" stroke="#171717" stroke-width="2">
+    <rect width="820" height="376"/>
+    <path d="M0 56h820M28 92h220M28 128h126"/>
+    <rect x="28" y="174" width="352" height="124" fill="#e8d6ce"/>
+    <rect x="404" y="174" width="176" height="124" fill="#f4f2ed"/>
+    <rect x="604" y="174" width="188" height="124" fill="#171717"/>
+    <path d="M28 334h240M292 334h240M556 334h236"/>
+  </g>
+  <g transform="translate(978 422)" fill="#fff" stroke="#171717" stroke-width="2">
+    <rect width="248" height="452" rx="28"/>
+    <path d="M80 24h88M0 74h248"/>
+    <rect x="22" y="108" width="204" height="108" fill="#e8d6ce"/>
+    <path d="M22 254h204M22 294h152M22 334h204"/>
+    <rect x="22" y="372" width="204" height="50" fill="#171717"/>
+  </g>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <path d="M1264 646h208" stroke="#171717" stroke-width="2"/>
+    <path d="m1460 635 12 11-12 11" fill="none" stroke="#171717" stroke-width="2"/>
+    <text x="1264" y="617" font-size="17" letter-spacing="3" fill="#b47c67">HANDOFF</text>
+    <text x="1264" y="700" font-size="27" font-weight="700" fill="#171717">Technical review</text>
+    <text x="1264" y="738" font-size="23" fill="#66645f">Revision</text>
+    <text x="1264" y="776" font-size="23" fill="#66645f">Release support</text>
+    <path d="M94 910h1414" stroke="#171717" stroke-width="2"/>
+    <text x="94" y="955" font-size="19" letter-spacing="3" fill="#b47c67">DESKTOP + MOBILE · ONE INTERACTION LOGIC</text>
+    <text x="1508" y="955" text-anchor="end" font-size="19" letter-spacing="3" fill="#b47c67">BOWEN MAI</text>
+  </g>
+</svg>

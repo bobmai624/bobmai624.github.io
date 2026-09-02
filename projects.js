@@ -1198,6 +1198,197 @@ window.PORTFOLIO_PROJECTS = [
       },
     ],
   },
+  {
+    id: "ai-for-education",
+    title: "AI for Education Research",
+    displayTitle: "AI for Education Research",
+    shortTitle: "AI for Education Research",
+    kicker: "HCI research · mixed methods",
+    year: "2026",
+    category: "ux-research",
+    summary:
+      "As an HCI research assistant at the University of Melbourne, I supported a study of how emerging AI tools might be integrated into university education.",
+    meaning:
+      "The project taught me to separate what student responses showed from questions that still required interpretation and further study.",
+    role:
+      "Research-assistant contribution · questionnaire development, data organisation, descriptive analysis, open-text coding and presentation support.",
+    methods: [
+      "Mixed-method questionnaire",
+      "Response organisation",
+      "Descriptive statistics",
+      "Open-text coding",
+      "Research communication",
+    ],
+    cover: {
+      src: "assets/projects/professional/ai-education-cover.svg",
+      alt: "Diagram of student responses moving through mixed-method analysis into questions for further education research",
+    },
+    sections: [
+      {
+        eyebrow: "Research setting",
+        title: "Start with student experience, not a claim about the tool",
+        body:
+          "The project examined how emerging AI tools could be discussed within university education. I helped develop a mixed-method questionnaire that combined structured items with open responses, then collected and organised the resulting student feedback.",
+      },
+      {
+        eyebrow: "Analysis",
+        title: "Read quantitative patterns alongside open comments",
+        body:
+          "I used descriptive statistics to summarise the structured responses and open-text coding to identify recurring needs and concerns. Charts and presentation material helped make the two forms of evidence readable in seminars with researchers and educators.",
+      },
+      {
+        eyebrow: "Evidence boundary",
+        title: "Keep findings and interpretation separate",
+        body:
+          "The responses offered evidence of student needs and questions for further study. They did not prove that a particular AI tool improved learning, so I kept that distinction visible when preparing the analysis and discussion material.",
+      },
+    ],
+    media: [
+      {
+        type: "image",
+        src: "assets/projects/professional/ai-education-cover.svg",
+        alt: "AI for Education Research overview diagram",
+        caption: "Project overview · student feedback, mixed-method analysis and research discussion",
+        layout: "wide",
+      },
+      {
+        type: "image",
+        src: "assets/projects/professional/ai-education-process.svg",
+        alt: "Research process from questionnaire design to descriptive analysis, open-text coding and seminar material",
+        caption: "My contribution across questionnaire work, analysis and research communication",
+        layout: "wide",
+      },
+    ],
+    sources: [],
+  },
+  {
+    id: "tidyteddy",
+    title: "TidyTeddy: Website Design to Release",
+    displayTitle: "TidyTeddy: Website Design to Release",
+    shortTitle: "TidyTeddy",
+    kicker: "UI/UX internship · product delivery",
+    year: "2025",
+    category: "digital-interaction",
+    summary:
+      "During my UI/UX internship at TidyTeddy, I worked on website updates and new functions from early journey analysis through responsive prototypes, handoff and release support.",
+    meaning:
+      "The experience taught me to preserve the main interaction logic while making design decisions clear enough for developers to implement.",
+    role:
+      "UI/UX design intern · user and competitor analysis, flows, Figma prototyping, responsive specifications, handoff and launch support.",
+    methods: [
+      "User and competitor review",
+      "Journey mapping",
+      "Page structure and flows",
+      "Figma prototyping",
+      "Responsive specifications",
+      "Design handoff",
+    ],
+    cover: {
+      src: "assets/projects/professional/tidyteddy-cover.svg",
+      alt: "Responsive website design flow from journey review to desktop and mobile interface release",
+    },
+    sections: [
+      {
+        eyebrow: "Discovery",
+        title: "Review the existing journey before drawing new screens",
+        body:
+          "I analysed users, competitors and current journeys, then used sketches and page structures to locate where website updates or new functions needed clearer navigation and action paths.",
+      },
+      {
+        eyebrow: "Design",
+        title: "Carry one interaction logic across desktop and mobile",
+        body:
+          "I developed desktop and mobile flows and high-fidelity Figma prototypes. The work specified responsive layouts, component states and navigation so that the intended behaviour remained visible beyond a single static screen.",
+      },
+      {
+        eyebrow: "Handoff",
+        title: "Revise the design through implementation feedback",
+        body:
+          "I coordinated with the IT team, revised the interface after technical feedback and supported release. My contribution covers design, handoff, coordination and launch support; I do not have verified post-launch conversion data.",
+      },
+    ],
+    media: [
+      {
+        type: "image",
+        src: "assets/projects/professional/tidyteddy-cover.svg",
+        alt: "TidyTeddy website project overview diagram",
+        caption: "Project overview · journey review, responsive design and release support",
+        layout: "wide",
+      },
+      {
+        type: "image",
+        src: "assets/projects/professional/tidyteddy-process.svg",
+        alt: "Product design process from users and competitors to flows, Figma prototypes, handoff and release",
+        caption: "The work moved from analysis to prototypes, technical feedback and launch support",
+        layout: "wide",
+      },
+    ],
+    sources: [],
+  },
+  {
+    id: "linghang",
+    title: "Linghang: Responsible Digital Workflows",
+    displayTitle: "Linghang: Responsible Digital Workflows",
+    shortTitle: "Linghang",
+    kicker: "Digital consulting · workflow design",
+    year: "2026 — present",
+    category: "strategy",
+    summary:
+      "As a product manager and digital consultant at Linghang Education & Migration Service, I map back-office processes and design carefully bounded workflows for repeated research and document tasks.",
+    meaning:
+      "The work has reinforced that automation can support research and organisation, but decisions about a client’s study, career or migration path still require human judgement.",
+    role:
+      "Ongoing professional role · process mapping, service planning, UiPath/RPA and Codex-supported workflow design, review and risk controls.",
+    methods: [
+      "Process mapping",
+      "Service planning",
+      "UiPath and RPA",
+      "Codex-supported workflows",
+      "Source validation",
+      "Privacy and exception handling",
+    ],
+    cover: {
+      src: "assets/projects/professional/linghang-cover.svg",
+      alt: "Responsible workflow diagram connecting client context, research and document tasks with human review",
+    },
+    sections: [
+      {
+        eyebrow: "Process mapping",
+        title: "Find repeated work without losing the service context",
+        body:
+          "I map back-office processes and identify repeated work in information research, document checking, template use and knowledge reuse. I also organise service options around clients’ goals, backgrounds, eligibility, timing and risks.",
+      },
+      {
+        eyebrow: "Workflow design",
+        title: "Use automation for bounded research and organisation tasks",
+        body:
+          "I have designed workflows using UiPath, RPA and Codex to support structured collection, checking and reuse. The purpose is to reduce repeated manual handling while keeping the source and review path visible.",
+      },
+      {
+        eyebrow: "Human responsibility",
+        title: "Keep judgement, privacy and exceptions with people",
+        body:
+          "Automation cannot choose a client’s study, career or migration path. I therefore retain source validation, human review, privacy controls and exception handling. Because the role is ongoing, this case includes only workflows and materials completed before submission.",
+      },
+    ],
+    media: [
+      {
+        type: "image",
+        src: "assets/projects/professional/linghang-cover.svg",
+        alt: "Linghang responsible digital workflow overview",
+        caption: "Project overview · service context, bounded automation and human review",
+        layout: "wide",
+      },
+      {
+        type: "image",
+        src: "assets/projects/professional/linghang-process.svg",
+        alt: "Workflow diagram showing repeated tasks, automation support and retained human controls",
+        caption: "Automation supports repeatable tasks while validation, privacy and exceptions remain under human review",
+        layout: "wide",
+      },
+    ],
+    sources: [],
+  },
 ];
 
 const caseFacts = {
@@ -1313,6 +1504,30 @@ const caseFacts = {
     limitation: "The website does not yet read live serial data, and no participant or clinical study was conducted. Simulated CSV remains separate from hardware evidence.",
     homeContribution: "Individual project · I planned the hardware chain, wrote the logic and built the website",
     homeEvidence: "Interactive simulation + ten-step illustrated procedure",
+  },
+  "ai-for-education": {
+    context: "University research-assistant work · AI-supported education and student course experience",
+    ownership: "Contribution within a University of Melbourne HCI research project",
+    contribution: "I helped develop the mixed-method questionnaire, organised student responses, carried out descriptive analysis and open-text coding, and prepared charts and seminar material.",
+    evidence: "Questionnaire work, organised response data, descriptive summaries, coded open-text feedback, charts and presentation material",
+    outcome: "The analysis brought student needs and open questions into discussion with researchers and educators.",
+    limitation: "The study identified student needs and questions for further research; it was not proof that a particular AI tool improved learning.",
+  },
+  tidyteddy: {
+    context: "UI/UX internship · cleaning-services website updates and new functions",
+    ownership: "Internship contribution within TidyTeddy’s product and IT workflow",
+    contribution: "I analysed users, competitors and journeys; developed sketches, page structures, responsive flows and high-fidelity Figma prototypes; and supported handoff, revisions and release.",
+    evidence: "Journey and competitor analysis, desktop and mobile flows, responsive specifications, component states, navigation and high-fidelity prototypes",
+    outcome: "The work carried the main interaction logic from early analysis through developer handoff and launch support.",
+    limitation: "My contribution covers design, handoff, coordination and launch support; I have no verified post-launch conversion data.",
+  },
+  linghang: {
+    context: "Ongoing product-management and digital-consulting work · education and migration services",
+    ownership: "Professional contribution within Linghang Education & Migration Service",
+    contribution: "I map back-office processes, identify repeated work, design UiPath/RPA and Codex-supported workflows, and organise service options around client context and risk.",
+    evidence: "Completed process maps, workflow designs and service-planning materials prepared within the role",
+    outcome: "The completed workflows use automation for repeatable research and organisation while retaining human review for consequential decisions.",
+    limitation: "The role is ongoing. This case includes only workflows and materials completed before submission, with source validation, human review, privacy controls and exception handling retained.",
   },
 };
 

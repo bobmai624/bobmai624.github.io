@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">AI for Education research process</title>
+  <desc id="desc">Four stages show questionnaire support, response organisation, parallel quantitative and qualitative analysis, and seminar communication.</desc>
+  <rect width="1600" height="1000" fill="#ffffff"/>
+  <g font-family="Arial, Helvetica, sans-serif" fill="#171717">
+    <text x="84" y="82" font-size="21" letter-spacing="4" fill="#6d8995">MY CONTRIBUTION · RESEARCH PROCESS</text>
+    <text x="84" y="166" font-size="56" font-weight="700">From student responses to a careful research discussion</text>
+    <text x="84" y="218" font-size="24" fill="#696862">Each stage keeps collection, analysis and interpretation distinct.</text>
+  </g>
+  <g transform="translate(84 315)" font-family="Arial, Helvetica, sans-serif">
+    <g>
+      <rect width="310" height="330" fill="#f4f2ed" stroke="#171717" stroke-width="2"/>
+      <rect width="310" height="12" fill="#6d8995"/>
+      <text x="24" y="58" font-size="18" letter-spacing="3" fill="#6d8995">01</text>
+      <text x="24" y="106" font-size="29" font-weight="700" fill="#171717">Questionnaire</text>
+      <text x="24" y="147" font-size="21" fill="#171717">Structured items</text>
+      <text x="24" y="181" font-size="21" fill="#171717">Open responses</text>
+      <text x="24" y="244" font-size="18" fill="#706f69">Helped develop the</text>
+      <text x="24" y="273" font-size="18" fill="#706f69">mixed-method instrument</text>
+    </g>
+    <path d="M310 165h58" stroke="#171717" stroke-width="2"/>
+    <path d="m356 154 12 11-12 11" fill="none" stroke="#171717" stroke-width="2"/>
+    <g transform="translate(368)">
+      <rect width="310" height="330" fill="#f4f2ed" stroke="#171717" stroke-width="2"/>
+      <rect width="310" height="12" fill="#171717"/>
+      <text x="24" y="58" font-size="18" letter-spacing="3" fill="#6d8995">02</text>
+      <text x="24" y="106" font-size="29" font-weight="700" fill="#171717">Organisation</text>
+      <text x="24" y="147" font-size="21" fill="#171717">Collect responses</text>
+      <text x="24" y="181" font-size="21" fill="#171717">Prepare records</text>
+      <text x="24" y="244" font-size="18" fill="#706f69">Made the material ready</text>
+      <text x="24" y="273" font-size="18" fill="#706f69">for two kinds of reading</text>
+    </g>
+    <path d="M678 165h58" stroke="#171717" stroke-width="2"/>
+    <path d="m724 154 12 11-12 11" fill="none" stroke="#171717" stroke-width="2"/>
+    <g transform="translate(736)">
+      <rect width="310" height="330" fill="#dfe7ea" stroke="#171717" stroke-width="2"/>
+      <rect width="310" height="12" fill="#6d8995"/>
+      <text x="24" y="58" font-size="18" letter-spacing="3" fill="#526f7a">03</text>
+      <text x="24" y="106" font-size="29" font-weight="700" fill="#171717">Analysis</text>
+      <text x="24" y="147" font-size="21" fill="#171717">Descriptive statistics</text>
+      <text x="24" y="181" font-size="21" fill="#171717">Open-text coding</text>
+      <text x="24" y="244" font-size="18" fill="#586166">Compared patterns without</text>
+      <text x="24" y="273" font-size="18" fill="#586166">collapsing their differences</text>
+    </g>
+    <path d="M1046 165h58" stroke="#171717" stroke-width="2"/>
+    <path d="m1092 154 12 11-12 11" fill="none" stroke="#171717" stroke-width="2"/>
+    <g transform="translate(1104)">
+      <rect width="328" height="330" fill="#171717"/>
+      <text x="24" y="58" font-size="18" letter-spacing="3" fill="#9db4bd">04</text>
+      <text x="24" y="106" font-size="29" font-weight="700" fill="#fff">Discussion</text>
+      <text x="24" y="147" font-size="21" fill="#fff">Charts + presentation</text>
+      <text x="24" y="181" font-size="21" fill="#fff">Seminar questions</text>
+      <text x="24" y="244" font-size="18" fill="#c8c7c2">Supported discussion with</text>
+      <text x="24" y="273" font-size="18" fill="#c8c7c2">researchers and educators</text>
+    </g>
+  </g>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <path d="M84 762h1432" stroke="#171717" stroke-width="2"/>
+    <text x="84" y="817" font-size="18" letter-spacing="3" fill="#6d8995">INTERPRETATION CHECK</text>
+    <text x="84" y="871" font-size="25" fill="#171717">Student needs and questions for further study</text>
+    <text x="1516" y="871" text-anchor="end" font-size="25" fill="#171717">No causal learning claim</text>
+  </g>
+</svg>

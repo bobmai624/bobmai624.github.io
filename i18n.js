@@ -1217,7 +1217,7 @@ Object.assign(window.PORTFOLIO_I18N.en.site, {
   resumeContactDescription: "My UX internship and earlier design roles are documented in the web résumé. Client work remains private where public project evidence is unavailable.",
   archiveNumber: "04 / Archive",
   archiveTitle: "Archive",
-  archiveDescription: "Ten supporting projects, grouped into four practice areas.",
+  archiveDescription: "Thirteen supporting projects, grouped by practice area.",
   resumeSummary: "UX Design student at the University of Melbourne with experience in user research, interaction design, graphic design, market analysis and customer-facing retail. Skilled in Figma prototyping, usability evaluation and cross-functional communication.",
   educationTwoDate: "2025 · One month",
   educationThreeDate: "2026 · Short term",
@@ -1278,7 +1278,7 @@ Object.assign(window.PORTFOLIO_I18N.zh.site, {
   aboutParagraphOne: "我是麦博文，墨尔本大学用户体验设计学生。我规划研究、制作交互原型，并把证据转化为设计决策。",
   aboutParagraphTwo: "我的作品横跨对话式人工智能、可玩系统、财务建模与身体性研究。我最关注如何把复杂问题转化为可以测试的内容。",
   resumeContactNumber: "04 / 简历与联系", resumeContactTitle: "把专业经历放回具体语境。", resumeContactDescription: "我的用户体验实习与早期设计经历记录在网页版简历中；没有公开项目证据的客户工作继续保持私密。",
-  archiveNumber: "04 / 项目档案", archiveTitle: "项目档案", archiveDescription: "十个辅助项目，按四个实践方向清晰归类。",
+  archiveNumber: "04 / 项目档案", archiveTitle: "项目档案", archiveDescription: "十三个辅助项目按实践方向分类整理。",
   resumeSummary: "墨尔本大学用户体验设计学生，具备用户研究、交互设计、平面设计、市场分析与零售服务经验，熟悉 Figma 原型、可用性评估与跨职能沟通。",
   educationTwoDate: "2025 · 一个月", educationThreeDate: "2026 · 短期", printResume: "打印 / 存为 PDF",
   resumeFooterNote: "网页版简历是当前版本；可使用打印按钮保存 PDF。",
@@ -1334,7 +1334,7 @@ Object.assign(window.PORTFOLIO_I18N.ja.site, {
   aboutParagraphOne: "Bowen Maiです。メルボルン大学でUXデザインを学び、調査を計画し、インタラクションを試作し、根拠を設計判断へ変換します。",
   aboutParagraphTwo: "会話AI、プレイ可能なシステム、財務モデリング、身体的リサーチを横断し、複雑な問いを検証可能にすることに関心があります。",
   resumeContactNumber: "04 / 履歴書・連絡", resumeContactTitle: "実務経験を文脈とともに。", resumeContactDescription: "UXインターンと以前のデザイン実務はウェブ履歴書に記載しています。公開できる証拠がないクライアント業務は非公開とします。",
-  archiveNumber: "04 / アーカイブ", archiveTitle: "アーカイブ", archiveDescription: "10件の補助プロジェクトを4つの実践領域に整理しています。",
+  archiveNumber: "04 / アーカイブ", archiveTitle: "アーカイブ", archiveDescription: "13件の補助プロジェクトを分野ごとに整理しています。",
   resumeSummary: "メルボルン大学でUXデザインを学び、ユーザー調査、インタラクション、グラフィック、マーケット分析、販売実務を経験。Figma試作、ユーザビリティ評価、部門横断コミュニケーションを扱います。",
   educationTwoDate: "2025 · 1か月", educationThreeDate: "2026 · 短期", printResume: "印刷 / PDF保存",
   resumeFooterNote: "ウェブ履歴書が現行版です。印刷ボタンからPDFとして保存できます。",
@@ -1641,3 +1641,172 @@ window.PORTFOLIO_I18N.ja.caseFacts.musclekey = {
   limitation: "現段階のページは実機シリアルを読みません。参加者調査や臨床研究も未実施で、模擬CSVは実機の記録と分けています。",
   homeContribution: "個人制作 · ハードウェア計画、ロジック、ウェブ試作", homeEvidence: "インタラクティブシミュレーション + 10段階の図解手順",
 };
+
+window.PORTFOLIO_I18N.en.projects = window.PORTFOLIO_I18N.en.projects || {};
+if (window.PORTFOLIO_PROJECTS) {
+  for (const id of ["ai-for-education", "tidyteddy", "linghang"]) {
+    const project = window.PORTFOLIO_PROJECTS.find((item) => item.id === id);
+    window.PORTFOLIO_I18N.en.projects[id] = {
+      title: project.title,
+      displayTitle: project.displayTitle,
+      shortTitle: project.shortTitle,
+      kicker: project.kicker,
+      summary: project.summary,
+      meaning: project.meaning,
+      role: project.role,
+      methods: [...project.methods],
+      sections: project.sections.map((section) => ({ ...section })),
+    };
+    window.PORTFOLIO_I18N.en.caseFacts[id] = { ...project.caseFacts };
+  }
+}
+
+Object.assign(window.PORTFOLIO_I18N.zh.projects, {
+  "ai-for-education": {
+    title: "AI 教育研究",
+    displayTitle: "AI 教育研究",
+    shortTitle: "AI 教育研究",
+    kicker: "HCI 研究 · 混合方法",
+    summary: "我在墨尔本大学担任 HCI 研究助理，参与了一项关于新兴 AI 工具如何融入大学教育的研究。",
+    meaning: "这项工作让我学会把学生回答已经显示的内容，与仍需解释和继续研究的问题分开。",
+    role: "研究助理工作 · 协助问卷设计、回答整理、描述性分析、开放文本编码，以及图表和汇报材料制作。",
+    methods: ["混合方法问卷", "回答整理", "描述性统计", "开放文本编码", "研究汇报"],
+    sections: [
+      { eyebrow: "研究背景", title: "从学生体验出发，而不是先假设工具有效", body: "项目讨论新兴 AI 工具可以如何进入大学教育。我协助设计结合结构化题目与开放题的混合方法问卷，并收集、整理学生反馈。" },
+      { eyebrow: "分析过程", title: "把量化趋势与开放回答放在一起阅读", body: "我用描述性统计整理结构化回答，并通过开放文本编码识别反复出现的需求与疑问。之后制作图表和汇报材料，供研究人员和教育工作者在研讨中讨论。" },
+      { eyebrow: "证据边界", title: "把研究发现与后续解释分开", body: "这些回答可以说明学生的需求，也提出了需要继续研究的问题，但不能证明某一种 AI 工具改善了学习。我在分析和汇报材料中保留了这一区别。" },
+    ],
+  },
+  tidyteddy: {
+    title: "TidyTeddy：从网站设计到发布",
+    displayTitle: "TidyTeddy：从网站设计到发布",
+    shortTitle: "TidyTeddy",
+    kicker: "UI/UX 实习 · 产品交付",
+    summary: "在 TidyTeddy 的 UI/UX 实习期间，我参与网站更新和新功能设计，工作从用户旅程分析一直延续到响应式原型、设计交付与上线支持。",
+    meaning: "这段经历让我练习在保留主要交互逻辑的同时，把设计说明得足够清楚，让开发人员能够继续实现。",
+    role: "UI/UX 设计实习生 · 用户与竞品分析、流程设计、Figma 原型、响应式规范、设计交付与上线支持。",
+    methods: ["用户与竞品分析", "用户旅程", "页面结构与流程", "Figma 原型", "响应式规范", "设计交付"],
+    sections: [
+      { eyebrow: "前期分析", title: "先理解现有旅程，再开始画新界面", body: "我分析用户、竞品和现有旅程，再通过草图与页面结构找出网站更新或新功能中需要理清的导航与操作路径。" },
+      { eyebrow: "界面设计", title: "让同一套交互逻辑适用于网页和移动端", body: "我制作网页端与移动端流程和高保真 Figma 原型，并标注响应式布局、组件状态与导航，让预期行为不只停留在一张静态界面里。" },
+      { eyebrow: "设计交付", title: "根据实施反馈继续修改", body: "我与 IT 团队协调设计交付，根据技术反馈修改界面，并支持网站发布。我的贡献包括设计、交付、协调与上线支持；目前没有经过核实的上线后转化数据。" },
+    ],
+  },
+  linghang: {
+    title: "领航：负责任的数字化工作流程",
+    displayTitle: "领航：负责任的数字化工作流程",
+    shortTitle: "领航",
+    kicker: "数字化咨询 · 流程设计",
+    summary: "我在领航教育与移民服务担任产品经理和数字化顾问，梳理后台流程，并为重复出现的研究与文档任务设计边界清楚的工作流程。",
+    meaning: "这项工作让我更清楚地认识到，自动化可以辅助研究与整理，但不能替客户决定学习、职业或迁移路径。",
+    role: "持续进行中的工作 · 流程梳理、服务规划、UiPath/RPA 与 Codex 辅助流程，以及复核和风险控制。",
+    methods: ["流程梳理", "服务规划", "UiPath 与 RPA", "Codex 辅助流程", "来源核验", "隐私与异常处理"],
+    sections: [
+      { eyebrow: "流程梳理", title: "识别重复工作，同时保留服务背景", body: "我梳理后台流程，识别信息研究、文档检查、模板使用和知识复用中的重复工作，并根据客户的目标、背景、资格、时间与风险整理服务选项。" },
+      { eyebrow: "流程设计", title: "让自动化只承担边界清楚的研究与整理任务", body: "我使用 UiPath、RPA 和 Codex 设计结构化的信息收集、检查与复用流程，减少重复手工操作，同时让来源和复核路径保持可见。" },
+      { eyebrow: "人的责任", title: "把判断、隐私与异常处理留给人", body: "自动化不能替客户选择学习、职业或迁移路径。因此，流程保留来源核验、人工复核、隐私控制与异常处理。由于这项工作仍在进行，本案例只包含提交前已完成的流程和材料。" },
+    ],
+  },
+});
+
+Object.assign(window.PORTFOLIO_I18N.ja.projects, {
+  "ai-for-education": {
+    title: "教育におけるAI活用の研究",
+    displayTitle: "教育における<wbr />AI活用の研究",
+    shortTitle: "AI教育研究",
+    kicker: "HCIリサーチ · 混合研究法",
+    summary: "メルボルン大学でHCIリサーチアシスタントを務め、新しいAIツールを大学教育にどう取り入れられるかを検討する研究を支援しました。",
+    meaning: "学生の回答から読み取れることと、今後さらに解釈や検討が必要なことを分けて扱う大切さを学びました。",
+    role: "リサーチアシスタント · 質問紙作成、回答整理、記述統計、自由記述のコーディング、図表と発表資料の作成を支援。",
+    methods: ["混合研究法の質問紙", "回答整理", "記述統計", "自由記述のコーディング", "研究発表"],
+    sections: [
+      { eyebrow: "研究の背景", title: "ツールの効果を先に決めず、学生の経験から始める", body: "新しいAIツールを大学教育でどのように扱えるかを検討する研究です。尺度項目と自由記述を組み合わせた質問紙の作成を支援し、学生から集めた回答を整理しました。" },
+      { eyebrow: "分析", title: "数値の傾向と自由記述を並べて読む", body: "尺度項目は記述統計でまとめ、自由記述は繰り返し現れる要望や疑問に沿って整理しました。研究者と教育関係者が議論できるよう、図表と発表資料も作成しました。" },
+      { eyebrow: "根拠の範囲", title: "調査結果と、その先の解釈を分ける", body: "回答から分かったのは、学生のニーズと今後の研究課題です。特定のAIツールが学習を改善したことを示す調査ではないため、分析と発表でもこの違いを明記しました。" },
+    ],
+  },
+  tidyteddy: {
+    title: "TidyTeddy：サイト設計から公開まで",
+    displayTitle: "TidyTeddy：<wbr />サイト設計から<wbr />公開まで",
+    shortTitle: "TidyTeddy",
+    kicker: "UI/UXインターン · プロダクト実装",
+    summary: "TidyTeddyのUI/UXインターンとして、既存サイトの更新と新機能に携わりました。利用の流れの確認から、レスポンシブな試作、引き渡し、公開支援までを担当しました。",
+    meaning: "中心となる操作の流れを保ちながら、開発担当者が実装できる形でデザインを伝える方法を学びました。",
+    role: "UI/UXデザイン・インターン · 利用者と競合の確認、フロー設計、Figma試作、レスポンシブ仕様、引き渡し、公開支援。",
+    methods: ["利用者・競合調査", "利用の流れ", "ページ構成とフロー", "Figma試作", "レスポンシブ仕様", "デザイン引き渡し"],
+    sections: [
+      { eyebrow: "調査", title: "新しい画面を描く前に、現在の流れを確認する", body: "利用者、競合、現在の利用の流れを確認しました。その上で、スケッチとページ構成を使い、サイト更新や新機能で整理が必要なナビゲーションと操作経路を特定しました。" },
+      { eyebrow: "設計", title: "同じ操作の考え方をPCとモバイルに展開する", body: "PCとモバイルのフローを作り、Figmaで高精細プロトタイプを制作しました。レスポンシブレイアウト、コンポーネントの状態、ナビゲーションを示し、静止画だけでは分からない動作も伝えました。" },
+      { eyebrow: "引き渡し", title: "実装時の意見を受けて修正する", body: "ITチームと引き渡しを調整し、技術的な意見を受けて画面を修正し、公開を支援しました。私が担当したのは設計、引き渡し、調整、公開支援です。公開後のコンバージョンを示す確認済みデータはありません。" },
+    ],
+  },
+  linghang: {
+    title: "Linghang：責任あるデジタル業務フロー",
+    displayTitle: "Linghang：<wbr />責任ある<wbr />デジタル<wbr />業務フロー",
+    shortTitle: "Linghang",
+    kicker: "デジタルコンサルティング · 業務設計",
+    summary: "Linghang Education & Migration Serviceでプロダクトマネージャー兼デジタルコンサルタントとして、バックオフィス業務を整理し、調査や書類作業を支援する範囲の明確なフローを設計しています。",
+    meaning: "自動化は調査と整理には役立ちます。しかし、留学先や進路、移住先の判断は顧客本人と担当者が行うべきだと考えています。",
+    role: "継続中の実務 · 業務整理、サービス設計、UiPath/RPAとCodexを使ったフロー設計、確認とリスク管理。",
+    methods: ["業務整理", "サービス設計", "UiPathとRPA", "Codexを使ったフロー", "出典確認", "個人情報と例外対応"],
+    sections: [
+      { eyebrow: "業務整理", title: "サービスの背景を保ちながら、反復作業を見つける", body: "情報調査、書類確認、テンプレート利用、知識の再利用に関する反復作業を整理しています。同時に、顧客の目標、経歴、条件、時期、リスクに沿ってサービスの選択肢をまとめています。" },
+      { eyebrow: "フロー設計", title: "範囲を限定した調査と整理に自動化を使う", body: "UiPath、RPA、Codexを使い、情報の収集、確認、再利用を支援するフローを設計しました。手作業を減らしながら、出典と確認の経路が見える状態を保っています。" },
+      { eyebrow: "人の責任", title: "判断、個人情報、例外対応は人が担う", body: "自動化は、顧客の留学、進路、移住先を選べません。そのため、出典確認、人による確認、個人情報の管理、例外対応を残しています。現在も続いている業務のため、提出時点までに完了したフローと資料だけを掲載しています。" },
+    ],
+  },
+});
+
+Object.assign(window.PORTFOLIO_I18N.zh.caseFacts, {
+  "ai-for-education": {
+    context: "大学研究助理工作 · AI 辅助教育与学生课程体验",
+    ownership: "墨尔本大学 HCI 研究项目中的个人贡献",
+    contribution: "我协助设计混合方法问卷、整理学生回答、进行描述性分析与开放文本编码，并制作图表和研讨材料。",
+    evidence: "问卷工作、整理后的回答数据、描述性汇总、开放文本编码、图表与汇报材料",
+    outcome: "分析把学生需求和尚待回答的问题带入研究人员与教育工作者的讨论。",
+    limitation: "研究识别了学生需求和后续问题，但不能证明某一种 AI 工具改善了学习。",
+  },
+  tidyteddy: {
+    context: "UI/UX 实习 · 清洁服务网站更新与新功能",
+    ownership: "在 TidyTeddy 产品与 IT 协作流程中的实习贡献",
+    contribution: "我分析用户、竞品与旅程，制作草图、页面结构、响应式流程和高保真 Figma 原型，并支持交付、修改与上线。",
+    evidence: "用户旅程与竞品分析、网页和移动端流程、响应式规范、组件状态、导航与高保真原型",
+    outcome: "这项工作把主要交互逻辑从前期分析带到开发交付与上线支持。",
+    limitation: "我的贡献包括设计、交付、协调与上线支持；目前没有经过核实的上线后转化数据。",
+  },
+  linghang: {
+    context: "持续进行中的产品管理与数字化咨询工作 · 教育与移民服务",
+    ownership: "在领航教育与移民服务中的专业工作贡献",
+    contribution: "我梳理后台流程、识别重复工作、设计 UiPath/RPA 与 Codex 辅助流程，并根据客户情况和风险整理服务选项。",
+    evidence: "在该岗位中已完成的流程图、工作流程设计与服务规划材料",
+    outcome: "已完成的流程用自动化处理重复研究与整理任务，同时由人负责重要决定。",
+    limitation: "该岗位仍在继续。本案例只包含提交前已完成的流程和材料，并保留来源核验、人工复核、隐私控制与异常处理。",
+  },
+});
+
+Object.assign(window.PORTFOLIO_I18N.ja.caseFacts, {
+  "ai-for-education": {
+    context: "大学でのリサーチアシスタント業務 · AI支援教育と授業体験",
+    ownership: "メルボルン大学のHCI研究プロジェクトにおける担当部分",
+    contribution: "混合研究法の質問紙作成、学生回答の整理、記述分析、自由記述のコーディング、図表と研究会資料の作成を支援しました。",
+    evidence: "質問紙作成、整理した回答データ、記述的な集計、自由記述のコーディング、図表、発表資料",
+    outcome: "学生のニーズと未解決の問いを、研究者と教育関係者の議論につなげました。",
+    limitation: "学生のニーズと今後の研究課題を示す調査であり、特定のAIツールが学習を改善したと証明するものではありません。",
+  },
+  tidyteddy: {
+    context: "UI/UXインターン · 清掃サービスサイトの更新と新機能",
+    ownership: "TidyTeddyのプロダクト・IT業務におけるインターンとしての担当部分",
+    contribution: "利用者、競合、利用の流れを確認し、スケッチ、ページ構成、レスポンシブなフロー、高精細Figma試作を作成しました。引き渡し、修正、公開も支援しました。",
+    evidence: "利用の流れと競合の分析、PC・モバイルのフロー、レスポンシブ仕様、コンポーネント状態、ナビゲーション、高精細試作",
+    outcome: "中心となる操作の考え方を、初期分析から開発への引き渡しと公開支援までつなげました。",
+    limitation: "担当範囲は設計、引き渡し、調整、公開支援です。公開後のコンバージョンを示す確認済みデータはありません。",
+  },
+  linghang: {
+    context: "継続中のプロダクト管理・デジタルコンサルティング業務 · 教育・移住支援",
+    ownership: "Linghang Education & Migration Serviceにおける実務上の担当部分",
+    contribution: "バックオフィス業務を整理し、反復作業を特定しました。UiPath/RPAとCodexを使ったフローを設計し、顧客の状況とリスクに沿ってサービスを整理しています。",
+    evidence: "業務内で完成したプロセスマップ、フロー設計、サービス計画資料",
+    outcome: "完成したフローでは、自動化を反復的な調査と整理に使い、重要な判断は人が担います。",
+    limitation: "現在も続いている業務です。提出時点までに完成したフローと資料だけを掲載し、出典確認、人による確認、個人情報の管理、例外対応を残しています。",
+  },
+});

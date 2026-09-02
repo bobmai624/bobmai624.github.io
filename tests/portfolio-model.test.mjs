@@ -9,7 +9,7 @@ function loadWindowScript(path, window = {}) {
   return window;
 }
 
-test("the home model selects four evidence-led cases and archives the remaining ten", () => {
+test("the home model selects four evidence-led cases and archives the remaining thirteen", () => {
   const window = loadWindowScript("projects.js");
   loadWindowScript("portfolio-model.js", window);
 
@@ -18,11 +18,11 @@ test("the home model selects four evidence-led cases and archives the remaining 
     Array.from(model.selected, (project) => project.id),
     ["vita", "signal-aftershock", "financial-feasibility", "musclekey"],
   );
-  assert.equal(model.archive.length, 10);
-  assert.equal(new Set([...model.selected, ...model.archive].map((project) => project.id)).size, 14);
+  assert.equal(model.archive.length, 13);
+  assert.equal(new Set([...model.selected, ...model.archive].map((project) => project.id)).size, 17);
 });
 
-test("the ten supporting projects are grouped by their existing practice categories", () => {
+test("the thirteen supporting projects are grouped by their existing practice categories", () => {
   const window = loadWindowScript("projects.js");
   loadWindowScript("portfolio-model.js", window);
 
@@ -34,14 +34,16 @@ test("the ten supporting projects are grouped by their existing practice categor
 
   assert.deepEqual(
     Array.from(groups, (group) => group.category.id),
-    ["ux-research", "visual-editorial", "spatial-material", "strategy"],
+    ["digital-interaction", "ux-research", "visual-editorial", "spatial-material", "strategy"],
   );
-  assert.equal(groups.flatMap((group) => group.projects).length, 10);
+  assert.equal(groups.flatMap((group) => group.projects).length, 13);
   assert.deepEqual(
     Array.from(groups.flatMap((group) => group.projects), (project) => project.id),
     [
+      "tidyteddy",
       "library-evaluation",
       "booking-systems",
+      "ai-for-education",
       "film-to-book",
       "colour-systems",
       "melbourne-motion",
@@ -50,6 +52,7 @@ test("the ten supporting projects are grouped by their existing practice categor
       "pyrrha",
       "trace-exaggeration",
       "investment-strategy",
+      "linghang",
     ],
   );
 });

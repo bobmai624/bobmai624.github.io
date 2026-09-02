@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">AI for Education Research</title>
+  <desc id="desc">An editorial diagram showing student responses moving through mixed-method analysis into research questions.</desc>
+  <rect width="1600" height="1000" fill="#f4f2ed"/>
+  <path d="M0 0h22v1000H0z" fill="#6d8995"/>
+  <g fill="none" stroke="#171717" stroke-width="2">
+    <path d="M92 100h1416M92 850h1416"/>
+    <path d="M92 690h1416" stroke="#b8b5ae"/>
+  </g>
+  <g font-family="Arial, Helvetica, sans-serif" fill="#171717">
+    <text x="94" y="72" font-size="23" letter-spacing="5">HCI RESEARCH · 2026</text>
+    <text x="94" y="214" font-size="83" font-weight="700">AI FOR EDUCATION</text>
+    <text x="94" y="304" font-size="83" font-weight="700">RESEARCH</text>
+    <text x="98" y="370" font-size="27" fill="#5e5d59">Student feedback, mixed-method analysis and careful interpretation</text>
+  </g>
+  <g transform="translate(94 475)" font-family="Arial, Helvetica, sans-serif">
+    <g>
+      <rect width="330" height="150" fill="#fff" stroke="#171717" stroke-width="2"/>
+      <text x="24" y="36" font-size="18" letter-spacing="3" fill="#6d8995">01 · INPUT</text>
+      <text x="24" y="82" font-size="31" font-weight="700" fill="#171717">Student responses</text>
+      <text x="24" y="118" font-size="20" fill="#686762">Scales + open text</text>
+    </g>
+    <path d="M330 75h86" stroke="#171717" stroke-width="2"/>
+    <path d="m404 64 12 11-12 11" fill="none" stroke="#171717" stroke-width="2"/>
+    <g transform="translate(416)">
+      <rect width="390" height="150" fill="#dfe7ea" stroke="#171717" stroke-width="2"/>
+      <text x="24" y="36" font-size="18" letter-spacing="3" fill="#526f7a">02 · ANALYSIS</text>
+      <text x="24" y="82" font-size="31" font-weight="700" fill="#171717">Two evidence paths</text>
+      <text x="24" y="118" font-size="20" fill="#565d60">Descriptive + coded</text>
+    </g>
+    <path d="M806 75h86" stroke="#171717" stroke-width="2"/>
+    <path d="m880 64 12 11-12 11" fill="none" stroke="#171717" stroke-width="2"/>
+    <g transform="translate(892)">
+      <rect width="520" height="150" fill="#171717"/>
+      <text x="24" y="36" font-size="18" letter-spacing="3" fill="#9db4bd">03 · DISCUSSION</text>
+      <text x="24" y="82" font-size="31" font-weight="700" fill="#fff">Needs + further questions</text>
+      <text x="24" y="118" font-size="20" fill="#c8c7c2">Not a claim of learning impact</text>
+    </g>
+  </g>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="94" y="797" font-size="18" letter-spacing="3" fill="#6d8995">EVIDENCE BOUNDARY</text>
+    <text x="94" y="912" font-size="25" fill="#171717">What the responses showed</text>
+    <text x="590" y="912" font-size="25" fill="#77756f">≠</text>
+    <text x="660" y="912" font-size="25" fill="#171717">Proof that one AI tool improved learning</text>
+    <text x="1508" y="912" text-anchor="end" font-size="19" letter-spacing="3" fill="#6d8995">BOWEN MAI</text>
+  </g>
+</svg>

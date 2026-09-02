@@ -29,7 +29,7 @@ test("the student copy covers every project in English, Chinese and Japanese", (
   }
 
   const projectIds = window.PORTFOLIO_PROJECTS.map((project) => project.id).sort();
-  assert.equal(projectIds.length, 14);
+  assert.equal(projectIds.length, 17);
   for (const language of ["en", "zh", "ja"]) {
     const languageCopy = window.PORTFOLIO_STUDENT_COPY[language];
     assert.equal(Object.keys(languageCopy.projects).sort().join("|"), projectIds.join("|"));

@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">TidyTeddy product design process</title>
+  <desc id="desc">A five-stage process from user and competitor review through responsive design, handoff, revision and release support.</desc>
+  <rect width="1600" height="1000" fill="#ffffff"/>
+  <g font-family="Arial, Helvetica, sans-serif" fill="#171717">
+    <text x="84" y="82" font-size="21" letter-spacing="4" fill="#b47c67">PRODUCT DELIVERY · MY CONTRIBUTION</text>
+    <text x="84" y="166" font-size="56" font-weight="700">One interaction logic, carried from analysis to release</text>
+    <text x="84" y="218" font-size="24" fill="#696862">The website work moved through review, design, specification and technical feedback.</text>
+  </g>
+  <g transform="translate(84 314)" font-family="Arial, Helvetica, sans-serif">
+    <path d="M72 117h1288" stroke="#171717" stroke-width="2"/>
+    <g transform="translate(0)">
+      <circle cx="72" cy="117" r="42" fill="#fff" stroke="#171717" stroke-width="2"/>
+      <circle cx="72" cy="117" r="12" fill="#b47c67"/>
+      <text x="0" y="206" font-size="19" letter-spacing="3" fill="#b47c67">01 · REVIEW</text>
+      <text x="0" y="250" font-size="27" font-weight="700" fill="#171717">Users + competitors</text>
+      <text x="0" y="286" font-size="20" fill="#686762">Current journeys</text>
+    </g>
+    <g transform="translate(320)">
+      <circle cx="72" cy="117" r="42" fill="#fff" stroke="#171717" stroke-width="2"/>
+      <circle cx="72" cy="117" r="12" fill="#b47c67"/>
+      <text x="0" y="206" font-size="19" letter-spacing="3" fill="#b47c67">02 · STRUCTURE</text>
+      <text x="0" y="250" font-size="27" font-weight="700" fill="#171717">Sketches + pages</text>
+      <text x="0" y="286" font-size="20" fill="#686762">Navigation and flows</text>
+    </g>
+    <g transform="translate(640)">
+      <circle cx="72" cy="117" r="42" fill="#e8d6ce" stroke="#171717" stroke-width="2"/>
+      <circle cx="72" cy="117" r="12" fill="#171717"/>
+      <text x="0" y="206" font-size="19" letter-spacing="3" fill="#b47c67">03 · PROTOTYPE</text>
+      <text x="0" y="250" font-size="27" font-weight="700" fill="#171717">Desktop + mobile</text>
+      <text x="0" y="286" font-size="20" fill="#686762">High-fidelity Figma</text>
+    </g>
+    <g transform="translate(960)">
+      <circle cx="72" cy="117" r="42" fill="#fff" stroke="#171717" stroke-width="2"/>
+      <circle cx="72" cy="117" r="12" fill="#b47c67"/>
+      <text x="0" y="206" font-size="19" letter-spacing="3" fill="#b47c67">04 · HANDOFF</text>
+      <text x="0" y="250" font-size="27" font-weight="700" fill="#171717">States + specs</text>
+      <text x="0" y="286" font-size="20" fill="#686762">IT team feedback</text>
+    </g>
+    <g transform="translate(1280)">
+      <circle cx="72" cy="117" r="42" fill="#171717"/>
+      <circle cx="72" cy="117" r="12" fill="#e8d6ce"/>
+      <text x="0" y="206" font-size="19" letter-spacing="3" fill="#b47c67">05 · SUPPORT</text>
+      <text x="0" y="250" font-size="27" font-weight="700" fill="#171717">Revise + release</text>
+      <text x="0" y="286" font-size="20" fill="#686762">Launch support</text>
+    </g>
+  </g>
+  <g transform="translate(84 704)" font-family="Arial, Helvetica, sans-serif">
+    <rect width="1432" height="178" fill="#f4f2ed" stroke="#171717" stroke-width="2"/>
+    <text x="28" y="52" font-size="18" letter-spacing="3" fill="#b47c67">EVIDENCE BOUNDARY</text>
+    <text x="28" y="103" font-size="27" font-weight="700" fill="#171717">Documented contribution</text>
+    <text x="28" y="141" font-size="21" fill="#686762">Design · handoff · coordination · launch support</text>
+    <path d="M780 28v122" stroke="#b9b6af" stroke-width="2"/>
+    <text x="820" y="103" font-size="27" font-weight="700" fill="#171717">Not claimed</text>
+    <text x="820" y="141" font-size="21" fill="#686762">Verified post-launch conversion impact</text>
+  </g>
+</svg>

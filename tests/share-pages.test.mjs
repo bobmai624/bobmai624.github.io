@@ -14,7 +14,7 @@ test("the share-page generator creates one independently identified page per pro
   assert.equal(result.status, 0, result.stderr || result.stdout);
 
   const pages = fs.readdirSync(outputDirectory).filter((name) => name.endsWith(".html"));
-  assert.equal(pages.length, 14);
+  assert.equal(pages.length, 17);
   for (const page of pages) {
     const html = fs.readFileSync(path.join(outputDirectory, page), "utf8");
     const id = page.replace(/\.html$/, "");

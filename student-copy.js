@@ -15,7 +15,7 @@
         disciplinesTitle: "What I have practised",
         aboutParagraphOne: "I’m Bowen Mai, a UX Design student at the University of Melbourne. In my coursework, I plan small studies, build interaction prototypes and revise them after testing and observation.",
         aboutParagraphTwo: "The projects here move between conversational AI, games, financial modelling, visual design and embodied interaction. I use the portfolio to show both what I made and what I learned while making it.",
-        archiveDescription: "Ten additional course projects, grouped by subject so they remain easy to find without competing with the four selected cases.",
+        archiveDescription: "Thirteen additional projects, grouped by subject so they remain easy to find without competing with the four selected cases.",
         contactTitle: "Contact",
         contactIntro: "Thank you for visiting. If you would like to ask about a project or discuss study, research or internship opportunities, you can contact me below.",
         resumeFocus: "UX design · Research · Digital products · Business analysis",
@@ -265,7 +265,7 @@
         disciplinesTitle: "我练习过的能力",
         aboutParagraphOne: "我是麦博文，目前在墨尔本大学学习用户体验设计。在课程项目中，我会先进行小规模研究，再制作交互原型，并根据测试和观察结果继续修改设计。",
         aboutParagraphTwo: "这里的项目包括对话式人工智能、游戏、财务建模、视觉设计和身体交互。我希望同时说明自己做了什么，以及在制作过程中学到了什么。",
-        archiveDescription: "另外十个课程项目按主题整理在这里。它们不会占用主页的大篇幅，但仍可以完整查看。",
+        archiveDescription: "另外十三个项目按主题整理在这里。它们不会占用主页的大篇幅，但仍可以完整查看。",
         contactTitle: "联系我",
         contactIntro: "谢谢你看到这里。如果你想了解某个项目，或希望交流学习、研究与实习机会，可以通过以下方式联系我。",
         resumeFocus: "用户体验设计 · 研究 · 数字产品 · 商业分析",
@@ -476,7 +476,7 @@
         disciplinesTitle: "プロジェクトで学んだこと",
         aboutParagraphOne: "Bowen Maiです。メルボルン大学でUXデザインを学んでいます。授業では、小規模な調査を計画したり、インタラクションを試作したりしています。観察したことをもとに、デザインを見直してきました。",
         aboutParagraphTwo: "ここには会話AI、ゲーム、財務モデリング、ビジュアルデザイン、身体的インタラクションの制作を掲載しています。完成物だけでなく、制作中に考え直した点も示しています。",
-        archiveDescription: "そのほかの授業制作10件は、分野ごとにまとめています。トップページでは小さく扱いますが、各ケースは引き続き閲覧できます。",
+        archiveDescription: "そのほかのプロジェクト13件は、分野ごとにまとめています。トップページでは小さく扱いますが、各ケースは引き続き閲覧できます。",
         contactTitle: "連絡先",
         contactIntro: "ここまでご覧いただき、ありがとうございます。プロジェクトについての質問や、学習・研究・実習に関するご連絡は、以下の連絡先からお願いします。",
         resumeFocus: "UXデザイン · リサーチ · デジタルプロダクト · ビジネス分析",
@@ -603,6 +603,38 @@
       },
     },
   };
+
+  const professionalProjectIds = ["ai-for-education", "tidyteddy", "linghang"];
+  for (const id of professionalProjectIds) {
+    const baseProject = global.PORTFOLIO_PROJECTS.find((project) => project.id === id);
+    copy.en.projects[id] = {
+      title: baseProject.title,
+      displayTitle: baseProject.displayTitle,
+      shortTitle: baseProject.shortTitle,
+      kicker: baseProject.kicker,
+      summary: baseProject.summary,
+      meaning: baseProject.meaning,
+      role: baseProject.role,
+      methods: [...baseProject.methods],
+      sections: baseProject.sections.map((section) => ({ ...section })),
+    };
+    if (global.PORTFOLIO_I18N) {
+      for (const language of ["zh", "ja"]) {
+        const translatedProject = global.PORTFOLIO_I18N[language].projects[id];
+        copy[language].projects[id] = {
+          title: translatedProject.title,
+          displayTitle: translatedProject.displayTitle,
+          shortTitle: translatedProject.shortTitle,
+          kicker: translatedProject.kicker,
+          summary: translatedProject.summary,
+          meaning: translatedProject.meaning,
+          role: translatedProject.role,
+          methods: [...translatedProject.methods],
+          sections: translatedProject.sections.map((section) => ({ ...section })),
+        };
+      }
+    }
+  }
 
   function mergeInto(target, source) {
     if (!target || !source || typeof source !== "object") return target;

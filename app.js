@@ -922,7 +922,7 @@
             <p>${category.label}</p>
             <p>${project.year}</p>
           </div>
-          <h1 id="case-title">${project.title}</h1>
+          <h1 id="case-title">${project.displayTitle || project.title}</h1>
           <p class="case-proposition">${project.meaning}</p>
         </header>
 

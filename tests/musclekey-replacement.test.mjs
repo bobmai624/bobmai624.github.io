@@ -17,7 +17,7 @@ test("MuscleKey replaces PedalBalance as one complete portfolio project", () => 
   const window = loadPortfolio();
   const muscleKey = window.PORTFOLIO_PROJECTS.find(({ id }) => id === "musclekey");
 
-  assert.equal(window.PORTFOLIO_PROJECTS.length, 14);
+  assert.equal(window.PORTFOLIO_PROJECTS.length, 17);
   assert.ok(muscleKey, "MuscleKey is missing from the project catalogue");
   assert.equal(muscleKey.caseHref, "musclekey/index.html");
   assert.equal(muscleKey.category, "embodied-systems");

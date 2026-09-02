@@ -5262,6 +5262,12 @@ h3 {
     word-break: keep-all;
   }
 
+  html[lang="ja"] .case-article--ai-for-education .case-hero h1,
+  html[lang="ja"] .case-article--tidyteddy .case-hero h1,
+  html[lang="ja"] .case-article--linghang .case-hero h1 {
+    word-break: keep-all;
+  }
+
   .resume-topline {
     gap: 12px;
     padding-right: 58px;
