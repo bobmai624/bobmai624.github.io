@@ -16,6 +16,8 @@ test("every published project asset and source exists locally", () => {
       ...project.sources.filter((source) => !source.external).map((source) => source.href),
       project.libraryStudy?.video?.src,
       project.libraryStudy?.video?.poster,
+      ...((project.tidyTeddyStudy?.boards || []).map((item) => item.src)),
+      ...((project.tidyTeddyStudy?.captures?.items || []).map((item) => item.src)),
     ].filter(Boolean);
     for (const path of paths) {
       assert.ok(fs.existsSync(path), `${project.id} references missing resource ${path}`);

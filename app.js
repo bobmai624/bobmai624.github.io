@@ -903,6 +903,7 @@
       project.lightStudy ? "case-article--light-performance" : "",
       project.investmentStudy ? "case-article--investment" : "",
       project.id === "library-evaluation" ? "case-article--library" : "",
+      project.tidyTeddyStudy ? "case-article--tidyteddy" : "",
     ]
       .filter(Boolean)
       .join(" ");
@@ -912,8 +913,11 @@
         ? investmentStudyMarkup(project)
         : project.libraryStudy
           ? libraryStudyMarkup(project)
-          : defaultCaseStoryMarkup(project);
+          : project.tidyTeddyStudy
+            ? caseComponents.tidyTeddyStudy(project)
+            : defaultCaseStoryMarkup(project);
 
+    caseStudy.dataset.projectId = project.id;
     caseContent.innerHTML = `
       <article class="${articleClasses}">
         <header class="case-hero">

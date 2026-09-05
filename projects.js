@@ -1284,9 +1284,10 @@ window.PORTFOLIO_PROJECTS = [
       "Design handoff",
     ],
     cover: {
-      src: "assets/projects/professional/tidyteddy-cover.svg",
-      alt: "Responsive website design flow from journey review to desktop and mobile interface release",
+      src: "assets/projects/tidyteddy/original/01-desktop-hero-booking.png",
+      alt: "TidyTeddy desktop homepage with service statement, quote actions and consultation form",
     },
+    shareImage: "assets/projects/tidyteddy/original/01-desktop-hero-booking.png",
     sections: [
       {
         eyebrow: "Discovery",
@@ -1307,22 +1308,116 @@ window.PORTFOLIO_PROJECTS = [
           "I coordinated with the IT team, revised the interface after technical feedback and supported release. My contribution covers design, handoff, coordination and launch support; I do not have verified post-launch conversion data.",
       },
     ],
-    media: [
-      {
-        type: "image",
-        src: "assets/projects/professional/tidyteddy-cover.svg",
-        alt: "TidyTeddy website project overview diagram",
-        caption: "Project overview · journey review, responsive design and release support",
-        layout: "wide",
+    media: [],
+    tidyTeddyStudy: {
+      opening: {
+        label: "Case map · live interface",
+        title: "One service journey, from first promise to direct contact.",
+        body:
+          "I have organised this case around the decisions a visitor meets on the released landing page. The sequence moves from understanding the offer, to comparing services, checking evidence and deciding whether to enquire.",
+        note:
+          "The annotated boards are a retrospective reading of the live interface captured on 5 September 2026. They help explain the design, but they are not presented as user-test or conversion results.",
       },
-      {
-        type: "image",
-        src: "assets/projects/professional/tidyteddy-process.svg",
-        alt: "Product design process from users and competitors to flows, Figma prototypes, handoff and release",
-        caption: "The work moved from analysis to prototypes, technical feedback and launch support",
-        layout: "wide",
+      strategy: {
+        label: "Experience strategy",
+        title: "A six-step decision path",
+        body:
+          "The desktop and mobile versions use the same broad sequence while changing the amount and form of information shown at each step.",
+        steps: [
+          { title: "Promise", body: "Explain the service outcome before asking for action." },
+          { title: "Entry", body: "Offer both an immediate quote and a lower-commitment route." },
+          { title: "Compare", body: "Turn a broad service range into repeatable, scannable units." },
+          { title: "Reassure", body: "Use proof points and customer stories to answer uncertainty." },
+          { title: "Demonstrate", body: "Let visitors inspect before-and-after examples directly." },
+          { title: "Contact", body: "Finish with values, navigation recovery and contact choices." },
+        ],
       },
-    ],
+      openingBoard: "00",
+      chapters: [
+        {
+          number: "01",
+          eyebrow: "Entry & discovery",
+          title: "Make the offer understandable before asking people to commit.",
+          body:
+            "The opening combines a short service promise with quote, exploration and consultation routes. The next section then gives each service the same card structure, so visitors can compare options without learning a new layout each time.",
+          boards: ["01", "02"],
+        },
+        {
+          number: "02",
+          eyebrow: "Trust & evidence",
+          title: "Move from broad reassurance to evidence a visitor can inspect.",
+          body:
+            "A compact proof band changes the page rhythm, testimonial cards give individual stories room to be read, and the before-and-after gallery turns visual evidence into a small interaction. The metric values themselves still require independent verification.",
+          boards: ["03", "04", "05"],
+        },
+        {
+          number: "03",
+          eyebrow: "Brand & conversion close",
+          title: "Close the journey without relying on one call to action.",
+          body:
+            "The About section explains the service in a compact set of value statements. Partner marks, footer navigation and direct-contact channels then provide reassurance and recovery paths, while the promotional overlay adds a temporary campaign route above the core journey.",
+          boards: ["06", "07", "08"],
+        },
+        {
+          number: "04",
+          eyebrow: "Responsive translation",
+          title: "Re-prioritise the content instead of only shrinking the desktop page.",
+          body:
+            "On the narrow layout, the booking form becomes a direct quote action, service categories become an icon grid, and testimonials appear one at a time. Brand and contact information is restacked into a vertical sequence that can be read and tapped comfortably.",
+          boards: ["09", "10", "11", "12"],
+        },
+      ],
+      boards: [
+        { id: "00", src: "assets/projects/tidyteddy/annotated/00-end-to-end-experience-flow.png", alt: "Annotated overview of the complete TidyTeddy desktop landing-page journey", caption: "End-to-end map · promise, service comparison, reassurance, proof and contact form one continuous journey." },
+        { id: "01", src: "assets/projects/tidyteddy/annotated/01-hero-and-booking.png", alt: "Annotated TidyTeddy desktop hero and consultation form", caption: "Hero and booking entry points · immediate and exploratory actions remain visible together." },
+        { id: "02", src: "assets/projects/tidyteddy/annotated/02-service-architecture.png", alt: "Annotated four-card service comparison section", caption: "Service architecture · repeated cards make a broad offer easier to scan and compare." },
+        { id: "03", src: "assets/projects/tidyteddy/annotated/03-social-proof-band.png", alt: "Annotated three-item proof-point band", caption: "Social-proof band · the layout creates a quick transition into reassurance; the displayed values are not treated here as verified results." },
+        { id: "04", src: "assets/projects/tidyteddy/annotated/04-customer-stories.png", alt: "Annotated customer testimonial carousel with three review cards", caption: "Customer stories · a familiar review pattern separates individual voices without extending the page indefinitely." },
+        { id: "05", src: "assets/projects/tidyteddy/annotated/05-before-after-proof.png", alt: "Annotated before-and-after gallery with room tabs and split-image controls", caption: "Before-and-after proof · room tabs and draggable comparisons let visitors inspect examples directly." },
+        { id: "06", src: "assets/projects/tidyteddy/annotated/06-brand-reassurance.png", alt: "Annotated About section with value statements and a Learn More action", caption: "Brand reassurance · a short introduction and four value statements make the positioning easier to review." },
+        { id: "07", src: "assets/projects/tidyteddy/annotated/07-credibility-and-footer.png", alt: "Annotated partner row and desktop footer", caption: "Credibility and utility · partner marks, navigation and contact routes support the end of the journey." },
+        { id: "08", src: "assets/projects/tidyteddy/annotated/08-campaign-overlay.png", alt: "Annotated housekeeping promotion overlay above the TidyTeddy homepage", caption: "Campaign overlay · a temporary offer is given its own focused surface and several response routes." },
+        { id: "09", src: "assets/projects/tidyteddy/annotated/09-mobile-service-discovery.png", alt: "Annotated mobile service-discovery view with compact navigation and icon grid", caption: "Mobile service discovery · the content model changes to keep key actions and categories reachable." },
+        { id: "10", src: "assets/projects/tidyteddy/annotated/10-mobile-trust-flow.png", alt: "Annotated mobile proof band and single testimonial card", caption: "Mobile trust flow · one story at a time creates a calmer vertical reading sequence." },
+        { id: "11", src: "assets/projects/tidyteddy/annotated/11-mobile-brand-story.png", alt: "Annotated mobile campaign panel, About copy and value cards", caption: "Mobile brand story · the promise, explanation and value cards are restacked as touch-friendly units." },
+        { id: "12", src: "assets/projects/tidyteddy/annotated/12-mobile-contact-close.png", alt: "Annotated mobile partner grid, footer navigation and contact controls", caption: "Mobile contact close · proof, navigation recovery and direct-contact controls remain visible at the end." },
+      ],
+      review: {
+        label: "Next review",
+        title: "A released interface still needs careful checking.",
+        body:
+          "I reviewed the captured page as a production surface rather than treating release as the end of the project. These are the main issues I would verify before another iteration.",
+        items: [
+          { title: "Routes and recovery", body: "Several linked information pages returned 404 responses in the 5 September 2026 review, so navigation continuity still needs checking." },
+          { title: "Claims and metrics", body: "Desktop and mobile captures showed different proof-point values. I treat the component as a layout pattern until the business figures are reconciled." },
+          { title: "Language and contact", body: "CTA wording, Australian spelling and the visible email link need a consistency pass across breakpoints." },
+          { title: "Access and media", body: "Text contrast, keyboard handling for the campaign layer, dismissal behaviour and image licensing remain production-review items." },
+        ],
+        accuracy:
+          "This case describes the live interface captured on 5 September 2026. It does not claim unverified research findings, conversion improvements or business outcomes.",
+      },
+      captures: {
+        label: "Original interface record",
+        title: "The unannotated captures remain available for comparison.",
+        body:
+          "These screenshots preserve the desktop and mobile states behind the analysis above. They are shown at a lower hierarchy so the case remains readable while the source interface stays inspectable.",
+        items: [
+          { src: "assets/projects/tidyteddy/original/desktop-full-page.png", alt: "Full-page desktop capture of the TidyTeddy landing page", caption: "Desktop · complete landing-page capture", kind: "full" },
+          { src: "assets/projects/tidyteddy/original/01-desktop-hero-booking.png", alt: "Desktop hero and consultation booking form", caption: "Desktop · hero and booking" },
+          { src: "assets/projects/tidyteddy/original/02-desktop-service-cards.png", alt: "Desktop service-card section", caption: "Desktop · service cards" },
+          { src: "assets/projects/tidyteddy/original/03-desktop-success-metrics.png", alt: "Desktop success-metrics band", caption: "Desktop · proof-point layout" },
+          { src: "assets/projects/tidyteddy/original/04-desktop-testimonials.png", alt: "Desktop customer-testimonial carousel", caption: "Desktop · customer stories" },
+          { src: "assets/projects/tidyteddy/original/05-desktop-before-after-gallery.png", alt: "Desktop before-and-after gallery", caption: "Desktop · before-and-after gallery" },
+          { src: "assets/projects/tidyteddy/original/06-desktop-about.png", alt: "Desktop About section", caption: "Desktop · brand reassurance" },
+          { src: "assets/projects/tidyteddy/original/07-desktop-partners-footer.png", alt: "Desktop partner row and footer", caption: "Desktop · credibility and footer" },
+          { src: "assets/projects/tidyteddy/original/08-desktop-promo-overlay.png", alt: "Desktop promotional overlay", caption: "Desktop · campaign overlay" },
+          { src: "assets/projects/tidyteddy/original/09-mobile-hero-services.png", alt: "Mobile hero and service categories", caption: "Mobile · entry and services", kind: "mobile" },
+          { src: "assets/projects/tidyteddy/original/10-mobile-metrics-feedback.png", alt: "Mobile proof points and customer feedback", caption: "Mobile · reassurance", kind: "mobile" },
+          { src: "assets/projects/tidyteddy/original/11-mobile-cta-about.png", alt: "Mobile campaign panel and About section", caption: "Mobile · brand story", kind: "mobile" },
+          { src: "assets/projects/tidyteddy/original/12-mobile-partners-footer.png", alt: "Mobile partner grid and footer", caption: "Mobile · contact close", kind: "mobile" },
+        ],
+      },
+    },
     sources: [],
   },
   {
@@ -1514,12 +1609,12 @@ const caseFacts = {
     limitation: "The study identified student needs and questions for further research; it was not proof that a particular AI tool improved learning.",
   },
   tidyteddy: {
-    context: "UI/UX internship · cleaning-services website updates and new functions",
+    context: "UI/UX internship · February–July 2025 · cleaning-services website updates and new functions",
     ownership: "Internship contribution within TidyTeddy’s product and IT workflow",
     contribution: "I analysed users, competitors and journeys; developed sketches, page structures, responsive flows and high-fidelity Figma prototypes; and supported handoff, revisions and release.",
-    evidence: "Journey and competitor analysis, desktop and mobile flows, responsive specifications, component states, navigation and high-fidelity prototypes",
-    outcome: "The work carried the main interaction logic from early analysis through developer handoff and launch support.",
-    limitation: "My contribution covers design, handoff, coordination and launch support; I have no verified post-launch conversion data.",
+    evidence: "Thirteen annotated interface boards and thirteen original captures tracing the released desktop and mobile journey, alongside the documented design and handoff scope",
+    outcome: "The work carried the main interaction logic from early analysis through developer handoff and release support; the live interface was recaptured for this case on 5 September 2026.",
+    limitation: "This is a retrospective account of my design, handoff, coordination and release-support contribution. I have no verified post-launch conversion data, and visible business metrics remain unverified.",
   },
   linghang: {
     context: "Ongoing product-management and digital-consulting work · education and migration services",

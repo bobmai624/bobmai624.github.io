@@ -39,10 +39,10 @@ test("the three professional projects are independent archive cases in the reque
   }
 });
 
-test("each new case has a replaceable vector cover, a process visual and a complete evidence record", () => {
+test("each new case has a complete visual and evidence record", () => {
   const window = loadPortfolio();
 
-  for (const id of Object.keys(expectedProjects)) {
+  for (const id of ["ai-for-education", "linghang"]) {
     const project = window.PORTFOLIO_PROJECTS.find((item) => item.id === id);
     assert.ok(project.cover?.src.endsWith(".svg"), `${id} needs an SVG cover`);
     assert.ok(fs.existsSync(project.cover.src), `${project.cover.src} is missing`);
@@ -52,6 +52,16 @@ test("each new case has a replaceable vector cover, a process visual and a compl
     }
     assert.equal(project.sections.length, 3, `${id} needs a three-part case narrative`);
     assert.equal(project.sources.length, 0, `${id} must not invent source files`);
+  }
+
+  const tidyTeddy = window.PORTFOLIO_PROJECTS.find((item) => item.id === "tidyteddy");
+  assert.ok(tidyTeddy.cover?.src.endsWith(".png"), "TidyTeddy needs the supplied interface cover");
+  assert.ok(tidyTeddy.tidyTeddyStudy, "TidyTeddy needs its detailed interface study");
+  assert.equal(tidyTeddy.tidyTeddyStudy.boards.length, 13);
+  assert.equal(tidyTeddy.tidyTeddyStudy.captures.items.length, 13);
+
+  for (const id of Object.keys(expectedProjects)) {
+    const project = window.PORTFOLIO_PROJECTS.find((item) => item.id === id);
     for (const key of ["context", "ownership", "contribution", "evidence", "outcome", "limitation"]) {
       assert.ok(project.caseFacts[key]?.trim(), `${id} is missing caseFacts.${key}`);
     }
