@@ -240,6 +240,73 @@
           </div>
         </section>
 
+        <section class="education-feedback" aria-labelledby="education-feedback-heading">
+          <header class="education-section-heading">
+            <p>${escapeHtml(study.feedbackBrief.label)}</p>
+            <div>
+              <h2 id="education-feedback-heading">${escapeHtml(study.feedbackBrief.title)}</h2>
+              <p>${escapeHtml(study.feedbackBrief.body)}</p>
+              <span>${escapeHtml(study.feedbackBrief.source)}</span>
+            </div>
+          </header>
+          <div class="education-feedback-grid">
+            ${study.feedbackBrief.themes
+              .map(
+                (theme, index) => `
+                  <article class="education-feedback-theme">
+                    <span>${String(index + 1).padStart(2, "0")}</span>
+                    <h3>${escapeHtml(theme.title)}</h3>
+                    <p>${escapeHtml(theme.body)}</p>
+                  </article>`,
+              )
+              .join("")}
+          </div>
+          <div class="education-responses">
+            <header>
+              <p>${escapeHtml(study.feedbackBrief.responsesLabel)}</p>
+              <h3>${escapeHtml(study.feedbackBrief.responsesTitle)}</h3>
+            </header>
+            <div>
+              ${study.feedbackBrief.responses
+                .map(
+                  (response, index) => `
+                    <article class="education-response-card">
+                      <span>${String(index + 1).padStart(2, "0")}</span>
+                      <h4>${escapeHtml(response.title)}</h4>
+                      <p>${escapeHtml(response.body)}</p>
+                    </article>`,
+                )
+                .join("")}
+            </div>
+          </div>
+          <p class="education-evidence-note">${escapeHtml(study.feedbackBrief.note)}</p>
+        </section>
+
+        <section class="education-context" aria-labelledby="education-context-heading">
+          <header class="education-section-heading">
+            <p>${escapeHtml(study.institutionalContext.label)}</p>
+            <div>
+              <h2 id="education-context-heading">${escapeHtml(study.institutionalContext.title)}</h2>
+              <p>${escapeHtml(study.institutionalContext.body)}</p>
+            </div>
+          </header>
+          <div class="education-context-grid">
+            ${study.institutionalContext.items
+              .map(
+                (item, index) => `
+                  <a class="education-context-card" href="${escapeHtml(item.href)}" target="_blank" rel="noreferrer">
+                    <span>${String(index + 1).padStart(2, "0")}</span>
+                    <p>${escapeHtml(item.source)}</p>
+                    <h3>${escapeHtml(item.title)}</h3>
+                    <p>${escapeHtml(item.body)}</p>
+                    <span aria-hidden="true">↗</span>
+                  </a>`,
+              )
+              .join("")}
+          </div>
+          <p class="education-context-note">${escapeHtml(study.institutionalContext.note)}</p>
+        </section>
+
         <section class="education-analysis" aria-labelledby="education-analysis-heading">
           <header class="education-section-heading education-section-heading--dark">
             <p>${escapeHtml(study.analysis.label)}</p>

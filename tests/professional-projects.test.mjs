@@ -54,11 +54,9 @@ test("each new case has a complete visual and evidence record", () => {
   }
 
   const education = window.PORTFOLIO_PROJECTS.find((item) => item.id === "ai-for-education");
-  assert.deepEqual(
-    Array.from(education.sources, (source) => source.href),
-    ["files/course-feedback-survey.pdf"],
-    "AI for Education should publish only the supplied questionnaire PDF",
-  );
+  const educationSources = Array.from(education.sources, (source) => source.href);
+  assert.equal(educationSources[0], "files/course-feedback-survey.pdf");
+  assert.equal(educationSources.filter((href) => href.startsWith("https://")).length, 3);
   const linghang = window.PORTFOLIO_PROJECTS.find((item) => item.id === "linghang");
   assert.equal(linghang.sources.length, 0, "Linghang must not publish confidential work files");
 

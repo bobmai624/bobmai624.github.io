@@ -84,10 +84,10 @@
   }
 
   function sourceLabel(source) {
+    if (source.labels?.[currentLanguage]) return source.labels[currentLanguage];
     if (source.external) {
       return currentLanguage === "zh" ? "打开可试玩原型" : "プレイ可能なプロトタイプを開く";
     }
-    if (source.labels?.[currentLanguage]) return source.labels[currentLanguage];
     const extension = source.href.split(".").pop().split(/[?#]/)[0].toUpperCase();
     if (currentLanguage === "zh") {
       const type = extension === "XLSX" ? "数据与模型" : extension === "MP4" ? "项目视频" : "完整项目";

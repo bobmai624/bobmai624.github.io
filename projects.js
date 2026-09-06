@@ -1266,7 +1266,7 @@ window.PORTFOLIO_PROJECTS = [
         body:
           "The supplied materials contain a short six-question mid-semester pulse survey and a longer course-feedback instrument with twelve rating items and one open question. I present them as two documented formats because the materials do not establish that one replaced the other.",
         note:
-          "The page describes the questionnaire design and a suitable analysis plan. No response dataset was supplied, so it does not report student findings or claim that an AI tool improved learning.",
+          "A later email brief records three feedback themes and two practical suggestions. Because no raw response export or participant count was supplied, I present that brief as a summary prepared for discussion rather than a new analysis of the survey.",
       },
       liveForm: {
         label: "Live mid-semester pulse",
@@ -1315,17 +1315,123 @@ window.PORTFOLIO_PROJECTS = [
           { title: "Choose a review priority", body: "Use the recurring coded issues and the final priority question to identify what the teaching team should examine first. Keep rare but serious comments visible." },
         ],
       },
+      feedbackBrief: {
+        label: "Feedback brief",
+        title: "Three concerns shaped the discussion.",
+        body:
+          "I prepared the following summary for Sarah after reviewing the course feedback. It keeps the students' concerns close to the teaching decisions they could inform.",
+        source: "Brief prepared for Sarah",
+        themes: [
+          {
+            title: "Assessment expectations needed more detail",
+            body:
+              "Students did not always find the brief and rubric specific enough about structure, priorities, expected depth or what a strong submission should contain. Some felt they had to make assumptions while completing the work.",
+          },
+          {
+            title: "Lecture ideas needed a clearer path into assignments",
+            body:
+              "Concepts and examples introduced in class were often useful, but some students were unsure how to apply them directly in their assessment work. They wanted more explicit examples of that translation.",
+          },
+          {
+            title: "Class structure sometimes interrupted concentration",
+            body:
+              "The pace and length of lectures, and the way tutorial activities were sometimes broken up, could affect continuity and engagement. Some students preferred longer, more focused periods for discussion and workshop work.",
+          },
+        ],
+        responsesLabel: "Teaching responses",
+        responsesTitle: "Two changes were practical enough to bring into the meeting.",
+        responses: [
+          {
+            title: "Make assessment support more specific",
+            body:
+              "Provide a clearer breakdown of each task section, state the expected depth and priorities, and include a simple example structure or exemplar where appropriate.",
+          },
+          {
+            title: "Give teaching activities more continuity",
+            body:
+              "Use more concrete and visual examples, connect weekly content directly to assessment tasks, and leave longer uninterrupted periods for tutorial discussion and activities.",
+          },
+        ],
+        note:
+          "No raw response data, participant count or response frequencies were supplied with this brief. The three themes describe the supplied summary; they do not show how common each view was.",
+      },
+      institutionalContext: {
+        label: "University context",
+        title: "The discussion sits within wider work at Melbourne on AI, assessment and teaching.",
+        body:
+          "I reviewed current public University of Melbourne material to understand how the course-level feedback relates to work already underway across the institution.",
+        items: [
+          {
+            source: "Education at Melbourne",
+            title: "AI capability requires judgement, not only confident prompting",
+            body:
+              "A University-wide self-assessment identified a 'skills bypass': people may feel confident generating AI outputs without the conceptual knowledge needed to verify or correct them. The work informed a GenAI literacy and fluency framework and practical staff workshops.",
+            href: "https://about.unimelb.edu.au/education-melbourne/our-people-in-action/research-shaping-the-future-of-genai-capability-building-in-higher-education",
+          },
+          {
+            source: "Assuring learning at Melbourne",
+            title: "AI use and evidence of learning have to be designed together",
+            body:
+              "The University's assessment reform combines secure assessment with open and authentic learning. Its current principles require either at least 50 per cent secure assessment in a subject or an approved programmatic approach, while AI literacy remains part of the curriculum.",
+            href: "https://about.unimelb.edu.au/education-melbourne/assuring-learning-at-melbourne",
+          },
+          {
+            source: "University GenAI guidance",
+            title: "Staff remain responsible for AI-supported feedback",
+            body:
+              "University guidance allows staff to explore AI-assisted assessment and feedback, but requires human review, secure tools, clear communication with students and an opt-out path. It also identifies student, staff and University intellectual property as material that must be protected.",
+            href: "https://www.unimelb.edu.au/ai/home/staff/teaching-and-learning/menu-items/assessment",
+          },
+        ],
+        note:
+          "These public University sources frame the discussion. They are not results or findings from this survey, were not produced by the meeting, and do not describe this course or its students.",
+      },
       boundary: {
         label: "Evidence boundary",
-        title: "This page documents an instrument and an analysis method, not completed findings.",
+        title: "This page records a briefing summary, not a re-analysis of the survey.",
         body:
-          "No response dataset was supplied with the questionnaire. The page therefore does not invent percentages, participant numbers, quotations or claims about learning outcomes. A voluntary single-course survey would also describe self-reported experience rather than directly measure learning.",
+          "No response dataset was supplied with the questionnaire. The three themes and two suggestions reproduce the later email brief at summary level; the page does not invent percentages, participant numbers, student quotations or learning outcomes. The University material is shown separately as institutional context, not as evidence from the course feedback.",
       },
     },
     sources: [
       {
         label: "Course Feedback Survey · PDF",
         href: "files/course-feedback-survey.pdf",
+        labels: {
+          en: "Course Feedback Survey · PDF",
+          zh: "课程反馈问卷 · PDF",
+          ja: "授業評価アンケート · PDF",
+        },
+      },
+      {
+        label: "University of Melbourne · GenAI capability research",
+        href: "https://about.unimelb.edu.au/education-melbourne/our-people-in-action/research-shaping-the-future-of-genai-capability-building-in-higher-education",
+        external: true,
+        labels: {
+          en: "University of Melbourne · GenAI capability research",
+          zh: "墨尔本大学 · GenAI 能力研究",
+          ja: "メルボルン大学 · GenAI活用能力の研究",
+        },
+      },
+      {
+        label: "University of Melbourne · Assuring learning",
+        href: "https://about.unimelb.edu.au/education-melbourne/assuring-learning-at-melbourne",
+        external: true,
+        labels: {
+          en: "University of Melbourne · Assuring learning",
+          zh: "墨尔本大学 · 学习成果保障",
+          ja: "メルボルン大学 · 学習成果の保証",
+        },
+      },
+      {
+        label: "University of Melbourne · AI assessment and feedback guidance",
+        href: "https://www.unimelb.edu.au/ai/home/staff/teaching-and-learning/menu-items/assessment",
+        external: true,
+        labels: {
+          en: "University of Melbourne · AI assessment and feedback guidance",
+          zh: "墨尔本大学 · AI 考核与反馈指引",
+          ja: "メルボルン大学 · AIを用いた評価とフィードバックの指針",
+        },
       },
     ],
   },
@@ -1745,10 +1851,10 @@ const caseFacts = {
   "ai-for-education": {
     context: "University research-assistant work · AI-supported education and student course experience",
     ownership: "Contribution within a University of Melbourne HCI research project",
-    contribution: "I helped develop the mixed-method questionnaire, organised student responses, carried out descriptive analysis and open-text coding, and prepared charts and seminar material.",
-    evidence: "Six-question live mid-semester survey, thirteen-item course-feedback PDF, questionnaire work, descriptive summaries and open-text analysis methods",
-    outcome: "The analysis brought student needs and open questions into discussion with researchers and educators.",
-    limitation: "The study identified student needs and questions for further research; it was not proof that a particular AI tool improved learning.",
+    contribution: "I helped develop the mixed-method questionnaire, organised student feedback, prepared a three-theme briefing for Sarah, and translated the themes into two teaching suggestions for discussion.",
+    evidence: "Six-question live mid-semester survey, thirteen-item course-feedback PDF, a three-theme briefing summary, two teaching suggestions and a separately labelled review of three University sources",
+    outcome: "The brief brought questions about assessment clarity, lecture-to-assignment application and class continuity into discussion with researchers and educators.",
+    limitation: "No raw response export or participant count was supplied for this portfolio update. The brief did not establish prevalence or learning effects, and the University sources are context rather than survey findings.",
   },
   tidyteddy: {
     context: "UI/UX internship · February–July 2025 · cleaning-services website updates and new functions",
