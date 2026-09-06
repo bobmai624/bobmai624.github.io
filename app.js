@@ -903,7 +903,9 @@
       project.lightStudy ? "case-article--light-performance" : "",
       project.investmentStudy ? "case-article--investment" : "",
       project.id === "library-evaluation" ? "case-article--library" : "",
+      project.educationStudy ? "case-article--education" : "",
       project.tidyTeddyStudy ? "case-article--tidyteddy" : "",
+      project.linghangStudy ? "case-article--linghang-study" : "",
     ]
       .filter(Boolean)
       .join(" ");
@@ -913,9 +915,13 @@
         ? investmentStudyMarkup(project)
         : project.libraryStudy
           ? libraryStudyMarkup(project)
+          : project.educationStudy
+            ? caseComponents.educationStudy(project)
           : project.tidyTeddyStudy
             ? caseComponents.tidyTeddyStudy(project)
-            : defaultCaseStoryMarkup(project);
+            : project.linghangStudy
+              ? caseComponents.linghangStudy(project)
+              : defaultCaseStoryMarkup(project);
 
     caseStudy.dataset.projectId = project.id;
     caseContent.innerHTML = `

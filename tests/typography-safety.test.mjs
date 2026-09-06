@@ -18,7 +18,10 @@ function rulesFor(fragment) {
 }
 
 test("portfolio headings never opt into breaking an English word", () => {
-  const headingRules = flatRules(styles).filter(({ selector }) => /(?:^|[\s,>+~])h[1-3](?:\b|[:.#[])/.test(selector));
+  const headingRules = flatRules(styles).filter(
+    ({ selector }) =>
+      /(?:^|[\s,>+~])h[1-3](?:\b|[:.#[])/.test(selector) && !selector.includes('html[lang="ja"]'),
+  );
   assert.ok(headingRules.length > 0, "no heading rules were inspected");
 
   for (const { selector, declarations } of headingRules) {
@@ -71,4 +74,9 @@ test("mobile Japanese project labels wrap at phrase boundaries", () => {
   assert.match(styles, /\.case-topline\s*\{[^}]*grid-template-columns:\s*auto\s+minmax\(0,\s*1fr\)/s);
   assert.match(styles, /html\[lang="ja"\]\s+\.case-topline\s+p:nth-child\(2\)\s*\{[^}]*word-break:\s*keep-all/s);
   assert.match(styles, /html\[lang="ja"\]\s+\.case-article--booking-systems\s+\.case-hero h1\s*\{[^}]*word-break:\s*keep-all/s);
+  assert.match(
+    styles,
+    /html\[lang="ja"\]\s+\.case-article--education h2,[\s\S]*?word-break:\s*normal;[\s\S]*?overflow-wrap:\s*anywhere;/,
+    "Japanese headings in the two new long-form cases must wrap instead of clipping on narrow screens",
+  );
 });

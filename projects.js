@@ -1259,7 +1259,75 @@ window.PORTFOLIO_PROJECTS = [
         layout: "wide",
       },
     ],
-    sources: [],
+    educationStudy: {
+      opening: {
+        label: "Questionnaire study",
+        title: "Two instruments make different parts of the course experience visible.",
+        body:
+          "The supplied materials contain a short six-question mid-semester pulse survey and a longer course-feedback instrument with twelve rating items and one open question. I present them as two documented formats because the materials do not establish that one replaced the other.",
+        note:
+          "The page describes the questionnaire design and a suitable analysis plan. No response dataset was supplied, so it does not report student findings or claim that an AI tool improved learning.",
+      },
+      liveForm: {
+        label: "Live mid-semester pulse",
+        title: "Six questions connect a broad signal to an explanation and a priority.",
+        summary:
+          "Three structured questions establish study level, the main challenge and the overall course experience. Three open questions ask why the challenge matters, what learning may last and what should change first.",
+        url: "https://docs.google.com/forms/d/e/1FAIpQLScIzChj6wir8NsZbpznc_IYwCXMqNIEuSUANPDLqZ2nv9tUzw/viewform",
+        embedUrl:
+          "https://docs.google.com/forms/d/e/1FAIpQLScIzChj6wir8NsZbpznc_IYwCXMqNIEuSUANPDLqZ2nv9tUzw/viewform?embedded=true",
+        openLabel: "Open live questionnaire",
+        questions: [
+          { id: "01", kind: "choice", title: "Current study level", detail: "Undergraduate or postgraduate" },
+          { id: "02", kind: "choice", title: "Most challenging aspect", detail: "Expectations, application, feedback, or workload and pacing" },
+          { id: "03", kind: "open", title: "Why this aspect was challenging", detail: "A short explanation tied to Question 2" },
+          { id: "04", kind: "choice", title: "Overall course experience", detail: "From mostly positive to difficult and frustrating" },
+          { id: "05", kind: "open", title: "Learning that may remain useful", detail: "A skill, way of thinking, or personal quality" },
+          { id: "06", kind: "open", title: "The first change to make", detail: "One specific improvement priority" },
+        ],
+      },
+      longForm: {
+        label: "Course-feedback instrument",
+        title: "Twelve rating items separate course experience into six readable themes.",
+        summary:
+          "Each item uses a five-point agreement scale. The final open question asks students to name one change, which keeps the qualitative response focused on a decision rather than inviting an unfocused comment.",
+        scaleItems: 12,
+        openItems: 1,
+        pdfLabel: "Read the complete questionnaire PDF",
+        dimensions: [
+          { title: "Expectations and standards", items: ["Q1 · Learning outcomes", "Q2 · Expected assignment standard"] },
+          { title: "Understanding in practice", items: ["Q3 · Applying abstract ideas", "Q5 · Examples and activities"] },
+          { title: "Pacing and consolidation", items: ["Q4 · Pace and depth", "Q11 · Time to consolidate learning"] },
+          { title: "Support and assessment", items: ["Q6 · Support for assessment", "Q7 · Fairness of assessment"] },
+          { title: "Feedback", items: ["Q8 · Specificity", "Q9 · Timing"] },
+          { title: "Workload and value", items: ["Q10 · Time to absorb content", "Q12 · Effort feels worthwhile"] },
+        ],
+      },
+      analysis: {
+        label: "Analysis plan",
+        title: "The analysis should move from distributions to reasons, then to a bounded course decision.",
+        body:
+          "The two formats support descriptive and qualitative analysis, but they do not justify a single overall quality score unless that measure is validated separately.",
+        steps: [
+          { title: "Describe the closed responses", body: "Report counts and percentages for choices, and distributions or medians for rating items. Keep the study level visible when the sample is large enough to compare." },
+          { title: "Link signals to explanations", body: "Read the selected challenge beside its open explanation. This shows whether the same choice represents unclear teaching, assessment alignment, pacing or another issue." },
+          { title: "Code open responses", body: "Code comments by issue, evidence and requested change. Allow more than one code when a response covers several parts of the learning experience." },
+          { title: "Choose a review priority", body: "Use the recurring coded issues and the final priority question to identify what the teaching team should examine first. Keep rare but serious comments visible." },
+        ],
+      },
+      boundary: {
+        label: "Evidence boundary",
+        title: "This page documents an instrument and an analysis method, not completed findings.",
+        body:
+          "No response dataset was supplied with the questionnaire. The page therefore does not invent percentages, participant numbers, quotations or claims about learning outcomes. A voluntary single-course survey would also describe self-reported experience rather than directly measure learning.",
+      },
+    },
+    sources: [
+      {
+        label: "Course Feedback Survey · PDF",
+        href: "files/course-feedback-survey.pdf",
+      },
+    ],
   },
   {
     id: "tidyteddy",
@@ -1422,18 +1490,18 @@ window.PORTFOLIO_PROJECTS = [
   },
   {
     id: "linghang",
-    title: "Linghang: Responsible Digital Workflows",
-    displayTitle: "Linghang: Responsible Digital Workflows",
+    title: "Linghang: Employment Operations & Workflow Design",
+    displayTitle: "Linghang: Employment Operations & Workflow Design",
     shortTitle: "Linghang",
-    kicker: "Digital consulting · workflow design",
+    kicker: "Product management · employment operations",
     year: "2026 — present",
     category: "strategy",
     summary:
-      "As a product manager and digital consultant at Linghang Education & Migration Service, I map back-office processes and design carefully bounded workflows for repeated research and document tasks.",
+      "At Linghang Education & Migration Service, I research Australian occupations and employers, organise job data and turn repeated operational tasks into reviewable workflows for the business team.",
     meaning:
-      "The work has reinforced that automation can support research and organisation, but decisions about a client’s study, career or migration path still require human judgement.",
+      "The role has taught me to connect research with day-to-day operations, while keeping source checks, uncertainty and consequential decisions with people.",
     role:
-      "Ongoing professional role · process mapping, service planning, UiPath/RPA and Codex-supported workflow design, review and risk controls.",
+      "Product Manager / Digital Consulting · employment research, data operations, workflow design, service planning and team hand-off.",
     methods: [
       "Process mapping",
       "Service planning",
@@ -1482,6 +1550,80 @@ window.PORTFOLIO_PROJECTS = [
         layout: "wide",
       },
     ],
+    linghangStudy: {
+      labels: {
+        roleMap: "Role map",
+        workflow: "Workflow",
+        workflowTitle: "Ten stages take a business question from scope to evidence-led revision.",
+        input: "Input",
+        output: "Output",
+        gate: "Human gate",
+        scale: "Evidence at scale",
+        scaleTitle: "The numbers describe supplied working material, not commercial outcomes.",
+        workProduced: "Work produced",
+        workProducedTitle: "Four workstreams connected research to day-to-day operations.",
+      },
+      opening: {
+        label: "Role and operating system",
+        title: "I worked between employment research, data operations and business hand-off.",
+        body:
+          "My work began with Australian occupation and employer research. I then turned repeated collection, screening and document tasks into staged workflows, prepared structured outputs for colleagues and used their feedback to revise the next round of work.",
+        note:
+          "The formal portfolio title remains Product Manager / Digital Consulting. Employer outreach and final case decisions were shared with business colleagues; legal or migration advice stayed outside the automation workflow.",
+      },
+      roleMap: [
+        { label: "My responsibility", title: "Research and workflow design", body: "Define the occupation scope, collect and structure public job data, design screening rules, prepare tools and document uncertainty." },
+        { label: "Team hand-off", title: "Employer and candidate contact", body: "Business colleagues use the organised material for calls, messages, email outreach and follow-up, then return what they learn to the workflow." },
+        { label: "Human decision", title: "Eligibility, compliance and individual advice", body: "People review source validity, exceptions, privacy and consequential decisions. Automation does not choose a client’s study, career or migration path." },
+      ],
+      workflow: [
+        { id: "01", title: "Set the occupation boundary", input: "Business question and target occupation", action: "Define the ANZSCO title, synonyms, exclusions and duty keywords before searching.", output: "An occupation card and search boundary", owner: "Bowen", gate: "Do not collect until the scope is agreed" },
+        { id: "02", title: "Verify the working environment", input: "Platforms, folders and data tools", action: "Check access, pagination and the expected input files without beginning collection.", output: "A recorded environment-ready state", owner: "Bowen", gate: "Explicit confirmation before collection" },
+        { id: "03", title: "Collect the raw listings", input: "Approved search terms and platforms", action: "Work through the available result pages and preserve job, company, location and source links.", output: "Raw evidence with page lineage", owner: "Bowen", gate: "A first-page sample is not treated as complete" },
+        { id: "04", title: "Recover gaps", input: "Raw files and platform limits", action: "Check missing pages, blocked views and uncertain records; send unresolved items to manual review.", output: "A gap log and reviewed raw set", owner: "Bowen + reviewer", gate: "No CAPTCHA bypass or guessed records" },
+        { id: "05", title: "Clean and deduplicate", input: "Reviewed raw records", action: "Normalise the fourteen-field schema, remove deterministic duplicates and retain an audit trail for ambiguous cases.", output: "A stable screening table", owner: "Bowen", gate: "Schema and record-count checks must pass" },
+        { id: "06", title: "Screen job relevance", input: "Clean records and occupation rules", action: "Place listings into keep, review or reject groups using duties and public evidence rather than job title alone.", output: "A cautious relevance decision", owner: "Bowen + reviewer", gate: "Uncertain cases remain review, not forced matches" },
+        { id: "07", title: "Verify the employer", input: "Relevant listings", action: "Check the organisation’s public website, advertisement and contact route while recording the strength of the evidence.", output: "Company evidence and public contact route", owner: "Bowen", gate: "Do not infer ownership or ethnicity from names or images" },
+        { id: "08", title: "Route by region", input: "Verified Australian location", action: "Normalise state and locality fields, then assign each record to the agreed regional owner.", output: "VIC, NSW/ACT/TAS, WA/SA/NT/QLD or manual review", owner: "Bowen + team", gate: "Remote, multi-state and conflicting locations stay manual" },
+        { id: "09", title: "Hand off for contact", input: "Screened employer and role record", action: "Prepare the material used by colleagues for employer contact and candidate discussion.", output: "Contact work plus feedback on fit", owner: "Business colleagues", gate: "The employer retains hiring and compliance decisions" },
+        { id: "10", title: "Revise or stop", input: "Contact feedback and business evidence", action: "Update search rules, narrow the target or stop a direction when the assumptions do not hold.", output: "A revised workflow or a documented stop decision", owner: "Bowen + team", gate: "Evidence determines whether another cycle is justified" },
+      ],
+      metrics: [
+        { value: "456", label: "occupation records", basis: "Rows in the supplied Core Skills Occupation List reference CSV", caution: "A reference set, not occupations personally validated in depth" },
+        { value: "216,566", label: "employer candidate records", basis: "Rows in the supplied active-employer source dataset", caution: "A candidate pool before screening, not verified leads or successful contacts" },
+        { value: "3,291", label: "location hierarchy records", basis: "Data rows in the complete Victorian LGA and locality hierarchy sheet", caution: "A geographic reference used for routing" },
+        { value: "19", label: "research spreadsheet files", basis: "18 Excel workbooks and one Numbers workbook in the supplied job-research folder", caution: "Includes versions and overlapping searches, so the values are not summed as unique leads" },
+      ],
+      workstreams: [
+        { number: "01", title: "Employment-data pipeline", body: "A staged SOP moves public job listings from raw collection through gap recovery, cleaning, cautious occupation screening, employer evidence and regional hand-off." },
+        { number: "02", title: "Career-path research", body: "A reusable framework compares education, professional recognition, work and longer-term options while recording source date, conditions, conflicts and items that need professional review." },
+        { number: "03", title: "Resume and case tools", body: "Local prototypes organise resume extraction, missing-information checks, structured editing and client pathway evidence. They support preparation; they do not create credentials or legal conclusions." },
+        { number: "04", title: "Employer communication", body: "Recruitment copy, screening questions and sector-specific outreach materials set expectations about work rights, location, role fit, consent and the employer’s control of hiring." },
+      ],
+      retrospective: {
+        label: "Business-model retrospective",
+        title: "The blue-collar sponsorship model did not become stable or repeatable, so the project was stopped.",
+        body:
+          "The work produced useful research and operating methods, but employer conversations did not support the assumptions required for a repeatable service. Recording that outcome was part of the job.",
+        assumptions: [
+          { title: "Labour shortage", body: "A shortage did not automatically mean that an employer was willing to sponsor an overseas worker." },
+          { title: "Work readiness", body: "Domestic experience did not automatically meet Australian expectations for work rights, licensing, English and safety." },
+          { title: "Decision structure", body: "The paying client, the employer who decides and the person who benefits were not always aligned." },
+          { title: "Operating economics", body: "The pathway was long and uncertain, while employer supply and repeatability remained weak." },
+        ],
+        decision:
+          "Later work should begin with verified employer demand, candidates closer to local work readiness and small staged tests with explicit stop conditions.",
+      },
+      boundaries: {
+        label: "Responsibility boundary",
+        title: "Automation supported preparation; people remained responsible for consequential decisions.",
+        items: [
+          { title: "Automation", body: "Used for extraction, organisation, comparison, draft structure and missing-field checks. Every important source still needs human verification." },
+          { title: "Attribution", body: "I designed and operated research and workflow components. Employer outreach, candidate communication and business decisions were shared with colleagues." },
+          { title: "Privacy", body: "The public case excludes candidate resumes, identity documents, contracts, health and bank records, passwords and private employer contact details." },
+        ],
+      },
+    },
     sources: [],
   },
 ];
@@ -1604,7 +1746,7 @@ const caseFacts = {
     context: "University research-assistant work · AI-supported education and student course experience",
     ownership: "Contribution within a University of Melbourne HCI research project",
     contribution: "I helped develop the mixed-method questionnaire, organised student responses, carried out descriptive analysis and open-text coding, and prepared charts and seminar material.",
-    evidence: "Questionnaire work, organised response data, descriptive summaries, coded open-text feedback, charts and presentation material",
+    evidence: "Six-question live mid-semester survey, thirteen-item course-feedback PDF, questionnaire work, descriptive summaries and open-text analysis methods",
     outcome: "The analysis brought student needs and open questions into discussion with researchers and educators.",
     limitation: "The study identified student needs and questions for further research; it was not proof that a particular AI tool improved learning.",
   },
@@ -1617,12 +1759,12 @@ const caseFacts = {
     limitation: "This is a retrospective account of my design, handoff, coordination and release-support contribution. I have no verified post-launch conversion data, and visible business metrics remain unverified.",
   },
   linghang: {
-    context: "Ongoing product-management and digital-consulting work · education and migration services",
+    context: "Ongoing product-management and digital-consulting work · employment, education and migration services",
     ownership: "Professional contribution within Linghang Education & Migration Service",
-    contribution: "I map back-office processes, identify repeated work, design UiPath/RPA and Codex-supported workflows, and organise service options around client context and risk.",
-    evidence: "Completed process maps, workflow designs and service-planning materials prepared within the role",
-    outcome: "The completed workflows use automation for repeatable research and organisation while retaining human review for consequential decisions.",
-    limitation: "The role is ongoing. This case includes only workflows and materials completed before submission, with source validation, human review, privacy controls and exception handling retained.",
+    contribution: "I researched Australian occupations, jobs and employers; structured collection and screening data; designed staged workflows and local preparation tools; and handed reviewed material to business colleagues.",
+    evidence: "Staged data SOPs, 19 job-research spreadsheet files, career-path research plans, regional routing data, local resume and case-planning prototypes, recruitment copy and an internal business-model retrospective",
+    outcome: "The work made data lineage, review gates and team hand-off explicit. It also supported a documented decision to stop a blue-collar sponsorship model when employer evidence did not support a stable, repeatable service.",
+    limitation: "The role is ongoing, so this case includes only work completed before submission. Dataset sizes describe supplied working material, not verified leads, successful contacts or commercial outcomes. The public case excludes private candidate, employer, contract and identity records.",
   },
 };
 

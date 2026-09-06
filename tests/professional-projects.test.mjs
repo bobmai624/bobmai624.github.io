@@ -51,8 +51,16 @@ test("each new case has a complete visual and evidence record", () => {
       assert.ok(fs.existsSync(item.src), `${item.src} is missing`);
     }
     assert.equal(project.sections.length, 3, `${id} needs a three-part case narrative`);
-    assert.equal(project.sources.length, 0, `${id} must not invent source files`);
   }
+
+  const education = window.PORTFOLIO_PROJECTS.find((item) => item.id === "ai-for-education");
+  assert.deepEqual(
+    Array.from(education.sources, (source) => source.href),
+    ["files/course-feedback-survey.pdf"],
+    "AI for Education should publish only the supplied questionnaire PDF",
+  );
+  const linghang = window.PORTFOLIO_PROJECTS.find((item) => item.id === "linghang");
+  assert.equal(linghang.sources.length, 0, "Linghang must not publish confidential work files");
 
   const tidyTeddy = window.PORTFOLIO_PROJECTS.find((item) => item.id === "tidyteddy");
   assert.ok(tidyTeddy.cover?.src.endsWith(".png"), "TidyTeddy needs the supplied interface cover");

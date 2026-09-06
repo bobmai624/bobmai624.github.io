@@ -163,5 +163,254 @@
       </div>`;
   }
 
-  window.CaseComponents = { playableStage, playableFrame, tidyTeddyStudy };
+  function educationStudy(project) {
+    const study = project?.educationStudy;
+    if (!study) return "";
+    const pdf = project.sources?.find((source) => source.href.endsWith(".pdf"));
+
+    return `
+      <div class="education-study">
+        <section class="education-opening" aria-labelledby="education-opening-heading">
+          <div>
+            <p>${escapeHtml(study.opening.label)}</p>
+            <h2 id="education-opening-heading">${escapeHtml(study.opening.title)}</h2>
+            <p>${escapeHtml(study.opening.body)}</p>
+          </div>
+          <p class="education-boundary-note">${escapeHtml(study.opening.note)}</p>
+        </section>
+
+        <section class="education-instruments" aria-label="${escapeHtml(study.opening.label)}">
+          <article class="education-instrument-card education-instrument-card--live">
+            <p>${escapeHtml(study.liveForm.label)}</p>
+            <strong>06</strong>
+            <h2>${escapeHtml(study.liveForm.title)}</h2>
+            <p>${escapeHtml(study.liveForm.summary)}</p>
+            <a href="${escapeHtml(study.liveForm.url)}" target="_blank" rel="noreferrer">
+              <span>${escapeHtml(study.liveForm.openLabel)}</span><span aria-hidden="true">↗</span>
+            </a>
+          </article>
+          <article class="education-instrument-card education-instrument-card--long">
+            <p>${escapeHtml(study.longForm.label)}</p>
+            <strong>${String(study.longForm.scaleItems + study.longForm.openItems).padStart(2, "0")}</strong>
+            <h2>${escapeHtml(study.longForm.title)}</h2>
+            <p>${escapeHtml(study.longForm.summary)}</p>
+            ${pdf ? `<a href="${escapeHtml(pdf.href)}" target="_blank" rel="noreferrer"><span>${escapeHtml(study.longForm.pdfLabel)}</span><span aria-hidden="true">↗</span></a>` : ""}
+          </article>
+        </section>
+
+        <section class="education-live" aria-labelledby="education-live-heading">
+          <header class="education-section-heading">
+            <p>${escapeHtml(study.liveForm.label)}</p>
+            <h2 id="education-live-heading">${escapeHtml(study.liveForm.title)}</h2>
+          </header>
+          <ol class="education-live-list">
+            ${study.liveForm.questions
+              .map(
+                (question) => `
+                  <li class="education-live-question">
+                    <span>${escapeHtml(question.id)}</span>
+                    <p>${escapeHtml(question.kind)}</p>
+                    <h3>${escapeHtml(question.title)}</h3>
+                    <p>${escapeHtml(question.detail)}</p>
+                  </li>`,
+              )
+              .join("")}
+          </ol>
+        </section>
+
+        <section class="education-dimensions" aria-labelledby="education-dimensions-heading">
+          <header class="education-section-heading">
+            <p>${escapeHtml(study.longForm.label)}</p>
+            <div>
+              <h2 id="education-dimensions-heading">${escapeHtml(study.longForm.title)}</h2>
+              <p>${escapeHtml(study.longForm.summary)}</p>
+            </div>
+          </header>
+          <div class="education-dimension-grid">
+            ${study.longForm.dimensions
+              .map(
+                (dimension, index) => `
+                  <article class="education-dimension">
+                    <span>${String(index + 1).padStart(2, "0")}</span>
+                    <h3>${escapeHtml(dimension.title)}</h3>
+                    <ul>${dimension.items.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
+                  </article>`,
+              )
+              .join("")}
+          </div>
+        </section>
+
+        <section class="education-analysis" aria-labelledby="education-analysis-heading">
+          <header class="education-section-heading education-section-heading--dark">
+            <p>${escapeHtml(study.analysis.label)}</p>
+            <div>
+              <h2 id="education-analysis-heading">${escapeHtml(study.analysis.title)}</h2>
+              <p>${escapeHtml(study.analysis.body)}</p>
+            </div>
+          </header>
+          <ol>
+            ${study.analysis.steps
+              .map(
+                (step, index) => `
+                  <li class="education-analysis-step">
+                    <span>${String(index + 1).padStart(2, "0")}</span>
+                    <h3>${escapeHtml(step.title)}</h3>
+                    <p>${escapeHtml(step.body)}</p>
+                  </li>`,
+              )
+              .join("")}
+          </ol>
+        </section>
+
+        <section class="education-form" aria-labelledby="education-form-heading">
+          <header class="education-section-heading">
+            <p>${escapeHtml(study.liveForm.label)}</p>
+            <div>
+              <h2 id="education-form-heading">${escapeHtml(study.liveForm.openLabel)}</h2>
+              <a href="${escapeHtml(study.liveForm.url)}" target="_blank" rel="noreferrer">${escapeHtml(study.liveForm.openLabel)} ↗</a>
+            </div>
+          </header>
+          <div class="education-form-frame">
+            <iframe src="${escapeHtml(study.liveForm.embedUrl)}" title="${escapeHtml(study.liveForm.title)}" loading="lazy"> </iframe>
+          </div>
+        </section>
+
+        <aside class="education-boundary" aria-labelledby="education-boundary-heading">
+          <p>${escapeHtml(study.boundary.label)}</p>
+          <h2 id="education-boundary-heading">${escapeHtml(study.boundary.title)}</h2>
+          <p>${escapeHtml(study.boundary.body)}</p>
+        </aside>
+      </div>`;
+  }
+
+  function linghangStudy(project) {
+    const study = project?.linghangStudy;
+    if (!study) return "";
+
+    return `
+      <div class="linghang-study">
+        <section class="linghang-opening" aria-labelledby="linghang-opening-heading">
+          <p>${escapeHtml(study.opening.label)}</p>
+          <div>
+            <h2 id="linghang-opening-heading">${escapeHtml(study.opening.title)}</h2>
+            <p>${escapeHtml(study.opening.body)}</p>
+            <p class="linghang-opening-note">${escapeHtml(study.opening.note)}</p>
+          </div>
+        </section>
+
+        <section class="linghang-role-map" aria-label="${escapeHtml(study.labels.roleMap)}">
+          ${study.roleMap
+            .map(
+              (role, index) => `
+                <article class="linghang-role-card">
+                  <span>${String(index + 1).padStart(2, "0")}</span>
+                  <p>${escapeHtml(role.label)}</p>
+                  <h2>${escapeHtml(role.title)}</h2>
+                  <p>${escapeHtml(role.body)}</p>
+                </article>`,
+            )
+            .join("")}
+        </section>
+
+        <section class="linghang-workflow" aria-labelledby="linghang-workflow-heading">
+          <header class="linghang-section-heading">
+            <p>${escapeHtml(study.labels.workflow)}</p>
+            <div>
+              <h2 id="linghang-workflow-heading">${escapeHtml(study.labels.workflowTitle)}</h2>
+              <p>${escapeHtml(study.opening.body)}</p>
+            </div>
+          </header>
+          <ol class="linghang-workflow-list">
+            ${study.workflow
+              .map(
+                (step) => `
+                  <li class="linghang-workflow-step">
+                    <div class="linghang-workflow-index"><span>${escapeHtml(step.id)}</span><p>${escapeHtml(step.owner)}</p></div>
+                    <div class="linghang-workflow-main"><h3>${escapeHtml(step.title)}</h3><p>${escapeHtml(step.action)}</p></div>
+                    <dl>
+                      <div><dt>${escapeHtml(study.labels.input)}</dt><dd>${escapeHtml(step.input)}</dd></div>
+                      <div><dt>${escapeHtml(study.labels.output)}</dt><dd>${escapeHtml(step.output)}</dd></div>
+                      ${step.gate ? `<div class="linghang-workflow-gate"><dt>${escapeHtml(study.labels.gate)}</dt><dd>${escapeHtml(step.gate)}</dd></div>` : ""}
+                    </dl>
+                  </li>`,
+              )
+              .join("")}
+          </ol>
+        </section>
+
+        <section class="linghang-scale" aria-labelledby="linghang-scale-heading">
+          <header class="linghang-section-heading">
+            <p>${escapeHtml(study.labels.scale)}</p>
+            <h2 id="linghang-scale-heading">${escapeHtml(study.labels.scaleTitle)}</h2>
+          </header>
+          <div class="linghang-metric-grid">
+            ${study.metrics
+              .map(
+                (metric) => `
+                  <article class="linghang-metric">
+                    <strong>${escapeHtml(metric.value)}</strong>
+                    <h3>${escapeHtml(metric.label)}</h3>
+                    <p>${escapeHtml(metric.basis)}</p>
+                    <small>${escapeHtml(metric.caution)}</small>
+                  </article>`,
+              )
+              .join("")}
+          </div>
+        </section>
+
+        <section class="linghang-workstreams" aria-labelledby="linghang-workstreams-heading">
+          <header class="linghang-section-heading">
+            <p>${escapeHtml(study.labels.workProduced)}</p>
+            <h2 id="linghang-workstreams-heading">${escapeHtml(study.labels.workProducedTitle)}</h2>
+          </header>
+          <div class="linghang-workstream-list">
+            ${study.workstreams
+              .map(
+                (item) => `
+                  <article class="linghang-workstream">
+                    <span>${escapeHtml(item.number)}</span>
+                    <h3>${escapeHtml(item.title)}</h3>
+                    <p>${escapeHtml(item.body)}</p>
+                  </article>`,
+              )
+              .join("")}
+          </div>
+        </section>
+
+        <section class="linghang-retrospective" aria-labelledby="linghang-retrospective-heading">
+          <header>
+            <p>${escapeHtml(study.retrospective.label)}</p>
+            <h2 id="linghang-retrospective-heading">${escapeHtml(study.retrospective.title)}</h2>
+            <p>${escapeHtml(study.retrospective.body)}</p>
+          </header>
+          <div class="linghang-assumption-grid">
+            ${study.retrospective.assumptions
+              .map(
+                (item, index) => `
+                  <article class="linghang-assumption">
+                    <span>${String(index + 1).padStart(2, "0")}</span>
+                    <h3>${escapeHtml(item.title)}</h3>
+                    <p>${escapeHtml(item.body)}</p>
+                  </article>`,
+              )
+              .join("")}
+          </div>
+          <p class="linghang-decision">${escapeHtml(study.retrospective.decision)}</p>
+        </section>
+
+        <aside class="linghang-boundaries" aria-labelledby="linghang-boundaries-heading">
+          <header>
+            <p>${escapeHtml(study.boundaries.label)}</p>
+            <h2 id="linghang-boundaries-heading">${escapeHtml(study.boundaries.title)}</h2>
+          </header>
+          <div>
+            ${study.boundaries.items
+              .map((item) => `<article><h3>${escapeHtml(item.title)}</h3><p>${escapeHtml(item.body)}</p></article>`)
+              .join("")}
+          </div>
+        </aside>
+      </div>`;
+  }
+
+  window.CaseComponents = { playableStage, playableFrame, tidyTeddyStudy, educationStudy, linghangStudy };
 })();
