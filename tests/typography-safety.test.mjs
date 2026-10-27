@@ -3,7 +3,6 @@ import fs from "node:fs";
 import test from "node:test";
 
 const styles = fs.readFileSync("style.css", "utf8");
-const muscleKeyStyles = fs.readFileSync("musclekey/assets/css/site.css", "utf8");
 const app = fs.readFileSync("app.js", "utf8");
 
 function flatRules(source) {
@@ -54,19 +53,6 @@ test("the CV identity is compact, single-line and does not reserve a full viewpo
   assert.ok(titleRules.some(({ declarations }) => /white-space:\s*nowrap/.test(declarations)), "CV name must remain on one line");
   assert.ok(focusRules.some(({ declarations }) => /white-space:\s*nowrap/.test(declarations)), "CV focus line must remain on one line");
   assert.ok(toplineRules.some(({ declarations }) => /white-space:\s*nowrap/.test(declarations)), "CV utility labels must remain on one line");
-});
-
-test("the standalone MuscleKey case follows the same restrained title scale", () => {
-  const headingRules = flatRules(muscleKeyStyles).filter(({ selector }) => /(?:^|[\s,>+~])h[12](?:\b|[:.#[])/.test(selector));
-  assert.ok(headingRules.length > 0, "no MuscleKey display headings were inspected");
-
-  for (const { selector, declarations } of headingRules) {
-    for (const match of declarations.matchAll(/font-size:\s*clamp\([^,]+,[^,]+,\s*([\d.]+)rem\s*\)/g)) {
-      const maximumRem = Number(match[1]);
-      const limit = /h1/.test(selector) ? 7 : 5.5;
-      assert.ok(maximumRem <= limit, `${selector} reaches ${maximumRem}rem, above its ${limit}rem limit`);
-    }
-  }
 });
 
 test("mobile Japanese project labels wrap at phrase boundaries", () => {

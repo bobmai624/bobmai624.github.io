@@ -18,24 +18,25 @@ const expectedProjects = {
   linghang: "strategy",
 };
 
-test("the three professional projects are independent archive cases in the requested categories", () => {
+test("the professional projects remain independent cases in their requested categories", () => {
   const window = loadPortfolio();
   const partition = window.PortfolioModel.partitionProjects(window.PORTFOLIO_PROJECTS);
 
   assert.deepEqual(
     Array.from(partition.selected, (project) => project.id),
-    ["vita", "signal-aftershock", "financial-feasibility", "musclekey"],
+    ["ai-for-education", "vita", "signal-aftershock", "financial-feasibility"],
   );
   assert.equal(partition.selected.length, 4);
-  assert.equal(partition.archive.length, 13);
-  assert.equal(window.PORTFOLIO_PROJECTS.length, 17);
+  assert.equal(partition.archive.length, 12);
+  assert.equal(window.PORTFOLIO_PROJECTS.length, 16);
 
   for (const [id, category] of Object.entries(expectedProjects)) {
     const project = window.PORTFOLIO_PROJECTS.find((item) => item.id === id);
     assert.ok(project, `${id} must be a separate project`);
     assert.equal(project.category, category);
-    assert.equal(partition.selected.some((item) => item.id === id), false);
-    assert.equal(partition.archive.some((item) => item.id === id), true);
+    const isSelected = id === "ai-for-education";
+    assert.equal(partition.selected.some((item) => item.id === id), isSelected);
+    assert.equal(partition.archive.some((item) => item.id === id), !isSelected);
   }
 });
 
@@ -103,9 +104,9 @@ test("English, Chinese and Japanese expose complete project pages for all three 
     }
   }
 
-  assert.match(window.PORTFOLIO_I18N.en.site.archiveDescription, /13|thirteen/i);
-  assert.match(window.PORTFOLIO_I18N.zh.site.archiveDescription, /13|十三/);
-  assert.match(window.PORTFOLIO_I18N.ja.site.archiveDescription, /13|13件/);
+  assert.match(window.PORTFOLIO_I18N.en.site.archiveDescription, /12|twelve/i);
+  assert.match(window.PORTFOLIO_I18N.zh.site.archiveDescription, /12|十二/);
+  assert.match(window.PORTFOLIO_I18N.ja.site.archiveDescription, /12|12件/);
 });
 
 test("long Japanese case titles provide deliberate phrase-level wrap points", () => {

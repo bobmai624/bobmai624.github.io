@@ -24,11 +24,6 @@ window.PORTFOLIO_CATEGORIES = [
     label: "Strategy & Analytics",
     description: "Models and comparative evidence used to frame risk, value and recommendations.",
   },
-  {
-    id: "embodied-systems",
-    label: "Embodied Systems",
-    description: "Body sensing, haptics and experimental systems that connect movement with learning.",
-  },
 ];
 
 window.PORTFOLIO_PROJECTS = [
@@ -1140,65 +1135,6 @@ window.PORTFOLIO_PROJECTS = [
     ],
   },
   {
-    id: "musclekey",
-    title: "MuscleKey",
-    shortTitle: "MuscleKey",
-    kicker: "sEMG interaction · individual experiment",
-    year: "2026",
-    category: "embodied-systems",
-    caseHref: "musclekey/index.html",
-    summary:
-      "An individual sEMG interaction prototype using a MyoWare sensor, Arduino threshold logic and a browser simulation to study how one forearm contraction could become a computer-input event.",
-    meaning:
-      "The project separates muscle electrical activity, an engineered input event and claims about force or health. The current prototype demonstrates the first two only.",
-    role:
-      "Individual project · method review, safety scoping, hardware planning, threshold logic, interactive website and ten-step procedure.",
-    methods: [
-      "Surface EMG",
-      "Arduino threshold logic",
-      "Interaction prototyping",
-      "Instruction design",
-      "Evidence documentation",
-      "Safety scoping",
-    ],
-    cover: {
-      src: "assets/projects/musclekey/interactive-demo.png",
-      alt: "MuscleKey sEMG interaction prototype showing a live signal, activation thresholds and reaction-time trial controls",
-    },
-    shareImage: "assets/projects/musclekey/interactive-demo.png",
-    sections: [
-      {
-        eyebrow: "Input chain",
-        title: "Turn one muscle activation into one input event",
-        body:
-          "MyoWare reads the surface EMG envelope from the forearm. A trigger threshold creates one digital event, while a lower release threshold requires the signal to settle before another event can be recorded.",
-      },
-      {
-        eyebrow: "Procedure",
-        title: "Document the build as ten checkable steps",
-        body:
-          "The website breaks the experiment into materials, offline safety, electrode placement, wiring, signal inspection, calibration, trial logic and evidence packaging. Each step includes a success sign and a troubleshooting check.",
-      },
-      {
-        eyebrow: "Evidence boundary",
-        title: "Keep simulated interaction and real hardware evidence separate",
-        body:
-          "The browser simulator explains ENV and threshold logic but does not read the sensor. It is not participant data, a force measurement or a medical result, and the project does not use DIY EMS stimulation.",
-      },
-    ],
-    media: [],
-    sources: [
-      {
-        label: "Experiment method and build notes · README",
-        href: "musclekey/README.md",
-      },
-      {
-        label: "Research and media source register · Markdown",
-        href: "musclekey/SOURCES.md",
-      },
-    ],
-  },
-  {
     id: "ai-for-education",
     title: "AI for Education Research",
     displayTitle: "AI for Education Research",
@@ -1838,16 +1774,6 @@ const caseFacts = {
     homeContribution: "Group · Model development, scenarios and risk synthesis",
     homeEvidence: "15-sheet model + feasibility report",
   },
-  musclekey: {
-    context: "Individual teaching prototype · read-only surface EMG interaction",
-    ownership: "Individual project",
-    contribution: "I reviewed the method and safety documentation, planned the hardware chain, wrote the threshold and trial logic, built the interactive website and documented a ten-step procedure.",
-    evidence: "Working browser simulation, tested threshold logic, ten-step illustrated procedure and a source register",
-    outcome: "The project produces a clear teaching prototype for tracing one forearm sEMG signal from sensing to a digital input event.",
-    limitation: "The website does not yet read live serial data, and no participant or clinical study was conducted. Simulated CSV remains separate from hardware evidence.",
-    homeContribution: "Individual project · I planned the hardware chain, wrote the logic and built the website",
-    homeEvidence: "Interactive simulation + ten-step illustrated procedure",
-  },
   "ai-for-education": {
     context: "University research-assistant work · AI-supported education and student course experience",
     ownership: "Contribution within a University of Melbourne HCI research project",
@@ -1855,6 +1781,8 @@ const caseFacts = {
     evidence: "Six-question live mid-semester survey, thirteen-item course-feedback PDF, a three-theme briefing summary, two teaching suggestions and a separately labelled review of three University sources",
     outcome: "The brief brought questions about assessment clarity, lecture-to-assignment application and class continuity into discussion with researchers and educators.",
     limitation: "No raw response export or participant count was supplied for this portfolio update. The brief did not establish prevalence or learning effects, and the University sources are context rather than survey findings.",
+    homeContribution: "Research assistant · I helped structure the questionnaire, organise feedback and prepare the discussion brief",
+    homeEvidence: "Two survey formats + coded themes + University institutional context",
   },
   tidyteddy: {
     context: "UI/UX internship · February–July 2025 · cleaning-services website updates and new functions",

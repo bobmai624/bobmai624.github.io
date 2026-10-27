@@ -1,9 +1,9 @@
 (() => {
   const selectedOrder = [
+    "ai-for-education",
     "vita",
     "signal-aftershock",
     "financial-feasibility",
-    "musclekey",
   ];
 
   function partitionProjects(projects) {

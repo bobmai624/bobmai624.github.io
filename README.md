@@ -16,15 +16,14 @@ Then visit `http://127.0.0.1:4178/`.
 
 ## Edit the content
 
-- `projects.js` contains the 14 project records, evidence facts, case-study media and source policies.
-- `portfolio-model.js` defines the four selected cases, the ten-project archive and stable share paths.
+- `projects.js` contains the 16 project records, evidence facts, case-study media and source policies.
+- `portfolio-model.js` defines the four selected cases, the twelve-project archive and stable share paths.
 - `i18n.js` contains the complete English, Chinese and Japanese translation catalogue.
-- `student-copy.js` contains the active student-voice overrides for the homepage, résumé, capabilities and all 14 projects. Edit this file first when changing public prose; the factual records and media remain in `projects.js`.
+- `student-copy.js` contains the active student-voice overrides for the homepage, CV, capabilities and all 16 projects. Edit this file first when changing public prose; the factual records and media remain in `projects.js`.
 - `index.html` contains the concise homepage shell, complete web résumé and contact links.
 - `style.css` controls the monochrome-led, low-saturation typography, spacing, responsive layout, print resume and motion.
 - `app.js` renders Selected Work, Archive and the three evidence-linked Capabilities, and controls project/resume opening, metadata, URL routing, focus and scroll reveals.
 - `assets/projects/` contains the website-ready project imagery.
-- `musclekey/index.html` is the complete MuscleKey experiment site. It contains the materials guide, ten-step procedure, interactive sEMG threshold simulation, evidence boundaries and source register.
 
 The public repository keeps individual evidence, presentation videos and approved group evidence.
 Vita's original group submissions remain as quiet supplementary links. Library and Financial

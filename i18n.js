@@ -344,7 +344,6 @@ window.PORTFOLIO_I18N = {
       "visual-editorial": { label: "视觉传达与编辑设计", description: "运用字体、图像、出版与色彩，在不同媒介之间转译观点。" },
       "spatial-material": { label: "空间、形式与材料", description: "把观察、光线与叙事转化为材料实验或三维形式。" },
       strategy: { label: "策略与分析", description: "运用模型与比较证据，界定风险、价值并形成建议。" },
-      "embodied-systems": { label: "身体性系统", description: "以身体感知、触觉反馈与实验系统，研究动作如何转化为学习。" },
     },
     projects: {
       vita: {
@@ -850,7 +849,6 @@ window.PORTFOLIO_I18N = {
       "visual-editorial": { label: "ビジュアルコミュニケーションと編集", description: "文字、画像、出版、色彩を用いて、メディアを横断して考えを翻訳する。" },
       "spatial-material": { label: "空間・造形・素材", description: "観察、光、物語を素材や三次元のかたちへ展開する。" },
       strategy: { label: "戦略と分析", description: "モデルと比較根拠を用いて、リスク、価値、提案を構造化する。" },
-      "embodied-systems": { label: "身体性システム", description: "身体センシング、触覚フィードバック、実験システムから、動きが学習へ変わる条件を探る。" },
     },
     projects: {
       vita: {
@@ -1188,7 +1186,6 @@ Object.assign(window.PORTFOLIO_I18N.en, {
   },
   caseFacts: {},
 });
-
 Object.assign(window.PORTFOLIO_I18N.en.site, {
   brandDiscipline: "UX design portfolio",
   navAbout: "About",
@@ -1217,14 +1214,13 @@ Object.assign(window.PORTFOLIO_I18N.en.site, {
   resumeContactDescription: "My UX internship and earlier design roles are documented in the web résumé. Client work remains private where public project evidence is unavailable.",
   archiveNumber: "04 / Archive",
   archiveTitle: "Archive",
-  archiveDescription: "Thirteen supporting projects, grouped by practice area.",
+  archiveDescription: "Twelve supporting projects, grouped by practice area.",
   resumeSummary: "UX Design student at the University of Melbourne with experience in user research, interaction design, graphic design, market analysis and customer-facing retail. Skilled in Figma prototyping, usability evaluation and cross-functional communication.",
   educationTwoDate: "2025 · One month",
   educationThreeDate: "2026 · Short term",
   printResume: "Print / Save PDF",
   resumeFooterNote: "The web résumé is the current source. Use the print control to save a PDF copy.",
 });
-
 Object.assign(window.PORTFOLIO_I18N.en.ui, {
   context: "Context",
   ownership: "Ownership",
@@ -1278,7 +1274,7 @@ Object.assign(window.PORTFOLIO_I18N.zh.site, {
   aboutParagraphOne: "我是麦博文，墨尔本大学用户体验设计学生。我规划研究、制作交互原型，并把证据转化为设计决策。",
   aboutParagraphTwo: "我的作品横跨对话式人工智能、可玩系统、财务建模与身体性研究。我最关注如何把复杂问题转化为可以测试的内容。",
   resumeContactNumber: "04 / 简历与联系", resumeContactTitle: "把专业经历放回具体语境。", resumeContactDescription: "我的用户体验实习与早期设计经历记录在网页版简历中；没有公开项目证据的客户工作继续保持私密。",
-  archiveNumber: "04 / 项目档案", archiveTitle: "项目档案", archiveDescription: "十三个辅助项目按实践方向分类整理。",
+  archiveNumber: "04 / 项目档案", archiveTitle: "项目档案", archiveDescription: "十二个辅助项目按实践方向分类整理。",
   resumeSummary: "墨尔本大学用户体验设计学生，具备用户研究、交互设计、平面设计、市场分析与零售服务经验，熟悉 Figma 原型、可用性评估与跨职能沟通。",
   educationTwoDate: "2025 · 一个月", educationThreeDate: "2026 · 短期", printResume: "打印 / 存为 PDF",
   resumeFooterNote: "网页版简历是当前版本；可使用打印按钮保存 PDF。",
@@ -1334,7 +1330,7 @@ Object.assign(window.PORTFOLIO_I18N.ja.site, {
   aboutParagraphOne: "Bowen Maiです。メルボルン大学でUXデザインを学び、調査を計画し、インタラクションを試作し、根拠を設計判断へ変換します。",
   aboutParagraphTwo: "会話AI、プレイ可能なシステム、財務モデリング、身体的リサーチを横断し、複雑な問いを検証可能にすることに関心があります。",
   resumeContactNumber: "04 / 履歴書・連絡", resumeContactTitle: "実務経験を文脈とともに。", resumeContactDescription: "UXインターンと以前のデザイン実務はウェブ履歴書に記載しています。公開できる証拠がないクライアント業務は非公開とします。",
-  archiveNumber: "04 / アーカイブ", archiveTitle: "アーカイブ", archiveDescription: "13件の補助プロジェクトを分野ごとに整理しています。",
+  archiveNumber: "04 / アーカイブ", archiveTitle: "アーカイブ", archiveDescription: "12件の補助プロジェクトを分野ごとに整理しています。",
   resumeSummary: "メルボルン大学でUXデザインを学び、ユーザー調査、インタラクション、グラフィック、マーケット分析、販売実務を経験。Figma試作、ユーザビリティ評価、部門横断コミュニケーションを扱います。",
   educationTwoDate: "2025 · 1か月", educationThreeDate: "2026 · 短期", printResume: "印刷 / PDF保存",
   resumeFooterNote: "ウェブ履歴書が現行版です。印刷ボタンからPDFとして保存できます。",
@@ -1585,62 +1581,6 @@ Object.assign(window.PORTFOLIO_I18N.ja.site, {
   resumeLanguagesBody: "中国語（母語）· 英語（流暢）· 日本語（基礎）",
   resumeFooterNote: "ウェブ履歴書は、2026年8月24日に提供された最新版に基づいて更新しました。印刷ボタンからPDFとして保存できます。",
 });
-
-Object.assign(window.PORTFOLIO_I18N.zh.projects, {
-  musclekey: {
-    title: "MuscleKey", shortTitle: "MuscleKey", kicker: "sEMG 交互 · 个人实验",
-    summary: "一项个人 sEMG 交互原型，使用 MyoWare 传感器、Arduino 阈值逻辑和浏览器模拟，研究如何把一次前臂收缩转化为电脑输入事件。",
-    meaning: "项目把肌肉电活动、设计后的输入事件和关于力量或健康的结论分开处理。当前原型只演示前两者。",
-    role: "个人项目 · 方法查阅、安全边界、硬件规划、阈值逻辑、交互网页与十步操作流程。",
-    methods: ["表面肌电", "Arduino 阈值逻辑", "交互原型", "操作说明设计", "证据记录", "安全边界"],
-    sections: [
-      { eyebrow: "输入链路", title: "把一次肌肉激活变成一次输入事件", body: "MyoWare 读取前臂表面肌电包络。信号越过触发阈值时生成一次数字事件；只有回落到较低的释放阈值后，系统才允许再次触发。" },
-      { eyebrow: "操作流程", title: "把搭建过程拆成十个可检查步骤", body: "网页依次记录材料、离线安全、电极位置、接线、信号检查、校准、试验逻辑和证据整理。每一步都写有成功标志和失败排查。" },
-      { eyebrow: "证据边界", title: "把模拟交互和真实硬件证据分开", body: "浏览器模拟解释 ENV 与阈值逻辑，但不会读取传感器。它不是参与者数据、力量测量或医疗结果，项目也不使用 DIY EMS 刺激。" },
-    ],
-    sources: [
-      { label: "实验方法与搭建说明 · README", href: "musclekey/README.md" },
-      { label: "研究与媒体来源登记 · Markdown", href: "musclekey/SOURCES.md" },
-    ],
-  },
-});
-
-Object.assign(window.PORTFOLIO_I18N.ja.projects, {
-  musclekey: {
-    title: "MuscleKey", shortTitle: "MuscleKey", kicker: "sEMGインタラクション · 個人実験",
-    summary: "MyoWareセンサー、Arduinoの閾値処理、ブラウザ上のシミュレーションを使い、前腕の収縮をコンピュータ入力へ変える流れを検討した個人制作です。",
-    meaning: "筋電活動、設計した入力イベント、力や健康に関する主張を分けて扱いました。現在の試作が示すのは前の二つまでです。",
-    role: "個人制作 · 方法調査、安全範囲、ハードウェア計画、閾値ロジック、ウェブ試作、10段階の手順。",
-    methods: ["表面筋電", "Arduino閾値処理", "インタラクション試作", "手順設計", "根拠の記録", "安全範囲"],
-    sections: [
-      { eyebrow: "入力の流れ", title: "一度の筋活動を一度の入力へ変える", body: "MyoWareで前腕の表面筋電包絡を読みます。信号がトリガー閾値を超えると一度だけイベントを作り、低い解除閾値まで戻ってから次の入力を受け付けます。" },
-      { eyebrow: "手順", title: "組み立てを確認できる10段階に分ける", body: "材料、オフラインでの安全確認、電極位置、配線、信号確認、校正、試行ロジック、証拠整理を順に記録しました。各段階に完了条件と確認事項があります。" },
-      { eyebrow: "根拠の範囲", title: "実機の記録とシミュレーションを分ける", body: "ブラウザはENVと閾値のロジックを説明しますが、センサーを直接読みません。参加者データ、力の測定、医療結果ではなく、自作EMS刺激も使用しません。" },
-    ],
-    sources: [
-      { label: "実験方法と組立メモ · README", href: "musclekey/README.md" },
-      { label: "研究・画像の出典一覧 · Markdown", href: "musclekey/SOURCES.md" },
-    ],
-  },
-});
-
-window.PORTFOLIO_I18N.zh.caseFacts.musclekey = {
-  context: "个人教学原型 · 只读表面肌电交互", ownership: "个人项目",
-  contribution: "我查阅方法与安全资料，规划硬件链路，编写阈值和试验逻辑，制作交互网页，并记录十步操作流程。",
-  evidence: "可运行的浏览器模拟、经过测试的阈值逻辑、十步图解流程与来源登记",
-  outcome: "项目形成一项清楚的教学原型，展示单通道前臂 sEMG 怎样从感知转化为数字输入事件。",
-  limitation: "网页尚未读取实时串口数据，也没有开展参与者或临床研究；模拟 CSV 与硬件证据分开保存。",
-  homeContribution: "个人项目 · 硬件链路规划、逻辑编写与网页制作", homeEvidence: "交互模拟 + 十步图解流程",
-};
-
-window.PORTFOLIO_I18N.ja.caseFacts.musclekey = {
-  context: "個人の教育用試作 · 読み取り専用の表面筋電インタラクション", ownership: "個人制作",
-  contribution: "方法と安全資料を確認し、ハードウェアの流れ、閾値と試行ロジック、インタラクティブなページ、10段階の手順を作成しました。",
-  evidence: "動作するブラウザシミュレーション、検証済みの閾値ロジック、10段階の図解手順、出典一覧",
-  outcome: "一つの前腕sEMG信号を、計測からデジタル入力まで追える教育用試作としてまとめました。",
-  limitation: "現段階のページは実機シリアルを読みません。参加者調査や臨床研究も未実施で、模擬CSVは実機の記録と分けています。",
-  homeContribution: "個人制作 · ハードウェア計画、ロジック、ウェブ試作", homeEvidence: "インタラクティブシミュレーション + 10段階の図解手順",
-};
 
 window.PORTFOLIO_I18N.en.projects = window.PORTFOLIO_I18N.en.projects || {};
 if (window.PORTFOLIO_PROJECTS) {
@@ -2290,6 +2230,8 @@ Object.assign(window.PORTFOLIO_I18N.zh.caseFacts, {
     evidence: "6 题在线期中问卷、13 题课程反馈 PDF、三主题反馈简报、两项教学建议，以及单独标注的三份墨大公开资料",
     outcome: "简报把考核要求、课堂内容如何用于作业，以及课程连续性三个问题带入研究人员与教育工作者的讨论。",
     limitation: "本次作品集更新没有原始答卷和参与人数，简报不能说明各类意见有多普遍，也不能说明学习效果；墨大公开资料只是背景。",
+    homeContribution: "研究助理 · 协助设计问卷、整理反馈并准备讨论简报",
+    homeEvidence: "两套问卷形式 + 主题编码 + 墨大公开资料背景",
   },
   tidyteddy: {
     context: "UI/UX 实习 · 2025 年 2 月至 7 月 · 清洁服务网站更新与新功能",
@@ -2317,6 +2259,8 @@ Object.assign(window.PORTFOLIO_I18N.ja.caseFacts, {
     evidence: "6問のオンライン中間アンケート、13項目の授業評価PDF、三つの論点をまとめた要約、二つの授業改善案、別枠で示した大学資料3点",
     outcome: "課題要件の明確さ、授業内容を課題へ応用する方法、授業の連続性を、研究者と教育関係者の議論につなげました。",
     limitation: "今回の作品集更新には元回答と参加者数がありません。要約は意見の多さや学習効果を示すものではなく、大学の公開資料も調査結果ではありません。",
+    homeContribution: "リサーチアシスタント · 質問紙、意見整理、議論用要約を支援",
+    homeEvidence: "2種類の質問紙 + テーマ整理 + 大学の公開資料",
   },
   tidyteddy: {
     context: "UI/UXインターン · 2025年2月〜7月 · 清掃サービスサイトの更新と新機能",

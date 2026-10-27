@@ -44,14 +44,14 @@ test("the English web CV mirrors the supplied two-page CV without old resume-onl
   assert.doesNotMatch(cvHtml, /0449 024 862|mai205204/);
   assert.doesNotMatch(cvHtml, /resume-footer/);
 
-  assert.equal(site.resumeFocus, "UX Research | Interaction Design | Human-Computer Interaction");
+  assert.equal(site.resumeFocus, "UX/HCI Research | AI Ethics and Policy");
   assert.equal(
     site.resumeProfileOne,
     "Bachelor of Design candidate at the University of Melbourne, with completed coursework and practical experience in applied psychology, UX research, interaction design, and mixed methods. My work has included questionnaire development, interviews, usability testing, survey-data cleaning, initial descriptive analysis, open-text coding, research reporting, and interactive Figma prototyping.",
   );
   assert.equal(
     site.resumeProfileTwo,
-    "My future research direction grows from a question that now drives my interest in embodied interaction, namely how people can perceive gradual changes in their own bodies when progress is too slow to notice day by day. I hope to explore whether a person's past exertion-related bodily state can be recorded, calibrated, and replayed across sessions so that rehabilitation progress becomes easier to perceive. This is research I want to pursue rather than work I have already completed. Graduate study would allow me to build the necessary capabilities in wearable sensing, psychophysics, haptic prototyping, longitudinal evaluation, and research ethics, beginning with technical calibration and healthy-adult studies before considering rehabilitation feasibility.",
+    "My current research direction is AI ethics and technology policy. I am interested in how conversational and decision-support systems influence users’ choices, especially when commercial incentives, hidden persuasion or unclear system boundaries are involved. Through further study, I hope to examine user autonomy, transparency and accountability by combining UX research with policy analysis. This is a direction I want to develop rather than a claim of completed policy expertise.",
   );
 
   assert.deepEqual(

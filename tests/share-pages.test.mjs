@@ -14,7 +14,7 @@ test("the share-page generator creates one independently identified page per pro
   assert.equal(result.status, 0, result.stderr || result.stdout);
 
   const pages = fs.readdirSync(outputDirectory).filter((name) => name.endsWith(".html"));
-  assert.equal(pages.length, 17);
+  assert.equal(pages.length, 16);
   for (const page of pages) {
     const html = fs.readFileSync(path.join(outputDirectory, page), "utf8");
     const id = page.replace(/\.html$/, "");
@@ -24,7 +24,6 @@ test("the share-page generator creates one independently identified page per pro
     assert.match(html, new RegExp(`#project/${id}`));
   }
 });
-
 test("checked-in share pages match a fresh non-mutating generation", () => {
   const outputDirectory = fs.mkdtempSync(path.join(os.tmpdir(), "bowen-share-drift-"));
   const result = spawnSync(process.execPath, ["scripts/generate-share-pages.mjs", "--output-dir", outputDirectory], {
@@ -44,10 +43,4 @@ test("checked-in share pages match a fresh non-mutating generation", () => {
       `${page} has drifted from the share-page generator`,
     );
   }
-});
-
-test("MuscleKey uses a project-specific social image", () => {
-  const html = fs.readFileSync("projects/musclekey.html", "utf8");
-  assert.match(html, /og:image" content="https:\/\/bobmai624\.github\.io\/assets\/projects\/musclekey\/interactive-demo\.png"/);
-  assert.ok(fs.existsSync("assets/projects/musclekey/interactive-demo.png"));
 });

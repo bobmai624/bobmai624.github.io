@@ -12,7 +12,6 @@ function createRuntime(href, savedLanguage = "ja") {
   let currentHref = href;
   const saved = new Map([
     ["portfolio-language", savedLanguage],
-    ["musclekey-language", savedLanguage],
   ]);
   const runtimeWindow = {
     URL,
@@ -51,18 +50,17 @@ test("a fresh page ignores the last saved choice and starts in English", () => {
 
   assert.equal(runtime.policy.begin(runtime.runtimeWindow), "en");
   assert.equal(runtime.saved.has("portfolio-language"), false);
-  assert.equal(runtime.saved.has("musclekey-language"), false);
 });
 
 test("an incoming language is available for this navigation, then refresh returns to English", () => {
   const runtime = createRuntime(
-    "https://portfolio.test/musclekey/index.html?campaign=folio&lang=ja#journey",
+    "https://portfolio.test/index.html?campaign=folio&lang=ja#work",
   );
 
   assert.equal(runtime.policy.begin(runtime.runtimeWindow), "ja");
   assert.equal(
     runtime.href(),
-    "https://portfolio.test/musclekey/index.html?campaign=folio#journey",
+    "https://portfolio.test/index.html?campaign=folio#work",
   );
   assert.equal(runtime.policy.begin(runtime.runtimeWindow), "en");
 });
