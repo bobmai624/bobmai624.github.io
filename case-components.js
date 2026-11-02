@@ -552,8 +552,17 @@
               <a href="${escapeHtml(study.prototype.url)}" target="_blank" rel="noreferrer">${escapeHtml(study.prototype.openLabel)} <span aria-hidden="true">↗</span></a>
             </div>
           </header>
-          <div class="cove-prototype-frame">
-            <iframe src="${escapeHtml(prototypeEmbedUrl)}" title="${escapeHtml(study.prototype.frameTitle)}" loading="lazy" allowfullscreen></iframe>
+          <div class="cove-prototype-toolbar">
+            <p><span aria-hidden="true"></span>${escapeHtml(study.prototype.interactLabel)}</p>
+            <button type="button" data-cove-prototype-focus aria-expanded="false" aria-controls="cove-prototype-stage">
+              ${escapeHtml(study.prototype.focusLabel)} <span aria-hidden="true">↗</span>
+            </button>
+          </div>
+          <div class="cove-prototype-frame" id="cove-prototype-stage" data-cove-prototype-stage>
+            <button class="cove-prototype-exit" type="button" data-cove-prototype-exit aria-label="${escapeHtml(study.prototype.exitLabel)}">
+              <span>${escapeHtml(study.prototype.exitLabel)}</span><span aria-hidden="true">×</span>
+            </button>
+            <iframe data-cove-prototype-iframe src="${escapeHtml(prototypeEmbedUrl)}" title="${escapeHtml(study.prototype.frameTitle)}" loading="lazy" tabindex="0" allow="fullscreen; clipboard-read; clipboard-write" allowfullscreen></iframe>
           </div>
         </section>
 

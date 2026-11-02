@@ -2270,7 +2270,7 @@ window.PORTFOLIO_I18N.zh.projects.cove = {
       { title: "回看使用模式", body: "账户与进度页面让过去活动可见，但不会把界面包装成行为诊断。", src: "assets/projects/cove/feature-account.png", alt: "Cove 账户与进度界面" },
     ],
     prototype: {
-      label: "交互原型", title: "在 Figma 中体验完整的 Cove 流程。", body: "原型包含引导、任务、专注空间、锁定与肯定反馈、宠物换装与游乐场、主页、账户和反思流程。", openLabel: "在 Figma 中打开原型", frameTitle: "Cove Figma 交互原型",
+      label: "交互原型", title: "在 Figma 中体验完整的 Cove 流程。", body: "原型包含引导、任务、专注空间、锁定与肯定反馈、宠物换装与游乐场、主页、账户和反思流程。", interactLabel: "直接点击原型，即可在当前页面操作 Cove。", focusLabel: "放大操作原型", exitLabel: "退出放大模式", openLabel: "在 Figma 中打开原型", frameTitle: "Cove Figma 交互原型",
       url: "https://www.figma.com/proto/XFASIQspeYQqV045ZIc53S/prototype?node-id=286-1171&scaling=scale-down&content-scaling=fixed&starting-point-node-id=286%3A1171",
     },
     journey: {
@@ -2339,7 +2339,7 @@ window.PORTFOLIO_I18N.ja.projects.cove = {
       { title: "再び開く前に立ち止まる", body: "ロックアウトの提示によって、気が散るアプリへ戻るかどうかを考える短い時間をつくります。", src: "assets/projects/cove/feature-lockout.png", alt: "Coveのロックアウト介入画面" },
       { title: "利用パターンを見直す", body: "アカウントと進捗画面で過去の活動を見えるようにしますが、行動を診断するとは主張しません。", src: "assets/projects/cove/feature-account.png", alt: "Coveのアカウントと進捗画面" },
     ],
-    prototype: { label: "インタラクティブプロトタイプ", title: "FigmaでCoveの全体フローを確認できます。", body: "オンボーディング、タスク、フォーカスルーム、ロックアウトと肯定的フィードバック、ペットの着せ替えと広場、ホーム、アカウント、振り返りを含みます。", openLabel: "Figmaでプロトタイプを開く", frameTitle: "CoveのFigmaインタラクティブプロトタイプ", url: "https://www.figma.com/proto/XFASIQspeYQqV045ZIc53S/prototype?node-id=286-1171&scaling=scale-down&content-scaling=fixed&starting-point-node-id=286%3A1171" },
+    prototype: { label: "インタラクティブプロトタイプ", title: "FigmaでCoveの全体フローを確認できます。", body: "オンボーディング、タスク、フォーカスルーム、ロックアウトと肯定的フィードバック、ペットの着せ替えと広場、ホーム、アカウント、振り返りを含みます。", interactLabel: "プロトタイプ内をクリックすると、このページでCoveを直接操作できます。", focusLabel: "プロトタイプを拡大", exitLabel: "拡大表示を終了", openLabel: "Figmaでプロトタイプを開く", frameTitle: "CoveのFigmaインタラクティブプロトタイプ", url: "https://www.figma.com/proto/XFASIQspeYQqV045ZIc53S/prototype?node-id=286-1171&scaling=scale-down&content-scaling=fixed&starting-point-node-id=286%3A1171" },
     journey: {
       label: "説明用ユーザージャーニー", title: "ストーリーボードは想定した流れを説明するもので、学業成果の証拠ではありません。", body: "選んだ場面は、始める前の迷い、小さなタスク入力、共同での集中、気が散る前の間、その後の振り返りを示します。成績が上がる場面はデザイン上の物語であり、測定結果ではありません。", status: "説明用ストーリーボード · 測定結果ではありません",
       frames: [

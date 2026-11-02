@@ -1786,6 +1786,9 @@ window.PORTFOLIO_PROJECTS = [
         title: "Explore the complete Cove flow in Figma.",
         body:
           "The prototype includes onboarding, tasks, Focus Room, lockout and affirmation states, pet dress-up and playground, home, account and reflection flows.",
+        interactLabel: "Click inside the prototype to use Cove directly on this page.",
+        focusLabel: "Focus the prototype",
+        exitLabel: "Exit focus view",
         openLabel: "Open prototype in Figma",
         frameTitle: "Interactive Cove Figma prototype",
         url: "https://www.figma.com/proto/XFASIQspeYQqV045ZIc53S/prototype?node-id=286-1171&scaling=scale-down&content-scaling=fixed&starting-point-node-id=286%3A1171",

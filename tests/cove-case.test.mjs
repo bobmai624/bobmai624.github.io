@@ -49,6 +49,13 @@ test("Cove publishes the prototype, two videos, the report and design-history ev
   assert.equal(cove.sources.filter((source) => source.href.endsWith(".pdf")).length, 2);
   const caseHtml = CaseComponents.coveStudy(cove);
   assert.match(caseHtml, /figma\.com\/embed\?embed_host=share/);
+  assert.match(caseHtml, /data-cove-prototype-focus/);
+  assert.match(caseHtml, /data-cove-prototype-stage/);
+  assert.match(caseHtml, /data-cove-prototype-exit/);
+  assert.match(caseHtml, /data-cove-prototype-iframe/);
+  assert.match(caseHtml, /tabindex="0"/);
+  assert.match(caseHtml, /allow="fullscreen; clipboard-read; clipboard-write"/);
+  assert.match(caseHtml, new RegExp(cove.coveStudy.prototype.interactLabel));
   assert.equal((caseHtml.match(/<video /g) || []).length, 2);
 
   const publicPaths = [
@@ -75,6 +82,9 @@ test("Cove has equivalent English, Chinese and Japanese case structures", () => 
     assert.equal(project.sections.length, 3);
     assert.equal(project.coveStudy.features.length, 6);
     assert.equal(project.coveStudy.evaluation.tasks.length, 5);
+    assert.ok(project.coveStudy.prototype.interactLabel?.trim(), `${language} prototype interaction label is missing`);
+    assert.ok(project.coveStudy.prototype.focusLabel?.trim(), `${language} prototype focus label is missing`);
+    assert.ok(project.coveStudy.prototype.exitLabel?.trim(), `${language} prototype exit label is missing`);
     for (const key of ["context", "ownership", "contribution", "evidence", "outcome", "limitation"]) {
       assert.ok(facts?.[key]?.trim(), `${language} Cove caseFacts.${key} is missing`);
     }

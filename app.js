@@ -54,6 +54,7 @@
   let lastGameTrigger = null;
   let lastResumeTrigger = null;
   let lastContactTrigger = null;
+  let lastCovePrototypeTrigger = null;
 
   const projectIndex = (id) => orderedProjects.findIndex((project) => project.id === id);
   const catalogueIndex = (id) => baseProjects.findIndex((project) => project.id === id);
@@ -212,6 +213,7 @@
 
   function setLanguage(language) {
     const readingPosition = captureReadingPosition();
+    closeCovePrototypeFocus({ restoreFocus: false });
     currentLanguage = supportedLanguages.includes(language) ? language : "en";
     const content = languageContent[currentLanguage] || languageContent.en;
     currentUi = content.ui;
@@ -994,6 +996,7 @@
   }
 
   function hideProject() {
+    closeCovePrototypeFocus({ restoreFocus: false });
     hideGame();
     caseStudy.hidden = true;
     caseContent.innerHTML = "";
@@ -1070,6 +1073,29 @@
     if (restoreFocus && lastGameTrigger) {
       lastGameTrigger.focus({ preventScroll: true });
     }
+  }
+
+  function openCovePrototypeFocus(trigger) {
+    const section = trigger?.closest(".cove-prototype");
+    const stage = section?.querySelector("[data-cove-prototype-stage]");
+    if (!stage) return;
+    lastCovePrototypeTrigger = trigger;
+    stage.classList.add("is-focused");
+    trigger.setAttribute("aria-expanded", "true");
+    document.body.classList.add("prototype-focus-open");
+    focusWhenReady(stage.querySelector("[data-cove-prototype-exit]"));
+  }
+
+  function closeCovePrototypeFocus({ restoreFocus = true } = {}) {
+    const stage = document.querySelector("[data-cove-prototype-stage].is-focused");
+    if (!stage) return false;
+    stage.classList.remove("is-focused");
+    document.body.classList.remove("prototype-focus-open");
+    lastCovePrototypeTrigger?.setAttribute("aria-expanded", "false");
+    if (restoreFocus && lastCovePrototypeTrigger?.isConnected) {
+      focusWhenReady(lastCovePrototypeTrigger);
+    }
+    return true;
   }
 
   function openResume(trigger = null, updateHistory = true) {
@@ -1268,6 +1294,20 @@
       frame.innerHTML = caseComponents.playableFrame(stage.dataset.inlineGame, currentUi.playGameTitle);
       stage.classList.add("is-active");
       frame.querySelector("iframe")?.focus({ preventScroll: true });
+      return;
+    }
+
+    const covePrototypeFocus = event.target.closest("[data-cove-prototype-focus]");
+    if (covePrototypeFocus) {
+      event.preventDefault();
+      openCovePrototypeFocus(covePrototypeFocus);
+      return;
+    }
+
+    const covePrototypeExit = event.target.closest("[data-cove-prototype-exit]");
+    if (covePrototypeExit) {
+      event.preventDefault();
+      closeCovePrototypeFocus();
     }
   });
 
@@ -1279,6 +1319,7 @@
 
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
+      if (closeCovePrototypeFocus()) return;
       if (!gameView.hidden) closeGame();
       else if (!caseStudy.hidden) closeProject();
       else if (!resumeView.hidden) closeResume();
