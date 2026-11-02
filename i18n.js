@@ -1214,7 +1214,7 @@ Object.assign(window.PORTFOLIO_I18N.en.site, {
   resumeContactDescription: "My UX internship and earlier design roles are documented in the web résumé. Client work remains private where public project evidence is unavailable.",
   archiveNumber: "04 / Archive",
   archiveTitle: "Archive",
-  archiveDescription: "Twelve supporting projects, grouped by practice area.",
+  archiveDescription: "Thirteen supporting projects, grouped by practice area.",
   resumeSummary: "UX Design student at the University of Melbourne with experience in user research, interaction design, graphic design, market analysis and customer-facing retail. Skilled in Figma prototyping, usability evaluation and cross-functional communication.",
   educationTwoDate: "2025 · One month",
   educationThreeDate: "2026 · Short term",
@@ -1274,7 +1274,7 @@ Object.assign(window.PORTFOLIO_I18N.zh.site, {
   aboutParagraphOne: "我是麦博文，墨尔本大学用户体验设计学生。我规划研究、制作交互原型，并把证据转化为设计决策。",
   aboutParagraphTwo: "我的作品横跨对话式人工智能、可玩系统、财务建模与身体性研究。我最关注如何把复杂问题转化为可以测试的内容。",
   resumeContactNumber: "04 / 简历与联系", resumeContactTitle: "把专业经历放回具体语境。", resumeContactDescription: "我的用户体验实习与早期设计经历记录在网页版简历中；没有公开项目证据的客户工作继续保持私密。",
-  archiveNumber: "04 / 项目档案", archiveTitle: "项目档案", archiveDescription: "十二个辅助项目按实践方向分类整理。",
+  archiveNumber: "04 / 项目档案", archiveTitle: "项目档案", archiveDescription: "十三个辅助项目按实践方向分类整理。",
   resumeSummary: "墨尔本大学用户体验设计学生，具备用户研究、交互设计、平面设计、市场分析与零售服务经验，熟悉 Figma 原型、可用性评估与跨职能沟通。",
   educationTwoDate: "2025 · 一个月", educationThreeDate: "2026 · 短期", printResume: "打印 / 存为 PDF",
   resumeFooterNote: "网页版简历是当前版本；可使用打印按钮保存 PDF。",
@@ -1330,7 +1330,7 @@ Object.assign(window.PORTFOLIO_I18N.ja.site, {
   aboutParagraphOne: "Bowen Maiです。メルボルン大学でUXデザインを学び、調査を計画し、インタラクションを試作し、根拠を設計判断へ変換します。",
   aboutParagraphTwo: "会話AI、プレイ可能なシステム、財務モデリング、身体的リサーチを横断し、複雑な問いを検証可能にすることに関心があります。",
   resumeContactNumber: "04 / 履歴書・連絡", resumeContactTitle: "実務経験を文脈とともに。", resumeContactDescription: "UXインターンと以前のデザイン実務はウェブ履歴書に記載しています。公開できる証拠がないクライアント業務は非公開とします。",
-  archiveNumber: "04 / アーカイブ", archiveTitle: "アーカイブ", archiveDescription: "12件の補助プロジェクトを分野ごとに整理しています。",
+  archiveNumber: "04 / アーカイブ", archiveTitle: "アーカイブ", archiveDescription: "13件の補助プロジェクトを分野ごとに整理しています。",
   resumeSummary: "メルボルン大学でUXデザインを学び、ユーザー調査、インタラクション、グラフィック、マーケット分析、販売実務を経験。Figma試作、ユーザビリティ評価、部門横断コミュニケーションを扱います。",
   educationTwoDate: "2025 · 1か月", educationThreeDate: "2026 · 短期", printResume: "印刷 / PDF保存",
   resumeFooterNote: "ウェブ履歴書が現行版です。印刷ボタンからPDFとして保存できます。",
@@ -1584,7 +1584,7 @@ Object.assign(window.PORTFOLIO_I18N.ja.site, {
 
 window.PORTFOLIO_I18N.en.projects = window.PORTFOLIO_I18N.en.projects || {};
 if (window.PORTFOLIO_PROJECTS) {
-  for (const id of ["ai-for-education", "tidyteddy", "linghang"]) {
+  for (const id of ["ai-for-education", "tidyteddy", "linghang", "cove"]) {
     const project = window.PORTFOLIO_PROJECTS.find((item) => item.id === id);
     window.PORTFOLIO_I18N.en.projects[id] = {
       title: project.title,
@@ -1599,6 +1599,7 @@ if (window.PORTFOLIO_PROJECTS) {
       ...(project.educationStudy ? { educationStudy: JSON.parse(JSON.stringify(project.educationStudy)) } : {}),
       ...(project.tidyTeddyStudy ? { tidyTeddyStudy: JSON.parse(JSON.stringify(project.tidyTeddyStudy)) } : {}),
       ...(project.linghangStudy ? { linghangStudy: JSON.parse(JSON.stringify(project.linghangStudy)) } : {}),
+      ...(project.coveStudy ? { coveStudy: JSON.parse(JSON.stringify(project.coveStudy)) } : {}),
     };
     window.PORTFOLIO_I18N.en.caseFacts[id] = { ...project.caseFacts };
   }
@@ -2222,6 +2223,152 @@ window.PORTFOLIO_I18N.ja.projects.linghang.linghangStudy = {
   },
 };
 
+window.PORTFOLIO_I18N.zh.projects.cove = {
+  title: "Cove：让下一个有意识的选择更容易",
+  displayTitle: "Cove：<wbr /><span class=\"title-phrase\">让下一个</span><wbr /><span class=\"title-phrase\">有意识的选择</span><wbr /><span class=\"title-phrase\">更容易</span>",
+  shortTitle: "Cove",
+  kicker: "UI/UX 设计 · 行为改变交互",
+  summary: "这是 INFO30008 课程中的七人小组项目。我们探索虚拟伙伴能否帮助学生开始学业任务、与他人共同专注，并在无意识刷手机前稍作停顿。",
+  meaning: "Cove 并不试图彻底阻止刷手机，而是关注当任务显得模糊或困难时，界面怎样让下一个有意识的选择更容易。",
+  role: "小组项目 · 我的个人工作包括 Alex 用户画像与任务情境、one sec 先例研究、交互原理、线框方向、参与者评估和改进建议。",
+  methods: ["访谈综合", "用户画像与任务情境", "交互原型", "Figma", "基于情境的可用性测试", "SUS"],
+  sections: [
+    { eyebrow: "研究问题", title: "在分心成为自动动作之前提供支持", body: "团队研究学生为什么会推迟困难的学业任务，以及社交支持、小步开始和有目的的摩擦如何提供帮助。我们把研究转化为任务系统、共享专注空间、虚拟宠物和简短的锁定干预。" },
+    { eyebrow: "原型", title: "把计划、专注和反思连接成一个过程", body: "Figma 原型从引导和任务创建进入共享专注空间。宠物互动和简短反思让进度可见，锁定流程则在用户重新打开干扰应用之前加入短暂停顿。" },
+    { eyebrow: "评估", title: "保留有帮助的结构，但不强迫所有人采用同一种动力", body: "11 名参与者完成五个情境任务和系统可用性量表。测试支持更清楚的任务入口与灵活的专注方式，也表明强制反思和宠物奖励并不适合所有人。" },
+  ],
+  coveStudy: {
+    labels: { productFlow: "产品流程", participants: "参与者", universityStudents: "大学生", highSchoolStudents: "高中毕业年级学生", sus: "系统可用性量表", evidenceBoundaries: "证据边界", projectVideos: "项目视频" },
+    opening: {
+      label: "项目问题",
+      title: "我们怎样帮助学生从想做，走向一个可完成的第一步？",
+      body: "Cove 从一个常见的落差开始：学生知道任务重要，却仍然很难开始。小组探索了一个结合任务拆分、社交专注、虚拟伙伴和刷手机前短暂干预的支持系统。",
+      note: "这是七人大学小组项目。本案例会把小组共同成果与我的个人设计和评估工作分开说明。",
+    },
+    richPicture: {
+      src: "assets/projects/cove/rich-picture.png",
+      alt: "梳理学生拖延相关人物、压力、行为和数字系统的丰富图",
+      caption: "研究综合 · 丰富图把学业压力、任务不确定性、社交情境和习惯性手机使用连接在一起。",
+    },
+    contribution: {
+      label: "我的贡献",
+      title: "我把一个用户情境从研究证据推进为可以测试的交互决定。",
+      body: "我的个人部分聚焦 Alex——“不确定的开始者”。我撰写用户画像与任务情境，研究 one sec 如何用有目的的摩擦打断自动行为，发展可供性、反馈和用户控制的设计逻辑，提出线框图，并通过一名参与者评估流程后记录改进方向。",
+      items: [
+        { title: "界定情境", body: "把小组研究转化为 Alex 的不确定感、回避模式和对小步开始的需要。" },
+        { title: "研究先例", body: "通过 one sec 分析短暂停顿如何打断自动动作，同时保留用户控制。" },
+        { title: "形成可测试方案", body: "把情境转化为线框、任务步骤、反馈状态和参与者评估。" },
+        { title: "谨慎改进", body: "让提示保持简短，让反思可以跳过，也不把宠物当作所有人都适用的动力。" },
+      ],
+    },
+    features: [
+      { title: "创建可完成的任务", body: "添加任务、估算投入，并选择一个更小的第一步。", src: "assets/projects/cove/feature-add-task.png", alt: "Cove 任务创建界面" },
+      { title: "进入专注空间", body: "与朋友一起学习；当社交存在会造成干扰时，也可以选择私人模式。", src: "assets/projects/cove/feature-focus-room.png", alt: "Cove 共享专注空间界面" },
+      { title: "照顾虚拟伙伴", body: "完成进度可以解锁轻量的宠物互动，作为可选的情绪奖励。", src: "assets/projects/cove/feature-pet-playground.png", alt: "Cove 虚拟宠物游乐场界面" },
+      { title: "进行简短反思", body: "简短回顾帮助用户注意变化，同时避免把反思变成另一个大任务。", src: "assets/projects/cove/feature-reflection.png", alt: "Cove 专注后的反思界面" },
+      { title: "重新打开前先停一下", body: "锁定提示创造一个短暂时刻，让用户重新考虑是否要回到干扰应用。", src: "assets/projects/cove/feature-lockout.png", alt: "Cove 锁定干预界面" },
+      { title: "回看使用模式", body: "账户与进度页面让过去活动可见，但不会把界面包装成行为诊断。", src: "assets/projects/cove/feature-account.png", alt: "Cove 账户与进度界面" },
+    ],
+    prototype: {
+      label: "交互原型", title: "在 Figma 中体验完整的 Cove 流程。", body: "原型包含引导、任务、专注空间、锁定与肯定反馈、宠物换装与游乐场、主页、账户和反思流程。", openLabel: "在 Figma 中打开原型", frameTitle: "Cove Figma 交互原型",
+      url: "https://www.figma.com/proto/XFASIQspeYQqV045ZIc53S/prototype?node-id=286-1171&scaling=scale-down&content-scaling=fixed&starting-point-node-id=286%3A1171",
+    },
+    journey: {
+      label: "示意用户旅程", title: "故事板说明预期过程，但不是学业成果的证据。", body: "这些选定画面展示 Cove 在日常中的设想用法：开始前的不确定、较小的任务入口、社交专注、分心前的停顿和事后反思。分数提升的情节属于设计叙事，并不是测量结果。", status: "示意故事板 · 不是测量结果",
+      frames: [
+        { src: "assets/projects/cove/journey-01.png", alt: "学生在开始学业任务前犹豫", caption: "01 · 一项任务很难开始。" },
+        { src: "assets/projects/cove/journey-03.png", alt: "学生在 Cove 中创建任务", caption: "02 · 把任务转化为更小的第一步。" },
+        { src: "assets/projects/cove/journey-05.png", alt: "学生加入社交专注时段", caption: "03 · 专注空间提供安静的社交存在。" },
+        { src: "assets/projects/cove/journey-08.png", alt: "手机使用中的 Cove 锁定干预", caption: "04 · 有目的的摩擦打断自动返回。" },
+        { src: "assets/projects/cove/journey-10.png", alt: "Cove 故事板中的示意最终结果", caption: "05 · 故事以示意结果结束，而不是实测证据。" },
+      ],
+    },
+    evaluation: {
+      label: "可用性评估", title: "11 名参与者完成了相同的五个情境。", body: "样本包括 9 名大学生和 2 名高中毕业年级学生，年龄为 18–24 岁。参与者完成情境任务、讨论体验，最后填写系统可用性量表。", totalParticipants: 11, universityStudents: 9, highSchoolStudents: 2, sus: "84.58",
+      tasks: ["完成引导并理解 Cove 的用途", "创建和整理一项学业任务", "开始并完成一次专注空间时段", "使用宠物游乐场和奖励功能", "回应锁定干预，并选择继续或离开"],
+      limitations: ["参与者来自朋友网络，样本不能代表所有学生。", "主持人的提示可能帮助部分参与者完成了情境。", "所有人都按固定顺序完成任务，可能出现学习效应。", "SUS 84.58 描述感知可用性，不能证明刷手机减少或学业成绩提高。"],
+    },
+    findings: {
+      label: "测试带来的改变", title: "下一轮会保留选择，并减少强制步骤。", body: "评估的价值在于，它既指出概念容易理解的地方，也指出原先的动力模型过于单一。",
+      items: [
+        { title: "降低开始门槛", body: "任务创建应支持一个非常小的第一步，即使用户没有填写全部计划信息也仍然可用。" },
+        { title: "提供公开与私人专注", body: "社交存在可以提供帮助，但容易被共享空间干扰或感到不自在的学生也需要私人模式。" },
+        { title: "让反思保持可选", body: "更短、可跳过的反思能在完成高强度专注后保护使用连续性。" },
+        { title: "把宠物奖励作为一种选择", body: "有些参与者喜欢虚拟伙伴，也有人不喜欢。系统不应依赖单一奖励方式。" },
+        { title: "谨慎使用摩擦", body: "锁定提示应简短、透明，帮助决定，而不是成为新的挫折来源。" },
+      ],
+    },
+    poster: { src: "assets/projects/cove/design-history-poster.jpg", alt: "完整 Cove A2 设计历史海报", caption: "完整设计历史海报 · 研究、概念发展、原型与评估。" },
+  },
+};
+
+window.PORTFOLIO_I18N.ja.projects.cove = {
+  title: "Cove：次の意図的な選択をしやすくする",
+  displayTitle: "Cove：<wbr /><span class=\"title-phrase\">次の意図的な</span><wbr /><span class=\"title-phrase\">選択を</span><wbr /><span class=\"title-phrase\">しやすくする</span>",
+  shortTitle: "Cove",
+  kicker: "UI/UXデザイン · 行動変容インタラクション",
+  summary: "INFO30008で取り組んだ7人のグループプロジェクトです。仮想の相棒を通じて、学生が課題を始め、ほかの人と集中し、予定外のスクロールを始める前に立ち止まれるかを検討しました。",
+  meaning: "Coveはスクロールを完全に止めることを目指していません。課題が曖昧または難しく感じられるとき、次の意図的な選択をしやすくする方法を考えました。",
+  role: "グループプロジェクト · 個人では、Alexのペルソナとタスクシナリオ、one secの先行事例、インタラクションの根拠、ワイヤーフレームの方向性、参加者評価、改善案を担当しました。",
+  methods: ["インタビュー統合", "ペルソナとタスクシナリオ", "インタラクション試作", "Figma", "シナリオ型ユーザビリティテスト", "SUS"],
+  sections: [
+    { eyebrow: "研究課題", title: "気が散る行動が自動化する前の瞬間を支える", body: "学生が難しい課題を先延ばしにする理由と、社会的支援、小さな第一歩、意図的な摩擦がどう役立つかを調べました。その結果を、タスク管理、共有フォーカスルーム、仮想ペット、短いロックアウト介入へつなげました。" },
+    { eyebrow: "プロトタイプ", title: "計画、集中、振り返りを一つの流れにする", body: "Figmaプロトタイプは、オンボーディングとタスク作成から共有フォーカスルームへ進みます。ペットとの交流と短い振り返りで進捗を見えるようにし、ロックアウトでは気が散るアプリを再び開く前に短い間をつくります。" },
+    { eyebrow: "評価", title: "役立つ構造を残しながら、一つの動機づけを強制しない", body: "11人が五つのシナリオとシステムユーザビリティ尺度を完了しました。明確なタスク開始と柔軟な集中方法は支持されましたが、必須の振り返りとペット報酬が全員に合うわけではないことも分かりました。" },
+  ],
+  coveStudy: {
+    labels: { productFlow: "プロダクトの流れ", participants: "参加者", universityStudents: "大学生", highSchoolStudents: "高校最終学年", sus: "システムユーザビリティ尺度", evidenceBoundaries: "証拠の範囲", projectVideos: "プロジェクト動画" },
+    opening: {
+      label: "プロジェクトの問い", title: "「やろうと思う」状態から、実行できる第一歩へ移るには何が必要か。", body: "Coveは、課題が重要だと分かっていても始められないという身近なずれから出発しました。タスクの分解、共同での集中、仮想の相棒、スクロール前の短い介入を組み合わせた支援を検討しました。", note: "大学の7人グループプロジェクトです。このケースでは、共同成果と私個人の設計・評価担当を分けて記載します。",
+    },
+    richPicture: { src: "assets/projects/cove/rich-picture.png", alt: "学生の先延ばしに関わる人、圧力、行動、デジタル環境を整理したリッチピクチャー", caption: "調査の統合 · 学業上の圧力、課題の不確かさ、社会的状況、習慣的なスマートフォン利用を結びつけました。" },
+    contribution: {
+      label: "自分の担当", title: "一つの利用状況を、調査の根拠から検証できるインタラクションへ進めました。", body: "個人パートでは「始め方に迷うAlex」に焦点を当てました。ペルソナとシナリオを作成し、one secによる意図的な摩擦を調べ、アフォーダンス、フィードバック、ユーザーコントロールの考え方を整理しました。ワイヤーフレームを提案し、参加者一人で流れを評価して改善案を記録しました。",
+      items: [
+        { title: "状況を定義する", body: "共同調査を、Alexの迷い、回避パターン、小さな第一歩の必要性へ置き換えました。" },
+        { title: "先行事例を調べる", body: "one secを通じて、ユーザーの選択を残しながら短い間が自動的な行動をどう中断するかを検討しました。" },
+        { title: "検証できる形にする", body: "シナリオを、ワイヤーフレーム、タスク手順、フィードバック状態、参加者評価へ変えました。" },
+        { title: "慎重に改善する", body: "提示を簡潔にし、振り返りを任意にし、ペットを誰にでも通用する動機として扱わない方針を示しました。" },
+      ],
+    },
+    features: [
+      { title: "実行できるタスクを作る", body: "タスクを追加し、必要な時間を見積もり、より小さな第一歩を選びます。", src: "assets/projects/cove/feature-add-task.png", alt: "Coveのタスク作成画面" },
+      { title: "フォーカスルームに入る", body: "友人と一緒に取り組めます。人の存在が気になる場合は、個人モードも選べます。", src: "assets/projects/cove/feature-focus-room.png", alt: "Coveの共有フォーカスルーム画面" },
+      { title: "相棒の世話をする", body: "進捗に応じて、任意の感情的な報酬として軽いペット交流を利用できます。", src: "assets/projects/cove/feature-pet-playground.png", alt: "Coveの仮想ペット広場画面" },
+      { title: "短く振り返る", body: "短い確認で変化に気づけるようにし、振り返り自体が大きな作業にならないようにします。", src: "assets/projects/cove/feature-reflection.png", alt: "Coveの集中後の振り返り画面" },
+      { title: "再び開く前に立ち止まる", body: "ロックアウトの提示によって、気が散るアプリへ戻るかどうかを考える短い時間をつくります。", src: "assets/projects/cove/feature-lockout.png", alt: "Coveのロックアウト介入画面" },
+      { title: "利用パターンを見直す", body: "アカウントと進捗画面で過去の活動を見えるようにしますが、行動を診断するとは主張しません。", src: "assets/projects/cove/feature-account.png", alt: "Coveのアカウントと進捗画面" },
+    ],
+    prototype: { label: "インタラクティブプロトタイプ", title: "FigmaでCoveの全体フローを確認できます。", body: "オンボーディング、タスク、フォーカスルーム、ロックアウトと肯定的フィードバック、ペットの着せ替えと広場、ホーム、アカウント、振り返りを含みます。", openLabel: "Figmaでプロトタイプを開く", frameTitle: "CoveのFigmaインタラクティブプロトタイプ", url: "https://www.figma.com/proto/XFASIQspeYQqV045ZIc53S/prototype?node-id=286-1171&scaling=scale-down&content-scaling=fixed&starting-point-node-id=286%3A1171" },
+    journey: {
+      label: "説明用ユーザージャーニー", title: "ストーリーボードは想定した流れを説明するもので、学業成果の証拠ではありません。", body: "選んだ場面は、始める前の迷い、小さなタスク入力、共同での集中、気が散る前の間、その後の振り返りを示します。成績が上がる場面はデザイン上の物語であり、測定結果ではありません。", status: "説明用ストーリーボード · 測定結果ではありません",
+      frames: [
+        { src: "assets/projects/cove/journey-01.png", alt: "学業課題を始める前に迷う学生", caption: "01 · 課題を始めにくい状態。" },
+        { src: "assets/projects/cove/journey-03.png", alt: "Coveでタスクを作る学生", caption: "02 · タスクをより小さな第一歩へ変える。" },
+        { src: "assets/projects/cove/journey-05.png", alt: "共同フォーカスセッションに参加する学生", caption: "03 · 静かな社会的存在を利用できる。" },
+        { src: "assets/projects/cove/journey-08.png", alt: "スマートフォン利用中のCoveロックアウト介入", caption: "04 · 意図的な摩擦が自動的な戻りを中断する。" },
+        { src: "assets/projects/cove/journey-10.png", alt: "Coveストーリーボードの説明用最終結果", caption: "05 · 測定証拠ではなく、説明用の結果で物語を閉じる。" },
+      ],
+    },
+    evaluation: {
+      label: "ユーザビリティ評価", title: "11人が同じ五つのシナリオを完了しました。", body: "18〜24歳の大学生9人と高校最終学年2人が参加しました。シナリオ課題を行い、体験について話した後、システムユーザビリティ尺度に回答しました。", totalParticipants: 11, universityStudents: 9, highSchoolStudents: 2, sus: "84.58",
+      tasks: ["オンボーディングを終え、Coveの目的を理解する", "学業タスクを作成して整理する", "フォーカスルームを開始して完了する", "ペット広場と報酬機能を使う", "ロックアウト介入に応答し、続けるか離れるかを選ぶ"],
+      limitations: ["参加者は友人関係から募集したため、すべての学生を代表しません。", "進行役の提示が、一部の参加者のシナリオ完了を助けた可能性があります。", "全員が固定順序で課題を行ったため、学習効果が生じた可能性があります。", "SUS 84.58は知覚された使いやすさを示しますが、スクロールの減少や成績向上は証明しません。"],
+    },
+    findings: {
+      label: "評価後の変更点", title: "次の反復では選択肢を残し、必須の手順を減らします。", body: "評価からは、理解されやすい部分だけでなく、当初の動機づけが狭すぎた部分も見えてきました。",
+      items: [
+        { title: "開始の負担を下げる", body: "非常に小さな第一歩を設定でき、すべての計画項目を入力しなくても使えるタスク作成にします。" },
+        { title: "公開と個人の集中を選べるようにする", body: "社会的な存在が役立つ場合もありますが、共有ルームを負担に感じる学生には個人モードが必要です。" },
+        { title: "振り返りを任意にする", body: "短く、飛ばせる振り返りにすることで、負荷の高い集中後も流れを保てます。" },
+        { title: "ペット報酬を選択肢の一つにする", body: "相棒を好む参加者も、好まない参加者もいました。一つの報酬方法に依存しない設計が必要です。" },
+        { title: "摩擦を控えめに使う", body: "ロックアウト提示は簡潔で透明にし、いらだちを増やさず判断を支えるものにします。" },
+      ],
+    },
+    poster: { src: "assets/projects/cove/design-history-poster.jpg", alt: "CoveのA2デザイン履歴ポスター全体", caption: "デザイン履歴ポスター · 調査、コンセプト展開、プロトタイプ、評価。" },
+  },
+};
+
 Object.assign(window.PORTFOLIO_I18N.zh.caseFacts, {
   "ai-for-education": {
     context: "大学研究助理工作 · AI 辅助教育与学生课程体验",
@@ -2248,6 +2395,14 @@ Object.assign(window.PORTFOLIO_I18N.zh.caseFacts, {
     evidence: "分阶段数据 SOP、19 份岗位研究表格文件、职业路径研究计划、地区分工数据、本地简历与个案规划原型、招聘文案和内部业务复盘",
     outcome: "工作把数据来源、人工检查点和团队交接写清楚。雇主证据不足以支持稳定、可重复的业务时，团队也据此记录并停止了蓝领担保方向。",
     limitation: "该岗位仍在继续，因此本案例只收录提交前已完成的工作。数据规模只描述现有工作材料，不代表有效线索、成功联系或商业成果。公开案例不包含候选人、雇主、合同和身份证明等私人资料。",
+  },
+  cove: {
+    context: "INFO30008 交互技术项目 · 小组 UI/UX 原型",
+    ownership: "七人团队；研究综合、概念发展、原型与评估共同完成",
+    contribution: "我完成 Alex‘不确定的开始者’用户画像与情境，研究 one sec，梳理交互逻辑和线框方向，评估一名参与者的流程并提出改进。",
+    evidence: "Figma 交互原型、11 名参与者、5 个任务情境、SUS 84.58、两段视频、小组报告与 A2 设计历史海报",
+    outcome: "评估支持更清楚的任务入口和灵活的专注方式，也表明强制反思和宠物奖励并不适合所有人。",
+    limitation: "朋友网络抽样、主持提示和固定任务顺序限制了结果。SUS 衡量感知可用性，不能证明刷手机减少或学业成绩提高。",
   },
 });
 
@@ -2277,5 +2432,13 @@ Object.assign(window.PORTFOLIO_I18N.ja.caseFacts, {
     evidence: "段階別データSOP、求人調査用の表計算ファイル19点、職業経路の調査計画、地域振り分けデータ、履歴書・案件整理のローカル試作、求人文、社内事業振り返り",
     outcome: "データの取得元、人による確認、チームへの引き渡しを明示しました。雇用主側の証拠が安定した反復サービスを支えない場合は、ブルーカラー人材のスポンサー支援を停止する判断も記録しました。",
     limitation: "現在も続く業務のため、この事例では提出前に完了した仕事だけを扱います。データ件数は作業資料の規模であり、確認済みの見込み先、連絡成功、事業成果ではありません。候補者、雇用主、契約、身分証明に関する非公開資料は掲載しません。",
+  },
+  cove: {
+    context: "INFO30008 Interactive Technology Project · グループUI/UXプロトタイプ",
+    ownership: "7人チーム。調査の統合、コンセプト、試作、評価は共同で行いました。",
+    contribution: "Alexの「始め方に迷う人」というペルソナとシナリオ、one secの調査、インタラクションの根拠とワイヤーフレームの方向性、参加者一人の評価、改善案を担当しました。",
+    evidence: "Figmaインタラクティブプロトタイプ、参加者11人、五つのタスクシナリオ、SUS 84.58、動画2本、グループ報告書、A2デザイン履歴ポスター",
+    outcome: "明確なタスク開始と柔軟な集中方法は支持されましたが、必須の振り返りとペット報酬が全員には合わないことも分かりました。",
+    limitation: "友人関係からの募集、進行役の提示、固定されたタスク順序が結果を制限します。SUSは知覚された使いやすさを測るもので、スクロール減少や成績向上を証明しません。",
   },
 });

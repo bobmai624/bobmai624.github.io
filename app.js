@@ -906,6 +906,7 @@
       project.educationStudy ? "case-article--education" : "",
       project.tidyTeddyStudy ? "case-article--tidyteddy" : "",
       project.linghangStudy ? "case-article--linghang-study" : "",
+      project.coveStudy ? "case-article--cove" : "",
     ]
       .filter(Boolean)
       .join(" ");
@@ -921,6 +922,8 @@
             ? caseComponents.tidyTeddyStudy(project)
             : project.linghangStudy
               ? caseComponents.linghangStudy(project)
+              : project.coveStudy
+                ? caseComponents.coveStudy(project)
               : defaultCaseStoryMarkup(project);
 
     caseStudy.dataset.projectId = project.id;

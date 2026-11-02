@@ -479,5 +479,149 @@
       </div>`;
   }
 
-  window.CaseComponents = { playableStage, playableFrame, tidyTeddyStudy, educationStudy, linghangStudy };
+  function coveStudy(project) {
+    const study = project?.coveStudy;
+    if (!study) return "";
+    const videos = (project.media || []).filter((item) => item.type === "video");
+    const prototypeEmbedUrl = `https://www.figma.com/embed?embed_host=share&url=${encodeURIComponent(study.prototype.url)}`;
+
+    return `
+      <div class="cove-study">
+        <section class="cove-opening" aria-labelledby="cove-opening-heading">
+          <div>
+            <p>${escapeHtml(study.opening.label)}</p>
+            <h2 id="cove-opening-heading">${escapeHtml(study.opening.title)}</h2>
+            <p>${escapeHtml(study.opening.body)}</p>
+          </div>
+          <p class="cove-boundary-note">${escapeHtml(study.opening.note)}</p>
+        </section>
+
+        <figure class="cove-rich-picture">
+          <a href="${escapeHtml(study.richPicture.src)}" target="_blank" rel="noreferrer">
+            <img src="${escapeHtml(study.richPicture.src)}" alt="${escapeHtml(study.richPicture.alt)}" loading="lazy" decoding="async" />
+          </a>
+          <figcaption>${escapeHtml(study.richPicture.caption)}</figcaption>
+        </figure>
+
+        <section class="cove-contribution" aria-labelledby="cove-contribution-heading">
+          <header>
+            <p>${escapeHtml(study.contribution.label)}</p>
+            <div>
+              <h2 id="cove-contribution-heading">${escapeHtml(study.contribution.title)}</h2>
+              <p>${escapeHtml(study.contribution.body)}</p>
+            </div>
+          </header>
+          <ol>
+            ${study.contribution.items
+              .map(
+                (item, index) => `
+                  <li>
+                    <span>${String(index + 1).padStart(2, "0")}</span>
+                    <h3>${escapeHtml(item.title)}</h3>
+                    <p>${escapeHtml(item.body)}</p>
+                  </li>`,
+              )
+              .join("")}
+          </ol>
+        </section>
+
+        <section class="cove-features" aria-labelledby="cove-features-heading">
+          <header>
+            <p>${escapeHtml(study.labels.productFlow)}</p>
+            <h2 id="cove-features-heading">${escapeHtml(study.prototype.body)}</h2>
+          </header>
+          <div class="cove-feature-grid">
+            ${study.features
+              .map(
+                (feature, index) => `
+                  <article class="cove-feature">
+                    <figure><img src="${escapeHtml(feature.src)}" alt="${escapeHtml(feature.alt)}" loading="lazy" decoding="async" /></figure>
+                    <div><span>${String(index + 1).padStart(2, "0")}</span><h3>${escapeHtml(feature.title)}</h3><p>${escapeHtml(feature.body)}</p></div>
+                  </article>`,
+              )
+              .join("")}
+          </div>
+        </section>
+
+        <section class="cove-prototype" aria-labelledby="cove-prototype-heading">
+          <header>
+            <p>${escapeHtml(study.prototype.label)}</p>
+            <div>
+              <h2 id="cove-prototype-heading">${escapeHtml(study.prototype.title)}</h2>
+              <p>${escapeHtml(study.prototype.body)}</p>
+              <a href="${escapeHtml(study.prototype.url)}" target="_blank" rel="noreferrer">${escapeHtml(study.prototype.openLabel)} <span aria-hidden="true">↗</span></a>
+            </div>
+          </header>
+          <div class="cove-prototype-frame">
+            <iframe src="${escapeHtml(prototypeEmbedUrl)}" title="${escapeHtml(study.prototype.frameTitle)}" loading="lazy" allowfullscreen></iframe>
+          </div>
+        </section>
+
+        <section class="cove-journey" aria-labelledby="cove-journey-heading">
+          <header>
+            <p>${escapeHtml(study.journey.label)}</p>
+            <div>
+              <h2 id="cove-journey-heading">${escapeHtml(study.journey.title)}</h2>
+              <p>${escapeHtml(study.journey.body)}</p>
+              <span>${escapeHtml(study.journey.status)}</span>
+            </div>
+          </header>
+          <div class="cove-journey-strip">
+            ${study.journey.frames
+              .map(
+                (frame) => `
+                  <figure>
+                    <img src="${escapeHtml(frame.src)}" alt="${escapeHtml(frame.alt)}" loading="lazy" decoding="async" />
+                    <figcaption>${escapeHtml(frame.caption)}</figcaption>
+                  </figure>`,
+              )
+              .join("")}
+          </div>
+        </section>
+
+        <section class="cove-evaluation" aria-labelledby="cove-evaluation-heading">
+          <header>
+            <p>${escapeHtml(study.evaluation.label)}</p>
+            <div><h2 id="cove-evaluation-heading">${escapeHtml(study.evaluation.title)}</h2><p>${escapeHtml(study.evaluation.body)}</p></div>
+          </header>
+          <div class="cove-metrics" aria-label="${escapeHtml(study.evaluation.label)}">
+            <article><strong>${escapeHtml(study.evaluation.totalParticipants)}</strong><span>${escapeHtml(study.labels.participants)}</span></article>
+            <article><strong>${escapeHtml(study.evaluation.universityStudents)}</strong><span>${escapeHtml(study.labels.universityStudents)}</span></article>
+            <article><strong>${escapeHtml(study.evaluation.highSchoolStudents)}</strong><span>${escapeHtml(study.labels.highSchoolStudents)}</span></article>
+            <article><strong>${escapeHtml(study.evaluation.sus)}</strong><span>${escapeHtml(study.labels.sus)}</span></article>
+          </div>
+          <div class="cove-evaluation-body">
+            <ol>${study.evaluation.tasks.map((task, index) => `<li><span>${String(index + 1).padStart(2, "0")}</span><p>${escapeHtml(task)}</p></li>`).join("")}</ol>
+            <aside><h3>${escapeHtml(study.labels.evidenceBoundaries)}</h3><ul>${study.evaluation.limitations.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul></aside>
+          </div>
+        </section>
+
+        <section class="cove-findings" aria-labelledby="cove-findings-heading">
+          <header>
+            <p>${escapeHtml(study.findings.label)}</p>
+            <div><h2 id="cove-findings-heading">${escapeHtml(study.findings.title)}</h2><p>${escapeHtml(study.findings.body)}</p></div>
+          </header>
+          <div>${study.findings.items.map((item, index) => `<article><span>${String(index + 1).padStart(2, "0")}</span><h3>${escapeHtml(item.title)}</h3><p>${escapeHtml(item.body)}</p></article>`).join("")}</div>
+        </section>
+
+        <section class="cove-videos" aria-label="${escapeHtml(study.labels.projectVideos)}">
+          ${videos
+            .map(
+              (video, index) => `
+                <figure>
+                  <video controls preload="metadata" poster="${escapeHtml(video.poster || "")}"><source src="${escapeHtml(video.src)}" type="video/mp4" /></video>
+                  <figcaption><span>${String(index + 1).padStart(2, "0")}</span><p>${escapeHtml(video.caption)}</p></figcaption>
+                </figure>`,
+            )
+            .join("")}
+        </section>
+
+        <figure class="cove-poster">
+          <a href="${escapeHtml(study.poster.src)}" target="_blank" rel="noreferrer"><img src="${escapeHtml(study.poster.src)}" alt="${escapeHtml(study.poster.alt)}" loading="lazy" decoding="async" /></a>
+          <figcaption>${escapeHtml(study.poster.caption)}</figcaption>
+        </figure>
+      </div>`;
+  }
+
+  window.CaseComponents = { playableStage, playableFrame, tidyTeddyStudy, educationStudy, linghangStudy, coveStudy };
 })();

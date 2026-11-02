@@ -9,7 +9,7 @@ function loadWindowScript(path, window = {}) {
   return window;
 }
 
-test("the home model selects four evidence-led cases and archives the remaining twelve", () => {
+test("the home model selects four evidence-led cases and archives the remaining thirteen", () => {
   const window = loadWindowScript("projects.js");
   loadWindowScript("portfolio-model.js", window);
 
@@ -18,11 +18,11 @@ test("the home model selects four evidence-led cases and archives the remaining 
     Array.from(model.selected, (project) => project.id),
     ["ai-for-education", "vita", "signal-aftershock", "financial-feasibility"],
   );
-  assert.equal(model.archive.length, 12);
-  assert.equal(new Set([...model.selected, ...model.archive].map((project) => project.id)).size, 16);
+  assert.equal(model.archive.length, 13);
+  assert.equal(new Set([...model.selected, ...model.archive].map((project) => project.id)).size, 17);
 });
 
-test("the twelve supporting projects are grouped by their existing practice categories", () => {
+test("the thirteen supporting projects are grouped by their existing practice categories", () => {
   const window = loadWindowScript("projects.js");
   loadWindowScript("portfolio-model.js", window);
 
@@ -36,11 +36,12 @@ test("the twelve supporting projects are grouped by their existing practice cate
     Array.from(groups, (group) => group.category.id),
     ["digital-interaction", "ux-research", "visual-editorial", "spatial-material", "strategy"],
   );
-  assert.equal(groups.flatMap((group) => group.projects).length, 12);
+  assert.equal(groups.flatMap((group) => group.projects).length, 13);
   assert.deepEqual(
     Array.from(groups.flatMap((group) => group.projects), (project) => project.id),
     [
       "tidyteddy",
+      "cove",
       "library-evaluation",
       "booking-systems",
       "film-to-book",

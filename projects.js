@@ -1668,6 +1668,190 @@ window.PORTFOLIO_PROJECTS = [
     },
     sources: [],
   },
+  {
+    id: "cove",
+    title: "Cove: Making the Next Intentional Choice Easier",
+    displayTitle: "Cove: Making the Next Intentional Choice Easier",
+    shortTitle: "Cove",
+    kicker: "UI/UX design · behaviour-change interaction",
+    year: "2026",
+    category: "digital-interaction",
+    summary:
+      "A seven-person INFO30008 group project exploring how a virtual companion might help students begin academic work, focus with others and pause before unplanned scrolling.",
+    meaning:
+      "Rather than trying to stop scrolling altogether, Cove asks how an interface can make the next intentional choice easier when a task feels unclear or difficult.",
+    role:
+      "Group project · my individual work included the Alex persona and task scenario, the one sec precedent study, interaction rationale, wireframe direction, participant evaluation and proposed refinements.",
+    methods: [
+      "Interview synthesis",
+      "Persona and task scenario",
+      "Interaction prototyping",
+      "Figma",
+      "Scenario-based usability testing",
+      "SUS",
+    ],
+    cover: {
+      src: "assets/projects/cove/cover-focus-room.jpg",
+      alt: "Two students using the Cove Focus Room interface during the project demonstration",
+    },
+    shareImage: "assets/projects/cove/cover-focus-room.jpg",
+    sections: [
+      {
+        eyebrow: "Research question",
+        title: "Support the moment before distraction becomes automatic",
+        body:
+          "The team studied why students postpone difficult academic tasks and how social support, small starting steps and purposeful friction might help. We translated the research into a task system, shared focus rooms, a virtual pet and a short lockout intervention.",
+      },
+      {
+        eyebrow: "Prototype",
+        title: "Connect planning, focus and reflection in one journey",
+        body:
+          "The Figma prototype moves from onboarding and task creation into a shared focus room. Pet play and short reflections make progress visible, while the lockout flow inserts a brief pause before a user reopens a distracting app.",
+      },
+      {
+        eyebrow: "Evaluation",
+        title: "Keep the helpful structure, but avoid forcing one motivation style",
+        body:
+          "Eleven participants completed five scenarios and the System Usability Scale. The sessions supported clearer task entry and flexible focus options, while also showing that compulsory reflection and pet rewards would not suit everyone.",
+      },
+    ],
+    media: [
+      {
+        type: "video",
+        src: "files/cove/cove-demo-video.mp4",
+        poster: "assets/projects/cove/cover-focus-room.jpg",
+        caption: "Cove demonstration · staged journey through task initiation, Focus Room and the lockout intervention",
+        layout: "wide",
+      },
+      {
+        type: "video",
+        src: "files/cove/cove-project-presentation.mp4",
+        poster: "assets/projects/cove/presentation-poster.jpg",
+        caption: "Project presentation · research framing, design rationale and evaluation",
+        layout: "wide",
+      },
+      {
+        type: "image",
+        src: "assets/projects/cove/design-history-poster.jpg",
+        alt: "Cove design-history poster showing the research, prototype and evaluation journey",
+        caption: "Design-history poster · the complete project journey on one A2 sheet",
+        layout: "wide",
+      },
+    ],
+    coveStudy: {
+      labels: {
+        productFlow: "Product flow",
+        participants: "Participants",
+        universityStudents: "University students",
+        highSchoolStudents: "Final-year secondary students",
+        sus: "System Usability Scale",
+        evidenceBoundaries: "Evidence boundaries",
+        projectVideos: "Project videos",
+      },
+      opening: {
+        label: "Project question",
+        title: "How might we help students move from intention to a manageable first action?",
+        body:
+          "Cove began with a familiar gap: students can know that a task matters and still avoid starting it. Our group explored a supportive system that combines task breakdown, social focus, a virtual companion and a short interruption before unplanned scrolling.",
+        note:
+          "This was a seven-person university group project. The case separates the shared project outcome from my individual design and evaluation contribution.",
+      },
+      richPicture: {
+        src: "assets/projects/cove/rich-picture.png",
+        alt: "Rich picture mapping the people, pressures, behaviours and digital systems around student procrastination",
+        caption: "Research synthesis · a rich picture connected academic pressure, task uncertainty, social context and habitual phone use.",
+      },
+      contribution: {
+        label: "My contribution",
+        title: "I developed one user scenario from research evidence into testable interaction decisions.",
+        body:
+          "My individual section focused on Alex, “The Uncertain Starter”. I wrote the persona and task scenario, examined one sec as a precedent for purposeful friction, developed the affordance, feedback and user-control rationale, proposed wireframes, evaluated the flow with a participant and documented refinements.",
+        items: [
+          { title: "Frame the situation", body: "Translate shared research into Alex’s uncertainty, avoidance pattern and need for a small first step." },
+          { title: "Study a precedent", body: "Use one sec to examine how a deliberate pause can interrupt an automatic action without removing user control." },
+          { title: "Make it testable", body: "Turn the scenario into wireframes, task steps, feedback states and a participant evaluation." },
+          { title: "Refine cautiously", body: "Keep useful prompts concise, allow optional reflection and avoid presenting the pet as a universal motivator." },
+        ],
+      },
+      features: [
+        { title: "Create a manageable task", body: "Add a task, estimate the effort and choose a smaller first action.", src: "assets/projects/cove/feature-add-task.png", alt: "Cove task creation interface" },
+        { title: "Enter a Focus Room", body: "Work alongside friends or use a private room when social presence would be distracting.", src: "assets/projects/cove/feature-focus-room.png", alt: "Cove shared Focus Room interface" },
+        { title: "Care for a companion", body: "Progress unlocks light pet interaction as an optional emotional reward.", src: "assets/projects/cove/feature-pet-playground.png", alt: "Cove virtual pet playground interface" },
+        { title: "Reflect briefly", body: "A short check-in helps users notice what changed without turning reflection into another large task.", src: "assets/projects/cove/feature-reflection.png", alt: "Cove post-focus reflection interface" },
+        { title: "Pause before reopening", body: "A lockout prompt creates a small moment to reconsider an unplanned return to a distracting app.", src: "assets/projects/cove/feature-lockout.png", alt: "Cove lockout intervention interface" },
+        { title: "Review patterns", body: "Account and progress views keep past activity visible without claiming to diagnose behaviour.", src: "assets/projects/cove/feature-account.png", alt: "Cove account and progress interface" },
+      ],
+      prototype: {
+        label: "Interactive prototype",
+        title: "Explore the complete Cove flow in Figma.",
+        body:
+          "The prototype includes onboarding, tasks, Focus Room, lockout and affirmation states, pet dress-up and playground, home, account and reflection flows.",
+        openLabel: "Open prototype in Figma",
+        frameTitle: "Interactive Cove Figma prototype",
+        url: "https://www.figma.com/proto/XFASIQspeYQqV045ZIc53S/prototype?node-id=286-1171&scaling=scale-down&content-scaling=fixed&starting-point-node-id=286%3A1171",
+      },
+      journey: {
+        label: "Illustrative user journey",
+        title: "The storyboard explains the intended sequence; it is not evidence of an academic outcome.",
+        body:
+          "These selected frames show how Cove was imagined in everyday use: uncertainty before starting, a small task entry, social focus, a pause before distraction and a later reflection. The staged grade scene is part of the design narrative, not a measured result.",
+        status: "Illustrative storyboard · not a measured outcome",
+        frames: [
+          { src: "assets/projects/cove/journey-01.png", alt: "Student hesitating before beginning academic work", caption: "01 · A task feels difficult to begin." },
+          { src: "assets/projects/cove/journey-03.png", alt: "Student creating a task in Cove", caption: "02 · The task is translated into a smaller first action." },
+          { src: "assets/projects/cove/journey-05.png", alt: "Student joining a social focus session", caption: "03 · A Focus Room makes quiet social presence available." },
+          { src: "assets/projects/cove/journey-08.png", alt: "Cove lockout intervention during phone use", caption: "04 · Purposeful friction interrupts an automatic return." },
+          { src: "assets/projects/cove/journey-10.png", alt: "Illustrative final student outcome in the Cove storyboard", caption: "05 · The story closes with an illustrative outcome, not measured evidence." },
+        ],
+      },
+      evaluation: {
+        label: "Usability evaluation",
+        title: "Eleven participants worked through the same five scenarios.",
+        body:
+          "The sample included nine university students and two final-year secondary students aged 18–24. Participants completed scenario tasks, discussed their experience and then completed the System Usability Scale.",
+        totalParticipants: 11,
+        universityStudents: 9,
+        highSchoolStudents: 2,
+        sus: "84.58",
+        tasks: [
+          "Complete onboarding and understand Cove’s purpose",
+          "Create and organise an academic task",
+          "Start and complete a Focus Room session",
+          "Use the pet playground and reward features",
+          "Respond to the lockout intervention and continue or leave",
+        ],
+        limitations: [
+          "Participants were recruited through friendship networks, so the sample cannot represent all students.",
+          "Facilitator prompts may have helped some participants complete the scenarios.",
+          "Everyone completed tasks in a fixed order, which may have introduced learning effects.",
+          "SUS 84.58 describes perceived usability; it does not prove reduced scrolling or improved academic performance.",
+        ],
+      },
+      findings: {
+        label: "What the sessions changed",
+        title: "The next iteration would preserve choice and reduce compulsory steps.",
+        body:
+          "The evaluation was useful because it showed where the concept was understandable and where the motivational model was too narrow.",
+        items: [
+          { title: "Lower the starting threshold", body: "Task creation should support a very small first action and remain useful even when users do not complete every planning field." },
+          { title: "Offer public and private focus", body: "Social presence can help, but a private mode is necessary for students who find shared rooms distracting or uncomfortable." },
+          { title: "Keep reflection optional", body: "A shorter, skippable reflection protects continuity when users have already completed a demanding session." },
+          { title: "Treat pet rewards as one option", body: "Some participants enjoyed the companion while others did not. The system should not depend on one reward style." },
+          { title: "Use friction sparingly", body: "The lockout prompt should stay brief and transparent so it supports a decision without becoming another source of frustration." },
+        ],
+      },
+      poster: {
+        src: "assets/projects/cove/design-history-poster.jpg",
+        alt: "Full Cove A2 design-history poster",
+        caption: "Complete design-history poster · research, concept development, prototype and evaluation.",
+      },
+    },
+    sources: [
+      { label: "Group report · PDF", href: "files/cove/cove-group-report.pdf", labels: { zh: "小组报告 · PDF", ja: "グループ報告書 · PDF" }, supplementary: true, sharedAttribution: true, presentation: false, restricted: false },
+      { label: "Design-history poster · PDF", href: "files/cove/cove-design-history-poster.pdf", labels: { zh: "设计历史海报 · PDF", ja: "デザイン履歴ポスター · PDF" }, supplementary: true, sharedAttribution: true, presentation: false, restricted: false },
+      { label: "Interactive Figma prototype", href: "https://www.figma.com/proto/XFASIQspeYQqV045ZIc53S/prototype?node-id=286-1171&scaling=scale-down&content-scaling=fixed&starting-point-node-id=286%3A1171", labels: { zh: "Figma 交互原型", ja: "Figmaインタラクティブプロトタイプ" }, supplementary: true, sharedAttribution: true, external: true, presentation: false, restricted: false },
+    ],
+  },
 ];
 
 const caseFacts = {
@@ -1800,12 +1984,21 @@ const caseFacts = {
     outcome: "The work made data lineage, review gates and team hand-off explicit. It also supported a documented decision to stop a blue-collar sponsorship model when employer evidence did not support a stable, repeatable service.",
     limitation: "The role is ongoing, so this case includes only work completed before submission. Dataset sizes describe supplied working material, not verified leads, successful contacts or commercial outcomes. The public case excludes private candidate, employer, contract and identity records.",
   },
+  cove: {
+    context: "INFO30008 Interactive Technology Project · group UI/UX prototype",
+    ownership: "Seven-person team; research synthesis, concept development, prototyping and evaluation were shared",
+    contribution: "I developed the Alex ‘Uncertain Starter’ persona and scenario, studied one sec, defined interaction rationale and wireframe direction, evaluated a participant flow and proposed refinements.",
+    evidence: "Interactive Figma prototype, 11 participants, five task scenarios, SUS 84.58, two videos, group report and A2 design-history poster",
+    outcome: "The evaluation supported clearer task entry and flexible focus options, while showing that compulsory reflection and pet rewards would not suit everyone.",
+    limitation: "Friend-sampling, facilitator prompts and a fixed task order limit the findings. SUS measures perceived usability, not reduced scrolling or improved academic performance.",
+  },
 };
 
 const sourcePolicies = {
   vita: "shared",
   "library-evaluation": "shared",
   "financial-feasibility": "shared",
+  cove: "shared",
 };
 
 window.PORTFOLIO_PROJECTS = window.PORTFOLIO_PROJECTS.map((project) => ({

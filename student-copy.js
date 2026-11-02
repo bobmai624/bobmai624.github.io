@@ -15,7 +15,7 @@
         disciplinesTitle: "What I have practised",
         aboutParagraphOne: "I’m Bowen Mai, a UX Design student at the University of Melbourne. In my coursework, I plan small studies, build interaction prototypes and revise them after testing and observation.",
         aboutParagraphTwo: "My current research direction is AI ethics and technology policy. I am interested in how AI systems influence people’s choices, and how design and policy can make that influence more visible and accountable, especially in relation to user autonomy, transparency and responsible human–AI interaction.",
-        archiveDescription: "Twelve additional projects, grouped by subject so they remain easy to find without competing with the four selected cases.",
+        archiveDescription: "Thirteen additional projects, grouped by subject so they remain easy to find without competing with the four selected cases.",
         contactTitle: "Contact",
         contactIntro: "Thank you for visiting. If you would like to ask about a project or discuss study, research or internship opportunities, you can contact me below.",
         resumeFocus: "UX/HCI research · Human–AI interaction · AI ethics and policy",
@@ -249,7 +249,7 @@
         disciplinesTitle: "我练习过的能力",
         aboutParagraphOne: "我是麦博文，目前在墨尔本大学学习用户体验设计。在课程项目中，我会先进行小规模研究，再制作交互原型，并根据测试和观察结果继续修改设计。",
         aboutParagraphTwo: "我目前的研究方向是 AI 伦理与科技政策。我关注 AI 系统如何影响人的选择，以及设计与政策怎样让这种影响更容易被看见并受到问责，尤其希望继续研究用户自主性、透明度，以及负责任的人–AI 交互。",
-        archiveDescription: "另外十二个项目按主题整理在这里。它们不会占用主页的大篇幅，但仍可以完整查看。",
+        archiveDescription: "另外十三个项目按主题整理在这里。它们不会占用主页的大篇幅，但仍可以完整查看。",
         contactTitle: "联系我",
         contactIntro: "谢谢你看到这里。如果你想了解某个项目，或希望交流学习、研究与实习机会，可以通过以下方式联系我。",
         resumeFocus: "UX/HCI 研究 · 人–AI 交互 · AI 伦理与政策",
@@ -449,7 +449,7 @@
         disciplinesTitle: "プロジェクトで学んだこと",
         aboutParagraphOne: "Bowen Maiです。メルボルン大学でUXデザインを学んでいます。授業では、小規模な調査を計画したり、インタラクションを試作したりしています。観察したことをもとに、デザインを見直してきました。",
         aboutParagraphTwo: "現在の研究方向は、AI倫理とテクノロジー政策です。AIシステムが人の選択にどのような影響を与えるか、そしてその影響をデザインと政策によってどう見える形にし、説明責任につなげるかに関心があります。特に、利用者の自律性、透明性、責任ある人間とAIの関係を今後の研究テーマとして考えています。",
-        archiveDescription: "そのほかのプロジェクト12件は、分野ごとにまとめています。トップページでは小さく扱いますが、各ケースは引き続き閲覧できます。",
+        archiveDescription: "そのほかのプロジェクト13件は、分野ごとにまとめています。トップページでは小さく扱いますが、各ケースは引き続き閲覧できます。",
         contactTitle: "連絡先",
         contactIntro: "ここまでご覧いただき、ありがとうございます。プロジェクトについての質問や、学習・研究・実習に関するご連絡は、以下の連絡先からお願いします。",
         resumeFocus: "UX/HCIリサーチ · 人間とAIのインタラクション · AI倫理と政策",
@@ -571,7 +571,7 @@
     },
   };
 
-  const professionalProjectIds = ["ai-for-education", "tidyteddy", "linghang"];
+  const professionalProjectIds = ["ai-for-education", "tidyteddy", "linghang", "cove"];
   for (const id of professionalProjectIds) {
     const baseProject = global.PORTFOLIO_PROJECTS.find((project) => project.id === id);
     copy.en.projects[id] = {
