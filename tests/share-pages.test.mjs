@@ -4,6 +4,7 @@ import os from "node:os";
 import path from "node:path";
 import { spawnSync } from "node:child_process";
 import test from "node:test";
+import { loadPortfolio } from "../scripts/load-portfolio.mjs";
 
 test("the share-page generator creates one independently identified page per project", () => {
   const outputDirectory = fs.mkdtempSync(path.join(os.tmpdir(), "bowen-share-pages-"));
@@ -14,10 +15,16 @@ test("the share-page generator creates one independently identified page per pro
   assert.equal(result.status, 0, result.stderr || result.stdout);
 
   const pages = fs.readdirSync(outputDirectory).filter((name) => name.endsWith(".html"));
-  assert.equal(pages.length, 17);
+  const catalogue = loadPortfolio().PORTFOLIO_PROJECTS;
+  assert.equal(pages.length, 18);
+  assert.ok(pages.includes("ai-futures.html"), "the course case needs a shareable page");
   for (const page of pages) {
     const html = fs.readFileSync(path.join(outputDirectory, page), "utf8");
     const id = page.replace(/\.html$/, "");
+    const project = catalogue.find((entry) => entry.id === id);
+    assert.ok(project, `share page ${id} needs a catalogue entry`);
+    const escapedTitle = project.title.replaceAll("&", "&amp;").replaceAll('"', "&quot;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
+    assert.ok(html.includes(`<title>${escapedTitle} — Bowen Mai</title>`), `${id} must use the public English title`);
     assert.match(html, new RegExp(`<title>[^<]+ — Bowen Mai</title>`));
     assert.match(html, new RegExp(`rel="canonical" href="https://bobmai624\\.github\\.io/projects/${id}\\.html"`));
     assert.match(html, /property="og:description" content="[^"]+"/);

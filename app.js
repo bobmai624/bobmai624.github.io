@@ -104,10 +104,12 @@
     project.caseFacts = mergeTranslation(baseProject.caseFacts, factOverride || {});
     if (currentLanguage === "en") return project;
 
-    project.cover.alt =
-      currentLanguage === "zh"
-        ? `“${project.title}”项目封面`
-        : `${project.title}のプロジェクト表紙`;
+    if (!project.futuresStudy) {
+      project.cover.alt =
+        currentLanguage === "zh"
+          ? `“${project.title}”项目封面`
+          : `${project.title}のプロジェクト表紙`;
+    }
     project.media = project.media.map((item, index) => ({
       ...item,
       alt:
@@ -926,6 +928,8 @@
               ? caseComponents.linghangStudy(project)
               : project.coveStudy
                 ? caseComponents.coveStudy(project)
+              : project.futuresStudy
+                ? caseComponents.futuresStudy(project)
               : defaultCaseStoryMarkup(project);
 
     caseStudy.dataset.projectId = project.id;
@@ -939,6 +943,7 @@
           </div>
           <h1 id="case-title">${project.displayTitle || project.title}</h1>
           <p class="case-proposition">${project.meaning}</p>
+          ${project.futuresStudy ? caseComponents.futuresCover(project) : ""}
         </header>
 
         <section class="case-overview" aria-label="${currentUi.projectOverview}">

@@ -632,5 +632,39 @@
       </div>`;
   }
 
-  window.CaseComponents = { playableStage, playableFrame, tidyTeddyStudy, educationStudy, linghangStudy, coveStudy };
+  function futuresCover(project) {
+    return `<figure class="futures-cover">
+      <img src="${escapeHtml(project.cover.src)}" alt="${escapeHtml(project.cover.alt)}" width="1480" height="780">
+      <figcaption>${escapeHtml(project.coverCaption)}</figcaption>
+    </figure>`;
+  }
+
+  function futuresStudy(project) {
+    const { platform, forecasts, cone, zone, concepts, reflection } = project.futuresStudy;
+    const text = escapeHtml;
+    const imagePath = "assets/projects/ai-futures/";
+    function source(section, index, page) {
+      return `<a class="futures-source" href="${text(project.sources[index].href)}#page=${page}" target="_blank" rel="noreferrer">${text(section.cite)} · PDF <span aria-hidden="true">↗</span></a>`;
+    }
+    function heading(section) {
+      return `<p class="futures-kicker">${text(section.label)}</p><h2>${text(section.title)}</h2><p class="futures-body">${text(section.body)}</p>`;
+    }
+    function picture(section, file) {
+      return `<figure class="futures-figure"><a href="${imagePath}${file}" target="_blank" rel="noreferrer"><img src="${imagePath}${file}" alt="${text(section.caption)}" loading="lazy" decoding="async"></a><figcaption>${text(section.caption)}</figcaption></figure>`;
+    }
+    function comparisons(items) {
+      return `<dl class="futures-comparisons">${items.map(([title, description]) =>
+        `<div><dt>${text(title)}</dt><dd>${text(description)}</dd></div>`).join("")}</dl>`;
+    }
+    return `<div class="futures-study">
+      <section class="futures-split"><div>${heading(platform)}${source(platform, 0, 5)}</div>${picture(platform, "platform-trajectories.webp")}</section>
+      <section class="futures-forecasts"><header>${heading(forecasts)}${source(forecasts, 1, 2)}</header>${picture(forecasts, "four-forecasts.webp")}${comparisons(forecasts.items)}</section>
+      <section class="futures-cone"><header>${heading(cone)}${source(cone, 1, 20)}</header>${comparisons(cone.items)}</section>
+      <section class="futures-zone">${heading(zone)}${source(zone, 1, 7)}</section>
+      <section class="futures-concepts"><header>${heading(concepts)}${source(concepts, 2, 14)}</header>${picture(concepts, "carriage-storyboard.webp")}${comparisons(concepts.items)}</section>
+      <section class="futures-reflection">${heading(reflection)}</section>
+    </div>`;
+  }
+
+  window.CaseComponents = { playableStage, playableFrame, tidyTeddyStudy, educationStudy, linghangStudy, coveStudy, futuresCover, futuresStudy };
 })();

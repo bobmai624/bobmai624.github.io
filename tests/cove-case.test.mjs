@@ -1,16 +1,7 @@
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import test from "node:test";
-import vm from "node:vm";
-
-function loadPortfolio() {
-  const window = {};
-  const context = vm.createContext({ window });
-  for (const file of ["projects.js", "portfolio-model.js", "i18n.js", "student-copy.js", "case-components.js"]) {
-    vm.runInContext(fs.readFileSync(file, "utf8"), context, { filename: file });
-  }
-  return window;
-}
+import { loadPortfolio } from "../scripts/load-portfolio.mjs";
 
 test("Cove is a complete UI/UX Archive case without displacing selected work", () => {
   const window = loadPortfolio();
@@ -19,8 +10,8 @@ test("Cove is a complete UI/UX Archive case without displacing selected work", (
 
   assert.ok(cove, "Cove project is missing");
   assert.equal(cove.category, "digital-interaction");
-  assert.equal(window.PORTFOLIO_PROJECTS.length, 17);
-  assert.equal(partition.archive.length, 13);
+  assert.equal(window.PORTFOLIO_PROJECTS.length, 18);
+  assert.equal(partition.archive.length, 14);
   assert.deepEqual(
     Array.from(partition.selected, (project) => project.id),
     ["ai-for-education", "vita", "signal-aftershock", "financial-feasibility"],
@@ -90,9 +81,9 @@ test("Cove has equivalent English, Chinese and Japanese case structures", () => 
     }
   }
 
-  assert.match(PORTFOLIO_I18N.en.site.archiveDescription, /13|thirteen/i);
-  assert.match(PORTFOLIO_I18N.zh.site.archiveDescription, /13|十三/);
-  assert.match(PORTFOLIO_I18N.ja.site.archiveDescription, /13|13件/);
+  assert.match(PORTFOLIO_I18N.en.site.archiveDescription, /14|fourteen/i);
+  assert.match(PORTFOLIO_I18N.zh.site.archiveDescription, /14|十四/);
+  assert.match(PORTFOLIO_I18N.ja.site.archiveDescription, /14|14件/);
   assert.match(PORTFOLIO_I18N.zh.projects.cove.displayTitle, /<wbr\s*\/>/);
   assert.match(PORTFOLIO_I18N.ja.projects.cove.displayTitle, /<wbr\s*\/>/);
 });

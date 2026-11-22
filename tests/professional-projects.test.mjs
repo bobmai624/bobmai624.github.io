@@ -1,16 +1,7 @@
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import test from "node:test";
-import vm from "node:vm";
-
-function loadPortfolio() {
-  const window = {};
-  const context = vm.createContext({ window });
-  for (const file of ["projects.js", "portfolio-model.js", "i18n.js", "student-copy.js"]) {
-    vm.runInContext(fs.readFileSync(file, "utf8"), context, { filename: file });
-  }
-  return window;
-}
+import { loadPortfolio } from "../scripts/load-portfolio.mjs";
 
 const expectedProjects = {
   "ai-for-education": "ux-research",
@@ -27,8 +18,8 @@ test("the professional projects remain independent cases in their requested cate
     ["ai-for-education", "vita", "signal-aftershock", "financial-feasibility"],
   );
   assert.equal(partition.selected.length, 4);
-  assert.equal(partition.archive.length, 13);
-  assert.equal(window.PORTFOLIO_PROJECTS.length, 17);
+  assert.equal(partition.archive.length, 14);
+  assert.equal(window.PORTFOLIO_PROJECTS.length, 18);
 
   for (const [id, category] of Object.entries(expectedProjects)) {
     const project = window.PORTFOLIO_PROJECTS.find((item) => item.id === id);
@@ -104,9 +95,9 @@ test("English, Chinese and Japanese expose complete project pages for all three 
     }
   }
 
-  assert.match(window.PORTFOLIO_I18N.en.site.archiveDescription, /13|thirteen/i);
-  assert.match(window.PORTFOLIO_I18N.zh.site.archiveDescription, /13|十三/);
-  assert.match(window.PORTFOLIO_I18N.ja.site.archiveDescription, /13|13件/);
+  assert.match(window.PORTFOLIO_I18N.en.site.archiveDescription, /14|fourteen/i);
+  assert.match(window.PORTFOLIO_I18N.zh.site.archiveDescription, /14|十四/);
+  assert.match(window.PORTFOLIO_I18N.ja.site.archiveDescription, /14|14件/);
 });
 
 test("long Japanese case titles provide deliberate phrase-level wrap points", () => {

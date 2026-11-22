@@ -1,11 +1,10 @@
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import test from "node:test";
-import vm from "node:vm";
+import { loadPortfolio } from "../scripts/load-portfolio.mjs";
 
 test("every published project asset and source exists locally", () => {
-  const window = {};
-  vm.runInNewContext(fs.readFileSync("projects.js", "utf8"), { window });
+  const window = loadPortfolio();
 
   for (const project of window.PORTFOLIO_PROJECTS) {
     const paths = [

@@ -1,11 +1,9 @@
 import fs from "node:fs";
 import path from "node:path";
-import vm from "node:vm";
+import { loadPortfolio } from "./load-portfolio.mjs";
 
 const root = process.cwd();
-const window = {};
-vm.runInNewContext(fs.readFileSync(path.join(root, "projects.js"), "utf8"), { window });
-vm.runInNewContext(fs.readFileSync(path.join(root, "student-copy.js"), "utf8"), { window });
+const window = loadPortfolio(root);
 
 const outputFlagIndex = process.argv.indexOf("--output-dir");
 const requestedOutput = outputFlagIndex >= 0 ? process.argv[outputFlagIndex + 1] : null;

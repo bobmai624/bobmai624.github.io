@@ -1,35 +1,28 @@
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import test from "node:test";
-import vm from "node:vm";
+import { loadPortfolio } from "../scripts/load-portfolio.mjs";
 
 test("the student-voice copy layer loads after localization and before rendering", () => {
   const html = fs.readFileSync("index.html", "utf8");
   const i18nIndex = html.indexOf('src="i18n.js');
   const copyIndex = html.indexOf('src="student-copy.js');
+  const courseIndex = html.indexOf('src="ai-futures.js');
   const cvCopyIndex = html.indexOf('src="cv-copy.js');
   const appIndex = html.indexOf('src="app.js');
 
   assert.ok(i18nIndex >= 0, "i18n.js is missing");
   assert.ok(copyIndex > i18nIndex, "student-copy.js must load after i18n.js");
+  assert.ok(courseIndex > copyIndex && courseIndex < appIndex, "the futures case needs the localized catalogue before the app renders");
   assert.ok(cvCopyIndex > copyIndex, "cv-copy.js must load after the general student copy layer");
   assert.ok(appIndex > cvCopyIndex, "CV copy must load before app.js renders the page");
 });
 
-test("share-page metadata uses the same English copy layer as the portfolio", () => {
-  const generator = fs.readFileSync("scripts/generate-share-pages.mjs", "utf8");
-  assert.match(generator, /student-copy\.js/, "share-page generation is missing the student copy layer");
-});
-
 test("the student copy covers every project in English, Chinese and Japanese", () => {
-  const window = {};
-  const context = vm.createContext({ window });
-  for (const file of ["projects.js", "i18n.js", "student-copy.js"]) {
-    vm.runInContext(fs.readFileSync(file, "utf8"), context, { filename: file });
-  }
+  const window = loadPortfolio();
 
   const projectIds = window.PORTFOLIO_PROJECTS.map((project) => project.id).sort();
-  assert.equal(projectIds.length, 17);
+  assert.equal(projectIds.length, 18);
   for (const language of ["en", "zh", "ja"]) {
     const languageCopy = window.PORTFOLIO_STUDENT_COPY[language];
     assert.equal(Object.keys(languageCopy.projects).sort().join("|"), projectIds.join("|"));

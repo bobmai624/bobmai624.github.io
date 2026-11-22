@@ -1,30 +1,21 @@
 import assert from "node:assert/strict";
-import fs from "node:fs";
 import test from "node:test";
-import vm from "node:vm";
+import { loadPortfolio } from "../scripts/load-portfolio.mjs";
 
-function loadWindowScript(path, window = {}) {
-  const context = vm.createContext({ window });
-  vm.runInContext(fs.readFileSync(path, "utf8"), context, { filename: path });
-  return window;
-}
-
-test("the home model selects four evidence-led cases and archives the remaining thirteen", () => {
-  const window = loadWindowScript("projects.js");
-  loadWindowScript("portfolio-model.js", window);
+test("the home model selects four evidence-led cases and archives the remaining fourteen", () => {
+  const window = loadPortfolio();
 
   const model = window.PortfolioModel.partitionProjects(window.PORTFOLIO_PROJECTS);
   assert.deepEqual(
     Array.from(model.selected, (project) => project.id),
     ["ai-for-education", "vita", "signal-aftershock", "financial-feasibility"],
   );
-  assert.equal(model.archive.length, 13);
-  assert.equal(new Set([...model.selected, ...model.archive].map((project) => project.id)).size, 17);
+  assert.equal(model.archive.length, 14);
+  assert.equal(new Set([...model.selected, ...model.archive].map((project) => project.id)).size, 18);
 });
 
-test("the thirteen supporting projects are grouped by their existing practice categories", () => {
-  const window = loadWindowScript("projects.js");
-  loadWindowScript("portfolio-model.js", window);
+test("the fourteen supporting projects are grouped by their existing practice categories", () => {
+  const window = loadPortfolio();
 
   const partition = window.PortfolioModel.partitionProjects(window.PORTFOLIO_PROJECTS);
   const groups = window.PortfolioModel.groupProjectsByCategory(
@@ -36,7 +27,7 @@ test("the thirteen supporting projects are grouped by their existing practice ca
     Array.from(groups, (group) => group.category.id),
     ["digital-interaction", "ux-research", "visual-editorial", "spatial-material", "strategy"],
   );
-  assert.equal(groups.flatMap((group) => group.projects).length, 13);
+  assert.equal(groups.flatMap((group) => group.projects).length, 14);
   assert.deepEqual(
     Array.from(groups.flatMap((group) => group.projects), (project) => project.id),
     [
@@ -44,6 +35,7 @@ test("the thirteen supporting projects are grouped by their existing practice ca
       "cove",
       "library-evaluation",
       "booking-systems",
+      "ai-futures",
       "film-to-book",
       "colour-systems",
       "melbourne-motion",
@@ -58,7 +50,7 @@ test("the thirteen supporting projects are grouped by their existing practice ca
 });
 
 test("every project exposes a comparable responsibility and evidence record", () => {
-  const window = loadWindowScript("projects.js");
+  const window = loadPortfolio();
   for (const project of window.PORTFOLIO_PROJECTS) {
     assert.ok(project.caseFacts, `${project.id} is missing caseFacts`);
     for (const key of ["context", "ownership", "contribution", "evidence", "outcome"]) {
@@ -68,9 +60,7 @@ test("every project exposes a comparable responsibility and evidence record", ()
 });
 
 test("selected projects provide concise homepage contribution and evidence in every language", () => {
-  const window = loadWindowScript("projects.js");
-  loadWindowScript("portfolio-model.js", window);
-  loadWindowScript("i18n.js", window);
+  const window = loadPortfolio();
   const selected = window.PortfolioModel.partitionProjects(window.PORTFOLIO_PROJECTS).selected;
 
   for (const project of selected) {
@@ -85,8 +75,7 @@ test("selected projects provide concise homepage contribution and evidence in ev
 });
 
 test("project share paths are stable HTML URLs", () => {
-  const window = loadWindowScript("projects.js");
-  loadWindowScript("portfolio-model.js", window);
+  const window = loadPortfolio();
   assert.equal(
     window.PortfolioModel.projectSharePath({ id: "library-evaluation" }),
     "projects/library-evaluation.html",
@@ -94,7 +83,7 @@ test("project share paths are stable HTML URLs", () => {
 });
 
 test("shared submissions and public derivatives remain secondary project evidence", () => {
-  const window = loadWindowScript("projects.js");
+  const window = loadPortfolio();
   const expectedSources = {
     vita: [
       "files/aip-conceptual-design.pdf",
@@ -123,8 +112,29 @@ test("shared submissions and public derivatives remain secondary project evidenc
   }
 });
 
+test("the futures course case gives readers access to all three assignments in every language", () => {
+  const window = loadPortfolio();
+  const course = window.PORTFOLIO_PROJECTS.find((project) => project.id === "ai-futures");
+  assert.ok(course);
+  assert.equal(course.category, "ux-research");
+  const available = course.sources.filter((source) => !source.restricted);
+  const assignments = [
+    "files/booking-com-critical-review.pdf",
+    "files/aip-future-scenario.pdf",
+    "files/aip-conceptual-design.pdf",
+  ];
+  for (const path of assignments) {
+    const source = available.find((item) => item.href === path);
+    assert.ok(source, `course case is missing ${path}`);
+    assert.ok(source.label?.trim());
+    for (const language of ["zh", "ja"]) {
+      assert.ok(source.labels?.[language]?.trim(), `${path} needs a ${language} link label`);
+    }
+  }
+});
+
 test("confidential originals are never referenced by the public portfolio", () => {
-  const window = loadWindowScript("projects.js");
+  const window = loadPortfolio();
   const publicPaths = window.PORTFOLIO_PROJECTS.flatMap((project) =>
     project.sources.map((source) => source.href),
   );
@@ -138,8 +148,7 @@ test("confidential originals are never referenced by the public portfolio", () =
 });
 
 test("shared-source notes describe retained group materials without claiming sole authorship", () => {
-  const window = loadWindowScript("projects.js");
-  loadWindowScript("i18n.js", window);
+  const window = loadPortfolio();
   const notes = [
     window.PORTFOLIO_I18N.en.ui.sharedSourceNote,
     window.PORTFOLIO_I18N.zh.ui.sharedSourceNote,
@@ -152,8 +161,7 @@ test("shared-source notes describe retained group materials without claiming sol
 });
 
 test("Chinese and Japanese provide complete project evidence records", () => {
-  const window = loadWindowScript("projects.js");
-  loadWindowScript("i18n.js", window);
+  const window = loadPortfolio();
   const ids = window.PORTFOLIO_PROJECTS.map((project) => project.id);
   for (const language of ["zh", "ja"]) {
     for (const id of ids) {
