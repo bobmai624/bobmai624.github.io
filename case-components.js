@@ -668,8 +668,8 @@
     function heading(section) {
       return `<p class="futures-kicker">${text(section.label)}</p><h2>${text(section.title)}</h2><p class="futures-body">${text(section.body)}</p>`;
     }
-    function picture(section, file) {
-      return `<figure class="futures-figure"><a href="${imagePath}${file}" target="_blank" rel="noreferrer"><img src="${imagePath}${file}" alt="${text(section.caption)}" loading="lazy" decoding="async"></a><figcaption>${text(section.caption)}</figcaption></figure>`;
+    function picture(section, file, width, height) {
+      return `<figure class="futures-figure"><a href="${imagePath}${file}" target="_blank" rel="noreferrer"><img src="${imagePath}${file}" alt="${text(section.caption)}" width="${width}" height="${height}" loading="lazy" decoding="async"></a><figcaption>${text(section.caption)}</figcaption></figure>`;
     }
     function comparisons(items) {
       return `<dl class="futures-comparisons">${items.map(([title, description]) =>
@@ -688,7 +688,7 @@
         </div>
       </article>`).join("");
     return `<div class="futures-study">
-      <section class="futures-split"><div>${heading(platform)}${source(platform, 0, 5)}</div>${picture(platform, "platform-trajectories.webp")}</section>
+      <section class="futures-split"><div>${heading(platform)}${source(platform, 0, 5)}</div>${picture(platform, "platform-trajectories.webp", 1851, 1206)}</section>
       <section class="futures-participation"><header>${heading(participation)}</header>
         ${comparisons(participation.items)}
         <div class="futures-references">${participation.citations.map(citedPage).join("")}</div>
@@ -697,7 +697,7 @@
       <section class="futures-zone futures-split"><div>${heading(zone)}${source(zone, 1, 7)}</div>
         <figure class="futures-figure"><img src="${text(project.cover.src)}" alt="${text(project.cover.alt)}" width="1480" height="780" loading="lazy">
         <figcaption>${text(project.coverCaption)}</figcaption></figure></section>
-      <section class="futures-concepts"><header>${heading(concepts)}${source(concepts, 2, 14)}</header>${picture(concepts, "carriage-storyboard.webp")}${comparisons(concepts.items)}</section>
+      <section class="futures-concepts"><header>${heading(concepts)}${source(concepts, 2, 14)}</header>${picture(concepts, "carriage-storyboard.webp", 1720, 831)}${comparisons(concepts.items)}</section>
       <section class="futures-statements" id="futures-statements" tabindex="-1" aria-label="${text(statements.title)}"><header>${heading(statements)}</header>${statementExamples}</section>
       <section class="futures-study-plan futures-split"><header>${heading(studyPlan)}</header>${comparisons(studyPlan.items)}</section>
       <section class="futures-reflection">${heading(reflection)}<p class="futures-edition-note">${text(reflection.editionNote)}</p></section>

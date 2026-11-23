@@ -197,6 +197,7 @@
   function restoreReadingPosition(snapshot) {
     window.requestAnimationFrame(() => {
       if (snapshot.surface === "case" && !caseStudy.hidden) {
+        if (document.activeElement?.id === "futures-statements") return;
         caseStudy.scrollTop = snapshot.top;
       } else if (snapshot.surface === "resume" && !resumeView.hidden) {
         resumeView.scrollTop = snapshot.top;
@@ -984,7 +985,10 @@
 
   function focusWhenReady(element, finished = Promise.resolve()) {
     finished.finally(() => {
-      window.requestAnimationFrame(() => element?.focus({ preventScroll: true }));
+      window.requestAnimationFrame(() => {
+        if (element === caseClose && caseContent.contains(document.activeElement)) return;
+        element?.focus({ preventScroll: true });
+      });
     });
   }
 

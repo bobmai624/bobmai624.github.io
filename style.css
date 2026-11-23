@@ -5889,6 +5889,7 @@ h3 {
   background: rgb(10 10 10 / 88%);
   backdrop-filter: blur(10px);
 }
+.overlay-page[data-project-id="ai-futures"] > .overlay-close { top: 10px; }
 
 .tidyteddy-study {
   overflow: hidden;
