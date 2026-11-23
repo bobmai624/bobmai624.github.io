@@ -632,15 +632,31 @@
       </div>`;
   }
 
-  function futuresCover(project) {
-    return `<figure class="futures-cover">
-      <img src="${escapeHtml(project.cover.src)}" alt="${escapeHtml(project.cover.alt)}" width="1480" height="780">
-      <figcaption>${escapeHtml(project.coverCaption)}</figcaption>
-    </figure>`;
+  function futuresForecasts(project) {
+    const forecast = project.futuresStudy.forecasts;
+    const text = escapeHtml;
+    const cards = forecast.items.map((item, index) => {
+      const page = index + 3;
+      const pageLabel = forecast.pageLabel.replace("{n}", page);
+      return `<article class="forecast-card">
+        <img src="assets/projects/ai-futures/${text(item.key)}.webp" alt="${text(item.alt)}" width="650" height="650" decoding="async">
+        <h3>${text(item.title)}</h3>
+        <dl>
+          <div><dt>${text(forecast.aiLabel)}</dt><dd>${text(item.ai)}</dd></div>
+          <div><dt>${text(forecast.humanLabel)}</dt><dd>${text(item.human)}</dd></div>
+        </dl>
+        <a href="${text(project.sources[1].href)}#page=${page}" target="_blank" rel="noreferrer">${text(pageLabel)} · PDF <span aria-hidden="true">↗</span></a>
+      </article>`;
+    });
+    return `<section class="forecast-panel" aria-labelledby="forecast-heading">
+      <header><div><p class="futures-kicker">${text(forecast.label)}</p><h2 id="forecast-heading">${text(forecast.title)}</h2></div>
+        <p>${text(forecast.body)}</p></header>
+      <div class="forecast-grid">${cards.join("")}</div>
+    </section>`;
   }
 
   function futuresStudy(project) {
-    const { platform, forecasts, cone, zone, concepts, reflection } = project.futuresStudy;
+    const { platform, cone, zone, concepts, reflection } = project.futuresStudy;
     const text = escapeHtml;
     const imagePath = "assets/projects/ai-futures/";
     function source(section, index, page) {
@@ -658,13 +674,14 @@
     }
     return `<div class="futures-study">
       <section class="futures-split"><div>${heading(platform)}${source(platform, 0, 5)}</div>${picture(platform, "platform-trajectories.webp")}</section>
-      <section class="futures-forecasts"><header>${heading(forecasts)}${source(forecasts, 1, 2)}</header>${picture(forecasts, "four-forecasts.webp")}${comparisons(forecasts.items)}</section>
       <section class="futures-cone"><header>${heading(cone)}${source(cone, 1, 20)}</header>${comparisons(cone.items)}</section>
-      <section class="futures-zone">${heading(zone)}${source(zone, 1, 7)}</section>
+      <section class="futures-zone futures-split"><div>${heading(zone)}${source(zone, 1, 7)}</div>
+        <figure class="futures-figure"><img src="${text(project.cover.src)}" alt="${text(project.cover.alt)}" width="1480" height="780" loading="lazy">
+        <figcaption>${text(project.coverCaption)}</figcaption></figure></section>
       <section class="futures-concepts"><header>${heading(concepts)}${source(concepts, 2, 14)}</header>${picture(concepts, "carriage-storyboard.webp")}${comparisons(concepts.items)}</section>
       <section class="futures-reflection">${heading(reflection)}</section>
     </div>`;
   }
 
-  window.CaseComponents = { playableStage, playableFrame, tidyTeddyStudy, educationStudy, linghangStudy, coveStudy, futuresCover, futuresStudy };
+  window.CaseComponents = { playableStage, playableFrame, tidyTeddyStudy, educationStudy, linghangStudy, coveStudy, futuresForecasts, futuresStudy };
 })();

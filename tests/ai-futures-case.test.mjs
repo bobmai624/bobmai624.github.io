@@ -14,7 +14,19 @@ test("the course case renders the four forecasts, five futures-cone positions an
     assert.equal(forecasts.items.length, 4);
     assert.equal(cone.items.length, 5);
     assert.equal(concepts.items.length, 3);
-    for (const collection of [forecasts, cone, concepts]) {
+    const board = CaseComponents.futuresForecasts(project);
+    assert.ok(board.includes(forecasts.title));
+    const cards = [...board.matchAll(/<article class="forecast-card">([\s\S]*?)<\/article>/g)];
+    assert.equal(cards.length, 4);
+    for (const [index, { key, title, ai, human, alt }] of forecasts.items.entries()) {
+      const card = cards[index][1];
+      for (const phrase of [title, ai, human, alt, forecasts.aiLabel, forecasts.humanLabel]) {
+        assert.ok(phrase.trim() && card.includes(phrase), `Incomplete ${language} card: ${key}`);
+      }
+      assert.ok(card.includes(`/${key}.webp`));
+      assert.ok(card.includes(`aip-future-scenario.pdf#page=${index + 3}"`));
+    }
+    for (const collection of [cone, concepts]) {
       assert.ok(html.includes(collection.title), `${language} is missing a section heading`);
       for (const [title, body] of collection.items) {
         assert.ok(body.trim().length > 0);
@@ -30,9 +42,9 @@ test("the course case renders the four forecasts, five futures-cone positions an
 test("the futures essay connects its illustrations and numbered citations to local evidence", () => {
   const { PORTFOLIO_PROJECTS, CaseComponents } = loadPortfolio();
   const project = PORTFOLIO_PROJECTS.find((entry) => entry.id === "ai-futures");
-  const html = CaseComponents.futuresCover(project) + CaseComponents.futuresStudy(project);
+  const html = CaseComponents.futuresForecasts(project) + CaseComponents.futuresStudy(project);
   const images = Array.from(html.matchAll(/<img\b[^>]*?src="([^"]+)"/g), (match) => match[1]);
-  assert.equal(new Set(images).size, 4);
+  assert.equal(new Set(images).size, 7);
   for (const src of images) assert.ok(fs.statSync(src).size > 0);
 
   const citedDocuments = new Set(Array.from(html.matchAll(/href="([^"]+\.pdf)#page=[1-9]\d*"/g), (match) => match[1]));

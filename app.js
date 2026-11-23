@@ -943,8 +943,8 @@
           </div>
           <h1 id="case-title">${project.displayTitle || project.title}</h1>
           <p class="case-proposition">${project.meaning}</p>
-          ${project.futuresStudy ? caseComponents.futuresCover(project) : ""}
         </header>
+        ${project.futuresStudy ? caseComponents.futuresForecasts(project) : ""}
 
         <section class="case-overview" aria-label="${currentUi.projectOverview}">
           <p class="case-overview-label">${currentUi.overview}</p>
