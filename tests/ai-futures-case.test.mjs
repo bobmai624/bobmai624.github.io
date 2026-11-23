@@ -50,3 +50,54 @@ test("the futures essay connects its illustrations and numbered citations to loc
   const citedDocuments = new Set(Array.from(html.matchAll(/href="([^"]+\.pdf)#page=[1-9]\d*"/g), (match) => match[1]));
   assert.deepEqual([...citedDocuments].sort(), Array.from(project.sources, (source) => source.href).sort());
 });
+
+test("the research notes show participation, disclosure comparisons and the proposed study in reading order", () => {
+  const { PORTFOLIO_I18N, CaseComponents } = loadPortfolio();
+  const localizedTitles = new Set();
+  for (const language of ["en", "zh", "ja"]) {
+    const project = PORTFOLIO_I18N[language].projects["ai-futures"];
+    const { platform, participation, cone, concepts, statements, studyPlan, reflection } = project.futuresStudy;
+    const html = CaseComponents.futuresStudy(project);
+    const sections = [...html.matchAll(/<section\b[^>]*>([\s\S]*?)<\/section>/g)].map(match =>
+      match[1].replaceAll("&quot;", '"').replaceAll("&#39;", "'").replaceAll("&lt;", "<").replaceAll("&gt;", ">").replaceAll("&amp;", "&"));
+    function sectionFor({ title }) {
+      const index = sections.findIndex(section => section.includes(`<h2>${title}</h2>`));
+      assert.notEqual(index, -1, `Missing section in ${language}: ${title}`);
+      return index;
+    }
+    assert.equal(sectionFor(participation), sectionFor(platform) + 1);
+    assert.equal(sectionFor(cone), sectionFor(participation) + 1);
+    assert.equal(sectionFor(statements), sectionFor(concepts) + 1);
+    assert.equal(sectionFor(studyPlan), sectionFor(statements) + 1);
+    assert.equal(sectionFor(reflection), sectionFor(studyPlan) + 1);
+    const finalSection = sections[sectionFor(reflection)];
+    assert.ok(reflection.editionNote.trim() && finalSection.indexOf(reflection.editionNote) > finalSection.indexOf(reflection.body));
+    assert.match(html, /id="futures-statements" tabindex="-1"/);
+    assert.equal(participation.items.length, 4);
+    assert.equal(studyPlan.items.length, 3);
+    for (const section of [participation, statements, studyPlan]) {
+      const content = sections[sectionFor(section)];
+      for (const phrase of [section.label, section.body, ...(section.items || []).flat()]) {
+        assert.ok(phrase.trim() && content.includes(phrase), `Missing research text in ${language}: ${phrase}`);
+      }
+    }
+    assert.equal(statements.examples.length, 2);
+    const examples = [...sections[sectionFor(statements)].matchAll(/<article\b[^>]*>([\s\S]*?)<\/article>/g)];
+    assert.equal(examples.length, statements.examples.length);
+    for (const [index, example] of statements.examples.entries()) {
+      const content = examples[index][1];
+      for (const phrase of [example.title, example.situation, statements.shortLabel, example.brief, statements.detailLabel, example.detailed, example.note]) {
+        assert.ok(phrase.trim() && content.includes(phrase), `Incomplete ${language} statement: ${example.title}`);
+      }
+      for (const { sourceIndex, page, label } of [example.cite, example.contextCite]) {
+        assert.ok(content.includes(`${project.sources[sourceIndex].href}#page=${page}"`));
+        assert.ok(content.includes(label));
+      }
+    }
+    for (const { sourceIndex, page } of participation.citations) {
+      assert.ok(sections[sectionFor(participation)].includes(`${project.sources[sourceIndex].href}#page=${page}"`));
+    }
+    localizedTitles.add(statements.title);
+  }
+  assert.equal(localizedTitles.size, 3);
+});

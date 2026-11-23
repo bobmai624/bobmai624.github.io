@@ -656,11 +656,14 @@
   }
 
   function futuresStudy(project) {
-    const { platform, cone, zone, concepts, reflection } = project.futuresStudy;
+    const { platform, participation, cone, zone, concepts, statements, studyPlan, reflection } = project.futuresStudy;
     const text = escapeHtml;
     const imagePath = "assets/projects/ai-futures/";
     function source(section, index, page) {
-      return `<a class="futures-source" href="${text(project.sources[index].href)}#page=${page}" target="_blank" rel="noreferrer">${text(section.cite)} · PDF <span aria-hidden="true">↗</span></a>`;
+      return `<a class="futures-source" href="${text(project.sources[index].href)}#page=${text(page)}" target="_blank" rel="noreferrer">${text(section.cite)} · PDF <span aria-hidden="true">↗</span></a>`;
+    }
+    function citedPage({ sourceIndex, page, label }) {
+      return source({ cite: label }, sourceIndex, page);
     }
     function heading(section) {
       return `<p class="futures-kicker">${text(section.label)}</p><h2>${text(section.title)}</h2><p class="futures-body">${text(section.body)}</p>`;
@@ -672,14 +675,32 @@
       return `<dl class="futures-comparisons">${items.map(([title, description]) =>
         `<div><dt>${text(title)}</dt><dd>${text(description)}</dd></div>`).join("")}</dl>`;
     }
+    const statementExamples = statements.examples.map((example) => `
+      <article class="futures-statement-example">
+        <header><h3>${text(example.title)}</h3><p>${text(example.situation)}</p></header>
+        <div>
+          <dl class="futures-statement-pair">
+            <div><dt>${text(statements.shortLabel)}</dt><dd>${text(example.brief)}</dd></div>
+            <div><dt>${text(statements.detailLabel)}</dt><dd>${text(example.detailed)}</dd></div>
+          </dl>
+          <p class="futures-statement-note">${text(example.note)}</p>
+          <div class="futures-references">${citedPage(example.cite)}${citedPage(example.contextCite)}</div>
+        </div>
+      </article>`).join("");
     return `<div class="futures-study">
       <section class="futures-split"><div>${heading(platform)}${source(platform, 0, 5)}</div>${picture(platform, "platform-trajectories.webp")}</section>
+      <section class="futures-participation"><header>${heading(participation)}</header>
+        ${comparisons(participation.items)}
+        <div class="futures-references">${participation.citations.map(citedPage).join("")}</div>
+      </section>
       <section class="futures-cone"><header>${heading(cone)}${source(cone, 1, 20)}</header>${comparisons(cone.items)}</section>
       <section class="futures-zone futures-split"><div>${heading(zone)}${source(zone, 1, 7)}</div>
         <figure class="futures-figure"><img src="${text(project.cover.src)}" alt="${text(project.cover.alt)}" width="1480" height="780" loading="lazy">
         <figcaption>${text(project.coverCaption)}</figcaption></figure></section>
       <section class="futures-concepts"><header>${heading(concepts)}${source(concepts, 2, 14)}</header>${picture(concepts, "carriage-storyboard.webp")}${comparisons(concepts.items)}</section>
-      <section class="futures-reflection">${heading(reflection)}</section>
+      <section class="futures-statements" id="futures-statements" tabindex="-1" aria-label="${text(statements.title)}"><header>${heading(statements)}</header>${statementExamples}</section>
+      <section class="futures-study-plan futures-split"><header>${heading(studyPlan)}</header>${comparisons(studyPlan.items)}</section>
+      <section class="futures-reflection">${heading(reflection)}<p class="futures-edition-note">${text(reflection.editionNote)}</p></section>
     </div>`;
   }
 

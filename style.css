@@ -31,6 +31,11 @@
   margin: 0; max-width: 46ch; font-size: 1rem; line-height: 1.45; letter-spacing: 0;
 }
 .forecast-panel { padding: clamp(1.5rem, 3vw, 3rem) var(--gutter); border-bottom: 1px solid var(--line); }
+.futures-statement-jump {
+  display: inline-block; margin-top: .4rem; padding: .25rem 0;
+  color: inherit; background: transparent; border: 0; cursor: pointer;
+  font: inherit; font-size: .86rem; text-decoration: underline; text-underline-offset: .23em;
+}
 .forecast-panel > header { display: flex; align-items: end; justify-content: space-between; gap: 1rem 3rem; margin-bottom: 1.3rem; }
 .forecast-panel h2 { margin: .35em 0 0; font-size: clamp(1.45rem, 2.45vw, 2.7rem); line-height: 1.15; letter-spacing: -.035em; font-weight: 500; }
 .forecast-panel > header > p { max-width: 45ch; font-size: .94rem; line-height: 1.45; color: #50504e; }
@@ -77,6 +82,54 @@
 .futures-cone .futures-kicker { color: #d4d6c9; }
 .futures-cone dl > div { display: grid; grid-template-columns: minmax(6em, .75fr) minmax(0, 2fr); gap: 1em; border-color: #74766e; }
 .futures-cone dt { font-weight: 500; }
+.futures-participation .futures-comparisons {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: clamp(2rem, 6vw, 7rem);
+  margin-top: 2rem;
+}
+.futures-references { display: flex; flex-wrap: wrap; gap: 0 1.5rem; }
+.futures-statements { background: var(--soft); }
+.futures-statements > header { margin-bottom: clamp(2rem, 4vw, 4rem); }
+.futures-statement-example {
+  display: grid;
+  grid-template-columns: minmax(0, .85fr) minmax(0, 1.9fr);
+  gap: 1.25rem clamp(2rem, 5vw, 5rem);
+  padding-block: clamp(1.5rem, 3vw, 3rem);
+  border-top: 1px solid var(--ink);
+}
+.futures-statement-example:last-child { padding-bottom: 0; }
+.futures-statement-example h3 {
+  margin-bottom: .75rem;
+  font-size: clamp(1.2rem, 2vw, 1.75rem);
+  font-weight: 500;
+  line-height: 1.25;
+}
+.futures-statement-example header p, .futures-statement-note { color: #50504e; font-size: 1rem; line-height: 1.6; }
+.futures-statement-pair {
+  display: grid;
+  grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
+  gap: 1px;
+  border: 1px solid var(--line);
+  background: var(--line);
+}
+.futures-statement-pair > div { padding: clamp(1rem, 2vw, 1.5rem); background: var(--paper); }
+.futures-statement-pair dt { margin-bottom: .8rem; color: #52524f; font-size: .85rem; font-weight: 600; }
+.futures-statement-pair dd { font-size: 1rem; line-height: 1.6; }
+.futures-statement-note { max-width: 68ch; margin-top: 1rem; }
+.futures-edition-note {
+  max-width: 70ch;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+  color: #50504e;
+  font-size: .94rem;
+  line-height: 1.6;
+}
+@media (max-width: 960px) {
+  .futures-statement-example { grid-template-columns: minmax(0, 1fr); }
+  .futures-statement-example header p { max-width: 62ch; }
+}
 @media (max-width: 760px) {
   .forecast-card img { height: clamp(5.5rem, 23vw, 8.5rem); margin-block: 0 .6rem; }
   .forecast-card h3 { order: -1; padding-block: .6rem; }
@@ -84,6 +137,9 @@
   .case-article--ai-futures .case-topline { margin-bottom: .6rem; }
   .futures-split, .futures-cone { grid-template-columns: 1fr; }
   .futures-concepts dl { grid-template-columns: 1fr; gap: 0; }
+}
+@media (max-width: 600px) {
+  .futures-participation .futures-comparisons, .futures-statement-pair { grid-template-columns: minmax(0, 1fr); }
 }
 
 /* Cove case study --------------------------------------------------------- */
@@ -5825,6 +5881,7 @@ h3 {
   filter: grayscale(0.08) saturate(0.72) contrast(1.02);
 }
 
+.overlay-page[data-project-id="ai-futures"] > .overlay-close,
 .overlay-page[data-project-id="tidyteddy"] > .overlay-close {
   padding: 11px 13px;
   border: 1px solid #737b84;

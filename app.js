@@ -942,7 +942,10 @@
             <p>${project.year}</p>
           </div>
           <h1 id="case-title">${project.displayTitle || project.title}</h1>
-          <p class="case-proposition">${project.meaning}</p>
+          ${project.futuresStudy
+            ? `<div class="case-proposition"><p>${project.meaning}</p>
+                <button type="button" class="futures-statement-jump" aria-controls="futures-statements">${project.futuresStudy.statements.jump} <span aria-hidden="true">↓</span></button></div>`
+            : `<p class="case-proposition">${project.meaning}</p>`}
         </header>
         ${project.futuresStudy ? caseComponents.futuresForecasts(project) : ""}
 
@@ -1223,7 +1226,7 @@
     if (event.key !== "Tab") return;
     const focusable = Array.from(
       container.querySelectorAll(
-        'a[href], button:not([disabled]), iframe, video[controls], [tabindex]:not([tabindex="-1"])',
+        'a[href], button:not([disabled]), iframe, video[controls], [tabindex]:not([tabindex="-1"]), .futures-statements:focus',
       ),
     )
       .concat(additionalElements)
@@ -1254,6 +1257,12 @@
   });
 
   document.addEventListener("click", (event) => {
+    if (event.target.closest(".futures-statement-jump")) {
+      const section = caseContent.querySelector("#futures-statements");
+      section.focus({ preventScroll: true });
+      section.scrollIntoView({ block: "start", behavior: "instant" });
+      return;
+    }
     const projectLink = event.target.closest("[data-project]");
     if (projectLink) {
       if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
